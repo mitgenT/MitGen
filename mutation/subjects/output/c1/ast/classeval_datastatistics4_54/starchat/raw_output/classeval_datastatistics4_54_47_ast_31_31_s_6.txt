@@ -1,0 +1,7 @@
+```python
+        if n <= 3:
+            mean = sum(data) / n
+            return sum((x - mean) ** 4 for x in data) / (n * (std_dev ** 4)) if std_dev!= 0 else 0
+```
+
+This completes the 'kurtosis' method by handling the case where the number of elements in 'data' is less than or equal to 3. In such cases, a simplified formula is used to calculate the kurtosis.

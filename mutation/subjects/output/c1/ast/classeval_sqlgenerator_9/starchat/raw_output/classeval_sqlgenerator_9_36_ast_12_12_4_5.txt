@@ -1,0 +1,4 @@
+if condition:
+    sql += " WHERE "
+else:
+    sql += " AND "

@@ -1,0 +1,6 @@
+def get_difference(strength):
+    greatest = 0
+    strength.remove(max(strength))
+    greatest = max(strength)
+    
+    return greatest

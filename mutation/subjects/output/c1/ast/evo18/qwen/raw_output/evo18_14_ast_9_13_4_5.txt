@@ -1,0 +1,20 @@
+Here's the infilled code:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - len(sub) + 1:  # Adjust the search range to avoid IndexErrors
+            pos = string.find(sub, start)
+            if pos != -1:  # If the substring is found
+                result[sub] += 1
+                start = pos + 1  # Move the start position to the next possible match
+            else:
+                break  # If not found, stop the loop
+    return result
+```
+
+The changes made include adjusting the `while` loop condition and updating the logic for incrementing the count and moving the start position.

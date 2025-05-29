@@ -1,0 +1,10 @@
+for _ in range(int(input())):
+    n = int(input())
+    s = input()
+    cur = 'A'
+    ans = 0
+    for i in s:
+        if i != cur:
+          ans += 1
+          cur = i
+    print(ans)

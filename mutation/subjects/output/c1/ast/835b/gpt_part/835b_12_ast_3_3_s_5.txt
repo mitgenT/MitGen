@@ -1,0 +1,9 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    s = input()
+    alphabet_size = 0
+    for i in range(len(s)):
+        if ord(s[i]) > alphabet_size:
+            alphabet_size = ord(s[i])
+    print(alphabet_size - 96)

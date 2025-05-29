@@ -1,0 +1,30 @@
+## Docstring:
+"""
+Monocarp is playing a computer game. In order to level up his character, he can complete quests. There are 𝑛 quests in the game, numbered from 1 to 𝑛.
+
+Monocarp can complete quests according to the following rules: 
+- the 1 -st quest is always available for completion;
+- the 𝑖 -th quest is available for completion if all quests 𝑗<𝑖 have been completed at least once.
+
+Note that Monocarp can complete the same quest multiple times.
+
+For each completion, the character gets some amount of experience points:
+- for the first completion of the 𝑖 -th quest, he gets 𝑎𝑖 experience points;
+- for each subsequent completion of the 𝑖 -th quest, he gets 𝑏𝑖 experience points.
+
+Monocarp is a very busy person, so he has free time to complete no more than 𝑘 quests. Your task is to calculate the maximum possible total experience Monocarp can get if he can complete no more than 𝑘 quests.
+
+Input
+The first line contains a single integer 𝑡 (1≤𝑡≤10^4) — the number of test cases.
+
+The first line of each test case contains two integers 𝑛 and 𝑘 (1≤𝑛≤2⋅10^5 ; 1≤𝑘≤2⋅10^5) — the number of quests and the maximum number of quests Monocarp can complete, respectively.
+
+The second line contains 𝑛 integers 𝑎1,𝑎2,…,𝑎𝑛 (1≤𝑎𝑖≤10^3).
+
+The third line contains 𝑛 integers 𝑏1,𝑏2,…,𝑏𝑛 (1≤𝑏𝑖≤10^3).
+
+Additional constraint on the input: the sum of 𝑛 over all test cases does not exceed 2⋅10^5.
+
+Output
+For each test case, print a single integer — the maximum possible total experience Monocarp can get if he can complete no more than 𝑘 quests.
+"""

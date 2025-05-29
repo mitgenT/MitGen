@@ -1,0 +1,13 @@
+n = int(input())
+for _ in range(n):
+    t = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    n = len(a)
+    res = 0
+    for i in range(n):
+        if i % 2:
+            res -= (b[i]-1)
+        else:
+            res += (b[i]-1)
+    print(res)

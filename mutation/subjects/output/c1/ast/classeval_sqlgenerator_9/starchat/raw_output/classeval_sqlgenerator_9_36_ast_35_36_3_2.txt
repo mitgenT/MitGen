@@ -1,0 +1,1 @@
+sql += f" WHERE age BETWEEN {min_age} AND {max_age}"

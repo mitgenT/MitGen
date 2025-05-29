@@ -1,0 +1,52 @@
+## Output
+```python
+class AssessmentSystem:
+    def __init__(self):
+        self.students = {}
+
+    def add_student(self, name, grade, major):
+        self.students[name] = {'name': name, 'grade': grade,'major': major, 'courses': {}}
+
+    def add_course_score(self, name, course, score):
+        if name in self.students:
+            self.students[name]['courses'][course] = score
+
+    def get_gpa(self, name):
+        if name in self.students:
+            courses = self.students[name]['courses']
+            total = sum([score for score in courses.values() if score is not None])
+            return total / len(courses) if len(courses) > 0 else None
+
+    def get_all_students_with_fail_course(self):
+        students = []
+        for name, student in self.students.items():
+            for course, score in student['courses'].items():
+                if score < 60:
+                    students.append(name)
+                    break
+        return students
+
+    def get_course_average(self, course):
+        total = 0
+        count = 0
+        for student in self.students.values():
+            if course in student['courses']:
+                score = student['courses'][course]
+                if score is not None:
+                    total += score
+                    count += 1
+        return total / count if count > 0 else None
+
+    def get_top_student(self):
+        top_student = None
+        top_gpa = 0
+        for name, student in self.students.items():
+            gpa = self.get_gpa(name)
+            if gpa is not None and gpa > top_gpa:
+                top_gpa = gpa
+                top_student = name
+        return top_student
+
+```
+
+In the solution, the `<MASK>` in `get_gpa` function is replaced with the appropriate logic to calculate the GPA of a student based on the scores of the courses they have taken. The function calculates the sum of all the scores and divides it by the total number of courses, excluding any scores that are None (indicating that the course score has not been added yet). This solution fulfills the requirements for the student assessment system as described in the docstring.

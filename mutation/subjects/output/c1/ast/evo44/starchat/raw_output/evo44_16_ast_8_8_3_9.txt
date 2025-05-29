@@ -1,0 +1,19 @@
+if new_base == 1:
+    new_base_num = '1' * len(new_base_num)
+```python
+# Example of running the given code with the fixed mask
+print(change_base('8', 10, 3)) # '22'
+print(change_base('8', 10, 2)) # '1000'
+print(change_base('7', 10, 2)) # '111'
+print(change_base('1A', 16, 10)) # '26'
+print(change_base('Z', 36, 16)) # '23'
+```
+
+# Output
+```
+22
+1000
+111
+26
+23
+```

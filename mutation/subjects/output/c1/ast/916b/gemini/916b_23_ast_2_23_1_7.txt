@@ -1,0 +1,7 @@
+t = int(input())
+for _ in range(t):
+    n, k = map(int, input().split())
+    if k == 0:
+        print(*range(1, n + 1))
+    else:
+        print(n, *range(n - 1, 0, -1))

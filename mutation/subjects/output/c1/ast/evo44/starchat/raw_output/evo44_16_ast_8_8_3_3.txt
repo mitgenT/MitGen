@@ -1,0 +1,3 @@
+if(base == 2 or new_base == 2):
+    new_base_num = bin(base_10)[2:]
+else:

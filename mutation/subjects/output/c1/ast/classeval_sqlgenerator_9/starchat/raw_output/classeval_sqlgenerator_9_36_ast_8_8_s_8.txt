@@ -1,0 +1,4 @@
+```Python
+if fields == "*":  
+    fields = ""
+```

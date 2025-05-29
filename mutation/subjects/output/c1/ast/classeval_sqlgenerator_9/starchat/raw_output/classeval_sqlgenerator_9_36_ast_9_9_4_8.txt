@@ -1,0 +1,2 @@
+fields = ", ".join(fields) if isinstance(fields, list) else fields
+values = ", ".join([f"'{str(value)}'" for value in data.values()])

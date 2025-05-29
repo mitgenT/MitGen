@@ -1,0 +1,16 @@
+## Output
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n + 1):
+        for j in range(n - i + 1):
+            prefix = string[:i+j]
+            suffix = string[i+j:]
+            pairs.append((prefix, suffix))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+
+```
+The logic of the solution involves using nested loops to generate all possible combinations of prefix and suffix pairs. These pairs are added to a list if they meet the length constraints. Finally, the list is sorted as per the required criteria.

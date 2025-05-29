@@ -1,0 +1,6 @@
+N=int(input())
+alpha='ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+alpha_input = alpha[:N]
+
+# Alternative solution:
+# alpha_input = alpha[:int(N)]

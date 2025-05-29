@@ -1,0 +1,8 @@
+```python
+if len(data1)!= len(data2): 
+    n = len(data1) if len(data1) < len(data2) else len(data2) 
+else:
+    n = len(data1)
+```
+
+Here, I've added an if-else block to handle cases where the two data lists are not of equal length. The variable `n` is assigned the length of the shorter list if there's a difference in length, otherwise, it is assigned the length of either of the lists. This ensures that we avoid index out of range errors during the calculations within the method `correlation_coefficient`.

@@ -1,0 +1,6 @@
+```python
+if char.islower():
+    result += char.upper()
+```
+
+This will make sure that if the character at'special_index' is lowercase, it will be converted to uppercase. If the character is already uppercase (or'special_index' is out of range), it will remain the same.

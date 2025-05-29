@@ -1,0 +1,46 @@
+```python
+import sqlite3
+import pandas as pd
+
+
+class DatabaseProcessor:
+
+    def __init__(self, database_name):
+        self.database_name = database_name
+        self.conn = sqlite3.connect(self.database_name)
+
+    def create_table(self, table_name, key1, key2):
+        cursor = self.conn.cursor()
+
+        create_table_query = f"CREATE TABLE IF NOT EXISTS {table_name} (id INTEGER PRIMARY KEY, {key1} TEXT, {key2} INTEGER)"
+        cursor.execute(create_table_query)
+
+        self.conn.commit()
+
+    def insert_into_database(self, table_name, data):
+        cursor = self.conn.cursor()
+
+        for item in data:
+            insert_query = f"INSERT INTO {table_name} (name, age) VALUES (?,?)"
+            cursor.execute(insert_query, (item['name'], item['age']))
+
+        self.conn.commit()
+
+    def search_database(self, table_name, name):
+        cursor = self.conn.cursor()
+
+        select_query = f"SELECT * FROM {table_name} WHERE name =?"
+        cursor.execute(select_query, (name,))
+        result = cursor.fetchall()
+
+        return result
+
+    def delete_from_database(self, table_name, name):
+        cursor = self.conn.cursor()
+
+        delete_query = f"DELETE FROM {table_name} WHERE name =?"
+        cursor.execute(delete_query, (name,))
+
+        self.conn.commit()
+```
+In this updated version of the `DatabaseProcessor` class, I've added the connection to the database in the `__init__` method and used the `self.conn` to execute SQL queries, making it a lot more efficient and cleaner to read. I've also opened the connection just once, outside the method, and passed the connection to the methods as needed. This reduces the overhead of opening and closing the connection for each query, making the code run faster.

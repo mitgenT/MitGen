@@ -1,0 +1,14 @@
+Here is the complete and correctly infilled `get_all_students_with_fail_course()` method:
+
+```python
+def get_all_students_with_fail_course(self):
+    students = []
+    for name, student in self.students.items():
+        for course, score in student['courses'].items():
+            if score < 60:
+                students.append(name)
+                break
+    return students
+```
+
+In the given code, the `get_all_students_with_fail_course()` method was missing the logic to identify students who failed in any course. The updated method iterates over each student and their courses. If a student has any score less than 60, their name is added to the `students` list. The `break` statement is used to avoid adding the same student multiple times if they have failed multiple courses. This adjustment aligns the method with the specified docstring requirements.

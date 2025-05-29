@@ -1,0 +1,19 @@
+Based on the provided docstring, the function should return the longest substring and its index if a substring starting with a vowel is found. If no such substring is found, it should return (None, None). Here's the filled-in code:
+
+```python
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+    vowels = 'aeiouAEIOU'
+    longest_substring = None
+    longest_substring_index = None
+    for i, string in enumerate(strings):
+        substrings = [string[j:] for j in range(len(string)) if string[j] in vowels]
+        if substrings:
+            max_substring = max(substrings, key=len)
+            if longest_substring is None or len(max_substring) == len(longest_substring):
+                longest_substring = max_substring
+                longest_substring_index = i
+            else:
+                break  # If we find a longer substring, stop looking in the current string
+    return longest_substring, longest_substring_index
+```

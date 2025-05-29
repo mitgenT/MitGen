@@ -1,0 +1,1 @@
+return new_base_num == "" or new_base == 10 and new_base_num[0]!= "0" or new_base!= 10 and new_base_num[0] == "0"

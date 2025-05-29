@@ -1,0 +1,10 @@
+```python
+    def get_all_students_with_fail_course(self):
+        students = []
+        for name, student in self.students.items():
+            for course, score in student['courses'].items():
+                if score < 60:
+                    students.append(name)
+        return students
+```
+In the given code, the `get_all_students_with_fail_course` function needs to append student names with failed courses (score < 60) to the `students` list. The problem lies with the use of `<MASK>` to append the name when a fail course is found. I replaced it with the appropriate Python list method to add the student name to the list.

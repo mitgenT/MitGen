@@ -1,0 +1,13 @@
+```python
+def get_top_student(self):
+    if not self.students:
+        return None
+    top_gpa = 0
+    for name, student in self.students.items():
+        gpa = self.get_gpa(name)
+        if gpa is not None and gpa > top_gpa:
+            top_gpa = gpa
+            top_student = name
+    return top_student
+```
+The `get_top_student` function is now correctly implemented. It first checks if the `students` dictionary is empty. If it is, it returns `None`. Otherwise, it iterates through each student, calculates their GPA using the `get_gpa` method, and keeps track of the student with the highest GPA. Once the loop completes, it returns the name of the student with the highest GPA. This ensures that the implementation adheres to the specifications and follows the best practices for calculating GPAs.

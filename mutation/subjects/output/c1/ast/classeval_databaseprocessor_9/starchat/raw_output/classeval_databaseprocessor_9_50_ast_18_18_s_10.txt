@@ -1,0 +1,5 @@
+```python
+    conn.close()
+    cursor.close()
+```
+In the given solution, we close the database connection and cursor after executing each operation in the respective methods of the `DatabaseProcessor` class. This ensures that the resources are properly managed and the database operations are completed successfully.

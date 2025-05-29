@@ -1,0 +1,23 @@
+if __name__ == '__main__':
+    
+    # Correlation coefficient test
+    data1 = [1, 2, 3]
+    data2 = [4, 5, 6]
+    print(DataStatistics4.correlation_coefficient(data1, data2))
+    
+    # Skewness test
+    data_skew = [1, 2, 5]
+    print(DataStatistics4.skewness(data_skew))
+    
+    # Kurtosis test
+    data_kurtosis = [1, 20, 100]
+    print(DataStatistics4.kurtosis(data_kurtosis))
+    
+    # PDF test
+    data_pdf = [1, 2, 3]
+    mu = 1
+    sigma = 1
+    print(DataStatistics4.pdf(data_pdf, mu, sigma))
+```
+
+The infilled <MASK> consists of creating a main block which is added at the end of the class to test each method (correlation coefficient, skewness, kurtosis, and PDF) with sample data.

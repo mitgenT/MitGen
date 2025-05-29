@@ -1,0 +1,22 @@
+## Output
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = False
+    if type(delimeter) == float:
+        set_float = True
+    result = []
+    limit = min(limit, len(numbers) - 1) 
+    for i in range(len(numbers) - 1):
+        if i % 2 == 0:
+            if set_float:
+                result.append(float(numbers[i]))
+            else:
+                result.append(numbers[i])
+        else:
+            result.append(delimeter)
+        if i < limit:
+            result.append(delimeter)
+    return result
+```
+In the given solution, a simple conditional statement is added inside the loop to check if the current index 'i' is even, to decide whether to add the current number in 'numbers' list or the 'delimeter' to the result list. Also, a float conversion is done for the current number, if 'delimeter' is of float type. The 'limit' parameter is used to stop adding 'delimeter' after a certain number of iterations.

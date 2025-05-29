@@ -1,0 +1,20 @@
+## Output
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos!= -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    if string == '':
+        result = {sub: 0 for sub in substrings}
+    return result
+```
+In this case, to fulfill the requirement of counting overlapping cases, we introduced an inner loop to find all occurrences of the substring in the main string starting from'start' position. We then updated the count and moved the'start' position to the next index after the found substring. Finally, we added a condition to handle the case when the input string is empty. In such cases, we reset the result dictionary with zero counts for each substring.

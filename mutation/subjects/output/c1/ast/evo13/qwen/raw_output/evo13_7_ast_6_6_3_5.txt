@@ -1,0 +1,13 @@
+Based on the provided docstring, the `multiple_greatest_common_divisors` function calculates the greatest common divisor (GCD) of a list of integers. To find the GCD, you would use the `math.gcd` function for each number in the list starting from the second element (since you already have the GCD of the first element). Here's how you should fill in the `<MASK>`:
+
+```python
+from typing import List
+import math
+
+def multiple_greatest_common_divisors(numbers: List[int]) -> int:
+    gcd = numbers[0]
+    for num in numbers[1:]:
+        gcd = math.gcd(gcd, num)
+    return gcd
+
+```

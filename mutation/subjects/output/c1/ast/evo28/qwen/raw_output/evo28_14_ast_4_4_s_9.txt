@@ -1,0 +1,5 @@
+```python
+    len_strings = len(strings)
+    if len_strings > 0:
+        interleaved.extend(strings)
+```

@@ -1,0 +1,23 @@
+def how_many_times(string: str, substrings: list) -> dict:
+    if not string or any(not sub for sub in substrings):
+        if not string:
+            return {sub: 0 for sub in substrings}
+        else:
+            return {"Substrings cannot be empty": 0}
+
+    counts = {}
+    for substring in substrings:
+        count = 0
+        index = 0
+        while index < len(string):
+            # Check if substring is found at the current index
+            if string[index:index+len(substring)] == substring:
+                count += 1
+                # Update the index by adding length of the substring to account for overlapping cases
+                index += len(substring)
+            else:
+                index += 1
+        
+        counts[substring] = count
+    
+    return counts

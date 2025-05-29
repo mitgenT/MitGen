@@ -1,0 +1,27 @@
+import sys
+input=sys.stdin.readline
+
+for _ in range(int(input())):
+    n,c,d=map(int,input().split())
+    a=list(map(int,input().split()))
+    a.sort(reverse=True)
+    if max(c//d,a[0])>a[d-1]:
+        print(-1)
+        continue
+    l=0
+    r=2*1e5+1
+    while l<r-1:
+        m=(l+r)//2
+        coins=0
+        i=0
+        last=-1e9
+        while coins<c and i<n:
+            if m>=last+d:
+                coins+=a[i]
+                last=i
+            i+=1
+        if coins>=c:
+            l=m
+        else:
+            r=m
+    print('Infinity' if l==2*1e5 else l)

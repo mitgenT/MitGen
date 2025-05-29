@@ -1,0 +1,22 @@
+The given code needs to be infilled with two parts: checking if the string is empty and returning an empty dictionary when it is. We can use the "not string" condition for this, as an empty string evaluates to False in a boolean context.
+
+The infilled code is as follows:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    if not string:
+        return {sub: 0 for sub in substrings}
+    return result
+```

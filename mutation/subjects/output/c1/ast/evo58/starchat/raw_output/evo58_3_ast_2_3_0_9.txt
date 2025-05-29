@@ -1,0 +1,9 @@
+def common(l1: list, l2: list, n: int):
+    common_strings = [value for value in l1 if value in l2]
+    common_strings = sorted(common_strings, key=lambda x: (-len(x), l1.index(x)))
+    return common_strings[:n]
+
+# Test the solution
+print(common(["apple", "banana", "cherry", "date", "elderberry"], ["banana", "date", "fig", "grape", "elderberry"], 3))
+print(common(["cat", "dog", "elephant", "fox", "goat"], ["dog", "fox", "cat", "horse", "iguana", "goat"], 3))
+print(common(["hello", "goodbye", "yes", "no", "maybe", "absolutely", "never"], ["no", "maybe", "absolutely", "always", "sometimes"], 1))

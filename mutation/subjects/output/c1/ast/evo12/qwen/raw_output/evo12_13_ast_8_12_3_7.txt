@@ -1,0 +1,11 @@
+```python
+        max_length = 0
+        for substring in substrings:
+            if substring:
+                length = len(substring)
+                if length > max_length:
+                    longest_substring = substring
+                    longest_substring_index = i
+                    max_length = length
+    return longest_substring, longest_substring_index
+```

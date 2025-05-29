@@ -1,0 +1,4 @@
+```python
+        if n!= len(data2):
+            raise ValueError("Both data1 and data2 should have the same length.")
+```

@@ -1,0 +1,13 @@
+## Output
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        else:
+            if len(result) == 0 or not result[-1].isdigit():
+                result.append(str(i+1))
+    return''.join(result)
+```
+In this updated code, for each number in the range from 0 to n (exclusive), we first check if the current number is divisible by m (i+1 % m == 0), if so, we append "Fizz" to the result list. If not, we add the current number as a string only if the previous item in the result list is not a digit. This ensures that we don't accidentally replace a non-numeric value with a number, complying with the given docstring.

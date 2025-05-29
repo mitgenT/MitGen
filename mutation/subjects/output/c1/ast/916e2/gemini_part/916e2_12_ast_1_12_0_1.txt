@@ -1,0 +1,30 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    a.sort()
+    b.sort()
+    i = 0
+    j = 0
+    alice = 0
+    bob = 0
+    while i < n and j < n:
+        if a[i] == b[j]:
+            alice += a[i]
+            bob -= b[j]
+            i += 1
+            j += 1
+        elif a[i] > b[j]:
+            bob += b[j]
+            j += 1
+        else:
+            alice += a[i]
+            i += 1
+    while i < n:
+        alice += a[i]
+        i += 1
+    while j < n:
+        bob += b[j]
+        j += 1
+    print(alice - bob)

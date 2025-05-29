@@ -1,0 +1,14 @@
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n+1):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        else:
+            result.append(str(i))
+    return''.join(result)
+    for i in range(n):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        else:
+            result.append(str(i))
+    return ' '.join(result)

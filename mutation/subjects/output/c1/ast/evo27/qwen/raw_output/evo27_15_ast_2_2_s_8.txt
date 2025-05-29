@@ -1,0 +1,12 @@
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    string = list(string)
+    if 0 <= special_index < len(string):
+        string[special_index] = string[special_index].lower() if string[special_index].isupper() else string[special_index]
+    else:
+        special_index %= len(string)
+        string[special_index] = string[special_index].lower() if string[special_index].isupper() else string[special_index]
+    
+    result = ''.join(string)
+    return result
+```

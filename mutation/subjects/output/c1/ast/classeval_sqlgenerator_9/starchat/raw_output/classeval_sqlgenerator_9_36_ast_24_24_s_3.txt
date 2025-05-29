@@ -1,0 +1,14 @@
+```python
+if <MASK>:
+    <MASK>
+
+sql += ";"
+return sql
+```
+
+You can replace <MASK> in the `update` method with:
+
+```python
+if not condition:
+    raise ValueError("Condition cannot be empty for an UPDATE statement.")
+```

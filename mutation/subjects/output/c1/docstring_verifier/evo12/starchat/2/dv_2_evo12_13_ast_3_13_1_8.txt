@@ -1,0 +1,13 @@
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+   longest_str = None
+   longest_pos = None
+   for i, string in enumerate(strings):
+       for j in range(len(string)):
+           if string[j].lower() in ['a', 'e', 'i', 'o', 'u']:
+               substr = string[j:]
+               if longest_str is None or len(substr) > len(longest_str):
+                   longest_str = substr
+                   longest_pos = i
+               break
+   return longest_str, longest_pos

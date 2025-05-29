@@ -1,0 +1,26 @@
+Based on the given docstring, we can see that the code is looking for non-overlapping prefix and suffix pairs in the input string, where both should be at least `min_length` characters long. The first conditional checks if `i` is less than `n` (the length of the string), and then iterates through the possible suffixes starting from index `i`. We also need to ensure that the prefixes and suffixes do not have any shared characters.
+
+Here's how the `<MASK>` part should be filled in:
+
+```python
+    for i in range(min_length, n):
+        if i + min_length <= n:  # Ensure the suffix is at least 'min_length' long
+            if len(set(string[:i]).intersection(set(string[i+min_length:]))) == 0:  # Check for no shared characters
+                pairs.append((string[:i], string[i:i+min_length]))  # Note the change in the slice for the suffix
+```
+
+So the complete code becomes:
+
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    if min_length < n:
+        for i in range(min_length, n):
+            if i + min_length <= n:  # Ensure the suffix is at least 'min_length' long
+                if len(set(string[:i]).intersection(set(string[i+min_length:]))) == 0:  # Check for no shared characters
+                    pairs.append((string[:i], string[i:i+min_length]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```

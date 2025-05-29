@@ -1,0 +1,2 @@
+if len(l_string) - l_string[:i:-1].lower() == i:
+    return l_string == l_string[::-1]

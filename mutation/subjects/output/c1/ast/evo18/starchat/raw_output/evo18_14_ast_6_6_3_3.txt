@@ -1,0 +1,19 @@
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        if string.count(sub):
+            start = 0
+            while start < len(string) - 1:
+                pos = string.find(sub, start)
+                if pos!= -1:
+                    result[sub] += 1
+                    start = pos + 1
+                else:
+                    break
+    return result
+```
+
+In this code, I use the `string.count(sub)` function to check if the substring `sub` exists in the given string. If it exists, I find its positions using `string.find()` function and increment the corresponding count in the `result` dictionary. This ensures that overlapping cases are also counted correctly.

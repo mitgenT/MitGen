@@ -1,0 +1,5 @@
+```python
+            prefix = string[:j]
+            suffix = string[j:i + min_length]
+            pairs.append((prefix, suffix))
+```

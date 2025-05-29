@@ -1,0 +1,31 @@
+Here's the filled-in code based on the provided docstring:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    # Check for empty substrings
+    for substring in substrings:
+        if not substring:
+            return "Substrings cannot be empty"
+    
+    # Handle empty input string case
+    if not string:
+        return {substring: 0 for substring in substrings}
+
+    # Initialize an empty dictionary to store counts
+    substring_counts = {substring: 0 for substring in substrings}
+
+    # Iterate over the input string
+    for i in range(len(string)):
+        # Check for overlapping occurrences of each substring
+        for substring in substrings:
+            index = string.find(substring, i)
+            if index != -1:  # Found a match
+                substring_counts[substring] += 1
+                i = index  # Skip the already counted part
+            else:  # No more matches from this starting position
+                break
+    
+    return substring_counts
+```
+
+Now, the given code has been completed according to the instructions and the example provided.

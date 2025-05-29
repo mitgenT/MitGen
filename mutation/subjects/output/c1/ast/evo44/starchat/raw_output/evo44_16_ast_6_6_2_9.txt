@@ -1,0 +1,6 @@
+```Python
+            base_10 = str(base_10)
+            new_base_num = ''
+```
+
+The above code replaces the <MASK> in the given code snippet. The function now checks whether the base_10 value is a string, and if not, it converts it to a string before initializing an empty string 'new_base_num'.

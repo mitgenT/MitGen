@@ -1,0 +1,5 @@
+if result:
+    conn.close()
+    return result
+conn.close()
+return None

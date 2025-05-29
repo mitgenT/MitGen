@@ -1,0 +1,58 @@
+t=int(input(""))
+for q in range(t):
+	ncd=input("").split(" ")
+	n=int(ncd[0])
+	a=int(ncd[1])-1
+	b=int(ncd[2])-1
+	edges=[{} for i in range(n)]
+	for i in range(n-1):
+		uvw=input("").split(" ")
+		u=int(uvw[0])-1
+		v=int(uvw[1])-1
+		w=int(uvw[2])
+		edges[u][v]=w
+		edges[v][u]=w
+	#print(edges)
+	visited=[0]*n
+	visited[b]=1
+ <missing code>
+	queue=[(-1,0)]*n
+	queue[0]=(a,0)
+	j=1
+	for i in range(n-1):
+		x=queue[i][0]
+		if x==-1:break
+		v=queue[i][1]
+		fromA[x]=v
+		visited[x]=1
+		for y in edges[x]:
+			if visited[y]==0:
+				queue[j]=(y,v^edges[x][y])
+				j+=1
+	#print(queue)
+	
+	visited=[0]*n
+	fromB=[-1]*n
+	queue=[(-1,0)]*n
+	queue[0]=(b,0)
+	j=1
+	for i in range(n):
+		x=queue[i][0]
+		v=queue[i][1]
+		fromB[x]=v
+		visited[x]=1
+		for y in edges[x]:
+			if visited[y]==0:
+				queue[j]=(y,v^edges[x][y])
+				j+=1
+	#print(queue)
+	#print(fromA)
+	#print(fromB)
+	v1=len(set(fromA)&set(fromB))>1
+	v2=fromB.count(0)>2
+	if v1 or v2:print("YES")
+	else:print("NO")
+	if q==52:
+		print(q)
+		print(ncd)
+		print(edges)

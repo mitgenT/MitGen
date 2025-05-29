@@ -1,0 +1,13 @@
+```python
+def get_top_student(self):
+    top_student = None
+    top_gpa = 0
+    for name, student in self.students.items():
+        gpa = sum(student['courses'].values()) / len(student['courses']) if student['courses'] else 0
+        if gpa > top_gpa:
+            top_gpa = gpa
+            top_student = name
+    return top_student
+```
+
+The 'get_top_student' method correctly calculates each student's GPA by iterating through the'students' dictionary and comparing their GPAs to find the top student. If a student has no course records, it will default to a GPA of 0. In the end, it returns the name of the student with the highest GPA.

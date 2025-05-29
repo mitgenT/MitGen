@@ -1,0 +1,49 @@
+In your given code, we need to replace `<MASK>` in the `ArrangementCalculator.count` function. 
+
+The `ArrangementCalculator.count` function currently has a conditional statement with one return statement. We need to add another return statement for the case when `m` is provided.
+
+I will rewrite the `ArrangementCalculator.count` function accordingly:
+
+```python
+import itertools
+
+class ArrangementCalculator:
+    def __init__(self, datas):
+        self.datas = datas
+
+    @staticmethod
+    def count(n, m=None):
+        if m is None or n == m:
+            return ArrangementCalculator.factorial(n)
+        else:
+            return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)
+
+    @staticmethod
+    def count_all(n):
+        total = 0
+        for i in range(1, n + 1):
+            total += ArrangementCalculator.count(n, i)
+                                             #bug location
+    def select(self, m=None):
+        if m is None:
+            m = len(self.datas)
+        result = []
+        for permutation in itertools.permutations(self.datas, m):
+            result.append(list(permutation))
+        return result
+
+    def select_all(self):
+        result = []
+        for i in range(1, len(self.datas) + 1):
+            result.extend(self.select(i))
+        return result
+
+    @staticmethod
+    def factorial(n):
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
+```
+
+I have fixed the code by adding the second return statement to the `ArrangementCalculator.count` function. This ensures that both the scenarios (when `m` is not provided or `n` equals `m`) are handled correctly. Now, the `ArrangementCalculator` class should work as expected.

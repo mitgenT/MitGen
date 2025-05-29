@@ -1,0 +1,23 @@
+Based on the provided docstring, we need to check if the current character is at the `special_index` and modify it according to the condition. If `special_index` is within the range or in a circular list, we'll keep the character as is if it's lowercase, but convert it to lowercase if it's uppercase. Here's how to fill in `<MASK>` in the code:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    # Calculate the effective index if special_index is out of range
+    effective_index = special_index % len(string)
+
+    result = ''
+    for i, char in enumerate(string):
+        if i == effective_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+        else:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+    return result
+```
+
+Now, the function `flip_case_special` works as described in the docstring.

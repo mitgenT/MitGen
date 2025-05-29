@@ -1,0 +1,13 @@
+Based on the provided docstring, the missing code should append the `delimeter` between every pair of consecutive elements from the `numbers` list, up to `limit` times. Here's the code with `<MASK>` filled:
+
+```python
+    for i in range(0, len(numbers), 2 if set_float else 1):
+        if i < limit:
+            if set_float:
+                result.append(float(numbers[i]))
+            else:
+                result.append(numbers[i])
+            result.append(delimeter)
+```
+
+The `range` function is adjusted to skip one element if `set_float` is `True` (since floats will be inserted, so we need to consider them as two elements). The rest of the code follows the logic described in the docstring.

@@ -1,0 +1,11 @@
+```python
+    def get_gpa(self, name):
+        if name not in self.students or not self.students[name]['courses']:
+            return None
+        total_score = 0
+        count = 0
+        for _, score in self.students[name]['courses'].items():
+            total_score += score
+            count += 1
+        return total_score / count
+```

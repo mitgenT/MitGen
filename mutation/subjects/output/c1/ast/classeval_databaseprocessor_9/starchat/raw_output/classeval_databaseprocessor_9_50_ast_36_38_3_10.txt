@@ -1,0 +1,11 @@
+```python
+conn = sqlite3.connect(self.database_name)
+cursor = conn.cursor()
+
+search_query = f"SELECT * FROM {table_name} WHERE name =?"
+cursor.execute(search_query, (name,))
+
+result = cursor.fetchall()
+
+conn.close()
+```

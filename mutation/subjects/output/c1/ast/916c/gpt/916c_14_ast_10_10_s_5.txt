@@ -1,0 +1,19 @@
+for _ in range(int(input())):
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    result = 0
+    maxB = 0
+    sum = 0
+    for i in range(min([k, n])):
+        if i < n:
+            quest_completed = 0
+            while quest_completed < k:
+                max_exp = max(b)
+                result += max_exp
+                quest_completed += 1
+                b[b.index(max_exp)] = a[b.index(max_exp)]
+        maxB = max(list(b[0:i + 1]))
+        result = max(result, sum + maxB * (k - i - 1))
+
+    print(result)

@@ -1,0 +1,17 @@
+Here's the infilled code:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for index in range(len(string)):
+        for sub in substrings:
+            if string[index:].startswith(sub):
+                result[sub] += 1
+                # Check if the substring continues to overlap
+                while index + len(sub) <= len(string) and string[index:].startswith(sub):
+                    index += len(sub)
+                    result[sub] += 1
+    return result
+```

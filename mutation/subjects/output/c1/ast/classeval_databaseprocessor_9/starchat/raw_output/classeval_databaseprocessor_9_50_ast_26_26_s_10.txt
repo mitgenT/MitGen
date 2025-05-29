@@ -1,0 +1,5 @@
+```python
+if not item.get("name") or not item.get("age"):
+    continue
+cursor.execute(insert_query, (item.get("name"), item.get("age")))
+```

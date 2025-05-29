@@ -1,0 +1,20 @@
+The given code needs to check if `string` has at least one character and also initialize the variable `n` with the length of the string. Here's how you can fill in the `<MASK>` parts:
+
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    if len(string) > 0:  # Check if the string has at least one character
+        n = len(string)  # Initialize 'n' with the length of the string
+    else:
+        n = 0
+
+    pairs = []
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                pairs.append((string[:i], string[j:]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```
+
+This code checks if the string is non-empty, initializes `n`, and proceeds with generating the prefix-suffix pairs according to the requirements.

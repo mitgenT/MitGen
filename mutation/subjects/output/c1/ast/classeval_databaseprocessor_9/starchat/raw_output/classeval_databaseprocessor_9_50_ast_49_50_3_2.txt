@@ -1,0 +1,14 @@
+```python
+    def delete_from_database(self, table_name, name):
+
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+
+        delete_query = f"DELETE FROM {table_name} WHERE name =?"
+        cursor.execute(delete_query, (name,))
+
+        conn.commit()
+        conn.close()
+```
+
+I added the `conn.commit()` and `conn.close()` commands at the end of the delete function to finalize the deletion process in the database and close the connection.

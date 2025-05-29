@@ -1,0 +1,11 @@
+for i in range(int(input())):
+    n = int(input())
+    log = input()
+    l = [0] * 26
+    ans = 0
+    for i in log:
+        ind = ord(i) - ord('A')
+        if l[ind] == 0:
+            ans += 1
+            l[ind] = 1
+    print(ans)

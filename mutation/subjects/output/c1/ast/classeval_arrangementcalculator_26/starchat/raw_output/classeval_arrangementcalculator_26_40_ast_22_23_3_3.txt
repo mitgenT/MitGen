@@ -1,0 +1,48 @@
+The given code needs to fix a bug at the bug location mentioned in the docstring. The bug is related to the count_all method. It currently returns the total of arrangement counts calculated for each number of items instead of the total number of all possible arrangements by choosing at least 1 item and at most n items.
+
+Here's the corrected code for the ArrangementCalculator class:
+
+```python
+import itertools
+
+class ArrangementCalculator:
+    def __init__(self, datas):
+        self.datas = datas
+
+    @staticmethod
+    def count(n, m=None):
+        if m is None or n == m:
+            return ArrangementCalculator.factorial(n)
+        else:
+            return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)
+
+    @staticmethod
+    def count_all(n):
+        total = 1
+        for i in range(1, n + 1):
+            total *= ArrangementCalculator.factorial(n)
+        return total // ArrangementCalculator.factorial(n - 1)
+
+    def select(self, m=None):
+        if m is None:
+            m = len(self.datas)
+        result = []
+        for permutation in itertools.permutations(self.datas, m):
+            result.append(list(permutation))
+        return result
+
+    def select_all(self):
+        result = []
+        for i in range(1, len(self.datas) + 1):
+            result.extend(self.select(i))
+        return result
+
+    @staticmethod
+    def factorial(n):
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
+```
+
+I fixed the bug by replacing the bug location with the correct calculation to find the total number of all possible arrangements. The `count_all` method now returns the result of `ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - 1)` instead of the current total.

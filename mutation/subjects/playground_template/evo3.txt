@@ -1,0 +1,106 @@
+from typing import List, Tuple
+from wrapt_timeout_decorator import *
+
+<generated_code_here>
+
+
+class DataType(IntEnum):
+    Float = auto()
+    Bool = auto()
+    Int = auto()
+    Str = auto()
+    Null = auto()
+    Tuple = auto()
+    List = auto()
+    Dict = auto()
+    Set = auto()
+    Type = auto()
+    Unknown = auto()
+
+
+def get_type(x):
+    if x is None:
+        return DataType.Null
+    elif isinstance(x, bool):
+        return DataType.Bool
+    elif isinstance(x, int):
+        return DataType.Int
+    elif isinstance(x, str):
+        return DataType.Str
+    elif is_floats(x):
+        return DataType.Float
+    elif isinstance(x, tuple):
+        return DataType.Tuple
+    elif isinstance(x, list):
+        return DataType.List
+    elif isinstance(x, dict):
+        return DataType.Dict
+    elif isinstance(x, set):
+        return DataType.Set
+    elif isinstance(x, type):
+        return DataType.Type
+    else:
+        return DataType.Unknown
+
+
+def is_equal(x, y) -> tuple[bool, str]:
+    x_type, y_type = get_type(x), get_type(y)
+    if x_type != y_type:
+        return False, "Type mismatch: {} vs {}".format(str(x_type), str(y_type))
+
+    if x_type in [DataType.Int, DataType.Bool, DataType.Null, DataType.Str, DataType.Set, DataType.Type]:
+        if x == y:
+            return True, None
+        try:
+            error_msg = "INT/BOOL/NULL/ Value mismatch: {} vs {}".format(repr(x)[:300], repr(y)[:300])
+        except:
+            error_msg = "Value mismatch: too large for display"
+        return False, error_msg
+    elif x_type == DataType.Float:
+        if np.allclose(x, y, equal_nan=True, atol=1e-6): # guard against nan
+            return True, None
+        else:
+            return False, "FLOAT Value mismatch: {} vs {}".format(x, y)
+    elif x_type in [DataType.List, DataType.Tuple]:
+        if len(x) != len(y):
+            return False, "Length mismatch: {} vs {}".format(len(x), len(y))
+        for i in range(len(x)):
+            equal, msg = is_equal(x[i], y[i])
+            if not equal:
+                return False, msg
+        return True, None
+    elif x_type == DataType.Dict:
+        if len(x) != len(y):
+            return False, "Length mismatch: {} vs {}".format(len(x), len(y))
+        for k, v in x.items():
+            if k not in y:
+                return False, "DICT Value mismatch: key {} in {} but not in {}".format(k, x, y)
+            equal, msg = is_equal(v, y[k])
+            if not equal:
+                return False, msg
+        return True, None
+    else:
+        try:
+            if x == y:  # e.g., object comparison
+                return True, None
+            else:
+                return False, "ELSE Value mismatch: {} vs {}".format(x, y)
+        except:
+            return False, "Unsupported type: {} <-- {}".format(x_type, type(x))
+
+def check(candidate):
+    inputs = [eval(f"[{i}]") for i in ["[('deposit', 100), ('withdrawal', 50)], 200", "[('deposit', 100), ('withdrawal', 150)], 100", "[('deposit', 100), ('withdrawal', 150)], 200", "[('deposit', 1000), ('withdrawal', 500), ('withdrawal', 300), ('deposit', 200)], 600", "[('deposit', 200), ('withdrawal', 50), ('withdrawal', 100), ('deposit', 500), ('withdrawal', 650)], 700", "[('deposit', 300), ('withdrawal', 350), ('deposit', 500), ('withdrawal', 100)], 400", "[('deposit', 500), ('withdrawal', 200), ('deposit', 300), ('withdrawal', 400), ('deposit', 200), ('withdrawal', 250)], 500", "[('deposit', 100), ('withdrawal', 50), ('deposit', 200), ('withdrawal', 150), ('deposit', 500), ('withdrawal', 650)], 700", "[('deposit', 2000), ('withdrawal', 1500), ('deposit', 1000), ('withdrawal', 1500), ('deposit', 2000), ('withdrawal', 3000)], 2500", "[('deposit', 100), ('withdrawal', 50), ('deposit', 200), ('withdrawal', 150), ('deposit', 100), ('withdrawal', 50), ('deposit', 200), ('withdrawal', 150)], 300", "[('deposit', 5000), ('withdrawal', 2500), ('withdrawal', 2000), ('deposit', 3000), ('withdrawal', 3500)], 5000", "[('deposit', 10000), ('withdrawal', 5000), ('withdrawal', 4000), ('deposit', 8000), ('withdrawal', 7000)], 9000", "[('deposit', 500), ('withdrawal', 400), ('deposit', 200), ('withdrawal', 100)], 500", "[('deposit', 2500), ('withdrawal', 1000), ('withdrawal', 500), ('deposit', 2000)], 1500", "[('deposit', 300), ('deposit', 700), ('withdrawal', 500), ('withdrawal', 600)], 600", "[('withdrawal', 50), ('deposit', 100), ('withdrawal', 150), ('deposit', 200)], 150", "[('deposit', 500), ('withdrawal', 500), ('deposit', 500), ('withdrawal', 500)], 500", "[('deposit', 1000), ('withdrawal', 500), ('deposit', 200), ('withdrawal', 700)], 700", "[('deposit', 100)], 200", "[('withdrawal', 100)], 200", "[('deposit', 100), ('withdrawal', 100), ('deposit', 100), ('withdrawal', 100)], 100", "[('deposit', 1000), ('withdrawal', 500), ('withdrawal', 500), ('deposit', 1000)], 1000", "[('deposit', 100), ('deposit', 200), ('withdrawal', 150), ('withdrawal', 250)], 200", "[('deposit', 500), ('withdrawal', 300), ('deposit', 200), ('withdrawal', 100)], 500", "[('deposit', 1000), ('withdrawal', 500), ('deposit', 500), ('withdrawal', 1000)], 1000", "[('withdrawal', 150), ('deposit', 100), ('withdrawal', 50)], 200", "[('deposit', 200), ('withdrawal', 100), ('deposit', 300), ('withdrawal', 400)], 500", "[('deposit', 300), ('deposit', 200), ('withdrawal', 500), ('withdrawal', 150)], 400", "[('deposit', 500), ('withdrawal', 250), ('withdrawal', 250), ('deposit', 500)], 600", "[('withdrawal', 300), ('deposit', 100)], 200", "[('deposit', 200), ('withdrawal', 100), ('withdrawal', 100), ('deposit', 200)], 150", "[('deposit', 100), ('withdrawal', 200)], 100", "[('deposit', 100), ('deposit', 200), ('withdrawal', 100), ('withdrawal', 200)], 200", "[('deposit', 500), ('withdrawal', 300), ('withdrawal', 150), ('deposit', 500)], 300", "[('deposit', 1000), ('withdrawal', 500), ('withdrawal', 500), ('deposit', 1000)], 1000", "[('deposit', 500), ('withdrawal', 1000)], 800", "[('deposit', 100), ('deposit', 200), ('withdrawal', 150), ('withdrawal', 50)], 100", '[], 300', "[('withdrawal', 150)], 100", "[('deposit', 100), ('deposit', 100), ('deposit', 100), ('withdrawal', 300)], 200", "[('deposit', 500), ('withdrawal', 300), ('withdrawal', 150), ('deposit', 500), ('withdrawal', 1000)], 800", "[('deposit', 1000), ('withdrawal', 500), ('deposit', 1000), ('withdrawal', 1500)], 1500", "[('deposit', 500), ('deposit', 500), ('withdrawal', 1500)], 1000", '[], 100', "[('deposit', 100), ('withdrawal', 50)], 0", "[('deposit', 0), ('withdrawal', 0)], 100", "[('withdrawal', 50)], 100", "[('deposit', 100), ('deposit', 100), ('withdrawal', 50), ('withdrawal', 50)], 49", "[('deposit', 100), ('withdrawal', 100), ('withdrawal', 1)], 100", "[('deposit', 100), ('withdrawal', 50), ('withdrawal', 150)], 200", "[('deposit', 100)], 100", "[('withdrawal', 100)], 100", "[('deposit', 100), ('deposit', 200), ('withdrawal', 50), ('withdrawal', 250)], 200", "[('deposit', 100), ('withdrawal', 100), ('deposit', 50), ('withdrawal', 50)], 50"]]
+    outputs = ['All operations successful', 'Daily limit exceeded', 'Balance below zero', 'Daily limit exceeded', 'Balance below zero', 'Balance below zero', 'Daily limit exceeded', 'Balance below zero', 'Daily limit exceeded', 'Daily limit exceeded', 'Daily limit exceeded', 'Daily limit exceeded', 'All operations successful', 'All operations successful', 'Balance below zero', 'Balance below zero', 'Daily limit exceeded', 'Daily limit exceeded', 'All operations successful', 'Balance below zero', 'Daily limit exceeded', 'All operations successful', 'Daily limit exceeded', 'All operations successful', 'Daily limit exceeded', 'Balance below zero', 'All operations successful', 'Daily limit exceeded', 'All operations successful', 'Daily limit exceeded', 'Daily limit exceeded', 'Daily limit exceeded', 'Daily limit exceeded', 'Daily limit exceeded', 'All operations successful', 'Daily limit exceeded', 'Daily limit exceeded', 'All operations successful', 'Daily limit exceeded', 'Daily limit exceeded', 'Daily limit exceeded', 'Daily limit exceeded', 'Daily limit exceeded', 'All operations successful', 'Daily limit exceeded', 'All operations successful', 'Balance below zero', 'Daily limit exceeded', 'Balance below zero', 'Balance below zero', 'All operations successful', 'Balance below zero', 'Daily limit exceeded', 'Daily limit exceeded']
+    to_output = []
+    for i, (inp, exp) in enumerate(zip(inputs, outputs)):
+        try:
+            to_output.append((i,compute_output(candidate,inp)))
+        except:
+            to_output.append((i,"Exception"))
+    print(f"Final output of subject for prioritization is:::::{to_output}")
+
+@timeout(5)
+def compute_output(candidate,inp):
+    return candidate(*inp)
+    
+check(account_balance)

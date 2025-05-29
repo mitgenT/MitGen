@@ -1,0 +1,4 @@
+```python
+if top_student is None:
+    return None
+```

@@ -1,0 +1,15 @@
+## Output
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    if n < 1:
+        return '0'
+    else:
+        for i in range(n):
+            if (i+1) % m == 0:
+                result.append("Fizz")
+            else:
+                result.append(str(i))
+    return''.join(result)
+```
+Here, the <MASK> for checking if n is less than 1 was filled with "if n < 1". For the for loop, I replaced the <MASK> with "for i in range(n)". Also, the if condition for checking divisibility by m and appending "Fizz" to the result list remains the same. Lastly, I added the "else" clause to append the current number to the result list.

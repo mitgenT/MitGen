@@ -1,0 +1,2 @@
+if data:
+    values = ", ".join([f"'{value}'" for value in data.values()])

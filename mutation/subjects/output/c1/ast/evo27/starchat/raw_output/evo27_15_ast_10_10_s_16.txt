@@ -1,0 +1,6 @@
+```python
+            if char.islower():
+                result += char.upper()
+```
+
+In the given code, the masks have been filled with an if-statement that checks if the current character (`char`) is lowercase (`char.islower()`). If it is, it appends the uppercase version of `char` to the result string (`char.upper()`). Otherwise, it appends the character as is.

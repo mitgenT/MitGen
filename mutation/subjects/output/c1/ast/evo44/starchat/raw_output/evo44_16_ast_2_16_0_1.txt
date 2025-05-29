@@ -1,0 +1,26 @@
+```python
+def change_base(x: str, base: int, new_base: int):
+    valid_digits = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    
+    # Check for valid base and digits
+    if base < 2 or base > 36:
+        return "invalid base"
+    if not all(digit in valid_digits[:base] for digit in x.upper()):
+        return "invalid base"
+    
+    decimal_value = 0
+    # Convert x to decimal
+    for digit in x.upper():
+        decimal_value = base * decimal_value + valid_digits.index(digit)
+    
+    if new_base == 10:
+        return str(decimal_value)
+    
+    # Convert decimal to new_base
+    new_base_value = ''
+    while decimal_value > 0:
+        new_base_value = valid_digits[decimal_value % new_base] + new_base_value
+        decimal_value = decimal_value // new_base
+    
+    return new_base_value
+```

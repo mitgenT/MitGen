@@ -1,0 +1,21 @@
+## Output
+```python
+def change_base(x: str, base: int, new_base: int):
+    try:
+        base_10 = int(x, base)
+    except ValueError:
+        return "invalid base"
+    new_base_num = ""
+    if base == 0:  # Special case for base 0, default to base 10
+        base = 10
+    while base_10 > 0:
+        remainder = base_10 % new_base
+        base_10 -= new_base
+        if 0 <= remainder <= 9:
+            new_base_num = str(remainder) + new_base_num
+        else:
+            new_base_num = chr(remainder + 55) + new_base_num 
+    return new_base_num
+```
+
+In the given solution, I added the if-clause to handle the special case when base is zero, treating it as base 10. The rest of the program remains the same as in the example.

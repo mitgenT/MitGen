@@ -1,0 +1,28 @@
+Based on the provided docstring, we need to iterate through the list of strings, check if each string starts with a vowel (case-insensitive), find the longest such substring, and return it along with its index. If no such substring exists, return None for both. Here's the filled-in code:
+
+```python
+from typing import List, Optional, Tuple
+
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+    longest_sub: str = None
+    longest_index: int = None
+    vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}
+
+    for idx, string in enumerate(strings):
+        for i in range(len(string)):
+            # Check if the current character is a vowel (case-insensitive)
+            if string[i].lower() in vowels:
+                substr = string[i:]
+                # Find the longest substring starting from this vowel
+                while i + len(substr) < len(string) and string[i + len(substr)].lower() in vowels:
+                    substr += string[i + len(substr)]
+
+                # Update longest substring and index if necessary
+                if longest_sub is None or len(substr) > len(longest_sub):
+                    longest_sub = substr
+                    longest_index = idx
+
+    return longest_sub, longest_index
+```
+
+Now the function `longest_substring` takes a list of strings as input and returns the longest substring starting with a vowel (or None if none found) along with its index in the original list.

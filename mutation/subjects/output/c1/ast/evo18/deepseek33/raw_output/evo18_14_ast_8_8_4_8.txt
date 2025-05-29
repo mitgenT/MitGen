@@ -1,0 +1,24 @@
+Here is the answer for the second problem:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+```
+
+In this code, we replaced `<MASK>` in the first and third `<MASK>` positions with `pos = string.find(sub, start)` and `start = pos + 1`.
+
+The `string.find(sub, start)` method is used to find the first occurrence of the substring `sub` in the given string `string` starting from position `start`. It returns the starting position of the first occurrence of the substring, or `-1` if it is not found.
+
+Then, we increment the count in the result dictionary and change the starting position for the next search to be the position right after the found substring.

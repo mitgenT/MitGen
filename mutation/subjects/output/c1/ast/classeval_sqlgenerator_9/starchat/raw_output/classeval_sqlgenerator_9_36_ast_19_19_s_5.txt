@@ -1,0 +1,5 @@
+```Python
+            if values:  
+                sql += ";"  
+```
+In the insert method of the SQLGenerator class, the code is added to append a semicolon to the SQL statement only if there are values being inserted. If the data dictionary passed to the insert method is empty, no semicolon will be appended. This ensures that the generated SQL statement is syntactically correct and meets the requirement of the given docstring.

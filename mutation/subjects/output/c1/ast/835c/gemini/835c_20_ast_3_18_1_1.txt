@@ -1,0 +1,7 @@
+for i in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    mx = max(a)
+    for i in a:
+        print(mx-i, end=" ")
+    print()

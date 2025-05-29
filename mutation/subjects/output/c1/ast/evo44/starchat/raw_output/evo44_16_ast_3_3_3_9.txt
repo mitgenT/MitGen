@@ -1,0 +1,4 @@
+```python
+if int(x, base) < 0 or not all(c.isdigit() or (c.upper() >= 'A' and c.upper() <= chr(base + 54)) for c in x):
+    raise ValueError("Invalid digits found in input")
+```

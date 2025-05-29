@@ -1,0 +1,3 @@
+```python
+                start = pos + len(sub)
+```

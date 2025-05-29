@@ -1,0 +1,21 @@
+## Output
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos!= -1:
+                result[sub] += 1
+                if pos + len(sub) <= len(string) - 1:
+                    start = pos + len(sub)  # Move the start to the position after current found substring
+                else:
+                    break  # If the next position is out of bounds, break the loop
+            else:
+                break
+    return result
+```
+In the given solution, the `if` condition in the loop checks if the next position after finding a substring is within the bounds of the string. If it is, the start variable is updated to the position after the current found substring. Otherwise, the loop is broken as there are no more occurrences of the substring in the remaining string.

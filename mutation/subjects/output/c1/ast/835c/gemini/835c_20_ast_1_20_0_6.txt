@@ -1,0 +1,9 @@
+def main():
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        strength = list(map(int, input().split()))
+        mx = max(strength)
+        for a in strength:
+            print(mx - a, end = " ")
+        print()

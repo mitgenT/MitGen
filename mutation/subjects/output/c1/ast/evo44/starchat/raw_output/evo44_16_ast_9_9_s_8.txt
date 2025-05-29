@@ -1,0 +1,9 @@
+return base_10 == 0
+new_base_num = '0'
+while base_10 > 0:
+    remainder = base_10 % new_base
+    base_10 -= new_base
+    if 0 <= remainder <= 9:
+        new_base_num = str(remainder) + new_base_num
+    else:
+        new_base_num = chr(remainder + 55) + new_base_num

@@ -1,0 +1,7 @@
+```python
+    def insert(self, data):
+        fields = ", ".join([f"`{field}`" for field in data.keys()])
+        values = ", ".join([f"'{value}'" for value in data.values()])
+        sql = f"INSERT INTO {self.table_name} ({fields}) VALUES ({values})"
+        return sql + ";"
+```

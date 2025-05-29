@@ -1,0 +1,6 @@
+total += ArrangementCalculator.factorial(n) // (ArrangementCalculator.factorial(n - i) * ArrangementCalculator.factorial(i))
+
+# And also update if clause in'select' function:
+
+if not result or permutation not in result:
+    result.append(list(permutation))

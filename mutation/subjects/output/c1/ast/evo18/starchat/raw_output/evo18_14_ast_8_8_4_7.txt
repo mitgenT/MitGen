@@ -1,0 +1,22 @@
+## Output
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            if sub == string[start:start+len(sub)]:
+                pos = start
+            else:
+                pos = -1
+            if pos!= -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+```
+
+Here, in the given code I replaced <MASK> with the necessary conditions to compare each substring with a substring of the same length from the given string and also to update the starting position based on the found substring's position.

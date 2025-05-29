@@ -1,0 +1,8 @@
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        elif i+1 != n:  # Check if it's not the last number
+            result.append(str(i+1))  # Append the number if not divisible by m
+    return ' '.join(result)

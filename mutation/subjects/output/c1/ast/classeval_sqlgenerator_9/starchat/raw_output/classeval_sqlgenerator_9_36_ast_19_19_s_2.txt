@@ -1,0 +1,30 @@
+```python
+def select(self, fields=None, condition=None):
+    if fields is None:
+        fields = "*"
+    else:
+        fields = ", ".join(fields)  # convert list to string separated by comma
+    sql = f"SELECT {fields} FROM {self.table_name}"
+    if condition is not None:
+        sql += f" WHERE {condition}"
+    return sql + ";"
+
+def insert(self, data):
+    fields = ", ".join(data.keys())
+    values = ", ".join([f"'{value}'" for value in data.values()])
+    sql = f"INSERT INTO {self.table_name} ({fields}) VALUES ({values})"
+    return sql + ";"
+
+def update(self, data, condition):
+    set_clause = ", ".join([f"{field} = '{value}'" for field, value in data.items()])
+    sql = f"UPDATE {self.table_name} SET {set_clause} WHERE {condition}"
+    return sql + ";"
+
+def delete(self, condition):
+    sql = f"DELETE FROM {self.table_name} WHERE {condition}"
+    return sql + ";"
+```
+
+You can see that each method that returns a SQL statement now appends a semicolon (";") at the end. The 'fields' parameter in the select method is also properly handled, now it converts the list to a string separated by commas if the user provides a list of fields. The insert method constructs the values clause in the correct format, and each dictionary value is now wrapped in quotes. Similarly, update and delete methods now append a semicolon at the end of their respective SQL statements.
+
+The provided example also checks that the class is complete and working correctly, demonstrating the functionality for all the required methods.

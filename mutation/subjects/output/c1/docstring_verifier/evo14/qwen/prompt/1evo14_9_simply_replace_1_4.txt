@@ -1,0 +1,55 @@
+Infill <MASK> in a given code. You need to output the entire program. I will show you an example first.
+
+# Example
+
+## Docstring:
+'''
+This program implements a bubble-sort。
+'''
+
+## Given code:
+```Python
+def program(list1):  
+    '''
+    This program implements a bubble-sort。
+    '''
+    for i in range(0,len(list1)-1):  
+        for j in range(len(list1)-1):  
+            if(list1[j]>list1[j+1]):  
+                temp = list1[j]  
+                <MASK>
+                list1[j+1] = temp  
+    return list1  
+```
+
+## Output
+```Python
+def program(list1):  
+    for i in range(0,len(list1)-1):  
+        for j in range(len(list1)-1):  
+            if(list1[j]>list1[j+1]):  
+                temp = list1[j]  
+                list1[j] = list1[j+1]
+                list1[j+1] = temp  
+    return list1  
+```
+
+Now, infill <MASK> of the following given code.
+
+##Docstring:
+Generate a list of unique non-overlapping prefix-suffix combinations from the provided input string, where both the prefix and suffix are minimum 'min_length' characters long. The list should be sorted first by length in ascending order, and then lexicographically for pairs of equal length. The function example output for the input 'abcadg' with a minimum length of 2 is [('ab', 'dg'), ('abc', 'dg'), ('abca', 'dg')].
+
+## Given code:
+
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                pairs.append((string[:i], string[j:]))
+    <MASK>
+    return pairs
+```

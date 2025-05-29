@@ -1,0 +1,16 @@
+t=int(input())
+for i in range(t):
+    n=int(input())
+    a=[int(x) for x in input().split()]
+    b=[int(x) for x in input().split()]
+    alice=0
+    bob=0
+    for j in range(n):
+        if a[j]<b[j]:
+            b[j]-=a[j]
+        else:
+            a[j]-=b[j]
+            bob+=b[j]
+    for val in a:
+        alice+=val
+    print(alice-bob)

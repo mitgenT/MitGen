@@ -1,0 +1,16 @@
+Infill <MASK> of the given code based on the following docstring:
+
+```python
+if data:
+    fields = ", ".join(data.keys())
+values = ", ".join([f"'{value}'" for value in data.values()])
+sql = f"INSERT INTO {self.table_name} ({fields}) VALUES ({values})"
+```
+The output should be:
+
+```python
+if data:
+    fields = ", ".join(data.keys())
+    values = ", ".join([f"'{value}'" for value in data.values()])
+    sql = f"INSERT INTO {self.table_name} ({fields}) VALUES ({values})"
+```

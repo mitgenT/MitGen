@@ -1,0 +1,5 @@
+```python
+    total += student['courses'][course]
+```
+
+In the `get_course_average` function, we were missing the assignment statement for the `score` variable. The corrected statement extracts the score of the specific course from the student's dictionary of courses and assigns it to the `score` variable.

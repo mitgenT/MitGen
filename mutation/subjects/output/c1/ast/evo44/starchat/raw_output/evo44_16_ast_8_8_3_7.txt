@@ -1,0 +1,4 @@
+if new_base_num == "":
+    new_base_num = '0'
+
+# 'if new_base_num == \"\":\n    new_base_num = \'0\'\n'

@@ -1,0 +1,13 @@
+In the given code:
+
+```python
+def get_all_students_with_fail_course(self):
+    students = []
+    for name, student in self.students.items():
+        for course, score in student['courses'].items():
+            if score < 60:
+                students.append(name)
+    return students
+```
+
+Infill `<MASK>` with `students.append(name)`. This will collect the names of students who have any score below 60.

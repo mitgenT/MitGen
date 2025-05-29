@@ -1,0 +1,55 @@
+Based on the provided docstring, we need to handle the flipping of case for each character in the string except at the `special_index`. If `special_index` is not provided, we need to treat it as an index in a circular list. Here's how to fill in the `<MASK>` parts:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    
+    # Check if a special_index is provided
+    if special_index is not None:
+        # Check if the character at the special_index should be flipped or not
+        if string[special_index].isupper():
+            result += string[special_index].lower()
+        else:
+            result += string[special_index]
+    else:
+        # Iterate through the string and flip case
+        for i in range(len(string)):
+            if i == special_index:
+                if string[i].isupper():
+                    result += string[i].lower()
+                else:
+                    result += string[i]
+            else:
+                if string[i].isupper():
+                    result += string[i].lower()
+                else:
+                    result += string[i]
+
+    return result
+```
+
+The final code should look like this:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+
+    # Check if a special_index is provided
+    if special_index is not None:
+        # Check if the character at the special_index should be flipped or not
+        if string[special_index].isupper():
+            result += string[special_index].lower()
+        else:
+            result += string[special_index]
+    else:
+        # Iterate through the string and flip case
+        for i in range(len(string)):
+            if string[i].isupper():
+                result += string[i].lower()
+            else:
+                result += string[i]
+
+    return result
+```

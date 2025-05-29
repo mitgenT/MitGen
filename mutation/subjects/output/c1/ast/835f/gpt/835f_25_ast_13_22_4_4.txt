@@ -1,0 +1,24 @@
+
+for _ in range (int(input())):
+    n,c,d=map(int,input().split())
+    A=list(map(int,input().split()))
+    A=sorted(A)[::-1]
+    if sum(A[:d])>=c:
+        print("Infinity")
+    elif A[0]*d<c:
+        print("Impossible")
+    else:
+        l,r=0,d
+        mid=(l+r+1)//2
+        while(l+1<r):
+            mid=(l+r+1)//2
+            sum=0
+            for i in range (0,min(d,mid)):
+                sum+=A[i]
+            if sum>=c:
+                l=mid
+            else:
+                r=mid-1
+        print(mid-1)
+
+        

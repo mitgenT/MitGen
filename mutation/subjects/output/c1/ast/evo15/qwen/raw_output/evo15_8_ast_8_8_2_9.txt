@@ -1,0 +1,21 @@
+Based on the provided docstring and the expected behavior, we need to concatenate the elements of the `result` list with spaces in between. Since we want to return a string, we need to join the elements and add a space before each element except the first one. Here's how to fill in `<MASK>`:
+
+```python
+    if result:  # Check if the list is not empty
+        result = " ".join(result)  # Concatenate elements with spaces
+```
+
+The final code would be:
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        else:
+            result.append(str(i))
+    if result:
+        result = " ".join(result)  # Concatenate elements with spaces
+    return result
+```

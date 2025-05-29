@@ -1,0 +1,13 @@
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    result = []
+    for i, num in enumerate(numbers):
+        result.append(num)
+        if i!= len(numbers) - 1 and limit > 0:
+            result.append(delimeter)
+            limit -= 1
+    return result
+```
+
+This program iterates over each number in the input list. It appends the current number to the result list. If the current number is not the last one and the limit has not yet reached, it appends the delimiter to the result list, and then decreases the limit by one. This way, the desired number of delimiters will be inserted between consecutive elements of the list up to the specified limit. The result list will be returned.

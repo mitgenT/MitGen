@@ -1,0 +1,9 @@
+t = int(input())
+t = int(input())
+for _ in range(t):
+    n, k = map(int, input().split())
+    order = [i for i in range(1, n+1)]
+    if k == 0:
+        print(*order)
+    else:
+        print(*order[:n-k], *order[n-k-1::-1])

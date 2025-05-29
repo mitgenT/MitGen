@@ -1,0 +1,14 @@
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            prefix = string[:i]
+            suffix = string[j:]
+            pairs.append((prefix, suffix))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```
+The infilled `MASK` in the given code now generates pairs of all possible prefixes and suffixes that meet the given conditions: minimum length, non-overlapping, and sorted accordingly. The program's efficiency is O(n^2), as it only has two nested loops that iterate up to `n` and `n - min_length` respectively, where `n` is the length of the input string.

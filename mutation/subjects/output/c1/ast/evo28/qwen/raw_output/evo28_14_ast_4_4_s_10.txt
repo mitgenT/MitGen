@@ -1,0 +1,17 @@
+Here's the filled-in code based on the provided docstring:
+
+```python
+from typing import List, Tuple
+def interleave_and_concatenate(strings: List[str], integers: List[int]) -> Tuple[str, int]:
+    interleaved = []
+    for i in range(max(len(strings), len(integers))):
+        if i < len(strings):
+            interleaved.append(strings[i])
+        if i < len(integers):
+            interleaved.append(integers[i])
+    concatenated_string = ' '.join([str(i) for i in interleaved if isinstance(i, str)]) 
+    sum_integers = sum([i for i in interleaved if isinstance(i, int)])
+    return (concatenated_string, sum_integers)
+```
+
+In this case, there was no need for swapping elements like in the bubble sort example because the task is to simply iterate through the indices and add elements from both lists to the `interleaved` list.

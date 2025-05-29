@@ -1,0 +1,14 @@
+docstring:
+"""
+In this problem, you are initially given an empty multiset. You have to process two types of queries:
+
+1. ADD 𝑥 — add an element equal to 2^𝑥 to the multiset;
+2. GET 𝑤 — say whether it is possible to take the sum of some subset of the current multiset and get a value equal to 𝑤.
+
+Input
+The first line contains one integer 𝑚 (1≤𝑚≤10^5) — the number of queries.
+Then 𝑚 lines follow, each of which contains two integers 𝑡𝑖, 𝑣𝑖, denoting the 𝑖-th query. If 𝑡𝑖=1, then the 𝑖-th query is ADD 𝑣𝑖 (0≤𝑣𝑖≤29). If 𝑡𝑖=2 , then the 𝑖-th query is GET 𝑣𝑖 (0≤𝑣𝑖≤10^9).
+
+Output
+For each GET query, print YES if it is possible to choose a subset with sum equal to 𝑤, or NO if it is impossible.
+"""

@@ -1,0 +1,9 @@
+def string_sequence_modified(n: int, m: int) -> str:
+   sequence = [str(i) for i in range(n + 1)]
+   result = ' '.join(sequence)
+   for i in range(1, len(sequence), m):
+       result = result[:i - 1] + "Fizz" + result[i + 1:]
+   return result
+   print(string_sequence_modified(0, 3))
+   print(string_sequence_modified(5, 3))
+   print(string_sequence_modified(15, 3))

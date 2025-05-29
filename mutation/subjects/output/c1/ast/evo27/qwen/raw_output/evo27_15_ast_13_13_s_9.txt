@@ -1,0 +1,23 @@
+Based on the provided docstring, we need to modify the code to maintain the case of the character at the `special_index` position, if it's lowercase. Here's the completed code:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.islower():
+                result += char.upper()
+            else:
+                result += char
+        else:
+            if char.isupper():
+                result += char.lower()
+            elif char.islower():
+                result += char.upper()
+            else:
+                result += char
+    return result
+```
+
+The `<MASK>` parts are replaced with the logic to handle lowercase characters at the `special_index`.

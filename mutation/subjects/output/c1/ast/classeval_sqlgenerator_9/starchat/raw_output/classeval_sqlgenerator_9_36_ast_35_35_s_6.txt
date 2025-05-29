@@ -1,0 +1,4 @@
+if min_age <= max_age:
+    condition = f"age BETWEEN {min_age} AND {max_age}"
+else:
+    raise ValueError("min_age must be less than or equal to max_age")

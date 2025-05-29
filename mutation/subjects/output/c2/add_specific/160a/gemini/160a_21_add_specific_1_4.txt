@@ -1,0 +1,45 @@
+for i in range(int(input())):
+    s = list(map(int,list(input())))
+    n = len(s)
+    p = str(s[0])
+    r = ""
+    x = 0
+    if s[1] == 0:
+        for i in range(1,n):
+            if s[i] != 0:
+                x = i
+                break
+            if s[i] != 0 and s[i] >= s[0]:
+                q = str(s[0])
+                for j in range(i,n):
+                    q += str(s[j])
+                if int(p) < int(q):
+                    p = q
+    else:
+        for i in range(1,n):
+            p += str(s[i])
+        for i in range(x,n):
+            r += str(s[i])
+
+        if int(p) < int(r):
+            print(p,r)
+        if int(p) == int(r) and x != 0:
+            q = str(s[0])
+            for j in range(1,x):
+                q += str(s[j])
+            for j in range(x,n):
+                q += str(s[j])
+            if int(p) < int(q):
+                p = q
+                print(p,r)
+        if int(p) == int(r) and x == 0:
+            print(-1)
+    if int(p) >= int(r):
+        pass
+    else:
+        a = s[0]
+        b = ""
+        for i in range(1,n):
+            b += str(s[i])
+        print(a,b)
+

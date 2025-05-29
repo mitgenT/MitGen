@@ -1,0 +1,32 @@
+Based on the given docstring, we need to insert the `delimeter` between every two consecutive elements of the input list `numbers`, up to `limit` times. If `limit` is less than `len(numbers) - 1`, only the first `limit` pairs should have the delimiter inserted. Here's how you should fill in the `<MASK>` parts of the code:
+
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = False
+    if type(delimeter) == float:
+        set_float = True
+    if limit <= 0 or (limit > 0 and len(numbers) <= 1):
+        # If limit is 0 or there's no need to insert any delimiters
+        result = numbers.copy()
+    else:
+        # Initialize an empty list for the result
+        result = []
+        # Add the first element without a delimiter
+        if set_float:
+            result.append(float(numbers[0]))
+        else:
+            result.append(numbers[0])
+
+    # Insert the delimiter between consecutive elements up to 'limit' times
+    for i in range(1, min(len(numbers), limit)):
+        if set_float:
+            result.append(float(numbers[i]))
+        else:
+            result.append(numbers[i])
+        result.append(delimeter)
+
+    return result
+```
+
+In this code, the first `if` block handles the case where no delimiter should be inserted (when `limit <= 0` or when there's only one element). The second block initializes an empty list `result` and adds the first element, then iterates over the remaining elements up to the specified `limit` and appends the delimiter after each one.

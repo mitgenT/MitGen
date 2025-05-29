@@ -1,0 +1,24 @@
+## Output
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = False
+    if type(delimeter) == float:
+        set_float = True
+    result = []
+    limit = min(limit, len(numbers) - 1) 
+    for i in range(len(numbers) - 1):
+        if set_float:
+            result.append(float(numbers[i]))
+        else:
+            result.append(numbers[i])
+        if i < limit:
+            result.append(delimeter)
+    if set_float:
+        result.append(float(numbers[-1]))
+    else:
+        result.append(numbers[-1])
+    return result
+```
+
+The `MASK` in the code was replaced with an `if` condition that checks whether the current iteration is less than `limit`. If it is, then the `delimeter` is appended to the `result` list. After processing all elements, the last element of `numbers` is appended to `result`. In the end, if a `delimeter` is a float, all elements in the `result` list are converted to floats.

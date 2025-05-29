@@ -1,0 +1,8 @@
+The code to infill the <MASK> in this example is:
+
+```python
+for substring in substrings:
+    result[substring] = string.count(substring)
+```
+
+This code will traverse each substring in the given list, use the count() function to find the occurrences of the substring in the string, and store the count in the result dictionary.

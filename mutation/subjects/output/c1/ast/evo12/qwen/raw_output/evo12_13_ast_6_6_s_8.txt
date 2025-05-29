@@ -1,0 +1,4 @@
+```python
+    string = strings[0]
+    for i in range(len(string)):
+```

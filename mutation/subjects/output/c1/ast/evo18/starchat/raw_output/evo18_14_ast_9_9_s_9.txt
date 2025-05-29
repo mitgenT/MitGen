@@ -1,0 +1,19 @@
+## Output
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos!= -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+```
+
+Here, I just filled the <MASK> with the Python's `find` function. The function checks if the substring exists in the given string starting from the `start` position. If it does, it increments the substring's count, moves the `start` position to the next position (right after the found substring), and repeats the process until it can't find the substring anymore. If it can't find the substring anymore, the loop breaks. This accounts for overlapping cases.

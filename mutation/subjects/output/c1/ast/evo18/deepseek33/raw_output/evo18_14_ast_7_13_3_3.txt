@@ -1,0 +1,19 @@
+In Python, the `in` keyword is used to check if a particular value (substring) exists in a list (substrings). The `count()` function is used to return the number of occurrences of a substring in the main string. 
+
+Here's how the given code should look after infilling:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        if sub in string:
+            result[sub] = string.count(sub)
+        else:
+            result[sub] = 0
+    return result
+```
+
+This function works by iterating over each substring in the input list. If the substring is in the input string, it counts the occurrences of the substring in the string and stores it in the result dictionary. If the substring is not in the string, it sets the count to 0. The function then returns the result dictionary.

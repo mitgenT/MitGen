@@ -1,0 +1,6 @@
+    else:
+        i = 1
+        s = ''
+        for j in range(k):
+            s = s +' '+ str(n-j)
+            i = i+1

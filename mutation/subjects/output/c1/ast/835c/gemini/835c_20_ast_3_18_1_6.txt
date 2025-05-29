@@ -1,0 +1,10 @@
+for i in range(t):
+    n = int(input())
+    inp = [int(x) for x in input().split()]
+
+    inp.sort()
+
+    for val in inp:
+        ans = inp[-1] - val
+        print(ans, end = " ")
+    print()

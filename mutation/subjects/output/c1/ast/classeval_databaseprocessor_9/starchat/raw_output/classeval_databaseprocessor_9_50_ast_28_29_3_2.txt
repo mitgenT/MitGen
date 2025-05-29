@@ -1,0 +1,7 @@
+if cursor.rowcount > 0:  
+    conn.commit()
+else:  
+    print("No data to commit.")  
+    conn.rollback() 
+
+# Here, cursor.rowcount indicates the number of rows affected by the most recent SQL operation. We're checking if the insert operation resulted in any rows being changed. If it did (meaning at least one row was successfully inserted), we commit the transaction. If not, we print a message indicating that there was no data to commit, and then roll back the transaction (undoing the unsuccessful insert). This is a safeguard to prevent accidental commits of empty data when performing insert operations.

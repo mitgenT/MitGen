@@ -1,0 +1,13 @@
+## Output
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        else:
+            result.append(str(i))
+    return''.join(result)
+
+```
+In this updated version of the given code, the <MASK> is replaced with an if-else block that checks if the current index i (plus 1 for 1-based indexing) is divisible by m. If it is, "Fizz" is appended to the result list, otherwise the current number i is appended as a string. This ensures the correct output as per the docstring requirements.

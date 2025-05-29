@@ -1,0 +1,6 @@
+```python
+        if cursor.fetchone() is not None:
+            result = cursor.fetchall()
+
+        conn.close()
+```

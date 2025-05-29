@@ -1,0 +1,26 @@
+Based on the provided docstring, we need to interleave the elements from both lists, handling the case where one list is shorter than the other. Here's how to fill in the `<MASK>` in the given code:
+
+```python
+from typing import List, Tuple
+
+def interleave_and_concatenate(strings: List[str], integers: List[int]) -> Tuple[str, int]:
+    interleaved = []
+    len_strings = len(strings)
+    len_integers = len(integers)
+    max_len = max(len_strings, len_integers)
+    for i in range(max_len):
+        if i < len_strings:
+            interleaved.append(strings[i])
+        if i < len_integers:
+            if i < len_strings:
+                # If both lists have elements at this index, interleave
+                interleaved.append(integers[i])
+            else:
+                # If only integers remain, append the integer
+                interleaved.append(integers[i])
+    concatenated_string = ' '.join([str(i) for i in interleaved if isinstance(i, str)])
+    sum_integers = sum([i for i in interleaved if isinstance(i, int)])
+    return (concatenated_string, sum_integers)
+```
+
+The modified code now handles the condition for interweaving the elements properly. If there's a string element at the current index, it's appended, and if not, the integer element is appended.

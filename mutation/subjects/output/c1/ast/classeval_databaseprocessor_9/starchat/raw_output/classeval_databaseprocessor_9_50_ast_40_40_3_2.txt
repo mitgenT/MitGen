@@ -1,0 +1,14 @@
+```python
+def search_database(self, table_name, name):
+
+    conn = sqlite3.connect(self.database_name)
+    cursor = conn.cursor()
+
+    select_query = f"SELECT * FROM {table_name} WHERE name =?"
+    cursor.execute(select_query, (name,))
+    result = cursor.fetchall()
+
+    conn.close()
+    return result
+```
+In the provided code, in the `search_database` function, I added the return statement to return the result of the `fetchall` method. After retrieving the data, the database connection should be closed using the `close` method to free up resources. Returning the result ensures that we can use it in later operations if necessary.

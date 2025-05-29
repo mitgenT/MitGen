@@ -1,0 +1,14 @@
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    flipped_chars = string.swapcase()
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                flipped_chars = flipped_chars[:i] + char.lower() + flipped_chars[i+1:]
+            else:
+                flipped_chars = flipped_chars[:i] + char + flipped_chars[i+1:]
+        else:
+            flipped_chars = flipped_chars[:i] + char.swapcase() + flipped_chars[i+1:]
+    return flipped_chars
+```

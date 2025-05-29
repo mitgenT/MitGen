@@ -1,0 +1,21 @@
+Infilling the <MASK> in the given code requires you to return the start variable back to 0 when the substring is not found in the string, to enable the find method to start again from the beginning of the string. This means the line of code that returns start to 0 should be placed just after the if condition that checks if the substring is not found.
+
+Here is the filled code:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                start = 0
+                break
+    return result
+```

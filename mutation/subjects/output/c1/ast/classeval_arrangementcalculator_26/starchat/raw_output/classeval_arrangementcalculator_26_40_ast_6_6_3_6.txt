@@ -1,0 +1,5 @@
+def __init__(self, datas):
+    if isinstance(datas, list):
+        self.datas = datas
+    else:
+        raise TypeError("datas must be a list")

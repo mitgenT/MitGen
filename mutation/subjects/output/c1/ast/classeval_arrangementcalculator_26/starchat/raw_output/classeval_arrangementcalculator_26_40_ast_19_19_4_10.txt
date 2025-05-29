@@ -1,0 +1,5 @@
+```python
+if n >= i:
+    total += ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - i)
+```
+This code adds a check condition to ensure that `i` is not greater than `n` before adding to `total` in the `count_all` method. This addresses the bug that could cause an exception if `i` is larger than `n`.

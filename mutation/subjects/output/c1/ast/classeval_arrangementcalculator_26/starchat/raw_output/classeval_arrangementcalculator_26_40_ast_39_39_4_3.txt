@@ -1,0 +1,3 @@
+return result * i
+
+#Bug location: Change "//" to "/" to correctly compute the count_all function. This calculates the sum of factorials instead of factorial divided by factorials, which is the correct interpretation of the problem statement.

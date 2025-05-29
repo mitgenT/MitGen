@@ -1,0 +1,5 @@
+if data is not None and isinstance(data, list):
+    for item in data:
+        if 'name' in item and 'age' in item:
+            insert_query = f"INSERT INTO {table_name} (name, age) VALUES (?,?)"
+            cursor.execute(insert_query, (item['name'], item['age']))

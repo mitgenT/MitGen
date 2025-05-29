@@ -1,0 +1,4 @@
+```python
+    if new_base == 1:
+        new_base_num = '1' * len(new_base_num)
+```

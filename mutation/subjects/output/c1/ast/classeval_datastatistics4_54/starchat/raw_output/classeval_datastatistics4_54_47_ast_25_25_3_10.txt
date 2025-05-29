@@ -1,0 +1,5 @@
+```python
+        return skewness if n > 2 else math.nan
+```
+
+This code fills in the missing part of the skewness method in the `DataStatistics4` class. If the sample size is less than or equal to 2, the method returns NaN (Not a Number), as it would result in undefined skewness in a dataset with only one or two values. If the sample size is greater than 2, it calculates and returns the skewness as before.

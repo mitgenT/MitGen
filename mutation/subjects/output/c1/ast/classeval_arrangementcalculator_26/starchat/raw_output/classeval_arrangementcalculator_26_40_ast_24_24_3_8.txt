@@ -1,0 +1,18 @@
+def count_all(n):
+    total = 0
+    for i in range(1, n + 1):
+        total += ArrangementCalculator.count(n, i)
+    return total
+
+def select(self, m=None):
+    if m is None:
+        m = len(self.datas)
+    if m <= len(self.datas):
+        result = []
+    else:
+        raise ValueError("m should not be larger than the length of datas")
+    for permutation in itertools.permutations(self.datas, m):
+        result.append(list(permutation))
+    return result
+
+# The errors I found were related to the conditional statements in select() method, which should check if m is <= length of datas, otherwise, a ValueError should be raised. Also, count_all() method was missing a return statement.

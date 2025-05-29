@@ -1,0 +1,17 @@
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = isinstance(delimeter, float)
+    
+    if set_float:
+        result = [float(num) for num in numbers]  # Convert all numbers to floats if delimiter is a float
+    else:
+        result = numbers  # Keep the original list if delimiter is an integer
+        
+    if limit < len(numbers) - 1:
+        result += [delimeter] * (limit)  # Insert delimeter up to limit times
+    else:
+        pass  # No need to insert the delimiter if limit is equal or greater than the remaining pairs
+
+    return result
+```

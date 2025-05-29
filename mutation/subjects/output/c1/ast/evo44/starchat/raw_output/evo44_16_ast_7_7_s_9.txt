@@ -1,0 +1,26 @@
+## Output
+
+```python
+def change_base(x: str, base: int, new_base: int):
+    try:
+        base_10 = int(x, base)
+    except ValueError:
+        return "invalid base"
+    new_base_num = ""
+    if not (2 <= base <= 36) or not (2 <= new_base <= 36):
+        return 'invalid base'
+    while base_10 > 0:
+        remainder = base_10 % new_base
+        base_10 -= new_base
+        if 0 <= remainder <= 9:
+            new_base_num = str(remainder) + new_base_num
+        else:
+            new_base_num = chr(remainder + 55) + new_base_num 
+    return new_base_num
+```
+
+In the given code, the function first tries to convert the input number `x` from base `base` to decimal using the `int()` function with the specified base. It then checks if `base` and `new_base` are within the valid range of 2 to 36. If not, it returns "invalid base". 
+
+The conversion from decimal to the new base is performed using a while loop that calculates the remainder of `base_10` when divided by `new_base`. It then updates `base_10` and appends the corresponding character (digit or uppercase letter) to `new_base_num`. 
+
+Finally, it returns the string representation of the new base number.

@@ -1,0 +1,23 @@
+
+n=int(input())
+a=0
+for i in range(n):
+    mn=999999
+
+    l=int(input())
+    s=str(input())
+
+    for j in s:
+        x=ord(j)
+        x-=96
+        if x<mn:
+            mn=x
+
+
+
+    if mn>a:
+        a=mn
+
+print(a)
+
+            

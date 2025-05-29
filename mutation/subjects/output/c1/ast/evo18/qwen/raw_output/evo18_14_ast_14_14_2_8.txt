@@ -1,0 +1,9 @@
+```python
+    if len(string) == 0:
+        return result
+
+    for key, value in result.items():
+        if value > 0:
+            result[key] = string.count(key)
+    return result
+```

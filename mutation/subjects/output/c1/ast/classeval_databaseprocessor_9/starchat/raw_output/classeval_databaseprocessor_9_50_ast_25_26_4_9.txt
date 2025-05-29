@@ -1,0 +1,9 @@
+In the `insert_into_database` method, infill <MASK> as follows:
+
+```python
+for item in data:
+    insert_query = f"INSERT INTO {table_name} (id, {key1}, {key2}) VALUES (NULL,?,?)"
+    cursor.execute(insert_query, (item['name'], item['age']))
+```
+
+This loop will iterate over all dictionaries in `data`, extract the values for 'name' and 'age', and then insert a new row into the specified table with those values. The 'id' field is left as NULL because it is an auto-incremented primary key.

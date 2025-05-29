@@ -1,0 +1,6 @@
+```python
+    n = len(string)
+    if n < 2 * min_length:
+        return []
+    pairs = []
+```

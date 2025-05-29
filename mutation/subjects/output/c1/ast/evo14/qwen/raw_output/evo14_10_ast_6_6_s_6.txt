@@ -1,0 +1,22 @@
+Here's the filled in code based on the provided docstring:
+
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n - 1):
+        if i < n - min_length:  # Ensure non-overlapping prefix and suffix
+            j = i + min_length  # Start suffix from i + min_length
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                pairs.append((string[:i], string[j:]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))  # Sort by length and lexicographically
+    return pairs
+```
+
+Explanation:
+1. The `if` condition checks if there's enough characters left in the string to form a non-overlapping prefix and suffix.
+2. `j = i + min_length` initializes the starting index of the suffix to ensure it's at least `min_length` characters away from the prefix.
+3. The condition inside the `if` ensures that the prefix and suffix do not share any characters.
+4. If the condition is met, a tuple of the prefix and suffix is appended to the `pairs` list.
+5. Finally, the `pairs` list is sorted using a lambda function that combines length-based and lexicographic sorting.

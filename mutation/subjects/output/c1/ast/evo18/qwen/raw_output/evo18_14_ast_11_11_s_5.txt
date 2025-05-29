@@ -1,0 +1,19 @@
+Based on the provided docstring, it seems that the function needs to find the next occurrence of a substring within the string after a match has been found. Here's how the code should be filled in:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                # Move the start position to the next character after the match
+                start = pos + len(sub)
+            else:
+                break
+    return result
+```

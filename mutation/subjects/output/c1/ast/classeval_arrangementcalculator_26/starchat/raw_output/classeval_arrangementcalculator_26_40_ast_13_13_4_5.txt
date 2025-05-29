@@ -1,0 +1,6 @@
+```python
+        if m > n:
+            raise ValueError("`m` should not be greater than `n`")
+```
+
+In the solution, the given code has been updated in the `count` method of the `ArrangementCalculator` class. When `m` is provided and greater than `n`, the method now raises a `ValueError` with an appropriate error message. This ensures that the user understands that the value of `m` cannot be greater than the value of `n`.

@@ -1,0 +1,9 @@
+select_query = f"SELECT * FROM {table_name} WHERE name =?"
+
+if name == '':
+    raise ValueError("Name cannot be empty.")
+
+cursor.execute(select_query, (name,))
+result = cursor.fetchall()
+
+return result

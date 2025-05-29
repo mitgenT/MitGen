@@ -1,0 +1,2 @@
+new_base_num = 'invalid base'
+x == "0"

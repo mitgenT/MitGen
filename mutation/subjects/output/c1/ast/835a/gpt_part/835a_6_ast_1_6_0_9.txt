@@ -1,0 +1,21 @@
+t = int(input())
+
+for _ in range(t):
+    a, b, c = map(int, input().split())
+
+    if a < b:
+        if b < c:
+            medium = b
+        elif a < c:
+            medium = c
+        else:
+            medium = a
+    else:
+        if a < c:
+            medium = a
+        elif b < c:
+            medium = c
+        else:
+            medium = b
+
+    print(medium)

@@ -1,0 +1,22 @@
+from typing import List, Tuple
+
+def interleave_and_concatenate(strings: List[str], integers: List[int]) -> Tuple[str, int]:
+    if strings and integers:  # Check if both lists are not empty
+        interleaved = []  # Create an empty list for the interweaved elements
+        len_strings = len(strings)
+        len_integers = len(integers)
+        max_len = max(len_strings, len_integers)
+        for i in range(max_len):
+            if i < len_strings:
+                interleaved.append(strings[i])
+            if i < len_integers:
+                interleaved.append(integers[i])
+    else:
+        if strings:  # If one list is empty, use the non-empty one
+            interleaved = strings
+        else:
+            interleaved = integers
+
+    concatenated_string = ' '.join([str(i) for i in interleaved if isinstance(i, str)]) 
+    sum_integers = sum([i for i in interleaved if isinstance(i, int)])
+    return (concatenated_string, sum_integers)

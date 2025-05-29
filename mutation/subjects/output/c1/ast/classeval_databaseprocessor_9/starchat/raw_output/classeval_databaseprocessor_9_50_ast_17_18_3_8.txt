@@ -1,0 +1,2 @@
+if cursor.execute("PRAGMA table_info(%s)" % (table_name,)).fetchall() == []:
+                cursor.execute(create_table_query)

@@ -1,0 +1,2 @@
+if table_name:
+    self.table_name = table_name

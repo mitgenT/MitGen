@@ -1,0 +1,7 @@
+In the get_course_average method, the two mask lines are:
+
+```Python
+if course in student['courses']:
+    total += score
+    count += 1
+```

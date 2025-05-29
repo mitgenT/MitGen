@@ -1,0 +1,20 @@
+The first part of the mask is to increment the starting point for the next search by 1 since we found a match. And the second part of the mask is to reset the starting point for the next search to the position after the previous match because we don't want to find overlapping matches.
+
+## Filled code:
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                if pos != -1:
+                    start = pos + 1
+            else:
+                break
+    return result
+```

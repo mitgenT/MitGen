@@ -1,0 +1,21 @@
+Based on the provided docstring, the code should check if a substring is found within the `string` and increment the count if it is. Since we are looking for overlapping occurrences, we need to update the `start` index after finding a match. Here's how to fill in the `<MASK>`:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:  # Check if the substring is found
+                string = string[pos + 1:]  # Shift the start index to avoid overlapping
+                result[sub] += 1
+                start = pos  # Update the start index to the next possible position
+            else:
+                break
+    return result
+```
+
+Now, the code is complete, and it will find how many times each substring can be found in the original string, counting overlapping occurrences.

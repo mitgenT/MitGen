@@ -1,0 +1,19 @@
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = False
+    if type(delimeter) == float:
+        set_float = True
+    result = []
+    limit = min(limit, len(numbers) - 1) 
+    for i in range(len(numbers) - 1):
+        if i % 2 == 0:
+            result.append(float(numbers[i]) if set_float else numbers[i])
+        else:
+            result.append(numbers[i])
+        if i < limit:
+            result.append(delimeter)
+    return result
+```
+
+In this solution, I inserted a conditional statement to check if the current index is even. If the current index is even, then add the current number to the result list and convert it to a float if necessary. If the current index is not even, then just add the current number to the result list. In this way, a delimiter will be added between every two consecutive elements, but only up to 'limit' times.

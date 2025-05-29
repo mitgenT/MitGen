@@ -1,0 +1,16 @@
+## Output
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    if n >= min_length:
+        for i in range(min_length, n + 1):
+            for j in range(i, n + 1 - min_length):
+                if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                    pairs.append((string[:i], string[j:]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```
+
+In the solution, `<MASK>` is replaced with a for loop that iterates from `min_length` to `n + 1` (exclusive), and another for loop that iterates from `i` to `n + 1 - min_length` (exclusive) to find all possible prefix and suffix pairs. The condition inside the inner for loop is updated to ensure non-overlapping prefix and suffix characters. The lambda function inside the `sort()` method has been modified to sort the pairs in ascending order of their lengths and lexicographically.

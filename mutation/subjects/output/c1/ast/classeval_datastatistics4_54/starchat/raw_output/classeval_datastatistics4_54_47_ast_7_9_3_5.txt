@@ -1,0 +1,10 @@
+```python
+        if not data or not data1 or not data2:
+            raise ValueError("Input data cannot be empty.")
+        
+        n1 = len(data1)
+        n2 = len(data2)
+        
+        if n1!= n2:
+            raise ValueError("Input data must have the same length.")
+```

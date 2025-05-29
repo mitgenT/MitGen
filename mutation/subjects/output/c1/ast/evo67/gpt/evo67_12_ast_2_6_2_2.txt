@@ -1,0 +1,13 @@
+def advanced_fruit_distribution(s, n, m):
+    # Extract the number of apples and oranges from the string
+    num_apples = int(s.split(' ')[0])
+    num_oranges = int(s.split(' ')[3])
+    
+    # Calculate the number of mangoes
+    mangoes = n - num_apples - num_oranges
+    
+    # Check if the number of mangoes is less than the minimum requirement
+    if mangoes < m:
+        return -1
+    else:
+        return mangoes - 1

@@ -1,0 +1,7 @@
+for T in range(int(input())):
+    n = int(input())
+    s = input()
+    chars = set()
+    for x in s:
+        chars.add(x)
+    print(len(chars))

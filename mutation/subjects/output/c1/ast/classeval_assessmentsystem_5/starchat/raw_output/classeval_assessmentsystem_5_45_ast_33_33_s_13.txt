@@ -1,0 +1,2 @@
+self.course_grades[course].append(score)
+count += 1

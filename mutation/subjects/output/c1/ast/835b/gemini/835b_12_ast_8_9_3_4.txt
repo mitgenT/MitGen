@@ -1,0 +1,12 @@
+
+n=int(input())
+a=0
+for i in range(n):
+            a=int(input())
+            s=input()
+            for i in range(len(s)):
+                        if s[i].islower and (ord(s[i])-97)+1>a:
+                            a=(ord(s[i])-97)+1
+            print(a-96)
+
+            

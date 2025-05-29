@@ -1,0 +1,25 @@
+## Output
+```python
+def is_palindrome(string: str) -> bool:
+    """ 
+    Test if given string is a palindrome.
+    """
+    return string == string[::-1]
+
+def make_palindrome(string: str) -> str:
+    l_string = string.lower()
+    if is_palindrome(l_string):
+        return string
+    else:
+        for i in range(len(string)):
+            if is_palindrome(l_string[i:]):
+                reverse_prefix = l_string[:i][::-1]
+                return string + reverse_prefix
+```
+In the provided example, I changed `<MASK>` with the following code:
+
+```python
+reverse_prefix = l_string[:i][::-1]
+return string + reverse_prefix
+```
+This code checks each postfix of the lowercased string. If a postfix is a palindrome, it appends the reverse of the prefix before the palindrome suffix to the original string and returns it. This solution ensures that the shortest palindrome is found.

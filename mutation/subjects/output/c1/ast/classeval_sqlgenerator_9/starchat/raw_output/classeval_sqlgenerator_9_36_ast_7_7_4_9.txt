@@ -1,0 +1,7 @@
+```Python
+if fields is None:
+    if fields:
+        fields = "*"
+    else:
+        fields = "NULL"
+```

@@ -1,0 +1,10 @@
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+   result = []
+   length = len(string)
+   for start in range(length):
+       for end in range(start + min_length, length + 1):
+           if string[start:end] == string[end-start:end]:
+               result.append((string[start:end], string[end-start:end]))
+   result.sort(key=lambda x: (len(x[0]), x[0]))
+   return result

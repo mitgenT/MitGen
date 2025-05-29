@@ -1,0 +1,22 @@
+Here's the infilled <MASK>:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    new_string = ''
+    for i, char in enumerate(string):
+        if i == special_index % len(string):
+            new_string += char.lower() if char.isupper() else char
+        else:
+            new_string += char.upper() if char.islower() else char
+    return new_string
+```
+
+This Python function `flip_case_special` goes through the given string, examining each character and flips its case except for the character at the `special_index`. The index for `special_index` is handled as a circular list, meaning if the `special_index` is out of range, it wraps around to the beginning of the string.
+
+Now, let's verify the function using the provided test cases:
+
+```python
+print(flip_case_special('Hello', 0))  # hELLO
+print(flip_case_special('Hello', 5))  # hELLO
+print(flip_case_special('hello', 0))  # hELLO
+```

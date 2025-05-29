@@ -1,0 +1,2 @@
+if isinstance(data, list):
+  for item in data:

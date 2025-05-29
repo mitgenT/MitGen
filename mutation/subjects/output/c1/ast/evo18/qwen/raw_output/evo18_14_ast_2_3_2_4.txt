@@ -1,0 +1,19 @@
+Based on the provided docstring, we need to initialize the dictionary with zeros for each substring in the list and then iterate through the string to find occurrences of each substring. Here's how to fill in the `<MASK>`:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    # Initialize the dictionary with zeros for each substring
+    result = {sub: 0 for sub in substrings}
+    
+    # Continue with the rest of the code
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+```

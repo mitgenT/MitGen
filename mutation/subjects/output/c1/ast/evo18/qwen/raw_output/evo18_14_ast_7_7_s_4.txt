@@ -1,0 +1,21 @@
+Here's the filled-in code:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string):
+            if string[start:].startswith(sub):
+                result[sub] += 1
+                start += len(sub)
+            else:
+                break
+    return result
+```
+
+Explanation:
+1. We use a `while` loop instead of a `if` condition inside the loop to check for overlapping occurrences of the substring `sub` in the `string`. 
+2. Inside the loop, we use the `startswith()` method to check if the substring starts at the current position in the string. If it does, we increment the count and move the starting position by the length of the substring to find the next possible match.

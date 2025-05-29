@@ -1,0 +1,5 @@
+pdf_values = [1 / (sigma * math.sqrt(2 * math.pi)) * math.exp(-0.5 * ((x - mu) / sigma) ** 2) for x in data]
+if not math.isnan(pdf_values[0]):
+    return pdf_values
+else:
+    return []

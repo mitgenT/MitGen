@@ -1,0 +1,17 @@
+## Output
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string):
+            position = string.find(sub, start)
+            if position!= -1:
+                result[sub] += 1
+                start = position + len(sub)
+            else:
+                break
+    return result
+```

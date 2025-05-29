@@ -1,0 +1,5 @@
+```python
+    if string:
+        for sub in substrings:
+            start = 0
+```

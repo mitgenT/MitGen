@@ -1,0 +1,42 @@
+## Output
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    result = []
+    limit = min(limit, len(numbers) - 1) 
+    for i in range(len(numbers) - 1):
+        result.append(numbers[i])
+        if i < limit:
+            result.append(delimeter)
+    if type(delimeter) == float:
+        result.append(float(numbers[-1]))
+    else:
+        result.append(numbers[-1])
+    return result
+```
+
+In this code, I've checked if the `delimeter` is float to convert the last number in the list into a float before appending it to the result list. I've also used the `append()` function to add the last number in the list, after checking if it needs to be converted to a float.
+Now let's validate our solution against provided examples. I'll execute the updated function intersperse.
+```python
+
+from typing import List, Union
+
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    result = []
+    limit = min(limit, len(numbers) - 1) 
+    for i in range(len(numbers) - 1):
+        result.append(numbers[i])
+        if i < limit:
+            result.append(delimeter)
+    if type(delimeter) == float:
+        result.append(float(numbers[-1]))
+    else:
+        result.append(numbers[-1])
+    return result
+
+# Test cases
+print(intersperse([], 4, 2)) # []
+print(intersperse([1, 2, 3], 4, 2)) # [1, 4, 2, 4, 3]
+print(intersperse([1, 2, 3, 4], 0.5, 2)) # [1.0, 0.5, 2.0, 0.5, 3.0, 4.0]
+
+```

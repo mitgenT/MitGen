@@ -1,0 +1,4 @@
+if string[special_index].isupper():
+    result = ""
+else:
+    result = string[:special_index]

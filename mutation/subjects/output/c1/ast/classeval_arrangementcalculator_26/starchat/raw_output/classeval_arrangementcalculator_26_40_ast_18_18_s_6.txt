@@ -1,0 +1,7 @@
+```python
+        if m is None or m == 0:
+            return 1
+        else:
+            return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)
+```
+In the given code, I have completed the missing part in the count_all method by adding an additional condition to check if `m` is None or zero. If `m` is None or zero, it returns 1, otherwise it computes the count of arrangements using the factorial method.

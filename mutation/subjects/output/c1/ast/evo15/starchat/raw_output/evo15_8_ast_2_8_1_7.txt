@@ -1,0 +1,12 @@
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    seq = ""
+    for i in range(1, n+1):
+        if i % m == 0:
+            seq += "Fizz "
+        else:
+            seq += str(i) + " "
+    return seq.strip()
+```
+
+The <MASK> has been filled with the appropriate Python code that checks the divisibility condition of each number with respect to'm', and appends "Fizz" when it is divisible, otherwise appends the number itself. After appending each element, a space is added, ensuring a space-delimited string is produced. The function then strips any trailing spaces and returns the final sequence.

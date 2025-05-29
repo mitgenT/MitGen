@@ -1,0 +1,2 @@
+self.get_gpa(name) is not None and self.get_gpa(name) > 0
+count += 1

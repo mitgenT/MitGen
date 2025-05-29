@@ -1,0 +1,34 @@
+```python
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+    longest_vowel_sub: str = ""
+    vowel_start_index: int = -1
+    
+    for i, string in enumerate(strings):
+        for j, char in enumerate(string.lower()):
+            if char in ['a', 'e', 'i', 'o', 'u']:
+                # Check if current character marks the start of a vowel substring
+                if j == 0 or not string.lower()[j-1].isalpha():
+                    current_sub = char
+                    k = j
+                    
+                    while k < len(string) and string.lower()[k] in ['a', 'e', 'i', 'o', 'u']:
+                        current_sub += string[k]
+                        k += 1
+                    
+                    # Update longest_vowel_sub and vowel_start_index if a longer vowel substring is found
+                    if len(current_sub) > len(longest_vowel_sub):
+                        longest_vowel_sub = current_sub
+                        vowel_start_index = i
+                        
+    # Return (None, None) if no vowel substring exists or input list is empty
+    if longest_vowel_sub == "":
+        return None, None
+    else:
+        return longest_vowel_sub, vowel_start_index
+
+# Test cases
+print(longest_substring([]))       # (None, None)
+print(longest_substring(['apple', 'banana', 'cherry']))  # ('apple', 0)
+print(longest_substring(['grape', 'blueberry', 'strawberry']))  # ('ueberry', 1)
+```

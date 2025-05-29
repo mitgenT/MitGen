@@ -1,0 +1,10 @@
+```python
+    @staticmethod
+    def count(n, m=None):
+        if m is None or n == m:
+            return ArrangementCalculator.factorial(n)
+        else:
+            return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n-m)
+```
+
+Here, the infilled code `ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n-m)` computes the number of permutations (i.e., arrangements) of `m` items chosen from `n` items. The formula used is `n!` divided by `(n-m)!`. This result matches the docstring requirement of counting arrangements.

@@ -1,0 +1,15 @@
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    pairs = []
+    n = len(string)
+    if min_length > n:
+        return pairs
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                pairs.append((string[:i], string[j:]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```
+Infilling <MASK> results in creating an empty list 'pairs', then checking if'min_length' is greater than 'n' (length of the input string). If so, it returns the empty list because there are no pairs that can be formed. Then, the code finds all prefix-suffix pairs by iterating through the string and checking for no overlap, appends the pairs to 'pairs', sorts them based on length and lexicographical order, and finally returns the sorted list of pairs.

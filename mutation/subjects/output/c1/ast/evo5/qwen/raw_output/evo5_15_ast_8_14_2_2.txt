@@ -1,0 +1,30 @@
+Based on the provided docstring, we need to insert the `delimeter` between every two consecutive elements of the input list `numbers`, up to `limit` times. Here's the updated code:
+
+```python
+from typing import List, Union
+
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = False
+    if type(delimeter) == float:
+        set_float = True
+    result = []
+    limit = min(limit, len(numbers) - 1)
+
+    # Iterate over the numbers list with a step of 1 (no delimeter before the first element) and step of 2 (inserting delimeter)
+    for i in range(0, len(numbers), limit + 1):
+        if i + limit < len(numbers):
+            # Insert the delimeter between consecutive elements
+            result.extend([numbers[i], delimeter])
+        else:
+            # For the last iteration, append the remaining element without delimeter
+            result.append(numbers[i])
+
+    # If the delimeter was a float, convert the result to float as well
+    if set_float:
+        result = [float(item) for item in result]
+
+    return result
+
+```
+
+This code now correctly inserts the `delimeter` between every two consecutive elements in `numbers` up to `limit` times. If the `delimeter` is a float, it converts the resulting list to float as well.

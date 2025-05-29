@@ -1,0 +1,4 @@
+```python
+centered_data = [x - mu for x in data]
+```
+Here, we've added a single line of code to the kurtosis method to center the data around the mean, before calculating the fourth moment. The centered_data variable is then used in the kurtosis formula. The pdf method remains unchanged. This infills the <MASK> required to complete the given Python code.

@@ -1,0 +1,4 @@
+```python
+    length = len(string)
+    for sub in substrings:
+```

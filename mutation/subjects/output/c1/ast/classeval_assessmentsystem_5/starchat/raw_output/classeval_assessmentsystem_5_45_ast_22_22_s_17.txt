@@ -1,0 +1,8 @@
+```Python
+    for name, student in self.students.items():
+        for course, score in student['courses'].items():
+            if score < 60:
+                if not students:
+                    students = [name]
+                break
+```

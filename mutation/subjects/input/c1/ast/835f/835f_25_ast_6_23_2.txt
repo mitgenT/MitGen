@@ -1,0 +1,8 @@
+
+for _ in range (int(input())):
+    n,c,d=map(int,input().split())
+    A=list(map(int,input().split()))
+    A=sorted(A)[::-1]
+    <missing code>
+
+        

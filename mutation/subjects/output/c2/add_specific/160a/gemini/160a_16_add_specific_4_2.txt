@@ -1,0 +1,60 @@
+def find_ab(ab):
+    """
+    Finds values a and b such that:
+
+    neither of them has a leading zero;
+    both of them are strictly greater than 0;
+    b>a;
+    they produce the given value ab when written one after another.
+
+    If there are multiple answers, you can print any of them.
+
+    Args:
+        ab (str): The given value ab.
+
+    Returns:
+        tuple(int, int): a and b if they exist, otherwise (-1, -1).
+    """
+    n = len(ab)
+    # Check if the given value ab has a leading zero.
+    if ab[0] == '0':
+        return -1, -1
+
+    # Check if the given value ab is valid.
+    for i in range(n):
+        if not ab[i].isdigit():
+            return -1, -1
+
+    # Find the smallest possible value of a.
+    a = 1
+    for i in range(n-1):
+        a *= 10
+
+    # Find the largest possible value of b.
+    b = int(ab)
+    while b % a != 0:
+        b += 1
+
+    # Return a and b if they exist.
+    return a, b
+
+def main():
+    # Read the number of testcases.
+    t = int(input())
+
+    # Iterate over the testcases.
+    for _ in range(t):
+        # Read the given value ab.
+        ab = input()
+
+        # Find a and b.
+        a, b = find_ab(ab)
+
+        # Print the result.
+        if a == -1:
+            print(-1)
+        else:
+            print(a, b)
+
+if __name__ == '__main__':
+    main()

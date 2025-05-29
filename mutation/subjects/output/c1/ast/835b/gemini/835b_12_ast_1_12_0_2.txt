@@ -1,0 +1,10 @@
+def program(t):
+    for _ in range(t):
+        n = int(input())
+        s = input()
+        alphabet_size = 0
+
+        for char in s:
+            alphabet_size = max(alphabet_size, ord(char) - ord('a') + 1)
+
+        print(alphabet_size)

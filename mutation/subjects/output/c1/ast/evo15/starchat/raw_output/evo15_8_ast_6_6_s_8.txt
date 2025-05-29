@@ -1,0 +1,12 @@
+## Output
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        if i == 0:
+            result.append(str(i))
+    return''.join(result)
+```
+The given code has incomplete conditions in the `if` block that needs to be filled. In this solution, I have added the `if i == 0:` condition to append '0' to the list in the first iteration. After that, no `if <MASK>` condition is required as the replacement string "Fizz" is added inside the if condition `(i+1) % m == 0`.

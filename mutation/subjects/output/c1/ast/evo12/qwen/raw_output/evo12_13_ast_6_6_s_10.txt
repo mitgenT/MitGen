@@ -1,0 +1,13 @@
+Based on the provided docstring, the missing code block should iterate through each string in the list and find substrings starting with a vowel. Here's how you can fill in `<MASK>`:
+
+```python
+    for i, string in enumerate(strings):
+        substrings = [string[j:] for j in range(len(string)) if string[j].lower() in vowels]
+        if substrings:
+            max_substring = max(substrings, key=len)
+            if longest_substring is None or len(max_substring) == len(longest_substring):
+                longest_substring = max_substring
+                longest_substring_index = i
+```
+
+Here, we added the `enumerate` function to get the index `i` of each string, and converted the character to lowercase before checking if it's a vowel. The rest of the logic remains the same.

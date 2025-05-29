@@ -1,0 +1,12 @@
+```Python
+        if i == special_index:
+```
+
+and
+
+```Python
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+```

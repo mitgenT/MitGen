@@ -1,0 +1,26 @@
+The problem is asking to infer the missing parts of the code, based on the given code and docstring. The missing parts should be inferred based on the docstring specifications.
+
+From the docstring, we can infer that the first <MASK> should check if any substring is an empty string. The second <MASK> should check if the string is empty.
+
+The python code with the infilled <MASK> is below:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    if string == '':
+        return {sub: 0 for sub in substrings}
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+```
+
+This function works by creating a dictionary to count the occurrences of each substring, and iterating through the string, incrementing the count each time a substring is found. If a substring is an empty string, the function will return an error message. If the input string is empty, the function will return a dictionary with zero counts for each substring.

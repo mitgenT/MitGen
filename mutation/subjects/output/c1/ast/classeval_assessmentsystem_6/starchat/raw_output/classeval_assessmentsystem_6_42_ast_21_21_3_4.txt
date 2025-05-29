@@ -1,0 +1,49 @@
+## Infilled code:
+
+```python
+class AssessmentSystem:
+    def __init__(self):
+        self.students = {}
+
+    def add_student(self, name, grade, major):
+        self.students[name] = {'name': name, 'grade': grade,'major': major, 'courses': {}}
+
+    def add_course_score(self, name, course, score):
+        if name in self.students:
+            self.students[name]['courses'][course] = score
+
+    def get_gpa(self, name):
+        return sum(self.students[name]['courses'].values()) / len(self.students[name]['courses']) if self.students[name]['courses'] else None
+
+    def get_all_students_with_fail_course(self):
+        students = []
+        for name, student in self.students.items():
+            for course, score in student['courses'].items():
+                if score < 60:
+                    students.append(name)
+                    break
+        return students
+
+    def get_course_average(self, course):
+        total = 0
+        count = 0
+        for student in self.students.values():
+            if course in student['courses']:
+                score = student['courses'][course]
+                if score is not None:
+                    total += score
+                    count += 1
+        return total / count if count > 0 else None
+
+    def get_top_student(self):
+        top_student = None
+        top_gpa = 0
+        for name, student in self.students.items():
+            gpa = self.get_gpa(name)
+            if gpa is not None and gpa > top_gpa:
+                top_gpa = gpa
+                top_student = name
+        return top_student
+```
+
+I added a check to the `get_gpa` method to avoid dividing by zero if a student does not have any courses yet. For the `get_all_students_with_fail_course` method, I added a `break` statement to stop searching a student's courses once a failed one is found, ensuring we do not check unnecessary courses for that student. Finally, I fixed the missing `if` statement in the code for `get_course_average` and adjusted its return value to the correct average calculation if course scores are available.

@@ -1,0 +1,7 @@
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        """
+        Produce a string with numbers from 0 to n (inclusive) separated by spaces, where every m-th number is replaced with the word "Fizz", using 1-based indexing for the replacement.
+        """
+    return ' '.join(result)

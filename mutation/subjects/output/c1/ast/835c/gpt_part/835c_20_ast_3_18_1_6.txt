@@ -1,0 +1,8 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    strengths = list(map(int, input().split()))
+    strengths.sort(reverse=True)
+    for i in range(n):
+        print(strengths[1] - strengths[i], end=' ')
+    print()

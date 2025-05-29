@@ -1,0 +1,29 @@
+Based on the provided docstring, we need to iterate over the elements of both lists simultaneously, interleaving them. Here's the completed code:
+
+```python
+from typing import List, Tuple
+
+def interleave_and_concatenate(strings: List[str], integers: List[int]) -> Tuple[str, int]:
+    interleaved = []
+    len_strings = len(strings)
+    len_integers = len(integers)
+    max_len = max(len_strings, len_integers)
+    
+    # Iterate over the lists while keeping track of the indices
+    for s_idx, i_idx in zip(range(max_len), range(max_len)):
+        if s_idx < len_strings:
+            interleaved.append(strings[s_idx])
+        if i_idx < len_integers:
+            interleaved.append(integers[i_idx])
+
+    concatenated_string = ' '.join([str(i) for i in interleaved if isinstance(i, str)]) 
+    sum_integers = sum([i for i in interleaved if isinstance(i, int)])
+    return (concatenated_string, sum_integers)
+
+# Test cases
+print(interleave_and_concatenate([], []))  # Should output: ('', 0)
+print(interleave_and_concatenate(['a', 'b', 'c'], [1, 2, 3]))  # Should output: ('abc', 6)
+print(interleave_and_concatenate(['a', 'b'], [1, 2, 3]))  # Should output: ('ab', 6)
+```
+
+In the given code, the `<MASK>` parts have been replaced with the appropriate logic to interleave the elements from both lists. The `zip` function is used to iterate over the indices of the strings and integers lists simultaneously, ensuring they remain in sync.

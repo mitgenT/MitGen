@@ -1,0 +1,18 @@
+In the provided code snippet, the function `get_course_average(self, course)` has an incomplete `<MASK>`. This `<MASK>` represents a condition that checks if the score is greater than 0 before adding it to the `total`. 
+
+Here's the corrected code:
+
+```python
+def get_course_average(self, course):
+    total = 0
+    count = 0
+    for student in self.students.values():
+        if course in student['courses']:
+            score = student['courses'][course]
+            if score > 0:  # This is the MASK condition
+                total += score
+                count += 1
+    return total / count if count > 0 else None
+```
+
+Now, the `get_course_average(self, course)` function will only sum up and calculate the average for scores greater than 0. This is an important validation when processing scores as not all courses may have scores recorded. The code should be fully functioning according to the provided docstring.

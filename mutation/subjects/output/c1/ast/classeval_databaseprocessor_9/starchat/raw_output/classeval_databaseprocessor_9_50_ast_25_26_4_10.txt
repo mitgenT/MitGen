@@ -1,0 +1,2 @@
+if item.get('name') and item.get('age'):
+            cursor.execute("INSERT INTO {} (name, age) VALUES (?,?)".format(table_name), (item['name'], item['age']))

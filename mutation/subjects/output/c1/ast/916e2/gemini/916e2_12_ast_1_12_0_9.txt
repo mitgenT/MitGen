@@ -1,0 +1,19 @@
+from sys import stdin
+
+input = stdin.readline
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    sa = sum(a)
+    sb = sum(b)
+    ans = 0
+    for i in range(n):
+        if a[i] > b[i]:
+            ans += a[i] - (a[i] + b[i]) // 2
+        elif b[i] > a[i]:
+            ans -= (a[i] + b[i]) // 2
+    print(ans)
+

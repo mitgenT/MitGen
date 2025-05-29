@@ -1,0 +1,32 @@
+In the given code, I will fill the <MASK> for the kurtosis function in DataStatistics4 class.
+
+The kurtosis is defined as:
+
+\[ \text{Kurtosis} = \frac{\frac{1}{n} \sum_{i=1}^n (x_i - \mu)^4}{\sigma^4} - 3 \]
+
+Here, \(\mu\) is the mean, \(\sigma\) is the standard deviation, \(x_i\) are the data points, and \(n\) is the number of data points.
+
+Since the mean and standard deviation are already calculated within the function, I will use them to calculate the centered data (the data with the mean subtracted) and the fourth moment. Then, I will substitute these values into the kurtosis formula.
+
+Here is the corrected code:
+
+```python
+@staticmethod
+def kurtosis(data):
+    n = len(data)
+    mean = sum(data) / n
+    std_dev = math.sqrt(sum((x - mean) ** 2 for x in data) / n)
+
+    if std_dev == 0:
+        return math.nan
+
+    centered_data = [x - mean for x in data]
+
+    fourth_moment = sum(x ** 4 for x in centered_data) / n
+
+    kurtosis_value = (fourth_moment / std_dev ** 4) - 3
+
+    return kurtosis_value
+```
+
+This will correctly calculate the kurtosis of a set of data.

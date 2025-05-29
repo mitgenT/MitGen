@@ -1,0 +1,57 @@
+The `add_student` method in the given code can be filled with the following:
+
+```python
+def add_student(self, name, grade, major):
+    self.students[name] = {'name': name, 'grade': grade,'major': major, 'courses': {}}
+```
+
+This will update the `AssessmentSystem` class by adding a new student to the `students` dictionary with the given name, grade, and major. The `courses` key will be initialized as an empty dictionary to hold the course scores for the student.
+
+Here's the entire updated program:
+
+```python
+class AssessmentSystem:
+    def __init__(self):
+        self.students = {}
+
+    def add_student(self, name, grade, major):
+        self.students[name] = {'name': name, 'grade': grade,'major': major, 'courses': {}}
+
+    def add_course_score(self, name, course, score):
+        if name in self.students:
+            self.students[name]['courses'][course] = score
+
+    def get_gpa(self, name):
+        return sum(self.students[name]['courses'].values()) / len(self.students[name]['courses'])
+
+    def get_all_students_with_fail_course(self):
+        students = []
+        for name, student in self.students.items():
+            for course, score in student['courses'].items():
+                if score < 60:
+                    students.append(name)
+                    break
+        return students
+
+    def get_course_average(self, course):
+        total = 0
+        count = 0
+        for student in self.students.values():
+            if course in student['courses']:
+                score = student['courses'][course]
+                if score is not None:
+                    total += score
+                    count += 1
+        return total / count if count > 0 else None
+
+    def get_top_student(self):
+        top_student = None
+        top_gpa = 0
+        for name, student in self.students.items():
+            gpa = self.get_gpa(name)
+            if gpa is not None and gpa > top_gpa:
+                top_gpa = gpa
+                top_student = name
+        return top_student
+```
+This updated version of the class now includes the `add_student` method, which adds new students to the `students` dictionary, and it also correctly calculates the average GPA. The other methods remain the same as in the given code.

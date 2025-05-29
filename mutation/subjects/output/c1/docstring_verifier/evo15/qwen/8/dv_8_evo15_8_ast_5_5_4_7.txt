@@ -1,0 +1,14 @@
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            """
+            Create a string with space-separated numbers from 0 to n (inclusive), replacing every mth number with the word "Fizz", where counting starts from the first position.
+            """
+            result = []
+            for i in range(n):
+                if (i+1) % m == 0:
+                    result.append("Fizz")
+        else:
+            result.append(str(i))
+    return ' '.join(result)

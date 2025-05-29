@@ -1,0 +1,21 @@
+Based on the provided docstring, we need to modify the code to maintain the character's case if it's at the `special_index`, regardless of its current state. Here's how the code should look with `<MASK>` filled in:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                result += char.lower()
+            elif char.islower():  # Fill in the <MASK> here
+                result += char
+        else:
+            if char.isupper():
+                result += char.lower()
+            elif char.islower():  # Fill in the <MASK> here
+                result += char
+    return result
+```
+
+Now the code handles the special case correctly according to the requirements of the docstring.

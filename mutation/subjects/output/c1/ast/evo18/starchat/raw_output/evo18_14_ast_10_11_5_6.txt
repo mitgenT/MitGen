@@ -1,0 +1,19 @@
+## Output
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - len(sub) + 1:  # Ensure we don't go out of bounds
+            pos = string.find(sub, start)
+            if pos!= -1:
+                result[sub] += 1
+                start = pos + 1  # Move the start position after finding the substring
+            else:
+                break
+    return result
+```
+
+The main change in the given code is the update of the start position in the while loop. Instead of starting over from the beginning, we move the start position to the next character after the found substring, thus counting overlapping occurrences. The new condition `start < len(string) - len(sub) + 1` ensures we don't run into an IndexError when comparing a substring starting at the last possible position.

@@ -1,0 +1,16 @@
+t=int(input())
+for _ in range(t):
+    n = int(input())
+    alice = list(map(int, input().split()))
+    bob = list(map(int, input().split()))
+    scores = []
+    for i in range(n):
+        scores.append(alice[i] - bob[i])
+    scores.sort(reverse=True)
+    score = 0
+    for i in range(n):
+        if i % 2 == 0:
+            score += scores[i]
+        else:
+            score -= scores[i]
+    print(score)

@@ -1,0 +1,28 @@
+In your code, replace the <MASK> line in the `get_course_average` method as follows:
+
+```Python
+if'score' in locals():
+    score = locals()['score']
+else:
+    score = None
+```
+
+This line checks if the `score` variable has been defined or not before using it to avoid a `NameError`. If `score` is not defined, it sets its value to `None`. After that, it can be safely used in the calculation of the average. The complete method would look like this:
+
+```Python
+def get_course_average(self, course):
+    total = 0
+    count = 0
+    for student in self.students.values():
+        if course in student['courses']:
+            if'score' in locals():
+                score = locals()['score']
+            else:
+                score = None
+            if score is not None:
+                total += score
+                count += 1
+    return total / count if count > 0 else None
+```
+
+This ensures that your code handles all edge cases properly and provides the expected results for calculating the average score of a specific course.

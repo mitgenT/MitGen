@@ -1,0 +1,15 @@
+## Output
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index and char.isalpha():
+            result += char.swapcase() if char.isupper() else char
+        else:
+            result += char.swapcase()
+    return result
+
+```
+
+In this solution, the <MASK> in the given code has been replaced with an if-else condition that checks if the current character index 'i' is equal to the special_index. If true and the character is alphabetic, it switches its case using the swapcase() method and adds it to the result. If not, it just adds the character in its original case to the result. This ensures that the character at the'special_index' (with respect to the circular list) is flipped based on the conditions mentioned in the docstring.

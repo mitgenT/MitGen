@@ -1,0 +1,9 @@
+if fields == "*":
+    fields = "*"
+else:
+    fields = ", ".join(fields)
+
+if condition is not None:
+    sql += f" WHERE {condition}"
+if ";" not in sql:
+    sql += ";"

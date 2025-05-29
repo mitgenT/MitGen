@@ -1,0 +1,13 @@
+```python
+def get_course_average(self, course):
+    total = 0
+    count = 0
+    for student in self.students.values():
+        if course in student['courses']:
+            score = student['courses'][course]
+            if score is not None:
+                total += score
+                count += 1
+    return total / count if count > 0 else None
+```
+The `get_course_average` function calculates and returns the average score of a specific course across all students who have taken the course. If no one has a record for the course, the function returns None.

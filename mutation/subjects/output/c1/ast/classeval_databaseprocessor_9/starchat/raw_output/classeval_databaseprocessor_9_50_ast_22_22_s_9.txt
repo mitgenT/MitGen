@@ -1,0 +1,2 @@
+if not isinstance(data, list) or not all(isinstance(item, dict) and 'name' in item and 'age' in item for item in data):
+            raise ValueError("Input data should be a list of dictionaries containing 'name' and 'age' fields.")

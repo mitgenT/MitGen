@@ -1,0 +1,19 @@
+Based on the provided docstring, we need to implement a loop to find how many times each substring can be found in the `string`. We should also handle the case when a substring is found by incrementing the count in the `result` dictionary and updating the `start` variable for subsequent searches. Here's the filled-in code:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while True:
+            index = string.find(sub, start)
+            if index == -1:
+                break
+            result[sub] += 1
+            start = index + 1  # Move the start position for next search
+    return result
+```
+
+In this code, `find()` is used to locate the first occurrence of each substring in the original string, starting from the `start` position. If no occurrence is found, `find()` returns `-1`, which breaks the loop. The count is incremented inside the loop and the `start` variable is updated for overlapping case handling.

@@ -1,0 +1,4 @@
+def numerical_letter_grade_with_weightage(grades):
+    letter_grades = []
+    <MASK>
+    return letter_grades

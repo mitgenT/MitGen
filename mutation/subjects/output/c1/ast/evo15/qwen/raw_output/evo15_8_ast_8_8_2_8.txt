@@ -1,0 +1,16 @@
+Based on the given docstring and the code, it seems that the `string_sequence_modified` function is meant to create a sequence of numbers up to `n`, with every `m`-th number replaced by "Fizz". The `if <MASK>` condition checks if `n` is not zero before adding the last non-"Fizz" element. Therefore, we should append the current value `str(i)` if `n` is not zero. Here's how to fill in `<MASK>`:
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i + 1) % m == 0:
+            result.append("Fizz")
+        else:
+            result.append(str(i))
+    if n:  # Check if n is not zero
+        result.append(str(i))  # Add the last non-"Fizz" number if n is not zero
+    return " ".join(result)
+```
+
+The output code includes the check for `n` and appends the last element if necessary.

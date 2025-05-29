@@ -1,0 +1,4 @@
+```python
+        for vowel in vowels:
+            substrings = [substring for substring in string.lower() if substring.startswith(vowel)]
+```

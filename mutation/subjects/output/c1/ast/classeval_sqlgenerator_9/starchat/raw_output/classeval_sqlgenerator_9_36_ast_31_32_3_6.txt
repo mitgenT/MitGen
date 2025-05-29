@@ -1,0 +1,3 @@
+sql = f"SELECT * FROM {self.table_name} WHERE gender = 'female' AND age < {age}"
+
+sql = f"DELETE FROM {self.table_name} WHERE {condition}"

@@ -1,0 +1,7 @@
+In the `get_course_average` method, infill the <MASK> as follows:
+
+```Python
+if score >= 0:
+    count += 1
+```
+This will prevent any courses with a score of None from being included in the average calculation.

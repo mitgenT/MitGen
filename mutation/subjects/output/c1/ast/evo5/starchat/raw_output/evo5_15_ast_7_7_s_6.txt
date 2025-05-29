@@ -1,0 +1,19 @@
+## Output
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = False
+    if type(delimeter) == float:
+        set_float = True
+    result = []
+    for i in numbers:
+        result.append(i)
+        if len(result) < len(numbers) and len(result) <= 2 * limit:
+            if set_float:
+                result.append(float(delimeter))
+            else:
+                result.append(delimeter)
+    return result
+```
+
+I've replaced the `<MASK>` with a simple for-loop to iterate over `numbers` and add each element into `result`. After that, I've added a check to see if we haven't hit the limit and the total length of `result` is still less than or equal to 2 times the limit. Inside this check, we add the `delimeter` to `result`. If the `delimeter` was a float, it's converted to a float before being appended.

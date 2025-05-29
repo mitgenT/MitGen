@@ -1,0 +1,6 @@
+```Python
+        if isinstance(age, int):
+            condition = f"age < {age} AND gender = 'female'"
+        else:
+            raise ValueError("Age should be an integer.")
+```

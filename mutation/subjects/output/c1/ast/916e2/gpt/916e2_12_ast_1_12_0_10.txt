@@ -1,0 +1,8 @@
+for _ in range(int(input())):
+    n = int(input())
+    alice = list(map(int, input().split()))
+    bob = list(map(int, input().split()))
+    alice.sort()
+    bob.sort(reverse=True)
+    score = sum(alice) - sum(bob)
+    print(score)

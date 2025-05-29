@@ -1,0 +1,4 @@
+```python
+        elif char.islower():
+            result += char.upper()
+```

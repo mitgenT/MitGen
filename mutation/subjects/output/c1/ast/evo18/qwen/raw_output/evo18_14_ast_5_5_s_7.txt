@@ -1,0 +1,26 @@
+Based on the given docstring, we need to implement a loop that iterates through the `string` using a sliding window approach to check for each substring in the `substrings` list. Here's how the `<MASK>` part should be filled:
+
+```python
+    for sub in substrings:
+        start = 0
+```
+
+The complete code would be:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    if string:
+        for sub in substrings:
+            start = 0
+            while start < len(string) - 1:
+                pos = string.find(sub, start)
+                if pos != -1:
+                    result[sub] += 1
+                    start = pos + 1
+                else:
+                    break
+    return result
+```

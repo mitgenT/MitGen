@@ -1,0 +1,6 @@
+```python
+        if n == 0 or len(data1)!= len(data2):
+            return None
+
+        mean1 = sum(data1) / n
+```

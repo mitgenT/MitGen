@@ -1,0 +1,26 @@
+Here is the infilled code:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if not string or any(not sub for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+```
+
+In the given code snippet, the first if statement checks if the string is empty or if any of the substrings is empty. If either of these conditions is true, the function returns "Substrings cannot be empty".
+
+Then, the result is a dictionary where the keys are the substrings and the values are initialized to 0.
+
+The outer loop iterates over each substring, and for each substring, the inner loop starts from the 'start' index and finds the position of the substring in the string. If the substring is found, the count of the substring is incremented and the 'start' index is updated to the position after the found substring. This process continues until the substring is no longer found in the string.
+
+Finally, the function returns the result, which is a dictionary where the keys are the substrings and the values are the counts of each substring in the original string.

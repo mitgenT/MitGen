@@ -1,0 +1,1 @@
+std_deviation = math.sqrt(variance) if variance!= 0 else 0

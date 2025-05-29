@@ -1,0 +1,61 @@
+## Solution
+In the `get_all_students_with_fail_course` method, we need to ensure that the student is not being added to the `students` list multiple times. We can use the `set` data structure to store the student names. Then, convert the set back to a list when returning the result.
+
+```python
+def get_all_students_with_fail_course(self):
+    students = set()
+    for name, student in self.students.items():
+        for course, score in student['courses'].items():
+            if score < 60:
+                students.add(name)
+    return list(students)
+```
+
+Full program:
+
+```python
+class AssessmentSystem:
+    def __init__(self):
+        self.students = {}
+
+    def add_student(self, name, grade, major):
+        self.students[name] = {'name': name, 'grade': grade,'major': major, 'courses': {}}
+
+    def add_course_score(self, name, course, score):
+        if name in self.students:
+            self.students[name]['courses'][course] = score
+
+    def get_gpa(self, name):
+        if name in self.students:
+            grades = self.students[name]['courses'].values()
+            return sum(grades) / len(grades) if len(grades) > 0 else None
+
+    def get_all_students_with_fail_course(self):
+        students = set()
+        for name, student in self.students.items():
+            for course, score in student['courses'].items():
+                if score < 60:
+                    students.add(name)
+        return list(students)
+
+    def get_course_average(self, course):
+        total = 0
+        count = 0
+        for student in self.students.values():
+            if course in student['courses']:
+                score = student['courses'][course]
+                if score is not None:
+                    total += score
+                    count += 1
+        return total / count if count > 0 else None
+
+    def get_top_student(self):
+        top_student = None
+        top_gpa = 0
+        for name, student in self.students.items():
+            gpa = self.get_gpa(name)
+            if gpa is not None and gpa > top_gpa:
+                top_gpa = gpa
+                top_student = name
+        return top_student
+```

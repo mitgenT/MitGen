@@ -1,0 +1,10 @@
+In the 'get_course_average' function, <MASK> should be filled with the following code:
+
+```python
+if student['courses'].get(course) is not None:
+    score = student['courses'].get(course)
+    total += score
+    count += 1
+```
+
+This code checks if the course exists in the student's course dictionary and if it has a score assigned to it, then it adds the score to the 'total' and increases the 'count' by 1. The function will return the average of the course scores only when the course has at least one score assigned.

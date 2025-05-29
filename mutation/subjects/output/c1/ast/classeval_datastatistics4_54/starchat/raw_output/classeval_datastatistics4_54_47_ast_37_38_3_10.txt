@@ -1,0 +1,23 @@
+Infill <MASK> of the kurtosis method based on the docstring:
+
+```python
+    @staticmethod
+    def kurtosis(data):
+
+        n = len(data)
+        mean = sum(data) / n
+        std_dev = math.sqrt(sum((x - mean) ** 2 for x in data) / n)
+
+        if std_dev == 0:
+            return math.nan
+
+        fourth_moment = sum((x - mean) ** 4 for x in data) / n
+
+        if fourth_moment == 0:
+            return 0
+
+        kurtosis_value = (fourth_moment / std_dev ** 4) * 3
+
+        return kurtosis_value
+```
+This change checks if the fourth moment (kurtosis) is zero before performing the calculation, to prevent a division by zero error.

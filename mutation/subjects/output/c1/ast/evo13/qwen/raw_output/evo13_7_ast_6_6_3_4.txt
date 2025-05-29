@@ -1,0 +1,13 @@
+Based on the provided docstring, we want to calculate the greatest common divisor (GCD) of a list of integers and update `gcd` with the current GCD of `gcd` and `num`. If the GCD is 1, we should break out of the loop and return -1. Here's how to fill in the `<MASK>`:
+
+```python
+from typing import List
+def multiple_greatest_common_divisors(numbers: List[int]) -> int:
+    import math
+    gcd = numbers[0]
+    for num in numbers[1:]:
+        if gcd == 1:  # Check if GCD is 1 before updating
+            return -1
+        gcd = math.gcd(gcd, num)
+    return gcd
+```

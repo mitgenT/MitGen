@@ -1,0 +1,12 @@
+Based on the provided docstring, the code should iterate over the numbers from 0 to `n` and replace every `m`-th number with "Fizz". Since we're using 1-based indexing, we need to start the loop at 1. Here's how you can fill in the `<MASK>`:
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(1, n+1):
+        if (i % m == 0):
+            result.append("Fizz")
+        else:
+            result.append(str(i))
+    return ' '.join(result)
+```

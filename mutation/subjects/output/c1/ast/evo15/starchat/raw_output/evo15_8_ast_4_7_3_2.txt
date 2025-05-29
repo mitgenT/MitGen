@@ -1,0 +1,13 @@
+## Output
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(1, n+1):
+        if i % m == 0:
+            result.append("Fizz")
+        else:
+            result.append(str(i-1))
+    return''.join(result)
+```
+
+This modification adheres to the provided docstring by returning a space-delimited string containing the numbers from 0 to n, replacing every m-th number with "Fizz". The `range(1, n+1)` is used to make sure it follows the 1-based indexing for the m-th number. The `i - 1` is added inside the append function to convert the number from 1-based to 0-based indexing for the result list.

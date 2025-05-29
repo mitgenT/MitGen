@@ -1,0 +1,18 @@
+## Output
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos!= -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+```
+In this corrected code, the while condition is updated to `start < len(string) - 1` to prevent `string.find` from going beyond the string's length, thus avoiding a `IndexError`. Also, the conditions inside the while loop are correctly set to increment the count of each substring and move the `start` index forward when the substring is found. If the substring is not found, the loop is exited.

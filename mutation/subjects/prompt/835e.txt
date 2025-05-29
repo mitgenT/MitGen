@@ -1,0 +1,16 @@
+docstring:
+"""
+You are given a binary array of length 𝑛. You are allowed to perform one operation on it at most once. In an operation, you can choose any element and flip it: turn a 0 into a 1 or vice-versa.
+What is the maximum number of inversions the array can have after performing at most one operation?
+A binary array is an array that contains only zeroes and ones.
+The number of inversions in an array is the number of pairs of indices 𝑖,𝑗 such that 𝑖<𝑗 and 𝑎𝑖>𝑎𝑗.
+
+Input
+The input consists of multiple test cases. The first line contains an integer 𝑡 (1≤𝑡≤10^4) — the number of test cases. The description of the test cases follows.
+The first line of each test case contains an integer 𝑛 (1≤𝑛≤2⋅10^5) — the length of the array.
+The following line contains 𝑛 space-separated positive integers 𝑎1 , 𝑎2 ,..., 𝑎𝑛 (0≤𝑎𝑖≤1) — the elements of the array.
+It is guaranteed that the sum of 𝑛 over all test cases does not exceed 2⋅10^5.
+
+Output
+For each test case, output a single integer  — the maximum number of inversions the array can have after performing at most one operation.
+"""

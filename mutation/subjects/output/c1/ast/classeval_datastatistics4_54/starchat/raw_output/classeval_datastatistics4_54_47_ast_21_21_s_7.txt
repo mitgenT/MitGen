@@ -1,0 +1,4 @@
+```python
+    if std_deviation!= 0:
+        std_deviation = math.sqrt(variance / n)
+```

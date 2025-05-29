@@ -1,0 +1,14 @@
+```python
+        conn.commit()
+    def insert_into_database(self, table_name, data):
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+
+        for item in data:
+            insert_query = f"INSERT INTO {table_name} (name, age) VALUES (?,?)"
+            cursor.execute(insert_query, (item['name'], item['age']))
+
+        if not cursor.rowcount:
+            print("No rows were inserted.")
+```
+The `insert_into_database` method now includes a check to see if any rows were inserted (`cursor.rowcount`). If no rows were inserted (i.e., `cursor.rowcount` is 0), a message will be printed.

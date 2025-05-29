@@ -1,0 +1,5 @@
+delete_query = f"DELETE FROM {table_name} WHERE name =?"
+```python
+cursor.execute(delete_query, (name,))
+```
+After filling in the <MASK>, the code will delete rows from the specified table in the database that match the given name. In this case, it will delete all rows where the 'name' column equals the provided name parameter.

@@ -1,0 +1,11 @@
+```python
+    @staticmethod
+    def is_normal_distribution(data):
+        skewness = DataStatistics4.skewness(data)
+        kurtosis = DataStatistics4.kurtosis(data)
+
+        if abs(skewness) <= 1.96 and abs(kurtosis) <= 7.64:
+            return True
+        else:
+            return False
+```

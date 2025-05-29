@@ -1,0 +1,4 @@
+self.students[course] = score
+count += 1
+
+# Here, the infilling operation is in the get_course_average function, where I added two lines to calculate the total and count of scores for the given course, and then return the average score. The total is calculated by adding each score of the course to the current total, and the count is incremented by one for each score. Finally, the average score is calculated by dividing the total by the count. If there is no score available, it returns None.

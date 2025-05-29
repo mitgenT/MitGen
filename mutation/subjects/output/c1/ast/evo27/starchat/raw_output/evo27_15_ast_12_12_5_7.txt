@@ -1,0 +1,4 @@
+result += char.swapcase() if char.isalpha() else char
+
+# This line checks if the character is an alphabet and if it's at the special index. 
+# If both conditions are true, it swaps the case of the character using the swapcase() method. Otherwise, it simply adds the character to the result string.

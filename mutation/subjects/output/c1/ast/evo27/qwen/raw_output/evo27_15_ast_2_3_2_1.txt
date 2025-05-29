@@ -1,0 +1,43 @@
+Based on the provided docstring, we need to modify the given code such that if the character at `special_index` is uppercase, it remains unchanged if it's already lowercase, and vice versa. We also need to ensure proper handling when `special_index` is out of range. Here's how the `<MASK>` part should be filled:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    result = ""
+    # Handle special_index out of range using modulo operation
+    special_index %= len(string)
+
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.islower():
+                result += char.upper()
+            else:
+                result += char
+        else:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+    return result
+```
+
+Now the complete code with the infilled `<MASK>` is:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    result = ""
+    # Handle special_index out of range using modulo operation
+    special_index %= len(string)
+
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.islower():
+                result += char.upper()
+            else:
+                result += char
+        else:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+    return result
+```

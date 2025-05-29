@@ -1,0 +1,6 @@
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    """
+    Generate a string that consists of consecutive numbers from 0 to n (inclusive) separated by spaces, with every m-th number replaced by the word "Fizz", using 1-indexing for the replacement.
+    """
+    return ' '.join(result)

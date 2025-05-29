@@ -1,0 +1,6 @@
+```python
+            normalization_factor = sum(pdf_values)
+            pdf_values = [value / normalization_factor for value in pdf_values]
+```
+
+This will divide each PDF value by the sum of all PDF values, effectively normalizing the distribution. The normalization_factor is calculated before the loop since it does not depend on the current iteration variable. This will improve code efficiency.

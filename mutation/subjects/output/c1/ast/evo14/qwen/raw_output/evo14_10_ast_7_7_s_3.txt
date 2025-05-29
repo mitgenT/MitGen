@@ -1,0 +1,6 @@
+```python
+            prefix = string[:i]
+            suffix = string[j:]
+            if len(prefix) >= min_length and len(suffix) >= min_length and prefix not in suffix:
+                pairs.append((prefix, suffix))
+```

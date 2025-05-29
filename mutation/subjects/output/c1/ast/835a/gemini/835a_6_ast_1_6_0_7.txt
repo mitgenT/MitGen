@@ -1,0 +1,14 @@
+t = int(input())
+for _ in range(t):
+    a, b, c = list(map(int, input().split()))
+    if b > a and b > c:
+        b, max = c, b
+    elif c > a and c > b:
+        c, max = a, c
+    elif a > b and a > c:
+        a, max = b, a
+    if a > c and a < max:
+        a, b = c, a
+    if a > b and a < max:
+        a, b = b, a
+    print(b)

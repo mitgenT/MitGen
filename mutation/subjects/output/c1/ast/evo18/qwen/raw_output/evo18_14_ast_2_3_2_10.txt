@@ -1,0 +1,6 @@
+```python
+    if not all(sub for sub in substrings):
+        return "Substrings cannot be empty"
+    if not string:
+        return result
+```

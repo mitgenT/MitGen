@@ -1,0 +1,6 @@
+```Python
+if char.isupper():
+    result += char.lower()
+else:
+    result += char.upper()
+```

@@ -1,0 +1,23 @@
+from sys import stdin, stdout
+class Solution:
+    def BinaryInversions(self, n: int, bits: list[int]) -> int:
+        if not any(bits):
+            return n * (n - 1) // 2
+        # <missing code>
+        # dp[0] stores the maximum inversions when the previous element is 0
+        # dp[1] stores the maximum inversions when the previous element is 1
+        dp = [0] * 2
+        for bit in bits:
+            if bit:
+                dp[1] += 1
+                dp[0] = max(dp[0] + 1, dp[1])
+            else:
+                dp[0] += 1
+        return dp[1]
+
+sol = Solution()
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    bits = list(map(int, input().split()))
+    print(sol.BinaryInversions(n, bits))

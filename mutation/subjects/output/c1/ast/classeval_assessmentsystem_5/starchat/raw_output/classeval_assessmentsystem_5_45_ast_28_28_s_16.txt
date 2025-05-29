@@ -1,0 +1,5 @@
+for name in self.students:
+            course_scores = self.students[name]['courses']
+            if course in course_scores:
+                total += course_scores[course]
+                count += 1

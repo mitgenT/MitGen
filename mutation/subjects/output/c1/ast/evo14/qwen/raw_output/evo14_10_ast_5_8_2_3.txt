@@ -1,0 +1,7 @@
+```python
+    for i in range(n - min_length):
+        for j in range(i + min_length, n):
+            prefix = string[i:j]
+            suffix = string[j:]
+            pairs.append((prefix, suffix))
+```

@@ -1,0 +1,17 @@
+for _ in range(int(input())):
+    n = int(input())
+    alice = list(map(int, input().split()))
+    bob = list(map(int, input().split()))
+    alice.sort()
+    bob.sort()
+    alice_total = sum(alice)
+    bob_total = sum(bob)
+    alice_remaining = alice_total
+    bob_remaining = bob_total
+    max_score = alice_total - bob_total
+    for i in range(n):
+        alice_remaining -= alice[i]
+        bob_remaining -= bob[n-i-1]
+        score = alice_remaining - bob_remaining
+        max_score = max(max_score, score)
+    print(max_score)

@@ -1,0 +1,5 @@
+numerator = sum((data1[i] - mean1) * (data2[i] - mean2) for i in range(n))
+if n > 1:
+    denominator = math.sqrt(sum((data1[i] - mean1) ** 2 for i in range(n)) * sum((data2[i] - mean2) ** 2 for i in range(n)))
+
+return numerator / denominator if denominator!= 0 else 0

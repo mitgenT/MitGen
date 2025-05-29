@@ -1,0 +1,9 @@
+## Output
+```python
+def common(l1: list, l2: list, n: int):
+    common_list = [value for value in l1 if value in l2]
+    common_list.sort(key=lambda x: (-len(x), l1.index(x)))
+    return common_list[:n]
+```
+
+This updated function creates a new list `common_list` that contains only values present in both `l1` and `l2`. It then sorts this new list by decreasing length and, in case of a tie, by the index of the string in `l1`. Finally, it returns the `n` longest strings from this sorted list.

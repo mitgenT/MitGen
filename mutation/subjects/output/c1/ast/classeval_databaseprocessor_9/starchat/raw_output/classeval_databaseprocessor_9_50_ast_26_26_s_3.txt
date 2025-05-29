@@ -1,0 +1,6 @@
+```python
+if 'name' in item and 'age' in item:
+    cursor.execute(insert_query, (item['name'], item['age']))
+```
+
+This solution completes the 'insert_into_database' method by checking whether the item dictionary has both 'name' and 'age' keys before attempting to execute the SQL insert statement.

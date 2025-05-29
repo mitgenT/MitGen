@@ -1,0 +1,8 @@
+while(d>0 and c>0 and len(A)!=0):
+        c-=A.pop(0)
+        d-=1
+if c<=0:
+    print(d-1)
+else:
+    print("Impossible")
+    

@@ -1,0 +1,21 @@
+Here's the code with `<MASK>` filled in:
+
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    if min_length <= 0 or min_length > n:
+        raise ValueError("Minimum length must be greater than 0 and not exceed the string length")
+    pairs = []
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                pairs.append((string[:i], string[j:]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```
+
+Explanation:
+- The first `if` statement checks if the minimum length is valid, raising a `ValueError` if it's not.
+- The second `if` statement is not necessary because we're directly entering the loop if the condition is false, so it's removed.
+- The `pairs` list is initialized outside the loops for better readability.

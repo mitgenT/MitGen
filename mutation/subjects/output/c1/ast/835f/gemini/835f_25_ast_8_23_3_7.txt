@@ -1,0 +1,35 @@
+
+for _ in range (int(input())):
+    n,c,d=map(int,input().split())
+    A=list(map(int,input().split()))
+    A=sorted(A)[::-1]
+    if sum(A[:d])>=c:
+        print("Infinity")
+    else:
+        l=0
+        r=c
+        ans=-1
+        for _ in range(100):
+            k=(l+r)//2
+            coins=0
+            index=0
+    
+            for i in range(d):
+                for j in range(index,n):
+                    if(j%(k+1)==k):
+                        break
+                    coins+=A[j]
+                    index+=1
+                if(coins>=c):
+                    ans=k
+                    r=k-1
+                    break
+            if coins<c:
+                l=k+1
+    
+        if ans!=-1:
+            print(ans)
+        else:
+            print("Impossible")
+
+        

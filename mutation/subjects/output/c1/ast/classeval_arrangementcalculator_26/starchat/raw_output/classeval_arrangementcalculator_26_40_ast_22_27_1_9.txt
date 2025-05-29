@@ -1,0 +1,41 @@
+```python
+import itertools
+
+
+class ArrangementCalculator:
+    def __init__(self, datas):
+        self.datas = datas
+
+    @staticmethod
+    def count(n, m=None):
+        if m is None or n == m:
+            return ArrangementCalculator.factorial(n)
+        else:
+            return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)
+
+    @staticmethod
+    def count_all(n):
+        total = 0
+        for i in range(1, n + 1):
+            total += ArrangementCalculator.count(n, i)
+        return total
+
+    def select(self, m=None):
+        if m is None:
+            m = len(self.datas)
+        return [list(i) for i in itertools.permutations(self.datas, m)]
+
+    def select_all(self):
+        result = []
+        for i in range(1, len(self.datas) + 1):
+            result.extend(self.select(i))
+        return result
+
+    @staticmethod
+    def factorial(n):
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
+```
+In the above code, I added the missing implementation of the `select()` method by utilizing the `permutations()` function from the `itertools` module. The `select()` method now selects'm' items from the given 'datas', where'm' is the parameter passed to the method (default value is the total count of 'datas'). If'm' is not provided, it selects all items by default. The resultant arrangements are returned as a list of lists.

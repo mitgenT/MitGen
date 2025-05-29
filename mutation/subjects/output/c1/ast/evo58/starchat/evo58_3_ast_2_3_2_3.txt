@@ -1,0 +1,5 @@
+def common(l1: list, l2: list, n: int):
+    common_strings = list(set(l1) & set(l2))
+    common_strings.sort(key=len)
+    common_strings.sort(key=l1.index)
+    return common_strings[:n]

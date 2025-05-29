@@ -1,0 +1,7 @@
+if cursor.rowcount > 0:
+    print(f"{cursor.rowcount} rows inserted successfully")
+
+# Note: Consider using parameterized queries to prevent SQL injection attacks
+# Instead of using f-strings or concatenations in the execute method,
+# you should pass a tuple of values to the execute method, which will automatically
+# escape the input and prevent SQL injection attacks.

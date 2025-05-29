@@ -1,0 +1,7 @@
+for t in range(int(input())):
+    n = int(input())
+    s = input()
+    ans = set()
+    for ch in s:
+        ans.add(ch)
+    print(len(ans))

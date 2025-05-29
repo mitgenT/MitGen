@@ -1,0 +1,20 @@
+Based on the given docstring, the `how_many_times` function should find the occurrences of each substring and update the count in the `result` dictionary. Here's how you can fill in the `<MASK>` parts in the code:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - len(sub):  # Adjust the condition to avoid index out of range
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1  # Move the start position after the found substring
+            else:
+                break
+    return result
+```
+
+Now, the code correctly increments the count for each occurrence of a substring and handles the overlapping cases.

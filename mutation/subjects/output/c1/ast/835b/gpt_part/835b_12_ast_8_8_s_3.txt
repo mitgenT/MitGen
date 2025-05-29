@@ -1,0 +1,7 @@
+n = int(input())
+for i in range(n):
+    a = int(input())
+    s = input()
+    for i in range(len(s)):
+        a = max(a, ord(s[i]) - 96)
+    print(a)

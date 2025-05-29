@@ -1,0 +1,20 @@
+```python
+def change_base(x: str, base: int, new_base: int):
+    try:
+        base_10 = int(x, base)
+    except ValueError:
+        return "invalid base"
+    new_base_num = ""
+    if base_10 == 0:
+        return '0'
+    while base_10 > 0:
+        remainder = base_10 % new_base
+        base_10 -= new_base
+        if 0 <= remainder <= 9:
+            new_base_num = str(remainder) + new_base_num
+        else:
+            new_base_num = chr(remainder + 55) + new_base_num 
+    return new_base_num
+```
+
+In the given code, `<MASK>` is filled with `remainder = base_10 % new_base` to calculate the remainder during the conversion process. This ensures that the correct digit value is assigned to `remainder` before comparing it with the digits 0 to 9 and handling uppercase letters for digits above 9.

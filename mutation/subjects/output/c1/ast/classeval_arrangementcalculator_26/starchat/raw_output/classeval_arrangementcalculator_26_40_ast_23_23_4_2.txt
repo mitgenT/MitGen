@@ -1,0 +1,6 @@
+```python
+    if m is None or n == m:
+        result = itertools.permutations(self.datas, n)
+```
+
+In this solution, I infilled the <MASK> by adding condition checks in the `select` method of the `ArrangementCalculator` class, and returning `itertools.permutations(self.datas, n)` when `m` is `None` or equals to `n`. The `select_all` method then extends the `result` with `self.select(i)` for each `i` ranging from 1 to `len(self.datas) + 1`.

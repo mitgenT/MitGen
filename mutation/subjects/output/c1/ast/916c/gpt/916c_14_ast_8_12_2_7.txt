@@ -1,0 +1,18 @@
+for _ in range(int(input())):
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    result = 0
+    maxB = 0
+    sum = 0
+    
+    # calculate the maximum possible total experience
+    for i in range(n):
+        if i <= k:
+            temp = (k-i)//n
+            sum += temp * a[i]
+            if (k-i) % n != 0:
+                sum += max(b[i], b[(k-i)%n-1])
+            maxB = max(maxB, sum)
+    
+    print(result)

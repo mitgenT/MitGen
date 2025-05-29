@@ -1,0 +1,124 @@
+from wrapt_timeout_decorator import *
+
+<generated_code_here>
+
+import numpy as np
+from numpy import nan, inf # for some outputs.
+import sys
+
+sys.set_int_max_str_digits(0)
+
+from enum import IntEnum, auto
+
+def is_floats(x) -> bool:
+    # check if it is float; List[float]; Tuple[float]
+    # TODO: search for any close floats? (other data structures)
+    if isinstance(x, float):
+        return True
+    if isinstance(x, (list, tuple)):
+        return all(isinstance(i, float) for i in x)
+    if isinstance(x, np.ndarray):
+        return x.dtype == np.float64 or x.dtype == np.float32
+    return False
+
+
+class DataType(IntEnum):
+    Float = auto()
+    Bool = auto()
+    Int = auto()
+    Str = auto()
+    Null = auto()
+    Tuple = auto()
+    List = auto()
+    Dict = auto()
+    Set = auto()
+    Type = auto()
+    Unknown = auto()
+
+
+def get_type(x):
+    if x is None:
+        return DataType.Null
+    elif isinstance(x, bool):
+        return DataType.Bool
+    elif isinstance(x, int):
+        return DataType.Int
+    elif isinstance(x, str):
+        return DataType.Str
+    elif is_floats(x):
+        return DataType.Float
+    elif isinstance(x, tuple):
+        return DataType.Tuple
+    elif isinstance(x, list):
+        return DataType.List
+    elif isinstance(x, dict):
+        return DataType.Dict
+    elif isinstance(x, set):
+        return DataType.Set
+    elif isinstance(x, type):
+        return DataType.Type
+    else:
+        return DataType.Unknown
+
+
+def is_equal(x, y) -> tuple[bool, str]:
+    x_type, y_type = get_type(x), get_type(y)
+    if x_type != y_type:
+        return False, "Type mismatch: {} vs {}".format(str(x_type), str(y_type))
+
+    if x_type in [DataType.Int, DataType.Bool, DataType.Null, DataType.Str, DataType.Set, DataType.Type]:
+        if x == y:
+            return True, None
+        try:
+            error_msg = "INT/BOOL/NULL/ Value mismatch: {} vs {}".format(repr(x)[:300], repr(y)[:300])
+        except:
+            error_msg = "Value mismatch: too large for display"
+        return False, error_msg
+    elif x_type == DataType.Float:
+        if np.allclose(x, y, equal_nan=True, atol=1e-6): # guard against nan
+            return True, None
+        else:
+            return False, "FLOAT Value mismatch: {} vs {}".format(x, y)
+    elif x_type in [DataType.List, DataType.Tuple]:
+        if len(x) != len(y):
+            return False, "Length mismatch: {} vs {}".format(len(x), len(y))
+        for i in range(len(x)):
+            equal, msg = is_equal(x[i], y[i])
+            if not equal:
+                return False, msg
+        return True, None
+    elif x_type == DataType.Dict:
+        if len(x) != len(y):
+            return False, "Length mismatch: {} vs {}".format(len(x), len(y))
+        for k, v in x.items():
+            if k not in y:
+                return False, "DICT Value mismatch: key {} in {} but not in {}".format(k, x, y)
+            equal, msg = is_equal(v, y[k])
+            if not equal:
+                return False, msg
+        return True, None
+    else:
+        try:
+            if x == y:  # e.g., object comparison
+                return True, None
+            else:
+                return False, "ELSE Value mismatch: {} vs {}".format(x, y)
+        except:
+            return False, "Unsupported type: {} <-- {}".format(x_type, type(x))
+
+def check(candidate):
+    inputs = [eval(f"[{i}]") for i in ['"ACEDY", [\'a\', \'e\', \'d\']', '"ACEDY", [\'A\', \'E\', \'D\']', '"ACEDY"', '"abcde"', '"abcdefghijklmnopqrstuvwxyz", [\'a\', \'e\', \'i\', \'o\', \'u\']', '"AEIOUYXYZ", [\'A\', \'E\', \'I\', \'O\', \'U\', \'Y\']', '"aeiouyxyz", [\'a\', \'e\', \'i\', \'o\', \'u\', \'y\']', '"ZyZyZyZyZy", [\'y\', \'z\']', '"", [\'a\', \'e\', \'i\', \'o\', \'u\']', '"", []', '"MIXEDcaseVOWELS", [\'a\', \'E\', \'i\', \'O\', \'u\', \'Y\']', '"MIXEDcaseVOWELS", [\'a\', \'e\', \'i\', \'o\', \'u\', \'y\']', '"MIXEDcaseVOWELS"', '"abcdefghijklmnopqrstuvwxyz"', '"ABCDEFGHIJKLMNOPQRSTUVWXYZ"', '"1234567890", [\'1\', \'2\', \'3\']', '"1234567890"', '"Special @#$% Characters", [\'@\', \'#\', \'$\', \'%\']', '"Special @#$% Characters"', '"abcdefghijklmnopqrstuvwxyz", [\'a\', \'e\', \'i\', \'o\', \'u\', \'y\']', '"ABCDEFGHIJKLMNOPQRSTUVWXYZ", [\'A\', \'E\', \'I\', \'O\', \'U\', \'Y\']', '"abcdefghijklmnopqrstuvwxyz"', '"ABCDEFGHIJKLMNOPQRSTUVWXYZ"', '"The Quick Brown Fox Jumps Over The Lazy Dog", [\'a\', \'e\', \'i\', \'o\', \'u\', \'y\']', '"THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG", [\'A\', \'E\', \'I\', \'O\', \'U\', \'Y\']', '"The Quick Brown Fox Jumps Over The Lazy Dog"', '"THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG"', '"th3 qu1ck brown f0x jump5 0v3r th3 lazy d0g", [\'0\', \'1\', \'3\', \'5\']', '"TH3 QU1CK BROWN F0X JUMP5 0V3R TH3 LAZY D0G", [\'0\', \'1\', \'3\', \'5\']', '"1234567890", [\'1\', \'3\', \'5\', \'7\', \'9\']', '"!@#$%^&*()", [\'$\', \'%\', \'&\', \'(\', \')\']', '"HELLOworld"', '"1234567890"', '"!@#$%^&*()"', '"Y", [\'A\', \'E\', \'D\']', '"aY", [\'A\', \'E\', \'D\']', '"abY", [\'A\', \'E\', \'D\']', '"Y"', '"aY"', '"abY"', '"Y", [\'y\']', '"aY", [\'y\']', '"abY", [\'y\']', '"ACEDY", [\'y\']', '"", [\'y\']', '"", [\'A\', \'E\', \'D\']', '"abcde", [\'y\', \'b\', \'c\']', '"AaEeIiOoUuYy", [\'A\', \'E\', \'I\', \'O\', \'U\', \'Y\']', '"aaaaaaa"', '"zzzzzzz"', '"AeIoUy"', '"AEIOUY", [\'Y\']', '"VWXYZ", [\'V\', \'W\', \'X\', \'Z\']', '"MixedCasE", [\'e\', \'i\', \'d\', \'C\', \'A\']', '"NoVowelsHere", [\'b\', \'c\', \'d\', \'g\']', '"EmptyString", []', '"", [\'a\']', '"y", [\'a\', \'e\', \'i\', \'o\', \'u\']', '"Y", [\'a\', \'e\', \'i\', \'o\', \'u\']', '"Y", [\'A\', \'E\', \'I\', \'O\', \'U\']', '"Y"', '"y"', '"YXZ", [\'Y\', \'X\', \'Z\']', '"yxz", [\'y\', \'x\', \'z\']', '"12345", [\'1\', \'2\', \'3\']', '"!@#$%", [\'!\', \'@\', \'#\']', '"special characters ?!@#$%"', '"LongStringWithAllAlphabetCharacters", [\'a\', \'b\', \'c\', \'d\', \'e\', \'f\', \'g\', \'h\', \'i\', \'j\', \'k\', \'l\', \'m\', \'n\', \'o\', \'p\', \'q\', \'r\', \'s\', \'t\', \'u\', \'v\', \'w\', \'x\', \'y\', \'z\']']]
+    outputs = [3, 3, 3, 2, 5, 7, 7, 10, 0, 0, 6, 6, 6, 5, 5, 3, 0, 4, 6, 6, 6, 5, 5, 12, 12, 11, 11, 8, 8, 5, 5, 3, 0, 0, 0, 1, 1, 1, 2, 2, 1, 1, 1, 1, 0, 0, 2, 12, 7, 0, 6, 1, 4, 6, 0, 0, 0, 0, 0, 0, 1, 1, 3, 3, 3, 3, 6, 35]
+    to_output = []
+    for i, (inp, exp) in enumerate(zip(inputs, outputs)):
+        try:
+            to_output.append((i,compute_output(candidate,inp)))
+        except:
+            to_output.append((i,"Exception"))
+    print(f"Final output of subject for prioritization is:::::{to_output}")
+
+@timeout(5)
+def compute_output(candidate,inp):
+    return candidate(*inp)
+    
+check(vowels_count)

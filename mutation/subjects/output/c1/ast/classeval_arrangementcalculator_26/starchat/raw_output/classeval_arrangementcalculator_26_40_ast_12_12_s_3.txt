@@ -1,0 +1,2 @@
+if m > n:
+    raise ValueError("The number of chosen items can't be greater than the total number of items.")

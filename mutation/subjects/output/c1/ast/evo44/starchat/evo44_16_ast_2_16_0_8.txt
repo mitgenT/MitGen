@@ -1,0 +1,14 @@
+def change_base(x: str, base: int, new_base: int):
+    if any(c not in string.digits + string.ascii_uppercase[:base-10] for c in x):
+        return "invalid base"
+    num = int(x, base)
+    if new_base == 10:
+        return str(num)
+    elif new_base == 16:
+        return hex(num).upper()[2:]
+    else:
+        res = ''
+        while num > 0:
+            res = string.ascii_uppercase[num % new_base] + res
+            num //= new_base
+        return res

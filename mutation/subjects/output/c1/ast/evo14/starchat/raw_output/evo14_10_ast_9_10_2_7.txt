@@ -1,0 +1,14 @@
+## Output
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                pairs.append((string[:i], string[j:]))
+    pairs.sort(key=lambda x: (len(x[0] + x[1]), x))
+```
+
+In this solution, I've added a line to sort the pairs based on their lengths (prefix+suffix) and lexicographically. The sort is done using the `sort()` method with a custom key function, which takes a tuple `(len(x[0] + x[1]), x)`. The `len(x[0] + x[1])` part determines the sorting based on the lengths, and the `x` part ensures a secondary sort based on lexicographic order in case of equal lengths.

@@ -1,0 +1,3 @@
+```
+            result.append(float(numbers[i]))
+```

@@ -1,0 +1,14 @@
+
+n=int(input())
+a=0
+for i in range(n):
+            a=int(input())
+            s=input()
+            for i in range(len(s)):
+                        alphabet = set()
+                        
+                        for i in range(len(s)):
+                            alphabet.add(s[i])
+            print(a-96)
+
+            

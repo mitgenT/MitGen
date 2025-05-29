@@ -1,0 +1,12 @@
+```python
+    search_query = f"SELECT * FROM {table_name} WHERE name =?"
+    cursor.execute(search_query, (name,))
+
+    result = cursor.fetchall()
+
+    conn.close()
+
+    return result
+```
+
+In the given output, the <MASK> has been replaced with the necessary SQL query to fetch all records that match a specified name from the search_database method. In the code, after defining the search_query and executing it with the given name, I fetch all the results using the fetchall() method and store it in the result variable. Finally, I close the database connection and return the result.

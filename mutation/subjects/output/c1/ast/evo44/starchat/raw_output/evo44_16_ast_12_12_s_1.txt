@@ -1,0 +1,22 @@
+## Output
+
+```python
+def change_base(x: str, base: int, new_base: int):
+    try:
+        base_10 = int(x, base)
+    except ValueError:
+        return "invalid base"
+    new_base_num = ""
+    if base_10 == 0:
+        return '0'
+    while base_10 > 0:
+        remainder = base_10 % new_base
+        base_10 -= new_base
+        if remainder < 10:
+            new_base_num = str(remainder) + new_base_num
+        else:
+            new_base_num = chr(remainder + 55) + new_base_num
+    return new_base_num
+```
+
+In the given code, I filled the `<MASK>` section correctly to handle the conversion to the new base. The condition checks whether the remainder is less than 10. If it is, it converts the remainder to a string and concatenates it to the new base number string. Otherwise, it converts the remainder to the corresponding character using the ASCII value by adding 55 and concatenates it to the new base number string.

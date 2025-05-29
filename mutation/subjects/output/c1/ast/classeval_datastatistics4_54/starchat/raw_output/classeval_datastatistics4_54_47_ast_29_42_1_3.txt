@@ -1,0 +1,45 @@
+## Given code:
+```python
+import math
+
+class DataStatistics4:
+
+    @staticmethod
+    def correlation_coefficient(data1, data2):
+        n = len(data1)
+        mean1 = sum(data1) / n
+        mean2 = sum(data2) / n
+
+        numerator = sum((data1[i] - mean1) * (data2[i] - mean2) for i in range(n))
+        denominator = math.sqrt(sum((data1[i] - mean1) ** 2 for i in range(n))) * math.sqrt(sum((data2[i] - mean2) ** 2 for i in range(n)))
+
+        return numerator / denominator if denominator!= 0 else 0
+    
+    @staticmethod
+    def skewness(data):
+        n = len(data)
+        mean = sum(data) / n
+        variance = sum((x - mean) ** 2 for x in data) / n
+        std_deviation = math.sqrt(variance)
+
+        skewness = sum((x - mean) ** 3 for x in data) * n / ((n - 1) * (n - 2) * std_deviation ** 3) if std_deviation!= 0 else 0
+
+        return skewness
+    
+    @staticmethod
+    def kurtosis(data):
+        n = len(data)
+        mean = sum(data) / n
+        variance = sum((x - mean) ** 2 for x in data) / n
+        std_deviation = math.sqrt(variance)
+
+        kurtosis = sum((x - mean) ** 4 for x in data) / (n * (variance ** 2)) - 3 if variance!= 0 else 0
+
+        return kurtosis
+    
+    @staticmethod
+    def pdf(data, mu, sigma):
+        pdf_values = [1 / (sigma * math.sqrt(2 * math.pi)) * math.exp(-0.5 * ((x - mu) / sigma) ** 2) for x in data]
+        return pdf_values
+```
+This solution correctly fills in the missing implementation of kurtosis in the given code by calculating it based on the input data list, list, mean, variance, and standard deviation. It also implements the pdf (probability density function) based on the input data list, mean, and standard deviation.

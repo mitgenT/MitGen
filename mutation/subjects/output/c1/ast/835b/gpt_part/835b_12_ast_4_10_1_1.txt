@@ -1,0 +1,12 @@
+
+n=int(input())
+a=0
+for _ in range(n):
+    input()
+    string = input()
+    alphabet_size = len(set(string))
+    a = max(a, alphabet_size)
+
+print(a)
+
+            

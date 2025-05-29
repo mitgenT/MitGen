@@ -1,0 +1,29 @@
+Based on the provided docstring and given code, the `<MASK>` in this case is the code snippet which counts the number of occurrences of each substring. The code snippet should add the count to the respective substring in the `result` dictionary and advance the `start` position to the index next to where the substring was found.
+
+Here is the completed program:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += string.count(sub, pos, pos+len(sub))
+                start = pos + 1
+            else:
+                break
+    return result
+```
+
+You can test this function with the provided examples:
+
+```python
+print(how_many_times('', ['a']))  # {'a': 0}
+print(how_many_times('aaa', ['a', 'a']))  # {'a': 6}
+print(how_many_times('aaaa', ['aa', 'a']))  # {'aa': 3, 'a': 4}
+print(how_many_times('abcabc', ['a', 'b', 'c']))  # {'a': 2, 'b': 2, 'c': 2}
+```

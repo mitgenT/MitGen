@@ -1,0 +1,20 @@
+Here's how you can infill the `<MASK>` sections in the given code:
+
+```python
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+    vowels = 'aeiouAEIOU'
+    longest_substring = None
+    longest_substring_index = None
+    if strings:  # Check if the input list is not empty
+        for i, string in enumerate(strings):  # Iterate through each string in the list
+            substrings = [string[j:] for j in range(len(string)) if string[j].lower() in vowels]  # Convert to lowercase for case-insensitivity
+            if substrings:
+                max_substring = max(substrings, key=len)
+                if longest_substring is None or len(max_substring) == len(longest_substring):
+                    longest_substring = max_substring
+                    longest_substring_index = i
+    return longest_substring, longest_substring_index
+```
+
+Now, the `<MASK>` sections have been replaced with the correct logic to check for an empty list and iterate through the strings, considering case-insensitivity.

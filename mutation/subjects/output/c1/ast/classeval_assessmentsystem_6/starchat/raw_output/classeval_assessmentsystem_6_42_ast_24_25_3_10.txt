@@ -1,0 +1,59 @@
+Here is the completed code:
+
+```python
+class AssessmentSystem:
+    def __init__(self):
+        self.students = {}
+
+    def add_student(self, name, grade, major):
+        self.students[name] = {'name': name, 'grade': grade,'major': major, 'courses': {}}
+
+    def add_course_score(self, name, course, score):
+        if name in self.students:
+            self.students[name]['courses'][course] = score
+
+    def get_gpa(self, name):
+        if name in self.students:
+            scores = self.students[name]['courses'].values()
+            if scores:
+                return sum(scores) / len(scores)
+        return None
+
+    def get_all_students_with_fail_course(self):
+        students = []
+        for name, student in self.students.items():
+            for course, score in student['courses'].items():
+                if score < 60:
+                    students.append(name)
+                    break
+        return students
+
+    def get_course_average(self, course):
+        total = 0
+        count = 0
+        for student in self.students.values():
+            if course in student['courses']:
+                score = student['courses'][course]
+                if score is not None:
+                    total += score
+                    count += 1
+        return total / count if count > 0 else None
+
+    def get_top_student(self):
+        top_student = None
+        top_gpa = 0
+        for name, student in self.students.items():
+            gpa = self.get_gpa(name)
+            if gpa is not None and gpa > top_gpa:
+                top_gpa = gpa
+                top_student = name
+        return top_student
+```
+I made the following changes to complete the code:
+
+- I added checks for empty course scores in the `get_gpa` function.
+- Initialized `total` and `count` to 0 in the `get_course_average` function.
+- Used the `self.get_gpa(name)` function in the `get_top_student` function.
+- Added an extra check for `None` when calculating the average in `get_course_average` function.
+
+This code now should meet all the criteria outlined in the docstring.

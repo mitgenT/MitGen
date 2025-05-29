@@ -1,0 +1,19 @@
+The correct way to fill in the `<MASK>` in the given code is to sort the `pairs` list based on the length of the prefixes and then lexicographically if lengths are equal. Here's the filled-in code:
+
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                pairs.append((string[:i], string[j:]))
+    
+    # Sort the pairs based on length and lexicographically if lengths are equal
+    pairs.sort(key=lambda x: (len(x[0]), x[0]+x[1]), reverse=True)
+    
+    return pairs
+```
+
+This code first generates all the valid prefix-suffix pairs, then sorts them using a lambda function as the key for sorting, which sorts by length in descending order and lexicographically if needed. The `reverse=True` argument sorts the pairs in ascending order of length.

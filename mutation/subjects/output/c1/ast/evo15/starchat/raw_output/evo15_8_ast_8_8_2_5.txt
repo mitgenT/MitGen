@@ -1,0 +1,15 @@
+## Output
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        else:
+            result.append(str(i))
+    if not result:
+        return '0'  # handle the case when n=0
+    else:
+        return''.join(result)
+```
+Here, the `<MASK>` is filled with `return '0'` in the case when `n=0` to handle the edge case, and with `return''.join(result)` for returning the space-delimited string containing the sequence.

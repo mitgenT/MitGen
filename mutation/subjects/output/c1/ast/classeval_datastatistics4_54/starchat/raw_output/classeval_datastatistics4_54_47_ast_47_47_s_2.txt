@@ -1,0 +1,7 @@
+```python
+    if all(isinstance(i, (int, float)) for i in data):  
+        return pdf_values  
+    else:  
+        raise ValueError("Data must be numeric")  
+```
+In this solution, we added a check to ensure all elements in the given data are numbers. If the data contains any non-numeric values, we raise a ValueError. This is a common error handling strategy for statistical computations. If the data is numeric, we calculate the PDF values using the provided formula and return the result.

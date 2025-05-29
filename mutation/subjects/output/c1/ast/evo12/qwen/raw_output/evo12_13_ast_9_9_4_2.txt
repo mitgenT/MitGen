@@ -1,0 +1,7 @@
+```python
+            max_substring = ''
+            for sub in substrings:
+                if len(sub) > len(max_substring):
+                    max_substring = sub
+    ```
+```

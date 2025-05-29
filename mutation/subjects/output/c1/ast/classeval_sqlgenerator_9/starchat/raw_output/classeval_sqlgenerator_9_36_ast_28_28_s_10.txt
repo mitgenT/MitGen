@@ -1,0 +1,6 @@
+sql += ";"
+
+if condition is not None:
+    sql += f" WHERE {condition}"
+
+return sql;

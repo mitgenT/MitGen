@@ -1,0 +1,4 @@
+if remainder <= 9:
+    new_base_num = str(remainder) + new_base_num
+else:
+    new_base_num = chr(ord('A') + remainder - 10) + new_base_num

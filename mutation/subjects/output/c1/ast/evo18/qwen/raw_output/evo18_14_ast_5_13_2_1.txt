@@ -1,0 +1,8 @@
+```python
+    for index in range(len(string)):
+        for sub in substrings:
+            if string[index:].startswith(sub):
+                count = string.count(sub, index)
+                result[sub] += count
+    return result
+```

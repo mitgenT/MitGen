@@ -1,0 +1,12 @@
+self.students[name]['courses'].get(course) is not None:
+
+```Python
+    def get_course_average(self, course):
+        total = 0
+        count = 0
+        for student in self.students.values():
+            if self.students[student]['courses'].get(course) is not None:
+                total += self.students[student]['courses'][course]
+                count += 1
+        return total / count if count > 0 else None
+```

@@ -1,0 +1,8 @@
+```python
+if char == char.swapcase():
+    char = char
+else:
+    char = char.swapcase()
+result += char
+```
+The 'char.swapcase()' function in Python switches lowercase characters to uppercase and vice versa. The added condition checks whether the character would remain unchanged after flipping, in which case it adds the character as it is, otherwise, it adds the flipped character. If'special_index' points at a position that after modulo operation remains unchanged, no additional checks are needed.

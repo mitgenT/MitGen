@@ -1,0 +1,6 @@
+```python
+        if len(data) < 3:
+            return 0
+```
+
+Here, I added `len(data) < 3` as the condition to handle the case when the number of elements in the data for skewness calculation is less than 3, as it is not defined. For kurtosis, I didn't have to add any condition as we are considering all values in the data.

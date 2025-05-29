@@ -1,0 +1,185 @@
+import inspect
+
+
+<generated_code_here>
+
+
+class Statistics3TestMedian:
+    def median(self):
+        statistics3 = Statistics3()
+        return statistics3.median([1, 2, 3, 4])
+
+    def median_2(self):
+        statistics3 = Statistics3()
+        return statistics3.median([1, 2, 3, 4, 5])
+
+    def median_3(self):
+        statistics3 = Statistics3()
+        return statistics3.median([1, 2, 3, 4, 5, 6])
+
+    def median_4(self):
+        statistics3 = Statistics3()
+        return statistics3.median([1, 2, 3, 4, 5, 6, 7])
+
+    def median_5(self):
+        statistics3 = Statistics3()
+        return statistics3.median([1, 2, 3, 4, 5, 6, 7, 8])
+
+class Statistics3TestMode:
+    def mode(self):
+        statistics3 = Statistics3()
+        return statistics3.mode([1, 2, 3, 3])
+
+    def mode_2(self):
+        statistics3 = Statistics3()
+        return statistics3.mode([1, 2, 3, 3, 4, 4])
+
+    def mode_3(self):
+        statistics3 = Statistics3()
+        return statistics3.mode([1, 2, 3, 3, 4, 4, 5])
+
+    def test_mode_4(self):
+        statistics3 = Statistics3()
+        return statistics3.mode([1, 2, 3, 3, 4, 4, 5, 5])
+
+    def mode_5(self):
+        statistics3 = Statistics3()
+        return statistics3.mode([1, 2, 3, 3, 4, 4, 5, 5, 6])
+
+class Statistics3TestCorrelation:
+    def correlation(self):
+        statistics3 = Statistics3()
+        return statistics3.correlation([1, 2, 3], [4, 5, 6])
+
+    def correlation_2(self):
+        statistics3 = Statistics3()
+        return statistics3.correlation([1, 2, 3, 4], [5, 6, 7, 8])
+
+    def correlation_3(self):
+        statistics3 = Statistics3()
+        return statistics3.correlation([1, 2, 3], [1,2,3])
+
+    def correlation_4(self):
+        statistics3 = Statistics3()
+        return [statistics3.correlation([1, 1,1], [2,2,2])]
+
+    def correlation_5(self):
+        statistics3 = Statistics3()
+        return [statistics3.correlation([1, 1,1], [1,1,1])]
+
+class Statistics3TestMean:
+    def mean(self):
+        statistics3 = Statistics3()
+        return statistics3.mean([1, 2, 3])
+
+    def mean_2(self):
+        statistics3 = Statistics3()
+        return [statistics3.mean([])]
+
+    def mean_3(self):
+        statistics3 = Statistics3()
+        return statistics3.mean([1, 1, 1])
+
+    def mean_4(self):
+        statistics3 = Statistics3()
+        return statistics3.mean([1, 1, 1, 1])
+
+    def mean_5(self):
+        statistics3 = Statistics3()
+        return statistics3.mean([1, 1, 1, 1, 1])
+
+class Statistics3TestCorrelationMatrix:
+    def correlation_matrix(self):
+        statistics3 = Statistics3()
+        return statistics3.correlation_matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+    def correlation_matrix_2(self):
+        statistics3 = Statistics3()
+        return statistics3.correlation_matrix([[1, 2, 3], [4, 5, 6]])
+
+    def correlation_matrix_3(self):
+        statistics3 = Statistics3()
+        return statistics3.correlation_matrix([[1, 2, 3]])
+
+    def correlation_matrix_4(self):
+        statistics3 = Statistics3()
+        return statistics3.correlation_matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11,12]])
+
+    def correlation_matrix_5(self):
+        statistics3 = Statistics3()
+        return statistics3.correlation_matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11,12], [13, 14, 15]])
+
+class Statistics3TestStandardDeviation:
+    def standard_deviation(self):
+        statistics3 = Statistics3()
+        return statistics3.standard_deviation([1, 2, 3])
+
+    def standard_deviation_2(self):
+        statistics3 = Statistics3()
+        return statistics3.standard_deviation([1, 1, 1])
+
+    def standard_deviation_3(self):
+        statistics3 = Statistics3()
+        return statistics3.standard_deviation([1, 1])
+
+    def standard_deviation_4(self):
+        statistics3 = Statistics3()
+        return statistics3.standard_deviation([1, 1, 1, 1])
+
+    def standard_deviation_5(self):
+        statistics3 = Statistics3()
+        return statistics3.standard_deviation([1, 1, 2, 1, 4])
+
+
+class Statistics3TestZScore:
+    def z_score(self):
+        statistics3 = Statistics3()
+        return statistics3.z_score([1, 2, 3, 4])
+
+    def z_score_2(self):
+        statistics3 = Statistics3()
+        return [statistics3.z_score([1, 1, 1, 1])]
+
+    def z_score_3(self):
+        statistics3 = Statistics3()
+        return [statistics3.z_score([1])]
+
+    def z_score_4(self):
+        statistics3 = Statistics3()
+        return statistics3.z_score([1, 1, 2, 3])
+
+    def z_score_5(self):
+        statistics3 = Statistics3()
+        return [statistics3.z_score([1, 1, 1, 1, 1])]
+
+
+class Statistics3TestMain:
+    def main(self):
+        statistics3 = Statistics3()
+        return [statistics3.median([1, 2, 3, 4]), statistics3.mode([1, 2, 3, 3]), statistics3.correlation([1, 2, 3], [4, 5, 6]), statistics3.mean([1, 2, 3]), statistics3.correlation_matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]]), statistics3.standard_deviation([1, 2, 3]), statistics3.z_score([1, 2, 3, 4])]
+
+
+def obtain_output():
+    classes = ['Statistics3TestMedian',
+               'Statistics3TestMode',
+               'Statistics3TestCorrelation',
+               'Statistics3TestMean',
+               'Statistics3TestCorrelationMatrix',
+               'Statistics3TestStandardDeviation',
+               'Statistics3TestZScore',
+               'Statistics3TestMain']
+    output = []
+    output_idx = 0
+    for each_class in classes:
+        this_class = eval(f"{each_class}()")
+        test_functions = [name for name, obj in inspect.getmembers(eval(each_class))
+                  if inspect.isfunction(obj)]
+        for each_func in test_functions:
+            function_output = None
+            try:
+                function_output = eval(f"this_class.{each_func}()")
+                output.append([output_idx,function_output])
+            except Exception:
+                output.append([output_idx, "Exception"])
+            output_idx += 1
+    return output

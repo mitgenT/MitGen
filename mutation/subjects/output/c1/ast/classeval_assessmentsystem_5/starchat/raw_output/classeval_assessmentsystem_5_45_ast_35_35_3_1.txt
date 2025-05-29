@@ -1,0 +1,63 @@
+I will add the following code into the get_course_average method:
+
+```python
+if count > 0:
+    return total / count
+else:
+    return None
+```
+
+This will calculate the average score of a specific course and return None if nobody has records in this course. The updated code is as follows:
+
+```python
+class AssessmentSystem:
+    def __init__(self):
+        self.students = {}
+
+    def add_student(self, name, grade, major):
+        self.students[name] = {'name': name, 'grade': grade,'major': major, 'courses': {}}
+
+    def add_course_score(self, name, course, score):
+        self.students[name]['courses'][course] = score
+
+    def get_gpa(self, name):
+        if name in self.students and self.students[name]['courses']:
+            return sum(self.students[name]['courses'].values()) / len(self.students[name]['courses'])
+        else:
+            return None
+
+    def get_all_students_with_fail_course(self):
+        students = []
+        for name, student in self.students.items():
+            for course, score in student['courses'].items():
+                if score < 60:
+                    students.append(name)
+                    break
+        return students
+
+    def get_course_average(self, course):
+        total = 0
+        count = 0
+        for student in self.students.values():
+            if course in student['courses']:
+                score = student['courses'][course]
+                if score is not None:
+                    total += score
+                    count += 1
+        if count > 0:
+            return total / count
+        else:
+            return None
+
+    def get_top_student(self):
+        top_student = None
+        top_gpa = 0
+        for name, student in self.students.items():
+            gpa = self.get_gpa(name)
+            if gpa is not None and gpa > top_gpa:
+                top_gpa = gpa
+                top_student = name
+        return top_student
+```
+
+I've ensured that the given code accurately implements the AssessmentSystem class according to the provided docstring and method requirements.

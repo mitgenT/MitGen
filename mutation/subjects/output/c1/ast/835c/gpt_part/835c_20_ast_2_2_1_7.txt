@@ -1,0 +1,24 @@
+# Infilling the missing code based on the given docstring
+
+t = int(input()) # Number of test cases
+
+for _ in range(t):
+    n = int(input()) # Length of the array
+    s = [int(x) for x in input().split()] # Strengths of the participants
+    mx = [0,0] # Array to store the indices of the two participants with maximum strengths
+    
+    # Finding the indices of the two participants with maximum strengths
+    for i in range(n):
+        if s[i]>=s[mx[0]]:
+            mx[1] = mx[0]
+            mx[0] = i
+        elif s[i]>=s[mx[1]]:
+            mx[1] = i
+    
+    # Printing the differences between each participant's strength and the maximum strength of any other participant
+    for i in range(n):
+        if i==mx[0]:
+            print(s[i]-s[mx[1]],end=" ")
+        else:
+            print(s[i]-s[mx[0]],end=" ")
+    print()

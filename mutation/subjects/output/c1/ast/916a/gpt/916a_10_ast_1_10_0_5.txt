@@ -1,0 +1,12 @@
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    contest_log = input()
+    
+    solved_problems = 0
+    for i in range(n):
+        if ord(contest_log[i]) - ord('A') <= i:
+            solved_problems += 1
+    
+    print(solved_problems)

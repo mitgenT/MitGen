@@ -1,0 +1,25 @@
+from sys import stdin, stdout
+class Solution:
+
+	def BinaryInversions(self , n , bits):
+		"""
+			You are given a binary array of length n.
+			You are allowed to perform one operation on it at most once. In an operation, you can choose any element and flip it: turn a 0 into a 1 or vice-versa.
+			What is the maximum number of inversions the array can have after performing at most one operation?
+			A binary array is an array that contains only zeroes and ones.
+			The number of inversions in an array is the number of pairs of indices i,j such that i<j and ai>aj.
+		"""
+		cnt0 , cnt1 = bits.count(0), bits.count(1)
+		tot_inv = cnt0 * cnt1
+
+		ans = tot_inv
+		ans = max(ans , tot_inv + cnt0 - 1)
+		ans = max(ans , tot_inv + cnt1 - 1)
+		return ans
+
+sol = Solution()
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    bits = list(map(int, input().split()))
+    print(sol.BinaryInversions(n, bits))

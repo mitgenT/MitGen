@@ -1,0 +1,14 @@
+def flip_case_special(string: str, special_index: int) -> str:
+    if not 0 <= special_index < len(string):
+        special_index %= len(string)
+
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+        else:
+            result += char.lower() if char.isupper() else char
+    return result

@@ -1,0 +1,1 @@
+return 3.0 if kurtosis_value < 3 else kurtosis_value - 3.0

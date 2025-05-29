@@ -1,0 +1,12 @@
+```python
+if string[::-1] == string:
+    return True
+```
+```python
+if is_palindrome(l_string):
+    return string
+else:
+    for i in range(len(string)):
+        if is_palindrome(l_string[i:]):
+            return string + string[:i][::-1]
+```

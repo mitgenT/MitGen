@@ -1,0 +1,21 @@
+Based on the given docstring, we want to find all non-overlapping prefix-suffix pairs that are at least `min_length` characters long. The algorithm should check for the condition where there are no common characters between the prefix and the suffix, and then append the pairs to the list. Here's how the `<MASK>` section should be filled:
+
+```python
+    for i in range(min_length, n):  # Start from min_length to avoid overlapping
+        if len(set(string[:i]).intersection(set(string[i:]))) == 0:
+            pairs.append((string[:i], string[i:]))
+```
+
+So the complete code would be:
+
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n):  # Start from min_length to avoid overlapping
+        if len(set(string[:i]).intersection(set(string[i:]))) == 0:
+            pairs.append((string[:i], string[i:]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```

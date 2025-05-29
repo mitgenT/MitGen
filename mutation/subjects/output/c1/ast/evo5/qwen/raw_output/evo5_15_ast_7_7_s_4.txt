@@ -1,0 +1,10 @@
+Here's the output to fill in the `<MASK>` section of the given code:
+
+```python
+    for i in range(limit):
+        if i < len(numbers) - 1:
+            if set_float:
+                result.append(float(delimeter))
+            else:
+                result.append(delimeter)
+```

@@ -1,0 +1,14 @@
+```python
+    def get_gpa(self, name):
+        if name in self.students and self.students[name]['courses']:
+            total = 0
+            count = 0
+            for score in self.students[name]['courses'].values():
+                total += score
+                count += 1
+            return total / count
+        else:
+            return None
+```
+
+The `get_gpa` method iterates over each score of a student in the courses dictionary, sums them up, and calculates the average (GPA) by dividing the total by the count of scores. If the name of the student does not exist in the students dictionary, or the student has no courses, it returns None.

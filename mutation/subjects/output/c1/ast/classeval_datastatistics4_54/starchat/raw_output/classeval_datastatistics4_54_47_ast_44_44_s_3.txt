@@ -1,0 +1,10 @@
+@staticmethod
+def pdf(data, mu, sigma):
+    if not (isinstance(data, list) and isinstance(mu, (int, float)) and isinstance(sigma, (int, float))):
+        raise ValueError("Invalid input type. Please ensure data is a list and mu and sigma are numbers.")
+    if len(data) == 0:
+        raise ValueError("Data cannot be an empty list.")
+    if sigma <= 0:
+        raise ValueError("Standard deviation (sigma) should be greater than 0.")
+    pdf_values = [1 / (sigma * math.sqrt(2 * math.pi)) * math.exp(-0.5 * ((x - mu) / sigma) ** 2) for x in data]
+    return pdf_values

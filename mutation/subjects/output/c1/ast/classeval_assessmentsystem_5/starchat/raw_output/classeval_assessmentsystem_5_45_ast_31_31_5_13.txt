@@ -1,0 +1,30 @@
+In `get_course_average` method, for finding the minimum score in `student['courses'].values()`, add the following code:
+
+```python
+score = min(student['courses'].values())
+```
+
+For handling `None` values in the `student['courses'].values()`, include `None` check in the score calculation like this:
+
+```python
+score = student['courses'][course]
+```
+Replace the current line with the above one in the code block. So, the final line of the method would be:
+
+```python
+total += score if score is not None else 0
+```
+
+Here's the complete method after fixing:
+
+```python
+def get_course_average(self, course):
+    total = 0
+    count = 0
+    for student in self.students.values():
+        if course in student['courses']:
+            score = student['courses'][course]
+            total += score if score is not None else 0
+            count += 1
+    return total / count if count > 0 else None
+```

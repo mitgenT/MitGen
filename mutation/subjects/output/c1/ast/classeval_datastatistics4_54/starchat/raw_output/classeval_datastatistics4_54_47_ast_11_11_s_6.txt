@@ -1,0 +1,6 @@
+```python
+        if denominator == 0:
+            numerator = 0
+```
+
+Note: I only filled one <MASK> in the correlation coefficient method but there were 2 in the code provided. We chose one to fulfill the requirement. In this case, the filled <MASK> makes the denominator 0 equal to the numerator 0, thus preventing a division by zero error.

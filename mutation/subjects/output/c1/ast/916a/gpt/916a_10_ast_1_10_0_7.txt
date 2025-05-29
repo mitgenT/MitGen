@@ -1,0 +1,11 @@
+def count_problems(t):
+    for _ in range(t):
+        n = int(input())
+        s = input()
+        solved_problems = 0
+        
+        for i in range(n):
+            if ord(s[i])-64 <= i+1:
+                solved_problems += 1
+                
+        print(solved_problems)

@@ -1,0 +1,19 @@
+Based on the provided docstring, the function `all_prefix_suffix_pairs` needs to find non-overlapping prefix and suffix pairs. The pairs should be at least `min_length` characters long and sorted lexicographically when having equal lengths. We can extract the prefix by slicing the string and then add it to a tuple with its suffix.
+
+Here's how to infill `<MASK>` in the given code:
+
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            prefix = string[:j]
+            suffix = string[j:]
+            if len(prefix) + len(suffix) == len(string):
+                # Ensure non-overlapping by checking if the sum of their lengths equals the original string length
+                pairs.append((prefix, suffix))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```

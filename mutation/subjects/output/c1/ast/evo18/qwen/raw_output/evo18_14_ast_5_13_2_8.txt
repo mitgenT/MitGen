@@ -1,0 +1,10 @@
+```python
+    for index, sub in enumerate(substrings):
+        while True:
+            index_next = string.find(sub, index)
+            if index_next == -1:
+                break
+            result[sub] += 1
+            index = index_next + len(sub)
+    return result
+```

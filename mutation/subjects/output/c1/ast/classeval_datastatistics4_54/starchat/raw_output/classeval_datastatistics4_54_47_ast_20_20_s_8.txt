@@ -1,0 +1,6 @@
+```python
+    if n > 3:
+        variance = sum((data[i] - mean) ** 2 for i in range(n)) / n
+    else:
+        variance = 0
+```

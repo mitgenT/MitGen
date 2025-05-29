@@ -1,0 +1,4 @@
+```python
+if not result:
+    return None
+```

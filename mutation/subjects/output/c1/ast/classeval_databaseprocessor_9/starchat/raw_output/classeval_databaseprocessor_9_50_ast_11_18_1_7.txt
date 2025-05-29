@@ -1,0 +1,55 @@
+## Output:
+```python
+import sqlite3
+import pandas as pd
+
+
+class DatabaseProcessor:
+
+    def __init__(self, database_name):
+        self.database_name = database_name
+
+    def create_table(self, table_name, key1, key2):
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+        
+        create_query = f"CREATE TABLE IF NOT EXISTS {table_name} ({key1} TEXT, {key2} INTEGER, PRIMARY KEY({key1}(255)))"
+        cursor.execute(create_query)
+        
+        conn.commit()
+        conn.close()
+
+    def insert_into_database(self, table_name, data):
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+
+        for item in data:
+            insert_query = f"INSERT INTO {table_name} (name, age) VALUES (?,?)"
+            cursor.execute(insert_query, (item['name'], item['age']))
+
+        conn.commit()
+        conn.close()
+
+    def search_database(self, table_name, name):
+
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+
+        select_query = f"SELECT * FROM {table_name} WHERE name =?"
+        cursor.execute(select_query, (name,))
+        result = cursor.fetchall()
+
+        return result
+
+    def delete_from_database(self, table_name, name):
+
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+
+        delete_query = f"DELETE FROM {table_name} WHERE name =?"
+        cursor.execute(delete_query, (name,))
+
+        conn.commit()
+        conn.close()
+```
+In the solution, the `create_table` method creates a new table in the SQLite database if it doesn't exist, and makes `name` (TEXT) and `age` (INTEGER) as columns, and `name` as the PRIMARY KEY. The `insert_into_database` method inserts data into the specified table. The `search_database` method searches for rows with a matching name, and the `delete_from_database` method deletes rows from the specified table with a matching name.

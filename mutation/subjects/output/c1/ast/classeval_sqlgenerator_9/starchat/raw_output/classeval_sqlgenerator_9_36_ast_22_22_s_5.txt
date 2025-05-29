@@ -1,0 +1,6 @@
+```Python
+if data:
+    set_clause = ", ".join([f"{key} = '{value}'" for key, value in data.items()])
+else:
+    set_clause = ""
+```

@@ -1,0 +1,52 @@
+Based on the provided docstring, we need to modify the code to handle the condition for the 'special_index'. Here's how you can fill in the `<MASK>`:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    # Create an empty string to store the flipped result
+    result = ""
+
+    # Check if special_index is within range or wrap around if needed
+    if special_index >= len(string):
+        special_index %= len(string)
+
+    # Iterate over the string with the special_index handling
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+        else:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char.lower()  # Flip lowercase characters
+
+    return result
+```
+
+Now, the complete code with the `<MASK>` filled in is as follows:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    result = ""
+
+    # Check if special_index is within range or wrap around if needed
+    if special_index >= len(string):
+        special_index %= len(string)
+
+    # Iterate over the string with the special_index handling
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+        else:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char.lower()  # Flip lowercase characters
+
+    return result
+```

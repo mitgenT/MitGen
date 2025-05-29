@@ -1,0 +1,21 @@
+new_base_num = new_base_num.upper()
+```python
+def change_base(x: str, base: int, new_base: int):
+    try:
+        base_10 = int(x, base)
+    except ValueError:
+        return "invalid base"
+    new_base_num = ""
+    if base_10 == 0:
+        return '0'
+    while base_10 > 0:
+        remainder = base_10 % new_base
+        base_10 -= new_base
+        if 0 <= remainder <= 9:
+            new_base_num = str(remainder) + new_base_num
+        else:
+            new_base_num = chr(remainder + 55) + new_base_num
+    if new_base_num!= "":
+        new_base_num = new_base_num.upper()
+```
+StarChat2 checked the Python code provided and found a small mistake. The check if `new_base_num` is not empty needs to be enclosed within an `if` statement. In the given code, it was missing the required `if` condition before the line `new_base_num = new_base_num.upper()`. The corrected version ensures that the base conversion result is correctly converted to uppercase before returning.

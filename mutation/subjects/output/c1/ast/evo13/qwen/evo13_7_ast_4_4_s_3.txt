@@ -1,0 +1,10 @@
+from typing import List
+def multiple_greatest_common_divisors(numbers: List[int]) -> int:
+    import math
+    initial_gcd = numbers[0]
+    for num in numbers[1:]:
+        gcd = math.gcd(initial_gcd, num)
+    return gcd
+    for num in numbers[1:]:
+        gcd = math.gcd(gcd, num)
+    return gcd

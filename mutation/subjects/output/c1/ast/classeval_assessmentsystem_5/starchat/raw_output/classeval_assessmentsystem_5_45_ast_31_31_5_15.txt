@@ -1,0 +1,2 @@
+self.course_scores[course].append(score)
+score = sum(self.course_scores[course]) / len(self.course_scores[course])

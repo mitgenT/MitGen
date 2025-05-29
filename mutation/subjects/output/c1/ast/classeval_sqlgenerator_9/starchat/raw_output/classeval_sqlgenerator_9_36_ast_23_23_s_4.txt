@@ -1,0 +1,10 @@
+```Python
+if condition is not None:
+    sql += f" WHERE {condition}"
+```
+
+```Python
+if condition:
+    sql += f" WHERE {condition}"
+```
+Note: The second <MASK> should be just 'condition' without using 'condition is not None', as it's used already in the if statement for the'select' method. If you want to enforce checking if the 'condition' variable is not None at this point, just add 'and condition is not None' at the end of the if statement.

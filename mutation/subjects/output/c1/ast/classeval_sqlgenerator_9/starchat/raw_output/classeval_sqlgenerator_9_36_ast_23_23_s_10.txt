@@ -1,0 +1,12 @@
+In the `update` function, after defining the `set_clause`, you would add an `if` check to conditionally include the `WHERE` clause if there is a provided condition. Here's the completed `update` method:
+
+```python
+def update(self, data, condition):
+    set_clause = ", ".join([f"{field} = '{value}'" for field, value in data.items()])
+    sql = f"UPDATE {self.table_name} SET {set_clause}"
+    if condition:
+        sql += f" WHERE {condition}"
+    return sql + ";"
+```
+
+Now, when you use the `update` method, it will generate the SQL statement with the appropriate `SET` clause and, if provided, the `WHERE` clause.

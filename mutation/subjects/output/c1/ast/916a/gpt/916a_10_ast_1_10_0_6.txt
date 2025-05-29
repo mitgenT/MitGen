@@ -1,0 +1,9 @@
+def solve_contest(t):
+    for _ in range(t):
+        n = int(input())
+        contest_log = input()
+        problems_solved = 0
+        for i in range(n):
+            if ord(contest_log[i]) - 65 <= i:
+                problems_solved += 1
+        print(problems_solved)

@@ -1,0 +1,12 @@
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    result = []
+    for i, char in enumerate(string):
+        if i == special_index % len(string):
+            result.append(char.lower() if char.isupper() else char)
+        else:
+            result.append(char.upper() if char.islower() else char)
+    return ''.join(result)
+```
+
+The code loops through the input string, checking if the current index is equal to the'special_index' in a circular manner. If the current index matches'special_index', it flips the case of the character. Otherwise, it flips the case of the character as required. The result is stored in a list, and the joined result is returned as a string.

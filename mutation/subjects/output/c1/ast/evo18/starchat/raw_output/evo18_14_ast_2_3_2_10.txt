@@ -1,0 +1,21 @@
+## Output:
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == "" for sub in substrings):
+        return "Substrings cannot be empty"
+    if string == "":
+        return {sub: 0 for sub in substrings}
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos!= -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+
+```
+The code checks for edge cases such as empty substrings and the empty string input, and if none of these conditions are met, it calculates the occurrence of substrings in the original string while counting overlapping cases.

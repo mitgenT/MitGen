@@ -1,0 +1,17 @@
+from sys import stdin
+
+t = int(stdin.readline())
+
+for _ in range(t):
+    n, k = map(int, stdin.readline().split())
+    a = list(map(int, stdin.readline().split()))
+    b = list(map(int, stdin.readline().split()))
+    
+    dp = [0] * (k + 1)
+    dp[1] = a[0]
+    for i in range(2, n + 1):
+        for j in range(k, i - 1, -1):
+            dp[j] = max(dp[j], dp[j - i] + a[i - 1])
+        dp[i] = max(dp[i], dp[i - 1] + b[i - 1])
+    
+    print(dp[k])

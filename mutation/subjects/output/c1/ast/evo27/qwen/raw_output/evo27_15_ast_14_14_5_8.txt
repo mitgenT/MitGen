@@ -1,0 +1,22 @@
+Here's the infilled code based on the given docstring:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+        else:
+            if char.isupper():
+                result += char.lower()
+            else:
+                if char.islower():
+                    result += char.upper()
+    return result
+```
+
+The `<MASK>` part has been replaced with the appropriate logic: `if char.islower(): result += char.upper()` to ensure that lowercase characters are flipped to uppercase when not at the 'special_index'.

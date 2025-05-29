@@ -1,0 +1,24 @@
+from sys import stdin, stdout
+class Solution:
+    def BinaryInversions(self, n, bits) -> int:
+        bits.reverse()
+        ones, zeros = [], []
+        for bit in bits:
+            if bit == 0: zeros.append(bit)
+            else: ones.append(bit)
+        ones.reverse()
+        x, y, ans = len(ones), len(zeros), 0
+        for bit in zeros:
+            ans += x
+            x -= 1
+        for bit in ones:
+            ans += y - 1
+            y -= 1
+        return ans
+
+sol = Solution()
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    bits = list(map(int, input().split()))
+    print(sol.BinaryInversions(n, bits))

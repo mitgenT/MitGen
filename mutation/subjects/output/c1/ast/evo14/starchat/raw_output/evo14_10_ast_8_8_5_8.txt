@@ -1,0 +1,16 @@
+## Output
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                if string[j - i:i] not in pairs:
+                    pairs.append((string[j - i:i], string[j:]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```
+
+In the solution, I first calculate the prefix and suffix lengths to be in the range of the `min_length` and then check if they don't have any common characters. If they don't, the pair is added to the `pairs` list if it's not already there to avoid duplicates. Finally, the list is sorted as required.

@@ -1,0 +1,9 @@
+```python
+        while True:
+            start = string.find(sub, start)
+            if start == -1:
+                break
+            result[sub] += 1
+            start += 1
+    return result
+```

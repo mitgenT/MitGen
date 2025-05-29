@@ -1,0 +1,21 @@
+## Output
+```Python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                if pos + len(sub) <= len(string):
+                    start = pos + 1
+            else:
+                break
+    return result
+```
+
+## Explanation
+The 'if' statement inside the 'while' loop ensures that the starting position is updated to be the next position after the position where the substring was found. This means that each occurrence of the substring is counted, even if they overlap. However, this only happens if the found position plus the length of the substring is less than or equal to the length of the string, to prevent an 'index out of range' error.

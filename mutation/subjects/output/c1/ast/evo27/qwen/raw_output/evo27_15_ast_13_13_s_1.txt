@@ -1,0 +1,26 @@
+Here's the filled-in code with the logic according to the provided docstring:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.islower():
+                result += char.upper()
+            else:
+                result += char.lower()
+        else:
+            if char.isupper():
+                result += char.lower()
+            elif char.islower():
+                result += char
+            else:
+                result += char
+    return result
+```
+
+Explanation:
+- The `if char.islower()` condition checks if the character is lowercase, and if so, we convert it to uppercase using `char.upper()`.
+- The `elif char.islower()` condition is added to handle the case where the character is not uppercase, which means it must be either lowercase or non-alphabetic. In this case, we keep it as is, since we want to maintain lowercase characters at the `special_index` unless they're already uppercase.
+- The last `else` block handles non-alphabetic characters, which we simply append to the result without modification.

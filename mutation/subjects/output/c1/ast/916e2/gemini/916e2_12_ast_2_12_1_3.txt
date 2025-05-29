@@ -1,0 +1,20 @@
+t=int(input())
+for i in range(t):
+    n=int(input())
+    a=list(map(int,input().split()))
+    b=list(map(int,input().split()))
+    mini=10000000000
+    for j in range(n):
+        if (a[j]!=0 and b[j]!=0):
+            mini=min(mini,a[j]+b[j])
+
+    ans=0
+
+    for j in range(n):
+        if a[j]!=0 and b[j]!=0:
+            add=mini-min(a[j],b[j])
+            ans+=add
+            a[j]=a[j]-add
+            b[j]=b[j]-add
+
+    print(ans)

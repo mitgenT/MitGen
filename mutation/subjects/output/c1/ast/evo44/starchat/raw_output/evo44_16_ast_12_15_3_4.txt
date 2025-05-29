@@ -1,0 +1,18 @@
+## Output
+```python
+def change_base(x: str, base: int, new_base: int):
+    try:
+        base_10 = int(x, base)
+    except ValueError:
+        return "invalid base"
+    new_base_num = ""
+    if base_10 == 0:
+        return '0'
+    while base_10 > 0:
+        remainder = base_10 % new_base
+        base_10 -= new_base
+        new_base_num = str(remainder if remainder < 10 else chr(remainder-10+ord('A'))) + new_base_num
+    return new_base_num
+
+```
+This solution checks if the input number `x` can be parsed into a decimal number with the given base. If not, it returns "invalid base". Then, it converts the decimal number to the new base. The digits greater than 9 are converted to uppercase letters by subtracting 10 and adding 'A' to their ASCII codes. The resulting new base representation is built as a string in reverse order (from least significant digit to most significant digit), and then returned.

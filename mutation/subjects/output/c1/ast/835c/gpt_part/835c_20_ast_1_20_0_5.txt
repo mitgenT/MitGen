@@ -1,0 +1,13 @@
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    strengths = list(map(int, input().split()))
+    
+    max_strength = max(strengths)
+    
+    for s in strengths:
+        difference = s - max_strength
+        print(difference, end=' ')
+    
+    print()

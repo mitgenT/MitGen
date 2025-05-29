@@ -1,0 +1,3 @@
+self.get_gpa(student['name'])
+
+score = student['courses'].get(course)

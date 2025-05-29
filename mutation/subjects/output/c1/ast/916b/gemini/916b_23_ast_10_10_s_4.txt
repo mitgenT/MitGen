@@ -1,0 +1,5 @@
+    else:
+        i=n
+        for j in range(k):
+            s = s +' '+ str(i)
+            i = i-1

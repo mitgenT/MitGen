@@ -1,0 +1,19 @@
+## Output
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos!= -1:
+                if string[pos:pos+len(sub)] == sub:
+                    result[sub] += 1
+                    start = pos + len(sub)
+            else:
+                break
+    return result
+```
+This program iterates through the original string to find all occurrences of each substring and updates the corresponding count in the result dictionary. It handles overlapping cases by checking the next part of the string after each found occurrence.

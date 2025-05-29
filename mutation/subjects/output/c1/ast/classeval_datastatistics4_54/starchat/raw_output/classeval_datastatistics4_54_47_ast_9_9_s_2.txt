@@ -1,0 +1,5 @@
+```python
+mean2 = sum(data2) / n
+if mean2 == 0:
+    mean2 = None
+```

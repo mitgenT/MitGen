@@ -1,0 +1,9 @@
+```python
+    if not string:
+        result = {sub: 0 for sub in substrings}
+    else:
+        for key, value in result.items():
+            if value > 0:
+                result[key] = value * (string.count(key) // result[key])
+    return result
+```

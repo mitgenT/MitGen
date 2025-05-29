@@ -1,0 +1,21 @@
+In the given code, I filled in the `<MASK>` in the `get_course_average` method as shown below:
+
+```python
+class AssessmentSystem:
+    #... existing code...
+
+    def get_course_average(self, course):
+        total = 0
+        count = 0
+        for student in self.students.values():
+            if course in student['courses']:
+                score = student['courses'][course]
+                if score is not None:
+                    total += score
+                    count += 1
+        return total / count if count > 0 else None
+
+    #... existing code...
+```
+
+In this updated code, I added two lines inside the loop to check if the student has taken the given course and if the score is not `None`. If both conditions are true, I add the score to the total and increment the count. Finally, I calculate and return the average score of the course.

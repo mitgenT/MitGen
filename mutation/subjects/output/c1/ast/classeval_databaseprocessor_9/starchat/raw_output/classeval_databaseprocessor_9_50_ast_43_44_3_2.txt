@@ -1,0 +1,12 @@
+```python
+conn = sqlite3.connect(self.database_name)
+cursor = conn.cursor()
+
+delete_query = f"DELETE FROM {table_name} WHERE name =?"
+cursor.execute(delete_query, (name,))
+
+conn.commit()
+conn.close()
+```
+
+In the provided code, I filled the `<MASK>` with the necessary database connection and cursor initialization, and the delete statement. This revised code provides a complete implementation of the `DatabaseProcessor` class, fulfilling the specified functionality of creating tables, inserting data, searching for data, and deleting data from the database.

@@ -1,0 +1,18 @@
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            """
+            This function generates a string with numbers from 0 to n (inclusive) separated by spaces, where every m-th number is replaced with the word "Fizz". It uses a 1-based index for the replacement.
+            Example:
+            - For input (0, 3), it returns '0'.
+            - If the input is (5, 3), it outputs '0 1 Fizz 3 4 Fizz'.
+            - And for (15, 3), the result is '0 1 Fizz 3 4 Fizz 6 7 Fizz 9 10 Fizz 12 13 Fizz 15'.
+            """
+            result = []
+            for i in range(n):
+                if (i + 1) % m == 0:
+                    result.append("Fizz")
+        else:
+            result.append(str(i))
+    return ' '.join(result)

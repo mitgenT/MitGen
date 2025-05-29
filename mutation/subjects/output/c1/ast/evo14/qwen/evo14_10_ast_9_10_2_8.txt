@@ -1,0 +1,16 @@
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                pairs.append((string[:i], string[j:]))
+    # Custom comparison function for sorting
+    def compare_prefix_suffix(a: Tuple[str, str], b: Tuple[str, str]) -> int:
+        if len(a[0]) != len(b[0]):
+            return len(a[0]) - len(b[0])
+        else:
+            return a[0].lower() < b[0].lower()
+    pairs.sort(key=compare_prefix_suffix)
+    return pairs

@@ -1,0 +1,14 @@
+```python
+    def insert_into_database(self, table_name, data):
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+
+        for item in data:
+            insert_query = f"INSERT INTO {table_name} (name, age) VALUES (?,?)"
+            cursor.execute(insert_query, (item['name'], item['age']))
+
+        conn.commit()
+        conn.close()
+```
+
+This solution completes the given function by iterating over the `data` list, unpacking each dictionary into `item['name']` and `item['age']`, and executing an INSERT INTO SQL query. The function then commits the changes and closes the connection to the database.

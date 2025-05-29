@@ -1,0 +1,28 @@
+Based on the given docstring, the `<MASK>` in the code should be replaced with logic to concatenate the string elements and sum the integer elements. Here's the modified code:
+
+```python
+from typing import List, Tuple
+
+def interleave_and_concatenate(strings: List[str], integers: List[int]) -> Tuple[str, int]:
+    interleaved = []
+    len_strings = len(strings)
+    len_integers = len(integers)
+    max_len = max(len_strings, len_integers)
+    
+    # Concatenate string elements
+    string_concat = ''.join(interleaved) if interleaved else ''
+
+    # Sum integer elements
+    int_sum = sum(interleaved) if interleaved and all(isinstance(item, int) for item in interleaved) else 0
+
+    for i in range(max_len):
+        if i < len_strings:
+            interleaved.append(strings[i])
+        if i < len_integers:
+            interleaved.append(int(integers[i]))
+
+    return string_concat, int_sum
+
+```
+
+Now the `interleave_and_concatenate` function has the necessary logic to process the input lists and return the required tuple.

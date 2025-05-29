@@ -1,0 +1,5 @@
+```Python
+if isinstance(fields, list):
+    fields = ", ".join(fields)
+```
+The modified select function in SQLGenerator class now correctly processes a list of fields when specified during a select operation.

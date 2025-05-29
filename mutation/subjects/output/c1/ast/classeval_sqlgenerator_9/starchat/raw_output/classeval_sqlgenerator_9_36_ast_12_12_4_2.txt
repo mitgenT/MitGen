@@ -1,0 +1,7 @@
+if fields!= "*":
+            fields = ", ".join(fields)
+
+if condition:
+    sql += " WHERE " + condition
+
+# Remaining code for other methods does not require <MASK>

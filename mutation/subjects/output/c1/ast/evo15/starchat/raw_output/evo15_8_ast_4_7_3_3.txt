@@ -1,0 +1,13 @@
+## Output
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n+1):
+        if (i+1) % m == 0:
+            result.append('Fizz')
+        else:
+            result.append(str(i))
+    return''.join(result)
+
+```
+In the given example, the mask `<MASK>` is replaced with `if(list1[j]>list1[j+1]):` to implement the bubble sort. In the next example, the mask `<MASK>` is replaced with `(i+1) % m == 0` to check if the current index (i+1) is a multiple of `m`.

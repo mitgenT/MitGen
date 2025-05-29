@@ -1,0 +1,19 @@
+Based on the provided docstring, we need to find the longest substring that starts with a vowel in each string, and store it along with its index. Here's how to fill in the `<MASK>` in the given code:
+
+```python
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+    vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}
+    longest_substring = None
+    longest_substring_index = None
+    for i, string in enumerate(strings):
+        substrings = [string[j:] for j in range(len(string)) if string[j].lower() in vowels]  # Convert to lowercase for case-insensitivity
+        if substrings:
+            max_substring = max(substrings, key=len)
+            if longest_substring is None or len(max_substring) > len(longest_substring):
+                longest_substring = max_substring
+                longest_substring_index = i
+    return longest_substring, longest_substring_index
+```
+
+Now, the `longest_substring` function finds the longest substring starting with a vowel in each string and returns the substring and its index. If there are no substrings starting with a vowel, it returns `(None, None)`.

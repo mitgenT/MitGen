@@ -1,0 +1,21 @@
+To solve this problem, we can use the `find()` method of the string to find the first occurrence of the substring. This method returns the lowest index of the substring if found in given string. If not found then it returns -1.
+
+In the infill, replace <MASK> with `pos = string[start:].find(sub)`:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string[start:].find(sub)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+```
+This code finds all the occurrences of all substrings in the given string and counts them in the dictionary `result`. Note that the index returned by `find()` is relative to the start of the string slice, so we need to add `start` to it to get the index in the original string. This is done by `pos = pos + start`.

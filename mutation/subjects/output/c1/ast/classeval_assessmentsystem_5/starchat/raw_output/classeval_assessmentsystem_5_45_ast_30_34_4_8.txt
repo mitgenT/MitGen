@@ -1,0 +1,4 @@
+self.students[name]['courses'][course]
+
+total += student['courses'][course]
+count += 1

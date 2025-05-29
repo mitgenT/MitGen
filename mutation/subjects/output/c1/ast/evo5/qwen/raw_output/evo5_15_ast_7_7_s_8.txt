@@ -1,0 +1,12 @@
+Here's the infilled code:
+
+```python
+    for i in range(0, min(limit, len(numbers) - 1)):
+        result.append(numbers[i])
+        if set_float:
+            result.append(float(delimeter))
+        else:
+            result.append(delimeter)
+```
+
+This code fills in the `<MASK>` section by iterating up to the minimum of `limit` and `len(numbers) - 1`, appending the current element from `numbers` and the appropriate delimeter converted to a float if necessary, into the `result` list.

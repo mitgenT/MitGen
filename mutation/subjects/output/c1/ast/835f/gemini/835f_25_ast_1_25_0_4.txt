@@ -1,0 +1,29 @@
+def solve(n, c, d, a):
+    dp = [[[-1] * 4 for _ in range(d + 1)] for _ in range(n + 1)]
+    return helper(1, 0, c, d, a, dp)
+
+
+def helper(i, day, c, d, a, dp):
+    if i == len(a):
+        if day == d and c <= 0:
+            return 0
+        else:
+            return 1e20
+
+    if day == d:
+        return 1e20
+
+    if dp[i][day][c] != -1:
+        return dp[i][day][c]
+
+    # Pick the i-th quest
+    dp[i][day][c] = helper(i + 1, day + 1, c - a[i], d, a, dp)
+
+    # Do not pick the i-th quest
+    dp[i][day][c] = min(dp[i][day][c], helper(i + 1, day + 1, c, d, a, dp))
+
+    # Continue doing the same quest
+    if day > 0:
+        dp[i][day][c] = min(dp[i][day][c], helper(i, day + 1, c, d, a, dp))
+
+    return dp[i][day][c]

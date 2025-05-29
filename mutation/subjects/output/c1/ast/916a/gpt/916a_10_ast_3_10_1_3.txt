@@ -1,0 +1,5 @@
+N=int(input())
+alpha='ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+alpha_list = list(alpha)
+new_alpha_list = alpha_list[N:]+alpha_list[:N]
+new_alpha = ''.join(new_alpha_list)

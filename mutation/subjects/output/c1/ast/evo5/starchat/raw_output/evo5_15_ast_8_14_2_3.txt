@@ -1,0 +1,18 @@
+## Output
+
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = False
+    if type(delimeter) == float:
+        set_float = True
+    result = []
+    limit = min(limit, len(numbers) - 1) 
+    for i, num in enumerate(numbers):
+        result.append(num)
+        if i!= len(numbers) - 1 and i <= limit:
+            result.append(delimeter if not set_float else float(delimeter))
+    return result
+```
+
+In this output, the code iterates over each number in the input list. For each number, it appends it to the result list. If the current index is not the last index in the list and the index is within the limit, it appends the given delimiter (converted to float if necessary).

@@ -1,0 +1,21 @@
+def change_base(x: str, base: int, new_base: int):
+    base_10 = 0
+    if not all(c.isdigit() or c.upper() in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' for c in x):
+        return 'invalid base'
+    for digit in x:
+        if '0' <= digit <= '9':
+            value = int(digit)
+        else:
+            value = ord(digit.upper()) - 55
+        base_10 = base_10 * base + value
+    new_base_num = ""
+    if base_10 == 0:
+        return '0'
+    while base_10 > 0:
+        remainder = base_10 % new_base
+        base_10 -= new_base
+        if 0 <= remainder <= 9:
+            new_base_num = str(remainder) + new_base_num
+        else:
+            new_base_num = chr(remainder + 55) + new_base_num 
+    return new_base_num

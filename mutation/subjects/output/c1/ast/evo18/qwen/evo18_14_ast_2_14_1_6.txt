@@ -1,0 +1,20 @@
+def how_many_times(string: str, substrings: list) -> dict:
+    if not string or not substrings:
+        # Check for empty string or empty substring list
+        if not string:
+            return {'Substrings cannot be empty': 0}
+        else:
+            counts = {substring: 0 for substring in substrings}
+            return counts
+
+    result = {}
+    for substring in substrings:
+        if not substring:
+            # Handle empty substring
+            result['Substrings cannot be empty'] = 0
+            break
+        else:
+            count = string.count(substring)
+            # Count occurrences and update the dictionary
+            result[substring] = count
+    return result

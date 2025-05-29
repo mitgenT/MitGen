@@ -1,0 +1,16 @@
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    """
+    Generate a string that consists of consecutive numbers from 0 to n (inclusive) separated by spaces,
+    with every m-th number replaced by the word "Fizz", using 1-indexing for the replacement.
+    :param n: The upper limit of the sequence (inclusive).
+    :param m: The interval at which to replace numbers with "Fizz".
+    :return: The modified string representation.
+    """
+    result = []
+    for i in range(1, n + 1):
+        if i % m == 0:
+            result.append("Fizz")
+        else:
+            result.append(str(i))
+    return ' '.join(result)

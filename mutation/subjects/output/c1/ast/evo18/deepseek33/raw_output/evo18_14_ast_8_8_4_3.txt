@@ -1,0 +1,37 @@
+Here's how to infill the <MASK> in the given code based on the provided docstring:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            if string.find(sub, start) != -1:
+                pos = string.find(sub, start)
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+```
+
+First, we need to check if any substring is an empty string. If so, we return a message indicating this.
+
+Next, we create a dictionary to hold our results, initializing each count to 0.
+
+Then, we iterate over each substring. For each substring, we start at the beginning of the string and loop until we find the substring in the string.
+
+If we find the substring, we increment its count, move our start position to just after the found substring, and continue searching from there. If we don't find the substring, we break out of the loop.
+
+Finally, we return the dictionary of results.
+
+In the function how_many_times, string.find(sub, start) != -1 is used to check if a substring exists within the string. If the substring exists, it returns the position of the substring in the string. If it does not exist, it returns -1.
+
+So, the replacement for <MASK> in the given code is:
+
+```python
+if string.find(sub, start) != -1:
+    pos = string.find(sub, start)
+```

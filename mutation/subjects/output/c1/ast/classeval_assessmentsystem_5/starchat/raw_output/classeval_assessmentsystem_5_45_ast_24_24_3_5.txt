@@ -1,0 +1,14 @@
+The given `get_all_students_with_fail_course` function is incomplete. The function should add only distinct student names to the `students` list. In Python, we can use a `set` to ensure uniqueness. Here is the correct implementation:
+
+```python
+def get_all_students_with_fail_course(self):
+    students = set()
+    for name, student in self.students.items():
+        for course, score in student['courses'].items():
+            if score < 60:
+                students.add(name)
+                break
+    return list(students)
+```
+
+By converting the `students` set to a list before returning, we maintain the uniqueness of student names. If you need to continue with a set for some reason, you should remove the conversion line.

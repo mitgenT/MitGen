@@ -1,0 +1,20 @@
+## Output
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1
+            elif pos == -1:
+                break
+            else:
+                continue
+    return result
+```
+In this solution, in the marked part of the code, if the substring is not found in the remaining part of the string, the code breaks the loop, hence preventing an infinite loop. If the substring is found in the remaining part of the string, it increments the count of the substring in the result dictionary and then moves on to the next part of the string. If no substring is found, it continues to the next part of the string. This code correctly handles the case where some of the substrings might not be found in the string and some might be found multiple times.

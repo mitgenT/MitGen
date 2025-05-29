@@ -1,0 +1,6 @@
+if fields is not None:
+    fields = ", ".join(fields)
+if condition is not None:
+    sql += " WHERE " + condition
+else:
+    sql += ";"

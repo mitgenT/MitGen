@@ -1,0 +1,358 @@
+import unittest
+import sys
+import os
+import inspect
+# here = os.path.dirname(__file__)
+
+sys.path.append(os.path.join('/data/toli/State-Level-DP/'))
+from mutation.utils import check_output
+
+
+<generated_code_here>
+
+
+class AssessmentSystemTestAddStudent():
+    def test_add_student(self):
+        assessment_system = AssessmentSystem()
+        assessment_system.add_student("Alice", 3, "Mathematics")
+        return assessment_system.students["Alice"]
+
+    def test_add_student_2(self):
+        assessment_system = AssessmentSystem()
+        assessment_system.add_student("Alice", 3, "Mathematics")
+        assessment_system.add_student("Bob", 2, "Science")
+        return assessment_system.students
+
+    def test_add_student_3(self):
+        assessment_system = AssessmentSystem()
+        assessment_system.add_student("Alice", 3, "Mathematics")
+        assessment_system.add_student("Bob", 2, "Science")
+        assessment_system.add_student("Charlie", 4, "Chemistry")
+        return assessment_system.students
+
+    def test_add_student_4(self):
+        assessment_system = AssessmentSystem()
+        assessment_system.add_student("Alice", 3, "Mathematics")
+        assessment_system.add_student("Bob", 2, "Science")
+        assessment_system.add_student("Charlie", 4, "Chemistry")
+        assessment_system.add_student("David", 1, "Physics")
+        return assessment_system.students
+
+    def test_add_student_5(self):
+        assessment_system = AssessmentSystem()
+        assessment_system.add_student("Alice", 3, "Mathematics")
+        assessment_system.add_student("Bob", 2, "Science")
+        assessment_system.add_student("Charlie", 4, "Chemistry")
+        assessment_system.add_student("David", 1, "Physics")
+        assessment_system.add_student("Eve", 3, "Mathematics")
+        return assessment_system.students
+
+class AssessmentSystemTestAddCourseScore():
+    def test_add_course_score(self):
+        assessment_system = AssessmentSystem()
+        assessment_system.students = {"Alice": {'name': 'Alice', 'grade': 3, 'major': 'Mathematics', 'courses': {}}}
+        assessment_system.add_course_score("Alice", "Math", 90)
+        # self.assertEqual(assessment_system.students["Alice"]["courses"]["Math"], 90)
+        return assessment_system.students["Alice"]["courses"]["Math"]
+
+    def test_add_course_score_2(self):
+        assessment_system = AssessmentSystem()
+        assessment_system.students["Alice"] = {'name': 'Alice', 'grade': 3, 'major': 'Mathematics', 'courses': {}}
+        assessment_system.add_course_score("Alice", "Math", 90)
+        # self.assertEqual(assessment_system.students["Alice"]["courses"]["Math"], 90)
+        return assessment_system.students["Alice"]["courses"]["Math"]
+
+    def test_add_course_score_3(self):
+        assessment_system = AssessmentSystem()
+        assessment_system.students["Alice"] = {'name': 'Alice', 'grade': 3, 'major': 'Mathematics', 'courses': {}}
+        assessment_system.add_course_score("Alice", "Math", 90)
+        assessment_system.add_course_score("Alice", "Science", 80)
+        assessment_system.add_course_score("Alice", "Math", 95)
+        # self.assertEqual(assessment_system.students["Alice"]["courses"]["Math"], 95)
+        # self.assertEqual(assessment_system.students["Alice"]["courses"]["Science"], 80)
+        return assessment_system.students["Alice"]["courses"]["Math"]
+        # print(assessment_system.students["Alice"]["courses"]["Science"])
+
+    def test_add_course_score_4(self):
+        assessment_system = AssessmentSystem()
+        assessment_system.students["Alice"] = {'name': 'Alice', 'grade': 3, 'major': 'Mathematics', 'courses': {}}
+        assessment_system.add_course_score("Alice", "Math", 90)
+        assessment_system.add_course_score("Alice", "Science", 80)
+        assessment_system.add_course_score("Alice", "Math", 95)
+        assessment_system.add_course_score("Alice", "Science", 85)
+        # self.assertEqual(assessment_system.students["Alice"]["courses"]["Math"], 95)
+        # self.assertEqual(assessment_system.students["Alice"]["courses"]["Science"], 85)
+        # print(assessment_system.students["Alice"]["courses"]["Math"])
+        return assessment_system.students["Alice"]["courses"]["Science"]
+
+    def test_add_course_score_5(self):
+        assessment_system = AssessmentSystem()
+        assessment_system.students["Alice"] = {'name': 'Alice', 'grade': 3, 'major': 'Mathematics', 'courses': {}}
+        assessment_system.add_course_score("Bob", "Math", 90)
+        # self.assertEqual(assessment_system.students["Alice"]["courses"], {})
+        return assessment_system.students["Alice"]["courses"]
+
+class AssessmentSystemTestGetGPA():
+    def test_get_gpa_1(self):
+        assessment_system = AssessmentSystem()
+        assessment_system.students = {'Alice': {'name': 'Alice', 'grade': 3, 'major': 'Mathematics', 'courses': {'Mathematics': 90, 'Science': 80}}}
+        # self.assertEqual(assessment_system.get_gpa("Alice"), 85.0)
+        return assessment_system.get_gpa("Alice")
+
+
+    # No such student
+    def test_get_gpa_2(self):
+        assessment_system = AssessmentSystem()
+        # self.assertEqual(assessment_system.get_gpa('Alice'), None)
+        return  assessment_system.get_gpa("Alice")
+
+    # student don't have any scores
+    def test_get_gpa_3(self):
+        assessment_system = AssessmentSystem()
+        assessment_system.students = {'Alice': {'name': 'Alice', 'grade': 3, 'major': 'Mathematics', 'courses': {}}}
+        # self.assertEqual(assessment_system.get_gpa('Alice'), None)
+        return assessment_system.get_gpa("Alice")
+
+    def test_get_gpa_4(self):
+        assessment_system = AssessmentSystem()
+        assessment_system.students = {'Alice': {'name': 'Alice', 'grade': 3, 'major': 'Mathematics', 'courses': {'Mathematics': 90}}}
+        # self.assertEqual(assessment_system.get_gpa('Bob'), None)
+        return assessment_system.get_gpa('Bob')
+
+    def test_get_gpa_5(self):
+        assessment_system = AssessmentSystem()
+        assessment_system.students = {'Alice': {'name': 'Alice', 'grade': 3, 'major': 'Mathematics', 'courses': {'Mathematics': 90}}}
+        # self.assertEqual(assessment_system.get_gpa('Alice'), 90.0)
+        return assessment_system.get_gpa('Alice')
+
+
+
+class AssessmentSystemTestGetAllStudentsWithFailCourse():
+    def test_get_all_students_with_fail_course(self):
+        assessment_system = AssessmentSystem()
+        assessment_system.students = {'Alice': {'name': 'Alice', 'grade': 3, 'major': 'Mathematics', 'courses': {'Mathematics': 90, 'Science': 80}},
+                                'Bob': {'name': 'Bob', 'grade': 4, 'major': 'Physics', 'courses': {'Physics': 50}},
+                                'Charlie': {'name': 'Charlie', 'grade': 2, 'major': 'Chemistry', 'courses': {'Chemistry': 70}},
+                                'David': {'name': 'David', 'grade': 1, 'major': 'Physics', 'courses': {'Physics': 60}},
+                                'Eve': {'name': 'Eve', 'grade': 3, 'major': 'Mathematics', 'courses': {'Mathematics': 90}}}
+        # self.assertEqual(assessment_system.get_all_students_with_fail_course(), ['Bob'])
+        return assessment_system.get_all_students_with_fail_course()
+
+    def test_get_all_students_with_fail_course_2(self):
+        assessment_system = AssessmentSystem()
+        assessment_system.students = {'Alice': {'name': 'Alice', 'grade': 3, 'major': 'Mathematics', 'courses': {'Mathematics': 90, 'Science': 80}},
+                                'Bob': {'name': 'Bob', 'grade': 4, 'major': 'Physics', 'courses': {'Physics': 70}},
+                                'Charlie': {'name': 'Charlie', 'grade': 2, 'major': 'Chemistry', 'courses': {'Chemistry': 70}},
+                                'David': {'name': 'David', 'grade': 1, 'major': 'Physics', 'courses': {'Physics': 70}},
+                                'Eve': {'name': 'Eve', 'grade': 3, 'major': 'Mathematics', 'courses': {'Mathematics': 90}}}
+        # self.assertEqual(assessment_system.get_all_students_with_fail_course(), [])
+        return assessment_system.get_all_students_with_fail_course()
+
+    def test_get_all_students_with_fail_course_3(self):
+        assessment_system = AssessmentSystem()
+        assessment_system.students = {}
+        # self.assertEqual(assessment_system.get_all_students_with_fail_course(), [])
+        return assessment_system.get_all_students_with_fail_course()
+
+    def test_get_all_students_with_fail_course_4(self):
+        assessment_system = AssessmentSystem()
+        assessment_system.students = {'Alice': {'name': 'Alice', 'grade': 3, 'major': 'Mathematics', 'courses': {}}}
+        # self.assertEqual(assessment_system.get_all_students_with_fail_course(), [])
+        return assessment_system.get_all_students_with_fail_course()
+
+    def test_get_all_students_with_fail_course_5(self):
+        assessment_system = AssessmentSystem()
+        assessment_system.students = {'Alice': {'name': 'Alice', 'grade': 3, 'major': 'Mathematics', 'courses': {'Mathematics': 90, 'Science': 50}},
+                                'Bob': {'name': 'Bob', 'grade': 4, 'major': 'Physics', 'courses': {'Physics': 50}},
+                                'Charlie': {'name': 'Charlie', 'grade': 2, 'major': 'Chemistry', 'courses': {'Chemistry': 70}},
+                                'David': {'name': 'David', 'grade': 1, 'major': 'Physics', 'courses': {'Physics': 70}},
+                                'Eve': {'name': 'Eve', 'grade': 3, 'major': 'Mathematics', 'courses': {'Mathematics': 90}}}
+        # self.assertEqual(assessment_system.get_all_students_with_fail_course(), ['Alice', 'Bob'])
+        return assessment_system.get_all_students_with_fail_course()
+
+class AssessmentSystemTestGetCourseAverage():
+
+    def test_get_course_average_1(self):
+        assessment_system = AssessmentSystem()
+        assessment_system.students = {'Alice': {'name': 'Alice', 'grade': 3, 'major': 'Mathematics', 'courses': {'Mathematics': 90, 'Science': 80}},
+                                'Bob': {'name': 'Bob', 'grade': 4, 'major': 'Physics', 'courses': {'Physics': 90}},
+                                'Charlie': {'name': 'Charlie', 'grade': 2, 'major': 'Chemistry', 'courses': {'Chemistry': 70,'Physics': 80}}
+                                           }
+        # self.assertEqual(assessment_system.get_course_average("Physics"), 85.0)
+        return assessment_system.get_course_average("Physics")
+
+    def test_get_course_average_2(self):
+        assessment_system = AssessmentSystem()
+        assessment_system.students = {'Alice': {'name': 'Alice', 'grade': 3, 'major': 'Mathematics',
+                                                'courses': {'Mathematics': 90, 'Science': 80}},
+                                      'Bob': {'name': 'Bob', 'grade': 4, 'major': 'Physics',
+                                              'courses': {'Physics': 85}},
+                                      'Charlie': {'name': 'Charlie', 'grade': 2, 'major': 'Chemistry',
+                                                  'courses': {'Chemistry': 70,'Physics': None }}
+                                      }
+        # self.assertEqual(assessment_system.get_course_average('Physics'), 85)
+        return assessment_system.get_course_average("Physics")
+
+    def test_get_course_average_3(self):
+        assessment_system = AssessmentSystem()
+        assessment_system.students = {'Alice': {'name': 'Alice', 'grade': 3, 'major': 'Mathematics',
+                                                'courses': {'Mathematics': 90, 'Science': 80}},
+                                      'Bob': {'name': 'Bob', 'grade': 4, 'major': 'Physics',
+                                              'courses': {'Physics': 85}},
+                                      'Charlie': {'name': 'Charlie', 'grade': 2, 'major': 'Chemistry',
+                                                  'courses': {'Chemistry': 70, 'Physics': 80}}
+                                      }
+        # self.assertEqual(assessment_system.get_course_average('Computer'), None)
+        return assessment_system.get_course_average('Computer')
+
+    def test_get_course_average_4(self):
+        assessment_system = AssessmentSystem()
+        assessment_system.students = {}
+        # self.assertEqual(assessment_system.get_course_average('Computer'), None)
+        return assessment_system.get_course_average('Computer')
+
+    def test_get_course_average_5(self):
+        assessment_system = AssessmentSystem()
+        assessment_system.students = {'Alice': {'name': 'Alice', 'grade': 3, 'major': 'Mathematics',
+                                                'courses': {'Mathematics': 90, 'Science': 80}},
+                                      'Bob': {'name': 'Bob', 'grade': 4, 'major': 'Physics',
+                                              'courses': {'Physics': 85}},
+                                      'Charlie': {'name': 'Charlie', 'grade': 2, 'major': 'Chemistry',
+                                                  'courses': {'Chemistry': 70, 'Physics': 80}}
+                                      }
+        # self.assertEqual(assessment_system.get_course_average('Mathematics'), 90)
+        return assessment_system.get_course_average('Mathematics')
+
+
+class AssessmentSystemTestGetTopStudent():
+    def test_get_top_student(self):
+        assessment_system = AssessmentSystem()
+        assessment_system.students = {'Alice': {'name': 'Alice', 'grade': 3, 'major': 'Mathematics',
+                                                'courses': {'Mathematics': 90}},
+                                      'Bob': {'name': 'Bob', 'grade': 4, 'major': 'Physics',
+                                              'courses': {'Physics': 85}}
+                                      }
+        # self.assertEqual(assessment_system.get_top_student(), "Alice")
+        return assessment_system.get_top_student()
+
+    def test_get_top_student_2(self):
+        assessment_system = AssessmentSystem()
+        assessment_system.students = {'Alice': {'name': 'Alice', 'grade': 3, 'major': 'Mathematics',
+                                                'courses': { }},
+                                      'Bob': {'name': 'Bob', 'grade': 4, 'major': 'Physics',
+                                              'courses': {'Physics': 85}},
+                                      'Charlie': {'name': 'Charlie', 'grade': 2, 'major': 'Chemistry',
+                                                  'courses': {'Chemistry': 70, 'Physics': 80}}
+                                      }
+        # self.assertEqual(assessment_system.get_top_student(), "Bob")
+        return assessment_system.get_top_student()
+
+    def test_get_top_student_3(self):
+        assessment_system = AssessmentSystem()
+        assessment_system.students = {}
+        # self.assertEqual(assessment_system.get_top_student(), None)
+        return assessment_system.get_top_student()
+
+    def test_get_top_student_4(self):
+        assessment_system = AssessmentSystem()
+        assessment_system.students = {'Alice': {'name': 'Alice', 'grade': 3, 'major': 'Mathematics',
+                                                'courses': {'Mathematics': 90, 'Science': 60}},
+                                      'Bob': {'name': 'Bob', 'grade': 4, 'major': 'Physics',
+                                              'courses': {'Physics': 85}},
+                                      'Charlie': {'name': 'Charlie', 'grade': 2, 'major': 'Chemistry',
+                                                  'courses': {'Chemistry': 70, 'Physics': 80}}
+                                      }
+        # self.assertEqual(assessment_system.get_top_student(), "Bob")
+        return assessment_system.get_top_student()
+
+    def test_get_top_student_5(self):
+        assessment_system = AssessmentSystem()
+        assessment_system.students = {'Alice': {'name': 'Alice', 'grade': 3, 'major': 'Mathematics',
+                                                'courses': {'Mathematics': 90, 'Science': 60}},
+                                      'Bob': {'name': 'Bob', 'grade': 4, 'major': 'Physics',
+                                              'courses': {'Physics': 85}},
+                                      'Charlie': {'name': 'Charlie', 'grade': 2, 'major': 'Chemistry',
+                                                  'courses': {'Chemistry': 70, 'Physics': 80}},
+                                      'David': {'name': 'David', 'grade': 2, 'major': 'Chemistry',
+                                                  'courses': {'Chemistry': 70, 'Physics': 80}}
+                                      }
+        # self.assertEqual(assessment_system.get_top_student(), "Bob")
+        return assessment_system.get_top_student()
+
+
+class AssessmentSystemTestMain():
+    def test_main1(self):
+        system = AssessmentSystem()
+        system.add_student('student 1', 3, 'SE')
+        system.add_student('student 2', 2, 'SE')
+        self.assertEqual({'student 1': {'name': 'student 1', 'grade': 3, 'major': 'SE', 'courses': {}},
+                          'student 2': {'name': 'student 2', 'grade': 2, 'major': 'SE', 'courses': {}}},
+                         system.students)
+        system.add_course_score('student 1', 'course 1', 86)
+        system.add_course_score('student 2', 'course 1', 59)
+        system.add_course_score('student 1', 'course 2', 78)
+        system.add_course_score('student 2', 'course 2', 90)
+
+        return system.students['student 1']['courses']['course 1']
+
+    def test_main2(self):
+        system = AssessmentSystem()
+        system.add_student('student 1', 3, 'SE')
+        system.add_student('student 2', 2, 'SE')
+        system.add_course_score('student 1', 'course 1', 86)
+        system.add_course_score('student 2', 'course 1', 59)
+        system.add_course_score('student 1', 'course 2', 78)
+        system.add_course_score('student 2', 'course 2', 90)
+
+        return system.get_all_students_with_fail_course()
+    
+    def test_main3(self):
+        system = AssessmentSystem()
+        system.add_student('student 1', 3, 'SE')
+        system.add_student('student 2', 2, 'SE')
+        system.add_course_score('student 1', 'course 1', 86)
+        system.add_course_score('student 2', 'course 1', 59)
+        system.add_course_score('student 1', 'course 2', 78)
+        system.add_course_score('student 2', 'course 2', 90)
+
+        return system.get_course_average('course 2')
+
+def obtain_output():
+    classes = ['AssessmentSystemTestAddStudent',
+               'AssessmentSystemTestAddCourseScore',
+               'AssessmentSystemTestGetGPA',
+               'AssessmentSystemTestGetAllStudentsWithFailCourse',
+               'AssessmentSystemTestGetCourseAverage',
+               'AssessmentSystemTestGetTopStudent',
+               'AssessmentSystemTestMain']
+    output = []
+    output_idx = 0
+    for each_class in classes:
+        this_class = eval(f"{each_class}()")
+        test_functions = [name for name, obj in inspect.getmembers(eval(each_class))
+                  if inspect.isfunction(obj) and "test_" in name]
+        for each_func in test_functions:
+            function_output = None
+            # print(f"this_class.{each_func}()")
+            try:
+                function_output = eval(f"this_class.{each_func}()")
+            except:
+                function_output = "Exception"
+            output.append((output_idx,function_output))
+            output_idx += 1
+    print(f"Final output of subject for prioritization is:::::{output}")
+
+if __name__ == '__main__':
+    obtain_output()
+    # print(output)
+    # check_output("result.txt")
+    # print(dir(AssessmentSystemTestMain))
+    # output = [(idx,item) for idx, item in enumerate(test_main())]
+    # print([name for name, obj in inspect.getmembers(AssessmentSystemTestMain)
+    #               if inspect.isfunction(obj)])
+    # funcion
+    # print(output)
+
+    # output2 = test_main()
+    # print(is_equal(output, output2))
+

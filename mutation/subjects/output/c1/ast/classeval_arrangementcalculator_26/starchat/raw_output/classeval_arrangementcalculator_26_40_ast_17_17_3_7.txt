@@ -1,0 +1,4 @@
+if m == 1:
+    total = ArrangementCalculator.count(n, m)
+else:
+    total = 0  # bug fix: initializing total before the for loop

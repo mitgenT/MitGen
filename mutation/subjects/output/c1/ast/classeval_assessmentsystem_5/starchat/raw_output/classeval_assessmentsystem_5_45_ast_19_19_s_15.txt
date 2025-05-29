@@ -1,0 +1,27 @@
+In the `get_all_students_with_fail_course` method, you should fill in `<MASK>` as follows:
+
+```python
+if name in self.students:
+    student = self.students[name]
+    for course, score in student['courses'].items():
+        if score < 60:
+            students.append(name)
+            break
+```
+
+The fixed code will look like this:
+
+```python
+def get_all_students_with_fail_course(self):
+    students = []
+    for name in self.students:
+        if name in self.students:
+            student = self.students[name]
+            for course, score in student['courses'].items():
+                if score < 60:
+                    students.append(name)
+                    break
+    return students
+```
+
+Now the `get_all_students_with_fail_course` method will correctly collect students who have any score below 60.

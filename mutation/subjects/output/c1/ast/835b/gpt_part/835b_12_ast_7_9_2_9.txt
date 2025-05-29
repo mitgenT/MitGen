@@ -1,0 +1,8 @@
+n=int(input())
+a=0
+for i in range(n):
+    a=int(input())
+    s=input()
+    alphabet = set(s)  # create a set of unique characters in the string
+    alphabet_size = len(alphabet)  # calculate the size of the alphabet
+    print(alphabet_size)

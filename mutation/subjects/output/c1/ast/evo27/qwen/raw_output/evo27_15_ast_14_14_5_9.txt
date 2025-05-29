@@ -1,0 +1,22 @@
+Based on the given docstring, we need to implement the behavior where if `char` is lowercase, it should remain as is only when `i` is not equal to `special_index`. Otherwise, it should follow the flipping logic for both uppercase and lowercase characters. Since `if char.islower()` is already checking for lowercase, we can simply add the flipped version of the character if `i` is not `special_index`. Here's the code with `<MASK>` filled:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+        else:
+            if char.isupper():
+                result += char.lower()
+            else:
+                # No need for an additional condition since it's only checked once outside the conditional block
+                result += char.lower()  # Flipping lowercase characters
+    return result
+```
+
+The output code now correctly implements the desired behavior described in the docstring.

@@ -1,0 +1,16 @@
+while l<=r:
+            mid=(l+r+1)//2
+            cur=0
+            day=1
+            for a in A:
+                if cur+a<=c:
+                    cur+=a
+                elif day<mid:
+                    day+=1
+                    cur=a
+                else:
+                    break;
+            if cur>=c:
+                l=mid
+            else:
+                r=mid-1

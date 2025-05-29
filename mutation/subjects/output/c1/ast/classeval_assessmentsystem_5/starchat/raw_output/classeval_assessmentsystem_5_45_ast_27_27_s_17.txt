@@ -1,0 +1,22 @@
+In the provided code, we need to fill in the blanks in the `get_course_average` function.
+
+Here's the code you need to fill in:
+
+```python
+def get_course_average(self, course):
+    if course in self.students[next(iter(self.students))]['courses']:
+        total = 0
+        for student in self.students.values():
+            if course in student['courses']:
+                score = student['courses'][course]
+                if score is not None:
+                    total += score
+        count = sum(1 for student in self.students.values() if course in student['courses'])
+        return total / count if count > 0 else None
+    else:
+        return None
+```
+
+This implementation checks if the provided course is present in the course list of any student. If it is, it iterates through all students and calculates the sum of scores for the given course, also keeping track of the number of valid scores. Finally, it returns the average score or `None` if there are no valid scores.
+
+Please let me know if you have any questions or need further assistance!

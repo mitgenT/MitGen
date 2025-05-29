@@ -1,0 +1,14 @@
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+   vowels = set('aeiouAEIOU')
+   longest_sub = ""
+   longest_index = None
+   for i, s in enumerate(strings):
+       for j in range(len(s)):
+           sub = s[j:]
+           if sub[0] in vowels and len(sub) > len(longest_sub):
+               longest_sub = sub
+               longest_index = i
+           elif sub[0] in vowels and len(sub) == len(longest_sub):
+               break
+   return longest_sub, longest_index

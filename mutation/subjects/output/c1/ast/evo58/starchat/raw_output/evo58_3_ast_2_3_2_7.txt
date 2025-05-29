@@ -1,0 +1,17 @@
+The `<MASK>` in the given code needs to be replaced by a set of operations to find the common elements in both lists, sort them based on their lengths and occurrence in list1, and finally return the n longest strings. Here's the complete code:
+
+```python
+def common(l1: list, l2: list, n: int):
+    # Create a list of tuples containing string and its length
+    str_length_pairs1 = [(s, len(s)) for s in l1 if s in l2]
+    str_length_pairs2 = [(s, len(s)) for s in l2 if s in l1]
+    
+    # Sort the tuples first by length, then by occurrence in l1
+    sorted_pairs = sorted(str_length_pairs1 + str_length_pairs2, key=lambda x: (-x[1], l1.index(x[0])))
+    
+    # Extract n longest strings and return them
+    return [pair[0] for pair in sorted_pairs[:n]]
+```
+
+This code first creates a list of tuples containing each common string and its length. The tuples are sorted based on their lengths, and in case of a tie, the tuple that appears first in list1 is prioritized. Finally, the n longest strings are returned.
+You can now use this function to solve your problem.

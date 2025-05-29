@@ -1,0 +1,11 @@
+from typing import List
+import math
+
+def multiple_greatest_common_divisors(numbers: List[int]) -> int:
+    if len(numbers) == 2:  # Check if there are only two numbers
+        return math.gcd(numbers[0], numbers[1])  # Calculate GCD directly for two numbers
+    else:
+        gcd = numbers[0]  # Initialize the GCD with the first number
+        for num in numbers[1:]:
+            gcd = math.gcd(gcd, num)
+        return gcd

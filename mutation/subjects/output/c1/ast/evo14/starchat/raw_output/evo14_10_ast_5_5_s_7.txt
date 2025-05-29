@@ -1,0 +1,15 @@
+## Output
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(n - min_length + 1):
+        for j in range(i, n + 1 - min_length):
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                pairs.append((string[:i], string[j:]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```
+
+In this solution, I have completed the for-loop that iterates over the given string to find all possible prefix-suffix pairs, checking their overlap with an intersection of sets and ensuring that they have a minimum length of'min_length'. Finally, the pairs are sorted based on their lengths and lexicographically order before being returned.

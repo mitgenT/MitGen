@@ -1,0 +1,12 @@
+def is_palindrome(string: str) -> bool:
+    return string == string[::-1]
+
+
+def make_palindrome(string: str) -> str:
+    l_string = string.lower()
+    if is_palindrome(l_string):
+        return string
+    else:
+        <MASK>
+            if is_palindrome(string):
+                return string + string[:i][::-1]

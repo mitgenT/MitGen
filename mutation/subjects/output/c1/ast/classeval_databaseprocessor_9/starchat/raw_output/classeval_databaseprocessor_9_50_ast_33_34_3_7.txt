@@ -1,0 +1,12 @@
+```python
+conn = sqlite3.connect(self.database_name)
+cursor = conn.cursor()
+
+select_query = f"SELECT * FROM {table_name} WHERE name =?"
+cursor.execute(select_query, (name,))
+result = cursor.fetchall()
+
+conn.close()
+```
+
+The modified code is provided above to complete the search_database method in the DatabaseProcessor class. This method connects to the SQLite database, creates a cursor, executes a SELECT query with the provided name, fetches all the matching rows, and finally closes the connection to the database.

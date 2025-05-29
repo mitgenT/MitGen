@@ -1,0 +1,11 @@
+```python
+def get_course_average(self, course):
+    total = 0
+    count = 0
+    for name, student in self.students.items():
+        if course in student['courses']:
+            total += student['courses'][course]
+            count += 1
+    return total / count if count > 0 else None
+```
+In the revised `get_course_average` method, I added an if statement that checks whether the given `course` exists in the student's course record before summing up the scores and counting the courses. In addition, I now properly track the total score in the variable `total`.

@@ -1,0 +1,21 @@
+t=int(input())
+for i in range(t):
+    n=int(input())
+    a=list(map(int,input().split()))
+    b=list(map(int,input().split()))
+    da,db={},{}; score=0
+    for j in range(n):
+        if a[j]>0: da[j+1]=a[j]
+        if b[j]>0: db[j+1]=b[j]
+    keys=list(da.keys()); keys.sort()
+    for k in keys:
+        if k in db:
+            if da[k]>db[k]:
+                score+=da[k]-db[k]
+                da[k]-=db[k]
+                del db[k]
+            else:
+                score-=db[k]-da[k]
+                db[k]-=da[k]
+                del da[k]
+    print(score)

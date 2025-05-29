@@ -1,0 +1,19 @@
+## Output
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            result += char if char.islower() else char.lower()
+        else:
+            result += char.upper() if char.islower() else char.lower()
+    return result
+```
+
+In this rewritten code, we first calculate the adjusted `special_index` by taking its modulus with the length of the string. This ensures that if `special_index` is out of bounds, it wraps around to the equivalent index within the list.
+
+We then create an empty string `result` to store the output. Inside the loop, for each character in the input string, we check if the current index matches `special_index`. If it does, we append the character as is if it is lowercase, or its lowercase equivalent if it is uppercase. If the current index does not match `special_index`, we append the character's lowercase or uppercase equivalent.
+
+Finally, we return the resulting string.

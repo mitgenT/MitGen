@@ -1,0 +1,8 @@
+```python
+if m == 0:
+    return 1
+else:
+    return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)
+```
+
+In the code above, the `<MASK>` was replaced to fix the bug in the `count_all()` method. Specifically, when `m` equals to `0`, the method should return `1` (since there is exactly 1 way to choose 0 items). Without this fix, the method would return `0` in that case.

@@ -1,0 +1,11 @@
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(1, n + 1):  # Start from 1 instead of 0 for 1-based indexing
+        if (i) % m == 0:  # Use i directly without +1 since we've already incremented in the loop
+            result.append("Fizz")
+        else:
+            if i < 10:  # Check if number is single-digit
+                result.append(str(i))
+            else:
+                result.append(str(i).rjust(len(str(m * m)), '0'))  # Add leading zeros if necessary
+    return ' '.join(result)

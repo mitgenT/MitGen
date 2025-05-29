@@ -1,0 +1,35 @@
+In the given code, the <MASK> in the last two methods (select_female_under_age and select_by_age_range) need to be replaced as follows:
+
+- `select_female_under_age`:
+
+  Change this:
+
+  ```python
+      if <MASK>:
+          <MASK>
+      return self.select(condition=condition)
+  ```
+
+  To this:
+
+  ```python
+      condition = f"age < {age} AND gender = 'female'"
+      return self.select(condition=condition)
+  ```
+
+- `select_by_age_range`:
+
+  Change this:
+
+  ```python
+      if <MASK>:
+          <MASK>
+      return self.select(condition=condition)
+  ```
+
+  To this:
+
+  ```python
+      condition = f"age BETWEEN {min_age} AND {max_age}"
+      return self.select(condition=condition)
+  ```

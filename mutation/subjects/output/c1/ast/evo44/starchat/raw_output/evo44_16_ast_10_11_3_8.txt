@@ -1,0 +1,5 @@
+if base_10 % new_base == 0:
+    remainder = 0
+else:
+    remainder = base_10 % new_base
+base_10 //= new_base

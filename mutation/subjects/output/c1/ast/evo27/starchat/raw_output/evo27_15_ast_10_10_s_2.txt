@@ -1,0 +1,4 @@
+if i!= special_index:
+    result += char.swapcase()
+else:
+    result += char

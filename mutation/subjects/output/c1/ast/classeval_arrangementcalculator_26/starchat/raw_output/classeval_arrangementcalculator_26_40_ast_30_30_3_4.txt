@@ -1,0 +1,8 @@
+total += ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - i)
+
+result = [] 
+if m == 0:
+    result.append([])
+else:
+    for combination in itertools.combinations(self.datas, m):
+        result.append(list(combination))

@@ -1,0 +1,20 @@
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = isinstance(delimeter, float) or any(isinstance(num, float) for num in numbers)
+    result = []
+    limit = min(limit, len(numbers) - 1) 
+    for i in range(len(numbers) - 1):
+        if set_float:
+            result.append(float(numbers[i]))
+        else:
+            result.append(numbers[i])
+        if i < limit:
+            result.append(delimeter)
+    if set_float:
+        result.append(float(numbers[-1]))
+    else:
+        result.append(numbers[-1])
+    return result
+```
+Here, I first check if any number in the input list `numbers` or the delimiter is a float. If so, the flag `set_float` is set to True. Then, within the loop, if `set_float` is True, we convert each number to a float before appending it to the result list. After the loop, we append the last number in the input list to the result list, also converting it to float if `set_float` is True. The final result is then returned.

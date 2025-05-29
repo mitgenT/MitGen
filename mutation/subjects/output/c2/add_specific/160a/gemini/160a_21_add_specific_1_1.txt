@@ -1,0 +1,42 @@
+for i in range(int(input())):
+    s = list(map(int,list(input())))
+    n = len(s)
+    p = str(s[0])
+    r = ""
+    x = 0
+    if s[1] == 0:
+        for i in range(1,n):
+            if s[i] != 0:
+                x = i
+                break
+            if s[i] == 0 and i == n-1:
+                print(-1)
+                break
+    else:
+        for i in range(1,n):
+            if s[i] == 0:
+                x = i
+                break
+            p += str(s[i])
+        for i in range(x,n):
+            r += str(s[i])
+
+        if int(p) < int(r):
+            print(p,r)
+        elif int(p) == int(r):
+            print(-1)
+        elif int(p)> int(r):
+            p,r = r,p
+            print(-1)
+    if x == 0:
+        a = s[0]
+        b = ""
+        for i in range(1,n):
+            b += str(s[i])
+        print(a,b)
+    elif x>=1:
+        if int(p) < int(r):
+            print(p,r)
+        else:
+            p,r = r,p
+            print(p,r)

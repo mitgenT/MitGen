@@ -1,0 +1,5 @@
+```python
+        j = i + min_length
+        if i >= j:
+            continue
+```

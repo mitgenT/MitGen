@@ -1,0 +1,32 @@
+Based on the given docstring, we need to find the longest substring that starts with a vowel from each string in the list. Here's how to fill in `<MASK>`:
+
+```python
+        # Find the first occurrence of a substring starting with a vowel in the current string
+        for substring in substrings:
+            if substring:
+                if longest_substring is None or len(substring) > len(longest_substring):
+                    longest_substring = substring
+                    longest_substring_index = i
+                    break
+```
+
+Now, the complete code is:
+
+```python
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+    vowels = 'aeiouAEIOU'
+    longest_substring = None
+    longest_substring_index = None
+    for i, string in enumerate(strings):
+        substrings = [string[j:] for j in range(len(string)) if string[j] in vowels]
+        
+        # Find the first occurrence of a substring starting with a vowel in the current string
+        for substring in substrings:
+            if substring:
+                if longest_substring is None or len(substring) > len(longest_substring):
+                    longest_substring = substring
+                    longest_substring_index = i
+                    break
+    return longest_substring, longest_substring_index
+```

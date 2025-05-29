@@ -1,0 +1,21 @@
+Based on the provided docstring, the code should handle the special case only when the character at `special_index` is lowercase. Here's how you can modify the code:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.islower():
+                result += char.upper()
+            else:
+                result += char  # Do nothing if the character is already uppercase
+        else:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+    return result
+```
+
+Now the `flip_case_special` function correctly flips lowercase characters to uppercase and keeps uppercase characters as is, while handling the special_index as described in the docstring.

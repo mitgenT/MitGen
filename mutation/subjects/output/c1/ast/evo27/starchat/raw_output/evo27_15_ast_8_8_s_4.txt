@@ -1,0 +1,6 @@
+```Python
+        else:
+            result += char.lower()
+        if i == special_index and char.islower():
+            result += char.upper()
+```

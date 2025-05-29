@@ -1,0 +1,23 @@
+Based on the given docstring, we need to iterate over the `start` index and check for the next occurrence of the substring after a match. Here's the infilled code:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                # Check for the next possible occurrence starting from the current end of the string
+                next_pos = string.find(sub, start + 1)
+                if next_pos != -1:
+                    start = next_pos
+                else:
+                    break  # No more occurrences found for this substring
+    return result
+```

@@ -1,0 +1,4 @@
+if cursor and conn:
+            cursor.close()
+            conn.close()
+            print('Error occurred during data insertion. Connection closed.')

@@ -1,0 +1,5 @@
+if n > 2:
+    mean = sum(data) / n
+else:
+    mean = 0
+std_dev = math.sqrt(sum((x - mean) ** 2 for x in data) / n) if n > 1 else 0

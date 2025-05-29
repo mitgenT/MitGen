@@ -1,0 +1,23 @@
+Here's the filled in code based on the given docstring:
+
+```python
+from typing import List, Tuple
+
+def interleave_and_concatenate(strings: List[str], integers: List[int]) -> Tuple[str, int]:
+    interleaved = []
+    len_strings = len(strings)
+    len_integers = len(integers)
+    max_len = max(len_strings, len_integers)
+
+    for i in range(max_len):
+        if i < len_strings:
+            interleaved.append(strings[i])
+        if i < len_integers:
+            interleaved.append(integers[i])
+
+    concatenated_string = ' '.join([str(i) for i in interleaved if isinstance(i, str)]) 
+    sum_integers = sum([i for i in interleaved if isinstance(i, int)])
+    return (concatenated_string, sum_integers)
+```
+
+The `<MASK>` part was replaced with a `for` loop that iterates through the range of `max_len`, which ensures that we cover the entire length of the longer list if they are not the same. The conditionals inside the loop append the corresponding elements from both lists into the `interleaved` list. After the loop, the program proceeds to create the `concatenated_string` and calculate the `sum_integers`. Finally, it returns the tuple containing the result.

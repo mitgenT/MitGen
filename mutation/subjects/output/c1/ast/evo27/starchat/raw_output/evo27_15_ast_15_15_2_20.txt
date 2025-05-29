@@ -1,0 +1,11 @@
+return result
+```python
+# Inside the loop, add this:
+result += char.swapcase()
+
+# Also, add this after the loop:
+if special_index < 0:
+    special_index = len(string) + special_index
+```
+
+In the modified solution, I'm utilizing the swapcase() built-in Python function, which inverts the case of each character in the given string. Moreover, to make the function handle negative'special_index' values as described in the docstring, I updated the code accordingly.

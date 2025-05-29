@@ -1,0 +1,24 @@
+In the code provided, the only place where the placeholder `<MASK>` needs to be infilled is inside the `get_course_average` method. In that method, we want to only count non-None course scores. To do this, the line with `<MASK>` needs to be replaced as shown below:
+
+```Python
+if score is not None:
+    if score!= 0:  # Change this line for other non-zero values if necessary
+        total += score
+        count += 1
+```
+
+The updated `get_course_average` method would then look like this:
+
+```Python
+def get_course_average(self, course):
+    total = 0
+    count = 0
+    for student in self.students.values():
+        if course in student['courses']:
+            score = student['courses'][course]
+            if score is not None:
+                if score!= 0:
+                    total += score
+                    count += 1
+    return total / count if count > 0 else None
+```

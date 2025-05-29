@@ -1,0 +1,5 @@
+```python
+n = len(data1) if len(data1) == len(data2) else 0
+
+denominator = math.sqrt(sum((data1[i] - mean1) ** 2 for i in range(n)) * sum((data2[i] - mean2) ** 2 for i in range(n)))
+```

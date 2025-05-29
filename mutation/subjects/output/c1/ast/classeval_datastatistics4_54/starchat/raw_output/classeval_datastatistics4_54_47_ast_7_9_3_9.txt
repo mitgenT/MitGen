@@ -1,0 +1,7 @@
+if len(data1)!= len(data2):  
+            return "Length of data1 and data2 are not the same."
+
+mean1 = sum(data1) / len(data1)  
+mean2 = sum(data2) / len(data2) 
+
+n = len(data1)  # length of data1 and data2 is the same

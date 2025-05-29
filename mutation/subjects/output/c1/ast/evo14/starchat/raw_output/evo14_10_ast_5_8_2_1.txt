@@ -1,0 +1,12 @@
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(n - min_length + 1):
+        for j in range(i + min_length, n + 1):
+            pairs.append((string[:i + min_length], string[j - min_length:]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```
+In this solution, a nested loop is used to iterate over all possible prefix-suffix pairs that meet the given conditions. The pairs are then sorted according to the desired criteria using the `sort()` function with a lambda function as the key.

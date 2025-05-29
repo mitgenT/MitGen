@@ -1,0 +1,2 @@
+if isinstance(datas, list):
+    self.datas = datas

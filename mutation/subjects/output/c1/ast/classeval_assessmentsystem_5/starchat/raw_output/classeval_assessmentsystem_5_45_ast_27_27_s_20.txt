@@ -1,0 +1,8 @@
+self.students[course] = 0
+
+total = 0
+if course in self.students[name]['courses']:
+    score = self.students[name]['courses'][course]
+    if score is not None:
+        total += score
+        count += 1

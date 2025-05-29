@@ -1,0 +1,11 @@
+N=int(input())
+alpha='ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+for i in range(N):
+  n=int(input())
+  s=input()
+  ans=0
+  cur=0
+  for ch in s:
+    cur=cur+1
+    ans=ans+(ord(ch)-ord('A')+1<=min(cur,n))
+  print(ans)

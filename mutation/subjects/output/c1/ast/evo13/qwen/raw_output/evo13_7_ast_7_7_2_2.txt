@@ -1,0 +1,20 @@
+Here's the code with the `<MASK>` parts filled in according to the provided docstring:
+
+```python
+from typing import List
+def multiple_greatest_common_divisors(numbers: List[int]) -> int:
+    import math
+    gcd = numbers[0]
+    for num in numbers[1:]:
+        gcd = math.gcd(gcd, num)
+    
+    # Check if GCD is 1
+    if gcd == 1:
+        return -1
+    
+    # If GCD is not 1, return the GCD
+    else:
+        return gcd
+```
+
+Now the code is complete, and it calculates the greatest common divisor (GCD) of a list of integers and handles the case when the GCD is 1 as specified in the docstring.

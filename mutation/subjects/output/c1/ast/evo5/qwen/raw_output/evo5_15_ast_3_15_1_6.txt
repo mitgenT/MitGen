@@ -1,0 +1,18 @@
+```python
+from typing import List, Union
+
+def intersperse(numbers: List[Union[int, float]], delimiter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    output_list = []
+    for i in range(min(limit, len(numbers) - 1)):
+        output_list.append(numbers[i])
+        if isinstance(delimiter, (int, float)):
+            output_list.append(delimiter)
+    if numbers and limit < len(numbers) - 1:
+        output_list.append(numbers[-1])
+    return output_list
+
+# Test cases
+print(intersperse([], 4, 2))  # []
+print(intersperse([1, 2, 3], 4, 2))  # [1, 4, 2, 4, 3]
+print(intersperse([1, 2, 3, 4], 0.5, 2))  # [1.0, 0.5, 2.0, 0.5, 3.0, 4.0]
+```

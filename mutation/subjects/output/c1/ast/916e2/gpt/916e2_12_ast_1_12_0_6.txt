@@ -1,0 +1,29 @@
+for _ in range(t):
+    n = int(input())
+    alice = list(map(int, input().split()))
+    bob = list(map(int, input().split()))
+    alice.sort(reverse=True)
+    bob.sort(reverse=True)
+    alice_sum = sum(alice)
+    bob_sum = sum(bob)
+    alice_count = len(alice)
+    bob_count = len(bob)
+    i = 0
+    j = 0
+    score = alice_sum - bob_sum
+    while i < alice_count and j < bob_count:
+        if alice[i] > bob[j]:
+            bob_sum -= bob[j]
+            j += 1
+        elif alice[i] < bob[j]:
+            alice_sum -= alice[i]
+            i += 1
+        else:
+            if alice_sum - alice[i] < bob_sum - bob[j]:
+                bob_sum -= bob[j]
+                j += 1
+            else:
+                alice_sum -= alice[i]
+                i += 1
+        score = max(score, alice_sum - bob_sum)
+    print(score)

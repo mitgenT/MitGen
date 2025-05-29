@@ -1,0 +1,27 @@
+import sys
+input = sys.stdin.readline
+
+for _ in range(int(input())):
+    s = input().strip()
+    n = len(s)
+    t = []
+    if s[0] == '0':  # check if first digit is 0
+        continue
+    suff = [0] * n  # suffix sum
+    pref = [0] * n  # prefix sum
+    vis = [0] * 10  # vis[i] = 1 if digit i exists in s
+    for i in range(n - 1, -1, -1):
+        suff[i] = suff[i + 1] * 10 + int(s[i])
+    for i in range(n):
+        pref[i] = pref[i - 1] * 10 + int(s[i])
+    flag = False
+    for i in range(n):
+        for j in range(i + 1, n):
+            if pref[j] - (0 if i > 0 else pref[i - 1]) > suff[j + 1]:
+                t.append(str(pref[j] - (0 if i > 0 else pref[i - 1])))
+                t.append(str(suff[j + 1]))
+                flag = True
+                break
+    if not flag:
+        t.append("-1")
+    print(' '.join(t))

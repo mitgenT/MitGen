@@ -1,0 +1,10 @@
+```python
+def update(self, data, condition):
+    set_fields = ", ".join([f"{key} = '{value}'" for key, value in data.items()])
+    sql = f"UPDATE {self.table_name} SET {set_fields}"
+    if condition is not None:
+        sql += f" WHERE {condition}"
+    return sql + ";"
+```
+
+In this solution, the `update` method generates an UPDATE SQL statement based on the given `data` and `condition`. It uses a list comprehension to format the `data` dictionary into a SET clause, and then appends the `condition` if provided. The entire SQL statement is then returned.

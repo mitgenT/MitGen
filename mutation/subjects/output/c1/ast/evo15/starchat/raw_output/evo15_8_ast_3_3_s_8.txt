@@ -1,0 +1,15 @@
+## Output
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(0, n+1):  # corrected range to include 'n'
+        if <MASK>:
+            <MASK>
+            if (i+1) % m == 0:
+                result.append("Fizz")
+            else:
+                result.append(str(i))
+    return''.join(result)
+```
+
+In the given code, I just added `for i in range(0, n+1)` to include 'n' in the generated sequence. The rest of the program code already followed the guidelines provided.

@@ -1,0 +1,6 @@
+```Python
+    if condition is not None:
+        sql += " WHERE " + condition
+```
+
+                        I hope this solution meets your requirements. The corrected code completes the SQLGenerator class methods as described in the docstring.

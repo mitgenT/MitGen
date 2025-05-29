@@ -1,0 +1,1 @@
+total += ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(i - 1)

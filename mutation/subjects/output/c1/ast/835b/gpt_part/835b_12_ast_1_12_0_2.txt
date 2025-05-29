@@ -1,0 +1,10 @@
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    s = input()
+    
+    unique_chars = set(s)
+    alphabet_size = len(unique_chars)
+    
+    print(alphabet_size)

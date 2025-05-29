@@ -1,0 +1,4 @@
+```python
+    if len(pairs) > 0:
+        return [pair for pair in pairs if len(pair[0]) >= min_length and len(pair[1]) >= min_length]
+```

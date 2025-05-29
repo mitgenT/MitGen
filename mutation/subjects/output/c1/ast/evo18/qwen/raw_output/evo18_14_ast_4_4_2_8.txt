@@ -1,0 +1,24 @@
+Based on the provided docstring, the given code should initialize an empty dictionary `result` to store the counts, and then check if the input `string` is empty. Here's the infilled code:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    
+    result = {}  # Initialize an empty dictionary to store the counts
+    if string:  # Check if the input string is not empty
+        for sub in substrings:
+            start = 0
+            while start < len(string) - 1:
+                pos = string.find(sub, start)
+                if pos != -1:
+                    result[sub] = result.get(sub, 0) + 1  # Increase count or set it to 1 if not present
+                    start = pos + 1
+                else:
+                    break
+    else:
+        for sub in substrings:
+            result[sub] = 0  # Set the count to zero for empty string input
+    
+    return result
+```

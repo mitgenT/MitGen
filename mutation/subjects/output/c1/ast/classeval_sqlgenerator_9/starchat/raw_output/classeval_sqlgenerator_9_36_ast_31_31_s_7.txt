@@ -1,0 +1,15 @@
+In the `select_female_under_age(self, age)` function, you need to provide the condition for selecting females under a specific age. You can also use the `select` method with this condition. Below is the updated code:
+
+```python
+class SQLGenerator:
+    def __init__(self, table_name):
+        self.table_name = table_name
+
+    #... Existing functions...
+
+    def select_female_under_age(self, age):
+        condition = f"age < {age} AND gender = 'female'"
+        return self.select(condition=condition)
+
+    #... Existing functions...
+```

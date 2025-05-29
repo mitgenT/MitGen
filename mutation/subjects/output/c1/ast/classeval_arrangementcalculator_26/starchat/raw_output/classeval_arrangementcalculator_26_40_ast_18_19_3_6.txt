@@ -1,0 +1,47 @@
+## Output
+```python
+import itertools
+
+
+class ArrangementCalculator:
+    def __init__(self, datas):
+        self.datas = datas
+
+    @staticmethod
+    def count(n, m=None):
+        if m is None or n == m:
+            return ArrangementCalculator.factorial(n)
+        else:
+            return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)
+
+    @staticmethod
+    def count_all(n):
+        total = 0
+        for m in range(1, n + 1):
+            total += ArrangementCalculator.count(n, m)
+                                             #bug location corrected
+
+    def select(self, m=None):
+        if m is None:
+            m = len(self.datas)
+        result = []
+        for permutation in itertools.permutations(self.datas, m):
+            result.append(list(permutation))
+        return result
+
+    def select_all(self):
+        result = []
+        for i in range(1, len(self.datas) + 1):
+            result.extend(self.select(i))
+        return result
+
+    @staticmethod
+    def factorial(n):
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
+
+```
+
+In the given example, I've fixed the bug in `count_all()` method. Instead of just incrementing the `total` variable, I now calculate and add the count of arrangements for each number of items (`m`) to the total. This ensures that we include all possible arrangements of length 1 up to `n` when computing the count of all possible arrangements.

@@ -1,0 +1,6 @@
+```Python
+        if data is None:
+            data = ""
+        else:
+            values = ", ".join(["'{}'".format(v) for v in data.values()])
+```

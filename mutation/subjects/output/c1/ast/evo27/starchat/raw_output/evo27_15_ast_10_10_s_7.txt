@@ -1,0 +1,2 @@
+if i!= special_index:  # for all indices except special_index
+```

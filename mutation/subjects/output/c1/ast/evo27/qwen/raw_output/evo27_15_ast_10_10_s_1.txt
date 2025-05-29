@@ -1,0 +1,24 @@
+Here's the infilled code based on the provided docstring:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.islower():
+                result += char.upper()
+            else:
+                result += char
+        elif char.isupper():
+            result += char.lower()
+        else:
+            result += char
+    return result
+```
+
+The changes made are:
+
+1. Inside the `if i == special_index` condition, we check if the character is lowercase, not uppercase, so we use `char.islower()` instead of `char.isupper()`.
+2. Outside the `if i == special_index` block, we use an `elif char.isupper()` clause to handle uppercase characters that are not at the `special_index`.
+3. The remaining part of the loop, outside both conditions, is where lowercase characters are processed, so we simply `result += char` without any conditional check.

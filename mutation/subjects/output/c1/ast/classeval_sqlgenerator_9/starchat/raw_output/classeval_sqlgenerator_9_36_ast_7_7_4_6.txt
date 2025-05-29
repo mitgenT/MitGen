@@ -1,0 +1,6 @@
+```Python
+if fields == '*':
+    fields = fields
+else:
+    fields = ", ".join(fields)
+```

@@ -1,0 +1,27 @@
+from typing import List, Optional, Tuple
+
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+    def is_vowel(char: str) -> bool:
+        vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+        return char.lower() in vowels
+
+    longest_sub: Optional[str] = None
+    longest_index: Optional[int] = None
+    for index, string in enumerate(strings):
+        for i in range(len(string)):
+            if is_vowel(string[i]):
+                substring = string[i:]
+                # Check if the current substring is longer than the previous longest or has the same length
+                if not longest_sub or (len(substring) > len(longest_sub)):
+                    longest_sub = substring
+                    longest_index = index
+                    # If the substring is of the same length as the current longest,
+                    # consider the first occurrence in case of duplicates
+                    break  # No need to check further substrings in this string
+
+    return longest_sub, longest_index
+
+# Test cases
+print(longest_substring([]))  # (None, None)
+print(longest_substring(['apple', 'banana', 'cherry']))  # ('apple', 0)
+print(longest_substring(['grape', 'blueberry', 'strawberry']))  # ('blueberry', 1)

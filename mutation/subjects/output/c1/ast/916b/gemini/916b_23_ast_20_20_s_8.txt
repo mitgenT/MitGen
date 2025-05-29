@@ -1,0 +1,11 @@
+    for j in range(k+1):
+        s = s +' '+ str(i)
+        i = i+1
+    s = s.strip()
+    lm = s[len(s)-1]
+    lm = int(lm)
+    for j in range(n-k-1,0,-1):
+        s = str(lm+1)+' '+s
+        lm = lm+1
+    print(s.strip())
+

@@ -1,0 +1,21 @@
+Based on the provided docstring, the function `how_many_times` should count overlapping occurrences of substrings in the input string `string`. Here's the code with `<MASK>` filled in:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - len(sub):  # Adjust the condition to avoid index out of range
+            pos = string.find(sub, start)
+            if pos != -1:  # Check if the substring is found, not -1 (not found)
+                string = string[pos + 1:]  # Skip the found substring to check for overlapping occurrences
+                result[sub] += 1
+                start = 0  # Reset the start position after finding a match
+            else:
+                break
+    return result
+```
+
+Now the code should work as expected according to the given docstring examples.

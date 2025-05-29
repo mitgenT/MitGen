@@ -1,0 +1,3 @@
+```python
+            if max_substring and (not longest_substring or len(max_substring) > len(longest_substring)):
+```

@@ -1,0 +1,19 @@
+Here is the complete program:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos == -1:
+                break
+            else:
+                result[sub] += 1
+                start = pos + len(sub)
+    return result
+```
+In this program, the `find()` function is used to find the occurrence of the substring. If the substring exists in the original string (`pos!= -1`), the count in the dictionary is increased by one and the start position is updated (`start = pos + len(sub)`) to continue searching for the next occurrence, taking into account overlapping cases. The loop breaks if the substring is not found (`pos == -1`) in the original string, ensuring that all occurrences are counted. Finally, the function returns the dictionary containing the counts of each substring.

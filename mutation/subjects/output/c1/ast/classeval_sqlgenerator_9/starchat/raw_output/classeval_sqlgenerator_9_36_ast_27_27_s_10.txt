@@ -1,0 +1,6 @@
+```Python
+def delete(self, condition):
+    if condition is not None:
+        sql = f"DELETE FROM {self.table_name} WHERE {condition}"
+    return sql + ";"
+```

@@ -1,0 +1,14 @@
+```Python
+for i, char in enumerate(string):
+    if i == special_index:
+        if char.isupper():
+            result += char.lower()
+        else:
+            result += char
+    else:
+        if char.isupper():
+            result += char.lower()
+        else:
+            result += char.upper()
+```
+I have infilled the `<MASK>` part in the given code according to the given docstring. The code is now ready to flip lowercase characters to uppercase and uppercase to lowercase, while keeping the character at'special_index' either unchanged or lowercase, depending on its original case.

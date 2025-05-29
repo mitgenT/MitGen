@@ -1,0 +1,4 @@
+```Python
+if self.students[name]['courses']:
+    count = len(self.students[name]['courses'])
+```

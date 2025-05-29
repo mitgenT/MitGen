@@ -1,0 +1,3 @@
+```python
+    result.append(numbers[i + 1]) if i + 1 < len(numbers) else None
+```

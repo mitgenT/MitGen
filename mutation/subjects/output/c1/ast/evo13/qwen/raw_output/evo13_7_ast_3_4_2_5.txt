@@ -1,0 +1,17 @@
+Here's how you can fill in the `<MASK>` in the given code:
+
+```python
+from typing import List
+import math
+
+def multiple_greatest_common_divisors(numbers: List[int]) -> int:
+    if len(numbers) == 1:  # Check if there's only one element
+        return -1
+    else:
+        gcd = numbers[0]  # Initialize GCD with the first number
+    for num in numbers[1:]:
+        gcd = math.gcd(gcd, num)
+    return gcd
+```
+
+The `if` condition checks if the list has only one element, which is not enough to calculate the GCD. If it's true, we return -1. Otherwise, we initialize the GCD with the first number and iterate through the rest of the list, updating the GCD at each step using `math.gcd`.

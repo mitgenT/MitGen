@@ -1,0 +1,6 @@
+```python
+            if string[j:j+min_length] == string[i:i+min_length]:
+                prefix = string[i:i+min_length]
+                suffix = string[j:j+min_length]
+                pairs.append((prefix, suffix))
+```

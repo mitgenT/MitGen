@@ -1,0 +1,8 @@
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    s = input()
+    # find maximum ASCII value in the string
+    a = ord(max(s))
+    print(a - 96)

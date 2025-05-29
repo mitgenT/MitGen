@@ -1,0 +1,15 @@
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = False
+    if type(delimeter) == float:
+        set_float = True
+    result = []
+    limit = min(limit, len(numbers) - 1) 
+    for _ in range(limit):
+        result.append(numbers.pop(0))  # Pop the first element
+        if set_float and type(delimeter) == float:
+            result.append(delimeter)
+        else:
+            result.append(delimeter)  # Insert the delimeter (either int or float)
+    result.append(numbers)  # Append the remaining elements at the end
+    return result

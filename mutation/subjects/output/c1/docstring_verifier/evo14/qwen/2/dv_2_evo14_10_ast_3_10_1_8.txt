@@ -1,0 +1,18 @@
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+   """
+   Generate list of all non-overlapping prefix-suffix pairs from the given string where each pair is at least 'min_length' characters long.
+   The pairs are arranged in ascending order based on their lengths. In case of pairs with the same length, they are sorted lexicographically.
+   Example:
+   all_prefix_suffix_pairs('abcadg', 2) returns [('ab', 'dg'), ('abc', 'dg'), ('abca', 'dg')]
+   """
+   length = len(string)
+   result = []
+   for start in range(length):
+       if length - start >= min_length:
+           for end in range(start + min_length, length + 1):
+               suffix = string[start:end]
+               prefix = string[:end][::-1]
+               result.append((prefix[::-1], suffix))
+   result.sort(key=lambda x: (len(x[0]), x[0]))
+   return [pair for pair in result if len(pair[0]) >= min_length]

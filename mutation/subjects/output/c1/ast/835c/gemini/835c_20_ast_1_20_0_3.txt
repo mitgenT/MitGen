@@ -1,0 +1,10 @@
+def main():
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        arr = list(map(int, input().split()))
+        a = max(arr)
+        ans = []
+        for i in arr:
+            ans.append(a-i)
+        print(*ans)

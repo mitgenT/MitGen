@@ -1,0 +1,26 @@
+## Output
+
+```python
+def change_base(x: str, base: int, new_base: int):
+    try:
+        base_10 = int(x, base)
+    except ValueError:
+        return "invalid base"
+    new_base_num = ""
+    if base_10 == 0:
+        return '0'
+    while base_10 >= new_base:
+        remainder = base_10 % new_base
+        base_10 -= new_base
+        if 0 <= remainder <= 9:
+            new_base_num = str(remainder) + new_base_num
+        else:
+            new_base_num = chr(remainder + 55) + new_base_num
+    if 0 <= base_10 <= 9:
+        new_base_num = str(base_10) + new_base_num
+    else:
+        new_base_num = chr(base_10 + 55) + new_base_num
+    return new_base_num
+```
+
+In this solution, I added a while loop inside the function to repeatedly divide the base_10 number until it becomes less than new_base. Then, for each iteration, I calculated the remainder and subtracted new_base from base_10. Finally, I added the character corresponding to the remainder (either a digit or a letter) to the front of new_base_num string until base_10 becomes less than new_base. After that, I added the last remaining character corresponding to base_10.

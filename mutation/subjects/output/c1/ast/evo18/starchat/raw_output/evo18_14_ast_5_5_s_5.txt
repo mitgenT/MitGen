@@ -1,0 +1,21 @@
+## Output
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    if string:
+        start = 0
+        while start < len(string) - 1:
+            for sub in substrings:
+                pos = string.find(sub, start)
+                if pos!= -1:
+                    result[sub] += 1
+                    start = pos + 1
+                else:
+                    break
+    return result
+```
+
+The output code finds how many times each of the given substrings can be found in the original string and counts overlapping cases. It checks if any substring is empty and returns the message 'Substrings cannot be empty'. It uses a dictionary to store the substring and its count. It finds the position of each substring in the original string starting from the last found position, increments the count, and moves the starting position forward. If a substring is not found, it breaks the loop for that substring. It returns the resulting dictionary.

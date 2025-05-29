@@ -1,0 +1,37 @@
+Based on the provided docstring, we need to handle the case where one list is shorter than the other by concatenating the remaining elements of the longer list after the interweaving process. Let's infill `<MASK>` in the code accordingly:
+
+```python
+from typing import List, Tuple
+
+def interleave_and_concatenate(strings: List[str], integers: List[int]) -> Tuple[str, int]:
+    interleaved = []
+    len_strings = len(strings)
+    len_integers = len(integers)
+    max_len = max(len_strings, len_integers)
+
+    for i in range(max_len):
+        if i < len_strings:
+            interleaved.append(strings[i])
+        if i < len_integers:
+            interleaved.append(int(integers[i]))
+
+    # Concatenate string elements
+    concatenated_string = ' '.join([str(i) for i in interleaved if isinstance(i, str)])
+
+    # Sum integer elements
+    sum_integers = sum([i for i in interleaved if isinstance(i, int)])
+
+    # If one list is shorter, concatenate the remaining elements of the longer list
+    if len_strings > len_integers:
+        concatenated_string += ' '.join([str(i) for i in strings[len_integers:]])
+    elif len_integers > len_strings:
+        sum_integers += sum([i for i in integers[len_strings:]])
+
+    return (concatenated_string, sum_integers)
+
+# Test cases
+print(interleave_and_concatenate([], []))  # Should output: ('', 0)
+print(interleave_and_concatenate(['a', 'b', 'c'], [1, 2, 3]))  # Should output: ('abc', 6)
+print(interleave_and_concatenate(['a', 'b'], [1, 2, 3]))  # Should output: ('ab', 6)
+```
+The `<MASK>` part has been replaced with the logic for handling the remaining elements of the longer list if needed.

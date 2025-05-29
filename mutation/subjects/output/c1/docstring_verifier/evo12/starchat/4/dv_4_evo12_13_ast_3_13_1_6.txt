@@ -1,0 +1,24 @@
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+   """ From a list of text strings, return the longest contiguous substring commencing with a vowel. Also, return the index of the string from the initial list that contained this substring. If identical substrings appear across different strings, return the first appearance. For an empty list or when no such substrings exist, return (None, None). Case is disregarded, meaning both 'A' and 'a' are considered vowels.
+   >>> longest_substring([])
+   (None, None)
+   >>> longest_substring(['apple', 'banana', 'cherry'])
+   ('apple', 0)
+   >>> longest_substring(['grape', 'blueberry','strawberry'])
+   ('ueberry', 1)
+   """
+   longest = ""
+   idx = None
+   vowels = ['a', 'e', 'i', 'o', 'u']
+   for i, s in enumerate(strings):
+       for j in range(len(s)):
+           if s[j].lower() in vowels:
+               for k in range(j+1, len(s)):
+                   if s[k].lower() not in vowels:
+                       substring = s[j:k]
+                       if len(substring) > len(longest):
+                           longest = substring
+                           idx = i
+                       break
+   return longest, idx

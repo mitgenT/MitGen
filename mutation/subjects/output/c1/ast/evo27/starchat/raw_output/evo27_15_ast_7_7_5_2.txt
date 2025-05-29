@@ -1,0 +1,2 @@
+result += char.upper()  # for changing lowercase to uppercase
+result += char        # for keeping uppercase as is

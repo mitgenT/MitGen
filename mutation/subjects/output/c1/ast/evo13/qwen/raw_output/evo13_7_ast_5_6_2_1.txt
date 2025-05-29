@@ -1,0 +1,5 @@
+```python
+    for i in range(1, len(numbers)):
+        gcd = math.gcd(gcd, numbers[i])
+    return gcd
+```

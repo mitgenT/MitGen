@@ -1,0 +1,6 @@
+```Python
+if data:
+    fields = ", ".join(data.keys())
+else:
+    fields = ""
+```

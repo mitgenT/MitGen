@@ -1,0 +1,19 @@
+The missing section can be filled in the'search_database' method as follows:
+
+```python
+def search_database(self, table_name, name):
+    conn = sqlite3.connect(self.database_name)
+    cursor = conn.cursor()
+
+    select_query = f"SELECT * FROM {table_name} WHERE name =?"
+    cursor.execute(select_query, (name,))
+
+    rows = cursor.fetchall()
+    conn.close()
+
+    return rows
+```
+
+This will allow you to retrieve rows from the database based on a specified name. Each row will be returned as a tuple, where each element corresponds to a column value. If no matching rows are found, the method will return an empty list. 
+
+Please note: This solution uses SQLite for the database management and doesn't use pandas. If pandas is required, you will have to adjust the code accordingly.

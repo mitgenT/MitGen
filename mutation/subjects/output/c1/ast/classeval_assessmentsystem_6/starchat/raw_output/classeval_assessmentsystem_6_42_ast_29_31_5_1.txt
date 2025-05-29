@@ -1,0 +1,12 @@
+```python
+    def get_course_average(self, course):
+        total = 0
+        count = 0
+        for student in self.students.values():
+            if course in student['courses']:
+                score = student['courses'][course]
+                total += score
+                count += 1
+        return total / count if count > 0 else None
+```
+Infilling `<MASK>` with `total += score; count += 1` ensures that the total and count are correctly calculated for the provided course's scores in the AssessmentSystem class.

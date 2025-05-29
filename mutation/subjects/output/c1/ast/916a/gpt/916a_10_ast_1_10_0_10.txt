@@ -1,0 +1,6 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    log = input()
+    problems_solved = len(set(log))
+    print(problems_solved)

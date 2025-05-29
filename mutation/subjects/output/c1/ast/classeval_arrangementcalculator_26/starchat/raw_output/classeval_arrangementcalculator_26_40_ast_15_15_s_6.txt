@@ -1,0 +1,6 @@
+if m is None or n == m:
+    def count_all(n):
+        total = 0
+        for i in range(1, n + 1):
+            total += ArrangementCalculator.count(n, i)
+        return total  # Corrected the indentation and returned the result correctly

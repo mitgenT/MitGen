@@ -1,0 +1,11 @@
+t = int(input())
+for _ in range(t):
+    a, b, c = map(int, input().split())
+    min_num = min(a, b, c)
+    max_num = max(a, b, c)
+    if a != min_num and a != max_num:
+        print(a)
+    elif b != min_num and b != max_num:
+        print(b)
+    else:
+        print(c)

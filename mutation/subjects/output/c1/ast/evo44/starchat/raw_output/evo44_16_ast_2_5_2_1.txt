@@ -1,0 +1,20 @@
+```python
+def change_base(x: str, base: int, new_base: int):
+    valid_digits = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    base_10 = 0
+    for digit in x:
+        if digit.upper() not in valid_digits[:base]:
+            return 'invalid base'
+        base_10 = base * base_10 + valid_digits[:base].index(digit.upper())
+    new_base_num = ""
+    if base_10 == 0:
+        return '0'
+    while base_10 > 0:
+        remainder = base_10 % new_base
+        base_10 -= new_base
+        if 0 <= remainder <= 9:
+            new_base_num = str(remainder) + new_base_num
+        else:
+            new_base_num = chr(remainder + 55) + new_base_num 
+    return new_base_num
+```

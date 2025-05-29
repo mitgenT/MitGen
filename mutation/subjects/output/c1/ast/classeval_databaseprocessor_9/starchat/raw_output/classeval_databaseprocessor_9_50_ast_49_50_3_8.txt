@@ -1,0 +1,4 @@
+result = cursor.rowcount  
+conn.commit()
+conn.close()  
+return result 

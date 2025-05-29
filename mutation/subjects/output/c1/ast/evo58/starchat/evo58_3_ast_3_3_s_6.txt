@@ -1,0 +1,5 @@
+def common(l1: list, l2: list, n: int):
+    common_list.sort(key=lambda x: (-len(x), l1.index(x)))
+    common_list = list(set(l1) & set(l2))
+    if len(common_list) >= n:
+        return common_list[:n]

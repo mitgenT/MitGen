@@ -1,0 +1,12 @@
+for _ in range(int(input())):
+  n = int(input())
+  cnt = 0
+  log = input()
+  last = '0'
+  
+  for i in log:
+    if i != last:
+      cnt += 1
+      last = i
+  
+  print(cnt)

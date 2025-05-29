@@ -1,0 +1,31 @@
+from sys import stdin
+from operator import itemgetter
+
+def solve(a, b):
+
+    def can_move(x, y):
+        return x > 1 or y > 1
+
+    assert all(x > 0 and y > 0 for x, y in zip(a, b))
+    c = sorted(zip(a, b), key=itemgetter(1))
+
+    ans = 0
+    while c:
+        x, y = c.pop()
+        assert can_move(x, y)
+        if y > 1:
+            x, y = y, x
+        x -= 1
+        y -= 1
+        ans += x - y
+        if not can_move(x, y):
+            c.append((x, y))
+
+    return ans
+
+t = int(stdin.readline())
+for _ in range(t):
+    n = int(stdin.readline())
+    a = [int(x) for x in stdin.readline().split()]
+    b = [int(x) for x in stdin.readline().split()]
+    print(solve(a, b))

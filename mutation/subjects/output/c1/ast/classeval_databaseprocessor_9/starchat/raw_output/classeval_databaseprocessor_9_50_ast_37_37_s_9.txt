@@ -1,0 +1,5 @@
+```python
+            if name == item['name']:
+                cursor.execute(select_query, (name,))
+```
+Here, I have filled the mask with the condition to match the input `name` with the 'name' in each item in the `data` list during insertion and searching operations.

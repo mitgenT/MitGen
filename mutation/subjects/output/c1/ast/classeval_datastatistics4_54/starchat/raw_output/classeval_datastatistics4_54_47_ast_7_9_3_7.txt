@@ -1,0 +1,12 @@
+for x in data:
+  mean1 = sum(data1) / len(data1)
+  mean2 = sum(data2) / len(data2)
+  
+  n = len(data1)
+```python
+for x in data:
+  mean1 = sum(data1) / len(data1)
+  mean2 = sum(data2) / len(data2)
+  
+  n = len(data1)
+```

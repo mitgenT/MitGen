@@ -1,0 +1,24 @@
+Based on the provided docstring, we need to check if the substring `sub` appears in the original string `string`. If it does, we should increment the count for that substring in the `result` dictionary. Since we're checking for overlapping occurrences, we need to update the `start` index after finding a match.
+
+Here's how to fill in the `<MASK>` in the given code:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while True:
+            if string.startswith(sub, start):
+                result[sub] += 1
+                start += len(sub)
+                pos = string.find(sub, start)
+                if pos == -1:
+                    break
+            else:
+                break
+    return result
+```
+
+Now the code checks for overlapping occurrences of each substring in the original string.

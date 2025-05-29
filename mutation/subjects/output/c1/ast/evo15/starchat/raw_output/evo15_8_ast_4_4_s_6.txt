@@ -1,0 +1,13 @@
+## Output
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        else:
+            result.append(str(i))
+    return''.join(result)
+```
+
+In this solution, I have filled the <MASK> for if condition which checks if the current number `(i+1)` is divisible by `m` or not. If it's divisible, then I appended "Fizz" to the result list. Otherwise, I appended the current number `i` as a string. This solution implements the required functionality for the given docstring.

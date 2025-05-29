@@ -1,0 +1,3 @@
+common_list = list(set(l1) & set(l2))
+if len(common_list) < n:
+    raise ValueError('n cannot be larger than the number of common elements.')

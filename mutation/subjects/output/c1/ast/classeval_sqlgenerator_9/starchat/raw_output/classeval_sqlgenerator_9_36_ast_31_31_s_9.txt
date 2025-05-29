@@ -1,0 +1,2 @@
+fields = ", ".join(fields) if isinstance(fields, list) else fields
+condition = f"gender = 'female' AND age < {age}" if age else condition

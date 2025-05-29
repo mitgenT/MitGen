@@ -1,0 +1,18 @@
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+   if not strings:
+       return None, None
+   longest_str = ""
+   longest_index = None
+   for index, string in enumerate(strings):
+       for char_index in range(len(string)):
+           if string[char_index].lower() in 'aeiou':
+               current_substring = string[char_index:]
+               if len(current_substring) > len(longest_str):
+                   longest_str = current_substring
+                   longest_index = index
+                   break
+   if longest_str == "":
+       return None, None
+   else:
+       return longest_str, longest_index

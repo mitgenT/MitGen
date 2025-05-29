@@ -1,0 +1,11 @@
+select_query = "SELECT * FROM {} WHERE name =?".format(table_name)
+
+# Replace existing line in the search_database method
+```python
+            if <MASK>:
+                <MASK>
+            cursor.execute(select_query, (name,))
+            result = cursor.fetchall()
+
+            return result
+```

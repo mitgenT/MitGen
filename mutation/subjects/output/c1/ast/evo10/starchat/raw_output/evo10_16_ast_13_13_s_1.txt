@@ -1,0 +1,21 @@
+## Output
+```python
+def is_palindrome(string: str) -> bool:
+    """ 
+    Test if given string is a palindrome.
+    """
+
+    return string == string[::-1]
+
+
+def make_palindrome(string: str) -> str:
+    l_string = string.lower()
+    if is_palindrome(l_string):
+        return string
+
+    for i in range(len(string)):
+        if is_palindrome(l_string[-i:]):
+            return string + string[:len(string)-i][::-1]
+```
+
+In the solution, for the `make_palindrome` function, the `<MASK>` is replaced by a `for` loop that iterates through the length of the input string, checking if the suffix is a palindrome. If it is, the function appends the reversed prefix of the string to the end, thus creating the shortest possible palindrome. The check is done on the lowercased string for case insensitivity. The function returns the original string if it is already a palindrome.

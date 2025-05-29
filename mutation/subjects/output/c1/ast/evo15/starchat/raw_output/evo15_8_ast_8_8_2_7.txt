@@ -1,0 +1,15 @@
+## Output
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        else:
+            result.append(str(i))
+    if len(result) > 0:
+        return " ".join(result)
+```
+
+In this modified output, I added a check to ensure that if the resulting list is not empty before joining the strings to form the final output. The `if len(result) > 0:` condition ensures that we avoid joining an empty list and getting an error message. In other words, this change does not affect the function's behavior when `n` is 0 or less, as the resulting list is already empty.

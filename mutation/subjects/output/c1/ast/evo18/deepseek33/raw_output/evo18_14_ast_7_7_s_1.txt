@@ -1,0 +1,28 @@
+In this given code, the <MASK> can be infilled as the following:
+
+```python
+while start <= len(string):
+```
+
+This will ensure that the find method continues searching the string from the position "start" until the end. The search for the substring will continue until there are no more instances of the substring in the string, at which point the while loop will break.
+
+So the completed code would be:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start <= len(string):
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+```
+
+This code will return a dictionary with each substring found in the string, and the number of times each substring appears. If any of the substrings are empty, the function will return a string "Substrings cannot be empty". If the input string is empty, a dictionary with zero counts for each substring is returned. If a substring appears more than once in the list, its count will be increased accordingly.

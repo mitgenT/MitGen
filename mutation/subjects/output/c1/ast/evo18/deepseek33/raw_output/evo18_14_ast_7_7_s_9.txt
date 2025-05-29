@@ -1,0 +1,29 @@
+In Python, we can utilize the continue keyword to skip the remaining iterations in the current loop and immediately start the next iteration.
+
+So, here is how to infill the masks in your provided code:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string):
+            if not string[start].isalpha():
+                start += 1
+                continue
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+```
+
+In this modified code, the while loop continues only when the start index is less than the length of the string, skipping iterations when the character at start index is not an alphabet. This allows the code to handle non-alphabetic characters in the string without stopping the search for substrings.
+
+If the character at start index is not an alphabet, the start index is incremented by one and the loop starts the next iteration.
+
+The rest of the code in the function works as before, counting the number of times each substring appears in the string.

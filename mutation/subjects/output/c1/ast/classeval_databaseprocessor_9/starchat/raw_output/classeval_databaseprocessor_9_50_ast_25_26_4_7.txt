@@ -1,0 +1,1 @@
+cursor.execute("INSERT INTO " + table_name + " (name, age) VALUES (?,?)", (item['name'], item['age']))

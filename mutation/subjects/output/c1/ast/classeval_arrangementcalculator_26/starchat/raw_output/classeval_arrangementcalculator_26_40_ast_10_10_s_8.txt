@@ -1,0 +1,4 @@
+if m is None:
+    m = len(self.datas)
+else:
+    return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)

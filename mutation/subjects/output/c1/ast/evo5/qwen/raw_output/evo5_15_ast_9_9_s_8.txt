@@ -1,0 +1,26 @@
+Here's the code with the `<MASK>` replaced:
+
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = False
+    if type(delimeter) == float:
+        set_float = True
+    result = []
+    limit = min(limit, len(numbers) - 1) 
+
+    for i in range(len(numbers) - 1):
+        if i < limit:  # Insert the delimeter
+            result.append(delimeter)
+        else:  # Add the number without the delimeter after the limit
+            result.append(numbers[i])
+    else:
+        if set_float:
+            result.append(float(numbers[-1]))  # Convert the last number to float if delimeter was a float
+        else:
+            result.append(numbers[-1])
+
+    return result
+```
+
+I've filled in the `if` conditions to handle the insertion of the delimeter and adding the numbers according to the description in the docstring.

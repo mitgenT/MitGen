@@ -1,0 +1,20 @@
+## Output
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+        else:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char.upper()
+    return result
+```
+
+Here, I used the Python `enumerate` function to iterate over the string's indices and characters. Then, based on the condition, if the index is the special index, I toggled the case accordingly. For other indices, I toggled the case in a way that uppercases were converted to lowercases and vice versa. Finally, I concatenated the characters into a string and returned it.

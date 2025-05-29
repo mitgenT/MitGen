@@ -1,0 +1,9 @@
+
+    a = [n-i for i in range(n-k-1)]
+    a.reverse()
+    for j in range(k+1,n+1):
+        s = s+ ' '+ str(j)
+    s = s.strip()
+    s = s+ '<missing code>'
+    print(s.strip())
+

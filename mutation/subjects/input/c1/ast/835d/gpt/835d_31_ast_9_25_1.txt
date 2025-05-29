@@ -1,0 +1,15 @@
+
+import sys
+from bisect import bisect_left as bs
+
+input = sys.stdin.readline
+ii = lambda: int(input())
+iilist = lambda: list(map(int, input().split()))
+
+<missing code>
+
+for crossmyheart in range(ii()):
+    input()
+    print(['NO', 'YES'][solve(iilist())])
+
+    

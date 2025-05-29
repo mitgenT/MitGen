@@ -1,0 +1,20 @@
+## Output
+```python
+def change_base(x: str, base: int, new_base: int):
+    try:
+        base_10 = int(x, base)
+    except ValueError:
+        return "invalid base"
+    new_base_num = ""
+    if base_10 == 0:
+        return '0'
+    while base_10 > 0:
+        remainder = base_10 % new_base
+        base_10 -= new_base
+        if 0 <= remainder <= 9:
+            new_base_num = str(remainder) + new_base_num
+        else:
+            new_base_num = chr(remainder + 55) + new_base_num 
+    return new_base_num
+```
+In this output, I added an if-else statement within the while loop to check the range of the remainder. If it is between 0 and 9, the remainder is converted to a string and concatenated with the `new_base_num`. If it is outside this range, the remainder is added to 55 to map to the ASCII value of uppercase letters A-Z, then converted to a character and concatenated with `new_base_num`.

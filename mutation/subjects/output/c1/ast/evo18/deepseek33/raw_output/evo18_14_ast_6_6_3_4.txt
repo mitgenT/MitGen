@@ -1,0 +1,24 @@
+The following code snippet is the complete program, based on the docstring and the given code. The <MASK> has been infilled with 'string' and the docstring. 
+
+```Python
+def how_many_times(string: str, substrings: list) -> dict:
+    """
+    This function takes a string and a list of substrings as input.
+    It returns a dictionary with each substring as a key and 
+    its count in the string as the value.
+    """
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        if sub in string:
+            while start < len(string) - 1:
+                pos = string.find(sub, start)
+                if pos != -1:
+                    result[sub] += 1
+                    start = pos + 1
+                else:
+                    break
+    return result
+```

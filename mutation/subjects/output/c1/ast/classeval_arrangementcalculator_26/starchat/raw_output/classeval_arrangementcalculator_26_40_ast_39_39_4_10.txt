@@ -1,0 +1,4 @@
+```python
+    if n!= 0:
+        result *= i
+```

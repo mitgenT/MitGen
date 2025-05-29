@@ -1,0 +1,8 @@
+if cursor is None:
+    cursor = conn.cursor()
+
+df = pd.DataFrame(data)
+if not df.empty:
+    df.to_sql(table_name, conn, if_exists='append', index=False)
+else:
+    print("Dataframe is empty!")

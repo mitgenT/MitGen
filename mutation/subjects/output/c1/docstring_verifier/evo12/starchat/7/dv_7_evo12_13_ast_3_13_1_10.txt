@@ -1,0 +1,17 @@
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+   longest_substring = None
+   index = None
+   vowels = set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
+   for i, s in enumerate(strings):
+       for j in range(len(s)):
+           if s[j] in vowels:
+               current_substring = s[j:]
+               if longest_substring is None or len(current_substring) > len(longest_substring):
+                   longest_substring = current_substring
+                   index = i
+               elif len(current_substring) == len(longest_substring) and i < index:
+                   longest_substring = current_substring
+                   index = i
+               break
+   return longest_substring, index

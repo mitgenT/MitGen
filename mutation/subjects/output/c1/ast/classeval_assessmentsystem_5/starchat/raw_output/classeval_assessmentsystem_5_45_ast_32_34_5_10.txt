@@ -1,0 +1,16 @@
+In the `get_course_average` method, you need to check if the score is not `None` before adding it to the `total` and incrementing the `count`. You can use this code:
+
+```Python
+def get_course_average(self, course):
+    total = 0
+    count = 0
+    for student in self.students.values():
+        if course in student['courses']:
+            score = student['courses'][course]
+            if score is not None:
+                total += score
+                count += 1
+    return total / count if count > 0 else None
+```
+
+Now the `AssessmentSystem` class's `get_course_average` method is correctly implemented. It calculates and returns the average score of the specified course, or `None` if no score records are available.

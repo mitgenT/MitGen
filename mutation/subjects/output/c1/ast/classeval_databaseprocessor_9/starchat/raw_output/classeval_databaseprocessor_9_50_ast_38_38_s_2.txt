@@ -1,0 +1,6 @@
+```python
+            rows = cursor.fetchall()
+            result = [(row[0], row[1], row[2]) for row in rows]
+
+        conn.close()
+```

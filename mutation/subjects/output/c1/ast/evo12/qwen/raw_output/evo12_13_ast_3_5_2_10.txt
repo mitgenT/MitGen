@@ -1,0 +1,20 @@
+Based on the given docstring, we need to initialize `longest_substring` and `longest_substring_index` variables, and check if a substring starts with a vowel before updating them. Here's how to fill in `<MASK>`:
+
+```python
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+    longest_substring = None
+    longest_substring_index = None
+    vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}
+
+    for i, string in enumerate(strings):
+        substrings = [string[j:] for j in range(len(string)) if string[j].lower() in vowels]
+        if substrings:
+            max_substring = max(substrings, key=len)
+            if longest_substring is None or len(max_substring) == len(longest_substring):
+                longest_substring = max_substring
+                longest_substring_index = i
+    return longest_substring, longest_substring_index
+```
+
+This code initializes the variables `longest_substring` and `longest_substring_index`, and uses a set of vowels to check for vowel substrings in each string. The lowercase version of the character is checked to make the function case-insensitive.

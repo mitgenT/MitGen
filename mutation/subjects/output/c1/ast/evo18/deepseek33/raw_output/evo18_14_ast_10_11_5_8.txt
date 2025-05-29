@@ -1,0 +1,23 @@
+## Infilled code:
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                if pos in result:
+                    result[pos] += 1
+                else:
+                    result[sub] += 1
+            else:
+                break
+            start = pos + 1
+    return result
+```
+
+## Explanation:
+The code infills the <MASK> placeholders according to the requirements of the problem. We add one to the result of the substring when we find a match to increase the count. Also, we add one to the start index after each match to make sure overlapping matches are counted correctly. If we do not do this, the same non-overlapping substring may get repeated in following iterations which could lead to incorrect results. If pos is not in result, we add it to the dictionary with value 1.

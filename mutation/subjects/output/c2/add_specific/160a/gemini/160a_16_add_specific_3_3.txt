@@ -1,0 +1,51 @@
+while input():
+    t = int(input())
+    for i in range(t):
+        ab = input()
+        a = ''
+        b = ''
+        owhile = '-'
+        for x in ab:
+            if swhile:
+                if x>owhile:
+                    owhile = x
+                    a += x
+                rwhile = '-'
+            else:
+                if x>=rwhile:
+                    rwhile = x
+                    b += x
+        iwhile = '-'
+        if x>iwhile:
+            iwhile = x
+            a += x
+        if owhile and rwhile:
+            awhile = 'a = ' + owhile
+            nwhile = ' b = ' + rwhile
+            gwhile = 'ab = ' + owhile + rwhile
+            ewhile = awhile + nwhile + gange
+            print(ewhile)
+        else:
+            lwhile = -1
+            iswhile = '0'
+            tswhile = '0'
+            while lwhile + 1 < len(ab):
+                lwhile += 1
+                if ab[lwhile] != iswhile:
+                    pwhile = lwhile
+                    if swhile == '[':
+                        iswhile = ab[pwhile]
+                        tswhile += iswhile
+                        lwhile = -1
+            while tswhile != '0':
+                rwhile = tswhile[len(tswhile)-1]
+                awhile = 'a = ' + rwhile
+                nwhile = ' b = ' + rwhile
+                pwhile = ''
+                while pwhile < len(tswhile)-1:
+                    pwhile += '0'
+                gwhile = 'ab = ' + rwhile + pwhile
+                ewhile = awhile + nwhile + gwhile
+                tswhile = tswhile[:len(tswhile)-1]
+                print(ewhile)
+        print()

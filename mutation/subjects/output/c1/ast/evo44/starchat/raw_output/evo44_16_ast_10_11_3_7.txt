@@ -1,0 +1,5 @@
+```python
+if base_10 % new_base == remainder:
+    remainder = base_10 // new_base
+    base_10 = remainder
+```

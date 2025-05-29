@@ -1,0 +1,6 @@
+## Output
+
+```python
+pairs.sort(key=lambda x: (len(x[0]), x[0] + x[1]))  # Sort by length and lexicographically
+return pairs
+```

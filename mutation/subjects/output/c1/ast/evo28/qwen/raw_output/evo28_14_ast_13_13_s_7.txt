@@ -1,0 +1,34 @@
+Here's the completed code based on the given docstring:
+
+```python
+from typing import List, Tuple
+
+def interleave_and_concatenate(strings: List[str], integers: List[int]) -> Tuple[str, int]:
+    interleaved = []
+    len_strings = len(strings)
+    len_integers = len(integers)
+    max_len = max(len_strings, len_integers)
+    
+    for i in range(max_len):
+        if i < len_strings:
+            interleaved.append(strings[i])
+        if i < len_integers:
+            interleaved.append(integers[i])
+
+    concatenated_string = ' '.join([str(i) for i in interleaved if isinstance(i, str)])
+
+    # Calculate the sum of integers
+    sum_integers = sum(integer for integer in interleaved if isinstance(integer, int))
+
+    # If there are more string elements remaining
+    if len_strings > len_integers:
+        concatenated_string += ' '.join([str(strings[i]) for i in range(len_integers, len_strings)])
+    
+    # If there are more integer elements remaining
+    elif len_integers > len_strings:
+        sum_integers += sum(integers[len_strings:])
+
+    return (concatenated_string, sum_integers)
+
+```
+Now, the `<MASK>` parts have been replaced with the correct logic according to the requirements of the function. The code calculates the sum of integers and concatenates the remaining string elements, if any, after the main loop.

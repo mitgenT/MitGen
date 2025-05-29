@@ -1,0 +1,19 @@
+For the given code snippet, the <MASK> should be infilled as follows:
+
+```python
+@staticmethod
+def skewness(data):
+    n = len(data)
+    if n < 3:
+        raise ValueError("The length of the data must be at least 3 for skewness calculation.")
+
+    mean = sum(data) / n
+    variance = sum((x - mean) ** 2 for x in data) / n
+    std_deviation = math.sqrt(variance)
+
+    skewness = sum((x - mean) ** 3 for x in data) * n / ((n - 1) * (n - 2) * std_deviation ** 3) if std_deviation!= 0 else 0
+
+    return skewness
+```
+
+The <MASK> in the skewness method check whether the length of the data is at least 3 before calculating skewness, since skewness is undefined for less than three data points.

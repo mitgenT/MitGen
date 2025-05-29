@@ -1,0 +1,8 @@
+The missing parts for the given code are:
+
+1. For correlation_coefficient method:
+    ```python
+    denominator = math.sqrt(sum((data1[i] - mean1) ** 2 for i in range(n)) * sum((data2[i] - mean2) ** 2 for i in range(n)))
+    ```
+
+2. For the rest of the methods, the codes inside the functions are already implemented as per the given requirements. You don't need to fill in any <MASK> in those sections.

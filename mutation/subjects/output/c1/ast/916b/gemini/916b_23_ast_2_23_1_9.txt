@@ -1,0 +1,20 @@
+t = int(input())
+for i in range(t):
+    n, k = map(int, input().split())
+    inc_cnt = 0
+    dec_cnt = n - 1 - k
+    arr = []
+    for j in range(n - 1, 0, -1):
+        if inc_cnt != k:
+            arr.append(j + 1)
+            inc_cnt += 1
+        else:
+            arr.append(j)
+            dec_cnt -= 1
+    if dec_cnt > 0:
+        arr.append(1)
+        for j in range(dec_cnt):
+            arr.append(j + 2)
+    else:
+        arr.append(1)
+    print(*arr)

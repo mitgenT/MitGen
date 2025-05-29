@@ -1,0 +1,16 @@
+```python
+def change_base(x: str, base: int, new_base: int):
+    try:
+        base_10 = int(x, base)
+    except ValueError:
+        return "invalid base"
+    new_base_num = ""
+    if base_10 == 0:
+        return '0'
+    while base_10 > 0:
+        new_base_num = str(base_10 % new_base) if base_10 % new_base < 10 else chr(ord('A') + (base_10 % new_base) - 10) + new_base_num
+        base_10 = base_10 // new_base
+    return new_base_num
+```
+
+In this example, the <MASK> was filled with a loop that converts the number from base to new_base. The loop calculates remainders and appends their corresponding characters (or their uppercase letters for digits > 9) to `new_base_num`. After the loop, `new_base_num` is returned. This effectively implements the change_base function.

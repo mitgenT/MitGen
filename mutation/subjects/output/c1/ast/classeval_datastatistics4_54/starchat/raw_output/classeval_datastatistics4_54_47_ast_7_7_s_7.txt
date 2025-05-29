@@ -1,0 +1,4 @@
+if len(data1) == len(data2):
+    n = len(data1)
+else:
+    raise ValueError("The input data sets must have the same length")

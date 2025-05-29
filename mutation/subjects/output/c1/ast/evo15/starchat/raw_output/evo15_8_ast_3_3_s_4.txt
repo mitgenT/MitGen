@@ -1,0 +1,16 @@
+## Output
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n+1):
+        if i > 0:
+            if (i+1) % m == 0:
+                result.append("Fizz")
+            else:
+                result.append(str(i))
+    return''.join(result)
+```
+
+Infill `<MASK>` in the given code by introducing a for loop that iterates from 1 to `n` inclusive. Check if `(i+1) % m == 0`, if true, append "Fizz" to the list; otherwise, append the string representation of `i` to the list.
+
+Note: In the given example, it seems there is an error with the condition `if <MASK>`. The original docstring said "Return a string containing space-delimited numbers starting from 0 upto n inclusive, but replace every m-th number with 'Fizz'". However, the given code doesn't handle this condition. I replaced the `<MASK>` in the for loop with `if i > 0` to start from 1.

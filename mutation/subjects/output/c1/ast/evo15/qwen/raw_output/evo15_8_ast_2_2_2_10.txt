@@ -1,0 +1,12 @@
+Based on the provided docstring, we need to create an empty list `result` and append space-separated numbers and "Fizz" values. Here's how to fill in the `<MASK>` in the given code:
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        else:
+            result.append(str(i))
+    return ' '.join(result)
+```

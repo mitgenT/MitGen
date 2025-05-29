@@ -1,0 +1,6 @@
+```python
+        if n > 1:
+            mean = sum(data) / n
+        else:
+            return 0
+```

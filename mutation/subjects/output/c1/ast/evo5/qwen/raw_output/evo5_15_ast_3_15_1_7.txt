@@ -1,0 +1,17 @@
+Based on the given docstring, we need to insert the `delimeter` between every two consecutive elements of the `numbers` list, up to `limit` times. Here's the completed code:
+
+```python
+from typing import List, Union
+
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    output_list = []
+    count = 0
+    for i in range(len(numbers)):
+        output_list.append(numbers[i])
+        if count < limit and i < len(numbers) - 1:
+            output_list.append(delimeter)
+            count += 1
+    return output_list
+```
+
+The `output_list` is initialized empty, and we iterate through `numbers`. After each iteration, we check if the delimiter should be inserted based on the current `count` (which tracks the number of delimiters added so far) and the `limit`. If the conditions are met, we append the delimiter and increment the count. Finally, we return the modified `output_list`.

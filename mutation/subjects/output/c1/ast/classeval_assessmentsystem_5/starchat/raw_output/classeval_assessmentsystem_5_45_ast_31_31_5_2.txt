@@ -1,0 +1,1 @@
+self.get_gpa(student) > top_gpa

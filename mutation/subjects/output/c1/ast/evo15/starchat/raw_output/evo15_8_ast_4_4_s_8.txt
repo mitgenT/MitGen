@@ -1,0 +1,16 @@
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:  # Check if the current number (i+1) is divisible by m
+            result.append("Fizz")
+        else:
+            result.append(str(i))
+    return''.join(result)
+
+print(string_sequence_modified(0, 3))
+print(string_sequence_modified(5, 3))
+print(string_sequence_modified(15, 3))
+```
+
+When you run this code, you should get the output as shown in the docstring. The mask has been infilled by checking if (i+1) is divisible by m and appending "Fizz" when it is.

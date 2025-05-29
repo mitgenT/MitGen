@@ -1,0 +1,48 @@
+The given code snippet has a bug in the `count_all` method where the calculation of `total` is missing. The calculation should multiply `total` by `ArrangementCalculator.factorial(i)` to include all permutations of 1 to n items from the given dataset.
+
+Here is the corrected code:
+
+```python
+import itertools
+
+class ArrangementCalculator:
+    def __init__(self, datas):
+        self.datas = datas
+
+    @staticmethod
+    def count(n, m=None):
+        if m is None or n == m:
+            return ArrangementCalculator.factorial(n)
+        else:
+            return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)
+
+    @staticmethod
+    def count_all(n):
+        total = 1  # start with 1 to include empty arrangement
+        for i in range(1, n + 1):
+            total *= ArrangementCalculator.factorial(i)
+        return total
+
+    def select(self, m=None):
+        if m is None:
+            m = len(self.datas)
+        result = []
+        for permutation in itertools.permutations(self.datas, m):
+            result.append(list(permutation))
+        return result
+
+    def select_all(self):
+        result = []
+        for i in range(1, len(self.datas) + 1):
+            result.extend(self.select(i))
+        return result
+
+    @staticmethod
+    def factorial(n):
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
+```
+
+The code has been fixed by adding `total = 1` at the beginning of the `count_all` method to account for the empty arrangement. The calculation for `total` now correctly multiplies `total` by `ArrangementCalculator.factorial(i)` for all values of `i` from 1 to `n + 1`. This ensures that the method counts all possible arrangements by choosing at least 1 item and at most the number of internal datas.

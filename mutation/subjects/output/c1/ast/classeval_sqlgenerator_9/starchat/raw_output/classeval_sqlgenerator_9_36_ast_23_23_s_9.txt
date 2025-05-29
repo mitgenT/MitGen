@@ -1,0 +1,18 @@
+In the 'update' method, you should fill in 'condition' with the parameter like this:
+
+        if condition is not None:
+            sql += f" WHERE {condition}"
+
+
+So the complete 'update' method is as follows:
+
+```python
+    def update(self, data, condition):
+        set_clause = ", ".join([f"{field} = '{value}'" for field, value in data.items()])
+        if condition is not None:
+            sql += f" WHERE {condition}"
+        sql = f"UPDATE {self.table_name} SET {set_clause}"
+        return sql + ";"
+```
+
+The rest of the code remains unchanged.

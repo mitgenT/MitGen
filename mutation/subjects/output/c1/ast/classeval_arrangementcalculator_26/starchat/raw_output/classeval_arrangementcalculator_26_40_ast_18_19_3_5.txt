@@ -1,0 +1,5 @@
+```python
+    if m == 0:
+        return 1
+```
+In the given code, <MASK> was in the count_all function where we have to handle the condition where m is zero. It should return 1 because when there is no item to choose, there is only one way, i.e., not choosing anything.

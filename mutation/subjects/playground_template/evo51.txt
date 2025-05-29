@@ -1,0 +1,124 @@
+from wrapt_timeout_decorator import *
+
+<generated_code_here>
+
+import numpy as np
+from numpy import nan, inf # for some outputs.
+import sys
+
+sys.set_int_max_str_digits(0)
+
+from enum import IntEnum, auto
+
+def is_floats(x) -> bool:
+    # check if it is float; List[float]; Tuple[float]
+    # TODO: search for any close floats? (other data structures)
+    if isinstance(x, float):
+        return True
+    if isinstance(x, (list, tuple)):
+        return all(isinstance(i, float) for i in x)
+    if isinstance(x, np.ndarray):
+        return x.dtype == np.float64 or x.dtype == np.float32
+    return False
+
+
+class DataType(IntEnum):
+    Float = auto()
+    Bool = auto()
+    Int = auto()
+    Str = auto()
+    Null = auto()
+    Tuple = auto()
+    List = auto()
+    Dict = auto()
+    Set = auto()
+    Type = auto()
+    Unknown = auto()
+
+
+def get_type(x):
+    if x is None:
+        return DataType.Null
+    elif isinstance(x, bool):
+        return DataType.Bool
+    elif isinstance(x, int):
+        return DataType.Int
+    elif isinstance(x, str):
+        return DataType.Str
+    elif is_floats(x):
+        return DataType.Float
+    elif isinstance(x, tuple):
+        return DataType.Tuple
+    elif isinstance(x, list):
+        return DataType.List
+    elif isinstance(x, dict):
+        return DataType.Dict
+    elif isinstance(x, set):
+        return DataType.Set
+    elif isinstance(x, type):
+        return DataType.Type
+    else:
+        return DataType.Unknown
+
+
+def is_equal(x, y) -> tuple[bool, str]:
+    x_type, y_type = get_type(x), get_type(y)
+    if x_type != y_type:
+        return False, "Type mismatch: {} vs {}".format(str(x_type), str(y_type))
+
+    if x_type in [DataType.Int, DataType.Bool, DataType.Null, DataType.Str, DataType.Set, DataType.Type]:
+        if x == y:
+            return True, None
+        try:
+            error_msg = "INT/BOOL/NULL/ Value mismatch: {} vs {}".format(repr(x)[:300], repr(y)[:300])
+        except:
+            error_msg = "Value mismatch: too large for display"
+        return False, error_msg
+    elif x_type == DataType.Float:
+        if np.allclose(x, y, equal_nan=True, atol=1e-6): # guard against nan
+            return True, None
+        else:
+            return False, "FLOAT Value mismatch: {} vs {}".format(x, y)
+    elif x_type in [DataType.List, DataType.Tuple]:
+        if len(x) != len(y):
+            return False, "Length mismatch: {} vs {}".format(len(x), len(y))
+        for i in range(len(x)):
+            equal, msg = is_equal(x[i], y[i])
+            if not equal:
+                return False, msg
+        return True, None
+    elif x_type == DataType.Dict:
+        if len(x) != len(y):
+            return False, "Length mismatch: {} vs {}".format(len(x), len(y))
+        for k, v in x.items():
+            if k not in y:
+                return False, "DICT Value mismatch: key {} in {} but not in {}".format(k, x, y)
+            equal, msg = is_equal(v, y[k])
+            if not equal:
+                return False, msg
+        return True, None
+    else:
+        try:
+            if x == y:  # e.g., object comparison
+                return True, None
+            else:
+                return False, "ELSE Value mismatch: {} vs {}".format(x, y)
+        except:
+            return False, "Unsupported type: {} <-- {}".format(x_type, type(x))
+
+def check(candidate):
+    inputs = [eval(f"[{i}]") for i in ["''", '"abcdef\\nghijklm"', "'abcdef'", "'aaaaa'", "'aaBAA'", "'zbcd'", "'The quick brown fox jumps over the lazy dog'", "'O Romeo, Romeo! Wherefore art thou Romeo?'", "'A string with special characters: @#%$^&*()!'", "'All uppercase vowels: AEIOU'", "'All lowercase vowels: aeiou'", "'A string with numbers: 12345'", "'String with punctuations. How would it behave?'", "'Whitespace   test'", "'No vowels here'", "'aeiouAEIOU'", "'The quick brown fox jumps over the lazy dog'", "'This is a sentence\\nWith two lines.'", "'A mix of UPPER and lower cases.'", "'Various punctuation marks, like: commas, periods, exclamation marks!'", "'Special characters! @%^&*()'", "'Numbers1234567890'", "'Long string of vowels aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'", "'Empty spaces    '", "'Vowels interspersed with spaces a e i o u'", "'Testing with non-English characters: ëüöä'", "'Single character strings: a, e, i, o, u'", "'Multiple instances of the same vowel aaaaeeeeiiiioooouuuu'", "'ABCDEFGHIJKLMNOPQRSTUVWXYZ'", "'abcdefghijklmnopqrstuvwxyz'", "'1234567890!@#$%^&*()'", "'   '", "'\\t\\n\\r\\f\\v'", "'aeiouAEIOU' * 1000", "'The quick brown fox jumps over the lazy dog'", "'A man can be destroyed but not defeated.'", "'In spite of everything, I still believe people are really good at heart.'", "'Do not mind anything that anyone tells you about anyone else.'", "'Nowadays people know the price of everything and the value of nothing.'", "'Null'", "'True'", "'False'", "'None'", "' '", "'A'", "'a'", "'AEIOU'", "'aeiou'", "'The quick brown fox jumps over the lazy dog.'", "'1234567890'", "'!@#$%^&*()'", "'Hello\\nWorld!'", "'\\n\\n\\n'", "'A'*1000000", "' '", "'AaEeIiOoUuYy'", "'The quick brown fox jumps over the lazy dog'", "'Supercalifragilisticexpialidocious'", "'Én tÿpögràphîcæl mìstäkès'", "'海南鸡饭是一个非常好吃的菜'", "'1234567890'", "'\\n\\n\\n\\n'", "'AIueo'", "'João'", "'!@#$%^&*()_+=-`~'", "'      '", '\'\\"\\\'\'', "'<html><head><title>Test</title></head><body>Test page</body></html>'", "'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ultricies.'"]]
+    outputs = [('', {}), ('bcdf\nghjklm', {'a': 1, 'e': 1, 'i': 1}), ('bcdf', {'a': 1, 'e': 1}), ('', {'a': 5}), ('B', {'a': 2, 'A': 2}), ('zbcd', {}), ('Th qck brwn fx jmps vr th lzy dg', {'u': 2, 'i': 1, 'o': 4, 'a': 1, 'e': 3}), (' Rm, Rm! Whrfr rt th Rm?', {'o': 8, 'a': 1, 'u': 1, 'e': 6, 'O': 1}), (' strng wth spcl chrctrs: @#%$^&*()!', {'i': 3, 'A': 1, 'a': 3, 'e': 2}), ('ll pprcs vwls: ', {'I': 1, 'o': 1, 'E': 1, 'U': 1, 'a': 1, 'u': 1, 'e': 3, 'O': 1, 'A': 2}), ('ll lwrcs vwls: ', {'o': 3, 'a': 2, 'u': 1, 'e': 4, 'A': 1, 'i': 1}), (' strng wth nmbrs: 12345', {'u': 1, 'i': 2, 'A': 1, 'e': 1}), ('Strng wth pncttns. Hw wld t bhv?', {'u': 3, 'i': 4, 'o': 3, 'a': 2, 'e': 2}), ('Whtspc   tst', {'a': 1, 'e': 3, 'i': 1}), ('N vwls hr', {'o': 2, 'e': 3}), ('', {'I': 1, 'o': 1, 'E': 1, 'U': 1, 'a': 1, 'u': 1, 'e': 1, 'O': 1, 'A': 1, 'i': 1}), ('Th qck brwn fx jmps vr th lzy dg', {'u': 2, 'i': 1, 'o': 4, 'a': 1, 'e': 3}), ('Ths s  sntnc\nWth tw lns.', {'o': 1, 'a': 1, 'e': 4, 'i': 4}), (' mx f PPR nd lwr css.', {'i': 1, 'o': 2, 'A': 1, 'U': 1, 'E': 1, 'a': 2, 'e': 2}), ('Vrs pncttn mrks, lk: cmms, prds, xclmtn mrks!', {'u': 3, 'i': 5, 'o': 5, 'a': 7, 'e': 3}), ('Spcl chrctrs! @%^&*()', {'i': 1, 'a': 3, 'e': 2}), ('Nmbrs1234567890', {'u': 1, 'e': 1}), ('Lng strng f vwls ', {'o': 3, 'a': 50, 'e': 1, 'i': 1}), ('mpty spcs    ', {'E': 1, 'a': 1, 'e': 1}), ('Vwls ntrsprsd wth spcs     ', {'o': 2, 'a': 2, 'i': 3, 'u': 1, 'e': 6}), ('Tstng wth nn-nglsh chrctrs: ëüöä', {'i': 3, 'o': 1, 'E': 1, 'a': 2, 'e': 2}), ('Sngl chrctr strngs: , , , , ', {'o': 1, 'a': 3, 'u': 1, 'e': 3, 'i': 3}), ('Mltpl nstncs f th sm vwl ', {'o': 6, 'a': 6, 'u': 5, 'e': 9, 'i': 6}), ('BCDFGHJKLMNPQRSTVWXYZ', {'A': 1, 'I': 1, 'E': 1, 'U': 1, 'O': 1}), ('bcdfghjklmnpqrstvwxyz', {'u': 1, 'i': 1, 'o': 1, 'a': 1, 'e': 1}), ('1234567890!@#$%^&*()', {}), ('   ', {}), ('\t\n\r\x0c\x0b', {}), ('', {'I': 1000, 'o': 1000, 'E': 1000, 'U': 1000, 'a': 1000, 'u': 1000, 'e': 1000, 'O': 1000, 'A': 1000, 'i': 1000}), ('Th qck brwn fx jmps vr th lzy dg', {'u': 2, 'i': 1, 'o': 4, 'a': 1, 'e': 3}), (' mn cn b dstryd bt nt dftd.', {'o': 2, 'a': 3, 'u': 1, 'e': 6, 'A': 1}), ('n spt f vrythng,  stll blv ppl r rlly gd t hrt.', {'i': 4, 'o': 4, 'I': 2, 'a': 4, 'e': 11}), ('D nt mnd nythng tht nyn tlls y bt nyn ls.', {'o': 6, 'a': 5, 'u': 2, 'e': 5, 'i': 2}), ('Nwdys ppl knw th prc f vrythng nd th vl f nthng.', {'u': 1, 'i': 3, 'o': 6, 'a': 4, 'e': 8}), ('Nll', {'u': 1}), ('Tr', {'e': 1, 'u': 1}), ('Fls', {'a': 1, 'e': 1}), ('Nn', {'e': 1, 'o': 1}), (' ', {}), ('', {'A': 1}), ('', {'a': 1}), ('', {'I': 1, 'U': 1, 'E': 1, 'O': 1, 'A': 1}), ('', {'o': 1, 'a': 1, 'u': 1, 'e': 1, 'i': 1}), ('Th qck brwn fx jmps vr th lzy dg.', {'u': 2, 'i': 1, 'o': 4, 'a': 1, 'e': 3}), ('1234567890', {}), ('!@#$%^&*()', {}), ('Hll\nWrld!', {'o': 2, 'e': 1}), ('\n\n\n', {}), ('', {'A': 1000000}), (' ', {}), ('Yy', {'I': 1, 'o': 1, 'E': 1, 'U': 1, 'a': 1, 'u': 1, 'e': 1, 'O': 1, 'A': 1, 'i': 1}), ('Th qck brwn fx jmps vr th lzy dg', {'u': 2, 'i': 1, 'o': 4, 'a': 1, 'e': 3}), ('Sprclfrglstcxpldcs', {'o': 2, 'a': 3, 'u': 2, 'e': 2, 'i': 7}), ('Én tÿpögràphîcæl mìstäkès', {}), ('海南鸡饭是一个非常好吃的菜', {}), ('1234567890', {}), ('\n\n\n\n', {}), ('', {'I': 1, 'o': 1, 'u': 1, 'e': 1, 'A': 1}), ('Jã', {'o': 2}), ('!@#$%^&*()_+=-`~', {}), ('      ', {}), ('"\'', {}), ('<html><hd><ttl>Tst</ttl></hd><bdy>Tst pg</bdy></html>', {'i': 2, 'o': 2, 'a': 3, 'e': 7}), ('Lrm psm dlr st mt, cnscttr dpscng lt. Qsq ltrcs.', {'u': 5, 'i': 9, 'o': 4, 'a': 2, 'e': 7})]
+    to_output = []
+    for i, (inp, exp) in enumerate(zip(inputs, outputs)):
+        try:
+            to_output.append((i,compute_output(candidate,inp)))
+        except:
+            to_output.append((i,"Exception"))
+    print(f"Final output of subject for prioritization is:::::{to_output}")
+
+@timeout(5)
+def compute_output(candidate,inp):
+    return candidate(*inp)
+    
+check(remove_vowels_and_count)

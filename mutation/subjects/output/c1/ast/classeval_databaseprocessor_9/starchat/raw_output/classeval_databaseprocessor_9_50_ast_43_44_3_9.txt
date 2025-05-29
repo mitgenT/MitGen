@@ -1,0 +1,14 @@
+conn = sqlite3.connect(self.database_name)
+cursor = conn.cursor()
+
+if cursor.execute(f"SELECT 1 FROM {table_name} WHERE name =?", (name,)).fetchone() is not None:
+    delete_query = f"DELETE FROM {table_name} WHERE name =?"
+    cursor.execute(delete_query, (name,))
+
+    conn.commit()
+    conn.close()
+
+# You could also handle the case when no records match the provided name, like this:
+# else:
+#     print(f"No records found with name {name}")
+# conn.close()

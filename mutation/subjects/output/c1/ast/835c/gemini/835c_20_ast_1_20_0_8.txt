@@ -1,0 +1,5 @@
+for test in range(int(input())):
+    n = int(input())
+    strength = list(map(int, input().split()))
+    strength.sort()
+    print(*[strength[-1] - x for x in strength])

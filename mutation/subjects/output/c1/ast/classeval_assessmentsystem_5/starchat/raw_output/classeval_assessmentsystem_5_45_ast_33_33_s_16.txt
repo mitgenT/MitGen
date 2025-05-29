@@ -1,0 +1,4 @@
+```Python
+    if gpa > top_gpa:
+        total += gpa
+```

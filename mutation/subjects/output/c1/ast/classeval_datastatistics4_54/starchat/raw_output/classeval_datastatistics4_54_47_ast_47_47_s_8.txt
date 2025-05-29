@@ -1,0 +1,3 @@
+pdf_values = [1 / (sigma * math.sqrt(2 * math.pi)) * math.exp(-0.5 * ((x - mu) / sigma) ** 2) for x in data]
+if sigma == 0:
+    raise ValueError("Standard deviation cannot be zero in a normal distribution.")

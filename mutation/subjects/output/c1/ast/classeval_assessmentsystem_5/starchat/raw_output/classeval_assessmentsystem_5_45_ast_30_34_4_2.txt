@@ -1,0 +1,9 @@
+In the `get_course_average` function, you should include the following code:
+
+```python
+if course in student['courses'].keys():
+    total += score
+    count += 1
+```
+
+This condition checks if the current course is in the `courses` dictionary of the student and if so, adds the score to the total and increments the count.

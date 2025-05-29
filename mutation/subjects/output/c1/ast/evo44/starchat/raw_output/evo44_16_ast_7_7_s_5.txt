@@ -1,0 +1,19 @@
+```python
+def change_base(x: str, base: int, new_base: int):
+    try:
+        base_10 = int(x, base)
+    except ValueError:
+        return "invalid base"
+    new_base_num = ""
+    if new_base < 2 or new_base > 36:
+        return '0'
+    while base_10 > 0:
+        remainder = base_10 % new_base
+        base_10 -= new_base
+        if 0 <= remainder <= 9:
+            new_base_num = str(remainder) + new_base_num
+        else:
+            new_base_num = chr(remainder + 55) + new_base_num
+    return new_base_num
+```
+In the above solution, I added a conditional check to ensure `new_base` is within the valid range (2-36) and return '0' if not. I then completed the while loop to perform the base conversion from the input base to the new base.

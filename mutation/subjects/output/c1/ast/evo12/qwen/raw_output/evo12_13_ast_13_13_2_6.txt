@@ -1,0 +1,5 @@
+```python
+        if longest_substring is not None:
+            return longest_substring, longest_substring_index
+    return None, None
+```

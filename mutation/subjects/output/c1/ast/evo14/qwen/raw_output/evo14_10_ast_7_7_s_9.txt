@@ -1,0 +1,4 @@
+```python
+            if j + min_length <= n:
+                pairs.append((string[:i], string[j:]))
+```

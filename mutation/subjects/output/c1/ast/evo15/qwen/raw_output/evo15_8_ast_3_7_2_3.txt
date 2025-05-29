@@ -1,0 +1,22 @@
+Based on the provided docstring, we need to replace every `m`-th number with "Fizz" in the sequence. Since we start counting from 0 and increment by 1, we can use a counter that increments after every iteration and checks if it's divisible by `m`. If it is, we append "Fizz" to the result, otherwise, we append the current number (converted to a string). Here's how to fill in `<MASK>`:
+
+```python
+    for i in range(0, n + 1):
+        if (i + 1) % m == 0:  # Incrementing i by 1 due to 1-based indexing
+            result.append("Fizz")
+        else:
+            result.append(str(i))
+```
+
+So the complete code is:
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(0, n + 1):
+        if (i + 1) % m == 0:  # Incrementing i by 1 due to 1-based indexing
+            result.append("Fizz")
+        else:
+            result.append(str(i))
+    return ' '.join(result)
+```

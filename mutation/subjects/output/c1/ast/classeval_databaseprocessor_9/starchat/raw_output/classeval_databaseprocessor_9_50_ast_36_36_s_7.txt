@@ -1,0 +1,6 @@
+```python
+if result is not None:
+    select_query = "SELECT * FROM {} WHERE name =?".format(table_name)
+```
+
+Here, I filled in the <MASK> in the `search_database` method of the `DatabaseProcessor` class to complete the SQL query for searching the database. I added an `if result is not None` condition to decide which SQL query to use, based on whether the result is `None` or not. If the result is `None`, then I use the complete SQL query including the `SELECT` statement, table name, and `WHERE` condition. If the result is not `None`, it means that the table already exists, so I use a simplified SQL query that only includes the `WHERE` condition and the table name.

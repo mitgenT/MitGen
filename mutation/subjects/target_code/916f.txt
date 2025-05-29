@@ -1,0 +1,38 @@
+import sys
+sys.setrecursionlimit(10 ** 6)
+T = int(input())
+for _ in range(T):
+    N = int(input())
+    g = [[] for _ in range(N)]
+    P = list(map(int, input().split()))
+    for i, p in enumerate(P):
+        v, w = i + 1, p - 1
+        g[v].append(w)
+        g[w].append(v)
+    cnt = [0] * N
+    def dfs0(v):
+        d[v] = 1
+        x = 1
+        for w in g[v]:
+            if d[w]:
+                continue
+            x += dfs0(w)
+        cnt[v] = x
+        return x
+    d = [0] * N
+    dfs0(0)
+    def dfs(v, k):
+        # print(v + 1, k)
+        d[v] = 1
+        vn = -1
+        for w in g[v]:
+            if d[w]:
+                continue
+            if cnt[w] > (cnt[v] - 1) - cnt[w]: 
+                vn = w
+        if vn == -1:
+            return max((cnt[v] - 1 - k) // 2, 0)
+        kn = (cnt[v] - 1 - k) - (cnt[vn] - k)
+        return kn + dfs(vn, max(k + kn - 1, 0))
+    d = [0] * N
+    print(dfs(0, 0))

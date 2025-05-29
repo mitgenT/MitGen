@@ -1,0 +1,5 @@
+
+    if i<=n:
+        s = str(i)+' '+s
+        i = i+1
+    print(s.strip())

@@ -1,0 +1,8 @@
+In the `select_female_under_age` method, you can infill <MASK> with the following:
+
+```python
+if condition:
+    condition = f"age < {age} AND gender = 'female'"
+return self.select(condition=condition)
+```
+This code modifies the `condition` parameter within the `select` method to select females under the specified age.

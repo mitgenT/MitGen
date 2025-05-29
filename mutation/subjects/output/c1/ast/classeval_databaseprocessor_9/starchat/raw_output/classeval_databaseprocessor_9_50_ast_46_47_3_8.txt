@@ -1,0 +1,7 @@
+delete_query = f"DELETE FROM {table_name} WHERE name =?"
+cursor.execute(delete_query, (name,))
+result = cursor.rowcount  # get the number of rows affected by the DELETE statement
+if result > 0:
+    print(f"{result} rows deleted from {table_name}")
+else:
+    print(f"No rows matched the name '{name}' in {table_name}")

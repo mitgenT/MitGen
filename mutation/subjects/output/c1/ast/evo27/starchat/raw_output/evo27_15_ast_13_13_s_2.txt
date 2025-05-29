@@ -1,0 +1,19 @@
+## Output
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                result += char.lower()
+            elif char.islower():
+                result += char
+        else:
+            if char.isupper():
+                result += char.lower()
+            elif char.islower():
+                result += char.upper()
+    return result
+```
+This function takes a string and a special index, it flips the case of all characters except the character at the special index (it keeps uppercase if it's lowercase and vice versa). It treats the special index as an index in a circular list if it's out of range.

@@ -1,0 +1,23 @@
+Based on the given docstring, the function should find all non-overlapping prefix-suffix pairs in the string that are at least `min_length` characters long. Here's how you can fill in the `<MASK>` parts in the code:
+
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    
+    # Iterate over possible starting positions for prefixes
+    for i in range(n - min_length + 1):
+        # Find the ending position of the corresponding suffix
+        end = i + min_length - 1
+        
+        # Add the prefix-suffix pair to the list
+        pairs.append((string[i:end], string[end:]))
+        
+    # Sort the pairs as described in the docstring
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+
+    return pairs
+```
+
+Now the function should work correctly based on the provided requirements.

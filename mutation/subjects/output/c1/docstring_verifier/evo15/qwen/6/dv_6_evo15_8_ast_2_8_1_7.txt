@@ -1,0 +1,15 @@
+def string_sequence_modified(n: int, m: int) -> str:
+   """
+   Generate a string with numbers from 0 to n (inclusive) separated by spaces, replacing every mth number with the word "Fizz", where counting starts from the first position (m=1). The function returns the modified sequence.
+   Example outputs:
+   - For n=3: '0'
+   - For n=5 and m=3: '0 1 Fizz 3 4 Fizz'
+   - For n=15 and m=3: '0 1 Fizz 3 4 Fizz 6 7 Fizz 9 10 Fizz 12 13 Fizz 15'
+   """
+   sequence = []
+   for i in range(n + 1):
+       if i % m == 0:
+           sequence.append("Fizz")
+       else:
+           sequence.append(str(i))
+   return " ".join(sequence)

@@ -1,0 +1,19 @@
+In the example given, you need to correct the `count_all` method by changing the loop range. Instead of using `ArrangementCalculator.count(n, i)`, you should use `ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - i)`.
+
+Here's how you can fill in the missing part (`<MASK>`):
+
+```python
+class ArrangementCalculator:
+    #... (other methods and docstrings)...
+
+    @staticmethod
+    def count_all(n):
+        total = 0
+        for i in range(1, n + 1):  # correcting the loop range
+            total += ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - i)
+        return total
+
+    #... (other methods)...
+```
+
+The modified code should now work correctly.

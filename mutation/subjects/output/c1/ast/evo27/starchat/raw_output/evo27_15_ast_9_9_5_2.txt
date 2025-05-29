@@ -1,0 +1,9 @@
+```python
+    else:
+        if char.isupper():
+            result += char.lower()
+        else:
+            result += char.upper()
+```
+
+I've infilled the `<MASK>` with the correct code based on the docstring provided. The `special_index` character is now flipped from lowercase to uppercase, and vice versa, while all other characters are flipped as well. If the `special_index` is out of range (treated as circular), its character stays as is.

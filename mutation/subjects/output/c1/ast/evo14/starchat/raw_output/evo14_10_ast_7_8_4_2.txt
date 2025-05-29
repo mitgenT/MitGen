@@ -1,0 +1,15 @@
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            if string[:j]!= string[-j:]:
+                pairs.append((string[:j], string[-j:]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+
+```
+
+In this solution, we added a check inside the nested for loop to only create a pair if the prefix (substring starting from the start of the input string) and the suffix (substring starting from the end of the input string, but reversed) do not overlap. After creating all the pairs, we sorted them based on the specified criteria using the `sort` method with a lambda function as the key.

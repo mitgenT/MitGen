@@ -1,0 +1,6 @@
+```python
+        if len(data2)!= len(data1):
+            mean2 = sum(data2) / n
+            if mean2 == 0:
+                return 0
+```

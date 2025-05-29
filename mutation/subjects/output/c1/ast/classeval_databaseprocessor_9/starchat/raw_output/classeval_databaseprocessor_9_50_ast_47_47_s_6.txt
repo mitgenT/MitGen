@@ -1,0 +1,5 @@
+delete_query = f"DELETE FROM {table_name} WHERE name =?"
+if cursor.execute(delete_query, (name,)).rowcount > 0:
+    cursor.execute(delete_query, (name,))
+
+# The check with cursor.execute(delete_query, (name,)).rowcount > 0 ensures that the row exists before trying to delete it. If the row does not exist, cursor.execute will not modify the database and no further execution of delete_query is required.

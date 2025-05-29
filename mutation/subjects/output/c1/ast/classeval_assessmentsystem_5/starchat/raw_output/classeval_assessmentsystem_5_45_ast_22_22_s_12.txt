@@ -1,0 +1,2 @@
+self.students[name]['courses']['fail_course'] = True
+students.append(name)

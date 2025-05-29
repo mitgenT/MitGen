@@ -1,0 +1,19 @@
+The <MASK> in the given code can be infilled with the condition to break the loop when all substrings have been found in the string.
+
+## Output
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1
+            if string[pos+len(sub):].find(sub) == -1:
+                break
+    return result
+```

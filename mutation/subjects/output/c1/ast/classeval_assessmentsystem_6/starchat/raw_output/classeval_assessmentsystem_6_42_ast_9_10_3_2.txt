@@ -1,0 +1,8 @@
+I infilled the <MASK> in the given code as follows:
+
+```python
+def add_course_score(self, name, course, score):
+    if name in self.students:
+        self.students[name]['courses'][course] = score
+```
+This infilling completes the function, which checks if the given name exists in the `students` dictionary, and if so, assigns the given score to the respective course within the student's data. If the student name does not exist, the function does nothing.

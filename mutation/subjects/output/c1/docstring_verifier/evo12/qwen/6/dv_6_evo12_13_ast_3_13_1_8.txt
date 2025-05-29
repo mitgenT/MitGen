@@ -1,0 +1,27 @@
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+   """
+   Given a list of strings, this function finds the longest substring that begins with a vowel from each string. It also returns the index of the string within the original list where this longest substring is found. If there are several strings with substrings of equal length, it chooses the first one. The function outputs (None, None) if the input list is either empty or contains no substrings starting with a vowel.
+   In situations where multiple substrings of the same length exist within a single string, the function will only consider the first occurrence.
+   The function treats 'A' and 'a' as equivalent, considering both to be vowels for matching purposes.
+   Examples:
+   - When an empty list is provided, the output will be (None, None).
+   - For the list ['apple', 'banana', 'cherry'], the output will be ('apple', 0) since 'apple' has the longest substring starting with a vowel.
+   - With ['grape', 'blueberry', 'strawberry'], the output will be ('ueberry', 1), because 'blueberry' has the longest substring starting with a vowel and is at index 1 in the original list.
+   """
+   def is_vowel(c):
+       return c.lower() in ['a', 'e', 'i', 'o', 'u']
+   longest_sub = ""
+   idx = None
+   for i, s in enumerate(strings):
+       vowels_start = [j for j, c in enumerate(s) if is_vowel(c)]
+       if not vowels_start:
+           continue
+       for start_pos in vowels_start:
+           end_pos = start_pos + 1
+           while end_pos < len(s) and is_vowel(s[end_pos]):
+               end_pos += 1
+           if end_pos - start_pos > len(longest_sub):
+               longest_sub = s[start_pos:end_pos]
+               idx = i
+   return longest_sub, idx

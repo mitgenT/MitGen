@@ -1,0 +1,10 @@
+return new_base_num
+```python
+# testing the code
+print(change_base('8', 10, 3))  # Output: '22'
+print(change_base('8', 10, 2))  # Output: '1000'
+print(change_base('7', 10, 2))  # Output: '111'
+print(change_base('1A', 16, 10))  # Output: '26'
+print(change_base('Z', 36, 16))  # Output: '23'
+print(change_base('G', 16, 10))  # Output: invalid base
+```

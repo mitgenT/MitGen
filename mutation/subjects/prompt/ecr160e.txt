@@ -1,0 +1,26 @@
+docstring:
+"""
+You are given a matrix 𝑎, consisting of 𝑛 rows by 𝑚 columns. Each element of the matrix is equal to 0 or 1.
+
+You can perform the following operation any number of times (possibly zero): choose an element of the matrix and replace it with either 0 or 1.
+
+You are also given two arrays 𝐴 and 𝐵 (of length 𝑛 and 𝑚 respectively). After you perform the operations, the matrix should satisfy the following conditions:
+1. the number of ones in the 𝑖-th row of the matrix should be exactly 𝐴𝑖 for every 𝑖∈[1,𝑛].
+2. the number of ones in the 𝑗-th column of the matrix should be exactly 𝐵𝑗 for every 𝑗∈[1,𝑚].
+
+Calculate the minimum number of operations you have to perform.
+
+Input
+
+The first line contains two integers 𝑛 and 𝑚 (2≤𝑛,𝑚≤50).
+
+Then 𝑛 lines follow. The 𝑖-th of them contains 𝑚 integers 𝑎𝑖,1,𝑎𝑖,2,…,𝑎𝑖,𝑚 (0≤𝑎𝑖,𝑗≤1).
+
+The next line contains 𝑛 integers 𝐴1,𝐴2,…,𝐴𝑛 (0≤𝐴𝑖≤𝑚).
+
+The next line contains 𝑚 integers 𝐵1,𝐵2,…,𝐵𝑚 (0≤𝐵𝑖≤𝑛).
+
+Output
+
+Print one integer — the minimum number of operations you have to perform, or -1 if it is impossible.
+"""

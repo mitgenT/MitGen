@@ -1,0 +1,8 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    common_colors = set(a) & set(b)
+    common_score = sum(min(a[i], b[i]) for i in range(n) if a[i] in common_colors)
+    print(sum(a) - common_score - sum(b) + common_score)

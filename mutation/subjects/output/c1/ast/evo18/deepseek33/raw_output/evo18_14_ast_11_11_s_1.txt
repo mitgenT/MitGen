@@ -1,0 +1,26 @@
+The correct Python code to infill the marked sections is as follows:
+
+```Python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                if pos + 1 == len(string):
+                    start += 1
+                else:
+                    start = pos + 1
+            else:
+                break
+    return result
+```
+
+Here, the first replacement is `start += 1` which would increment the start value by 1 if the next search for substring starts at the last index of the string.
+The second replacement is `start = pos + 1` which sets the start index after the found substring to continue the search.
+
+This is done to handle the scenario where we need to continue our search after the found substring, instead of starting our next search at the start of the string again. We do this to count overlapping cases.

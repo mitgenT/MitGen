@@ -1,0 +1,17 @@
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    if not string:  # Check if the string is empty
+        return {sub: 0 for sub in substrings}  # Create a dictionary with zeros for each substring
+    else:
+        result = {}  # Initialize an empty dictionary to store the counts
+        for sub in substrings:
+            start = 0
+            while start < len(string) - 1:
+                pos = string.find(sub, start)
+                if pos != -1:
+                    result[sub] = result.get(sub, 0) + 1  # Increase count or initialize with 1 if not found yet
+                    start = pos + 1
+                else:
+                    break
+    return result

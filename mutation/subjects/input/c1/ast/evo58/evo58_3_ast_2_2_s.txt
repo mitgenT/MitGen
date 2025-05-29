@@ -1,0 +1,3 @@
+def common(l1: list, l2: list, n: int):
+    <MASK>
+    return sorted(common_list[:n], key=lambda x: (len(x), l1.index(x)))

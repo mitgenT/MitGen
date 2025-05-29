@@ -1,0 +1,18 @@
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n - 1):
+        # Check if the substring from i to n-1 is a suffix of the string
+        if string[i:] == string[-(n - i):]:
+            # Find the longest common prefix between the current prefix and the remaining string
+            common_prefix = ""
+            for j in range(i, max(0, i - min_length), -1):
+                if string[:j] == string[j:i]:
+                    common_prefix = string[:j]
+                    break
+            # If there's no overlap, add the prefix and suffix to the pairs list
+            if len(set(common_prefix).intersection(set(string[j:]))) == 0:
+                pairs.append((string[:i], string[j:]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs

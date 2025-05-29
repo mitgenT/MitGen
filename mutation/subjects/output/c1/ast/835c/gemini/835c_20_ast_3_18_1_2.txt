@@ -1,0 +1,9 @@
+for _ in range(t):
+    n = int(input())
+    array = list(map(int, input().strip().split()))
+    result = [0] * n
+    maximum = max(array)
+    for i in range(n):
+        result[i] = maximum - array[i]
+    print(*result)
+    

@@ -1,0 +1,35 @@
+Infill <MASK> in a given code. You need to output the entire program. I will show you an example first.
+
+# Example
+
+## Docstring:
+'''
+This program implements a bubble-sort。
+'''
+
+## Given code:
+```Python
+def program(list1):  
+    '''
+    This program implements a bubble-sort。
+    '''
+    for i in range(0,len(list1)-1):  
+        for j in range(len(list1)-1):  
+            if(list1[j]>list1[j+1]):  
+                temp = list1[j]  
+                <MASK>
+                list1[j+1] = temp  
+    return list1  
+```
+
+## Output
+```Python
+def program(list1):  
+    for i in range(0,len(list1)-1):  
+        for j in range(len(list1)-1):  
+            if(list1[j]>list1[j+1]):  
+                temp = list1[j]  
+                list1[j] = list1[j+1]
+                list1[j+1] = temp  
+    return list1  
+```

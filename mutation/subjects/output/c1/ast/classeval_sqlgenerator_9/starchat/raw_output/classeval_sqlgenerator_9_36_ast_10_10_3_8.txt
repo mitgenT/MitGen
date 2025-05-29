@@ -1,0 +1,3 @@
+sql += f" SELECT {fields}" if fields!= "*" else ""
+if condition is not None:
+    sql += f" WHERE {condition}"

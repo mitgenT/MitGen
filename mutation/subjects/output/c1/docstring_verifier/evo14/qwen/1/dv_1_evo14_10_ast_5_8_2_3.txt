@@ -1,0 +1,19 @@
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    if n > 2 * min_length - 1:
+        for i in range(n):
+            if i + min_length <= n:
+                left = string[i:i + min_length]
+                right = string[:min_length]
+                while i + min_length <= n and right != '' and left != '':
+                    right = string[i:i + min_length]
+                    if len(left) >= len(right):
+                        pairs.append((left, right))
+                        left = string[i:i + min_length]
+                    else:
+                        left = string[i:i + min_length]
+                    i += min_length
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs

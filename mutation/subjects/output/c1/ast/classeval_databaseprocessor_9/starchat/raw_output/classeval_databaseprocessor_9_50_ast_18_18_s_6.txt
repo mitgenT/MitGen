@@ -1,0 +1,10 @@
+if cursor.rowcount > 0:
+    print(f"Table '{table_name}' created successfully.")
+else:
+    print(f"Table '{table_name}' already exists.")
+```python
+if cursor.rowcount > 0:
+    print(f"Table '{table_name}' created successfully.")
+else:
+    print(f"Table '{table_name}' already exists.")
+```

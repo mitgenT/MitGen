@@ -1,0 +1,23 @@
+Infill <MASK> in a given code. You only need to output the code to be infilled to <MASK>. I will show you an example first.
+
+# Example
+
+## Given code:
+```Python
+def program(list1):  
+    '''
+    This program implements a bubble-sort.
+    '''
+    for i in range(0,len(list1)-1):  
+        for j in range(len(list1)-1):  
+            if(list1[j]>list1[j+1]):  
+                temp = list1[j]  
+                <MASK>
+                list1[j+1] = temp  
+    return list1  
+```
+
+## Output
+```Python
+                list1[j] = list1[j+1]
+```

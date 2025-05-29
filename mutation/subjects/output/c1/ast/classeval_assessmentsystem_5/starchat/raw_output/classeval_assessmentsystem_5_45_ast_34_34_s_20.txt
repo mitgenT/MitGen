@@ -1,0 +1,5 @@
+self.course_average[course] = 0  # Initialize count of course scores
+count += 1  # Increase count for this course's scores
+# Now, for course average, you can just use: self.course_average[course] += score
+# After all scores are processed, calculate the average: self.course_average[course] /= count
+# Then, in get_course_average method, return the calculated course average: return self.course_average[course] if count > 0 else None

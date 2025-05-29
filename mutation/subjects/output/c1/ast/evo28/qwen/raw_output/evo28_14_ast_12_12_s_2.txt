@@ -1,0 +1,8 @@
+```python
+    if len_strings > len_integers:
+        concatenated_string = ''.join(interleaved)
+    elif len_integers > len_strings:
+        concatenated_string = ''.join([str(i) for i in interleaved if isinstance(i, str)])
+    else:
+        concatenated_string = ''.join([str(i) for i in interleaved if isinstance(i, str)])
+```

@@ -1,0 +1,13 @@
+```python
+    @staticmethod
+    def skewness(data):
+        n = len(data)
+        mean = sum(data) / n
+        variance = sum((x - mean) ** 2 for x in data) / n
+        std_deviation = math.sqrt(variance) if variance!= 0 else 0
+
+        sum_of_cubed_deviations = sum((x - mean) ** 3 for x in data)
+        skewness = sum_of_cubed_deviations / (n * std_deviation ** 3) if std_deviation!= 0 else 0
+
+        return skewness
+```

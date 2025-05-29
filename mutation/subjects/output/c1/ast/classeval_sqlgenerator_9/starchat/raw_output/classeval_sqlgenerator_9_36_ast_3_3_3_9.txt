@@ -1,0 +1,8 @@
+if table_name:
+    self.table_name = table_name
+
+fields = ", ".join(data.keys())
+values = ", ".join([f"'{value}'" for value in data.values()])
+
+condition = f"age < {age} AND gender = 'female'"
+condition = f"age BETWEEN {min_age} AND {max_age}"

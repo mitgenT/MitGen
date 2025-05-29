@@ -1,0 +1,11 @@
+def calculate_score(t, test_cases):
+    scores = []
+    for _ in range(t):
+        n = int(input())
+        alice_marbles = list(map(int, input().split()))
+        bob_marbles = list(map(int, input().split()))
+        min_marbles = min(alice_marbles + bob_marbles)
+        alice_total = sum(alice_marbles) - min_marbles
+        bob_total = sum(bob_marbles) - min_marbles
+        scores.append(alice_total - bob_total)
+    return scores

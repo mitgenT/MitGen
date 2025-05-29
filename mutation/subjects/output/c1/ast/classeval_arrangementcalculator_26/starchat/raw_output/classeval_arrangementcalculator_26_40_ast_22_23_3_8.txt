@@ -1,0 +1,11 @@
+```python
+            if m is not None:
+                m = n  
+```
+Explanation:
+
+According to the docstring, `ArrangementCalculator.count_all(n)` should count the total number of all possible arrangements. It does this by counting the number of arrangements for each number from 1 to n and summing them up. The current code implements this, but the bug is in the line mentioned in the comment. Specifically, when `n = m`, it should not return the factorial of `n`, but `ArrangementCalculator.factorial(n)`.
+
+I infilled `<MASK>` by adding the condition to check if `m` is not `None`. If it is not, then set `m` to be equal to `n`. This bug fix ensures that when `m` and `n` are equal, the function correctly calls `ArrangementCalculator.factorial(n)` instead of dividing by `ArrangementCalculator.factorial(n - m)`.
+
+The adjusted code, now including this bug fix, should correctly calculate the total number of arrangements when calling `ArrangementCalculator.count_all(n)`.

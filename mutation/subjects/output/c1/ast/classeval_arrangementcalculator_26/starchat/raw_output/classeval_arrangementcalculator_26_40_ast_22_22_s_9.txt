@@ -1,0 +1,49 @@
+In the given code, the bug is located in the `count_all` method. The bug is that the range in the for loop starts from 1, but the count calculation should start from 0. 
+
+Here's the corrected code:
+
+```python
+import itertools
+
+
+class ArrangementCalculator:
+    def __init__(self, datas):
+        self.datas = datas
+
+    @staticmethod
+    def count(n, m=None):
+        if m is None or n == m:
+            return ArrangementCalculator.factorial(n)
+        else:
+            return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)
+
+    @staticmethod
+    def count_all(n):
+        total = 0
+        for i in range(0, n + 1):  # bug fixed: range starts from 0
+            total += ArrangementCalculator.count(n, i)
+        return total
+
+    def select(self, m=None):
+        if m is None:
+            m = len(self.datas)
+        result = []
+        for permutation in itertools.permutations(self.datas, m):
+            result.append(list(permutation))
+        return result
+
+    def select_all(self):
+        result = []
+        for i in range(1, len(self.datas) + 1):
+            result.extend(self.select(i))
+        return result
+
+    @staticmethod
+    def factorial(n):
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
+```
+
+The `count_all` method now starts the range from 0, ensuring that all possible arrangements are counted correctly. The rest of the methods remain the same as provided.

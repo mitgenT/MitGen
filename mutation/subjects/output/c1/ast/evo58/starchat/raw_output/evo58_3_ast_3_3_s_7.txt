@@ -1,0 +1,9 @@
+## Output
+```python
+def common(l1: list, l2: list, n: int):
+    common_list = [item for item in l1 if item in l2]  # find the common elements
+    common_list.sort(key=lambda x: (-len(x), l1.index(x)))  # sort by decreasing length and first appearance in l1
+    return common_list[:n]  # return the top n longest strings
+```
+
+In this code, `common_list = [item for item in l1 if item in l2]` filters out the common elements between `l1` and `l2`. This list is then sorted using the provided lambda function, where `-len(x)` ensures elements are sorted by decreasing length, and `l1.index(x)` prioritizes the first appearance in `l1`. Finally, `common_list[:n]` returns the top `n` longest strings.

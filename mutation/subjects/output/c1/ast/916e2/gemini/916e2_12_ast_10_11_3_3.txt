@@ -1,0 +1,7 @@
+
+        if a[d[i][1]]>0 and b[d[i][1]]>0:
+            res+=a[d[i][1]]-b[d[i][1]]
+            a[d[i][1]]-=1
+            b[d[i][1]]-=1
+        else:
+            break

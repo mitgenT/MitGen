@@ -1,0 +1,14 @@
+## Output
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(1, n+1):
+        if i % m == 0:
+            result.append("Fizz")
+        else:
+            result.append(str(i))
+    return''.join(result)
+```
+
+Explanation: In the example, the <MASK> in the code was replaced with 'if i % m == 0' to implement the rule for every m-th number. Also, I used'result.append(str(i))' instead of'result.append(i)' because 'i' is an integer and 'join' method doesn't work on integers directly. So, it needs to be converted into string. Furthermore, I start from `range(1, n+1)` because indexing starts from 1 for the m-th number in the problem statement. If the starting index is 0, simply use `range(n+1)` as the range already includes 0 in Python.

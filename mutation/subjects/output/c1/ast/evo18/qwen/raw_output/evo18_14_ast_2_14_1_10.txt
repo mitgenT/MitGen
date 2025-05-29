@@ -1,0 +1,29 @@
+Based on the given docstring, the `how_many_times` function should iterate over the string and check for each substring in the list, counting occurrences and handling empty substrings. Here's the completed code:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    # Check if any substring is empty
+    for substring in substrings:
+        if not substring:
+            return "Substrings cannot be empty"
+
+    result = {}  # Dictionary to store the counts
+    if not string:  # Handle empty string case
+        for substring in substrings:
+            result[substring] = 0
+    else:
+        for substring in substrings:
+            count = string.count(substring)
+            result[substring] = count
+
+    return result
+```
+
+Now, if you call the function with the provided examples, it should give the expected results:
+
+```python
+print(how_many_times('', ['a']))  # {'a': 0}
+print(how_many_times('aaa', ['a', 'a']))  # {'a': 3}
+print(how_many_times('aaaa', ['aa', 'a']))  # {'aa': 2, 'a': 3}
+print(how_many_times('abcabc', ['a', 'b', 'c']))  # {'a': 2, 'b': 2, 'c': 2}
+```

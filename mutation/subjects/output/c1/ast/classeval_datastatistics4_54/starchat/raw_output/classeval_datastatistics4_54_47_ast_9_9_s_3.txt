@@ -1,0 +1,13 @@
+Infill `<MASK>` of the `correlation_coefficient` function based on the given docstring as follows:
+
+```python
+mean2 = sum(data2) / n
+if mean2 == 0:
+    mean2 = 1e-9
+```
+
+For the `skewness` function, no `<MASK>` is needed because it already includes the required calculations.
+
+For the `kurtosis` function, no `<MASK>` is needed either, given the existing logic. 
+
+The `pdf` function already follows the required calculations. No `<MASK>` is needed for this one as well.

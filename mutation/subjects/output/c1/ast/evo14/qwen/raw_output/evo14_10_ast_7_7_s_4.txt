@@ -1,0 +1,21 @@
+Based on the given docstring, we want to append tuples containing non-overlapping prefix and suffix to the `pairs` list. Here's how you can fill in the `<MASK>` part of the code:
+
+```python
+            if j + min_length <= n and i + min_length <= n and string[i:i+min_length] != string[j:j+min_length]:
+                pairs.append((string[:i], string[j:]))
+```
+
+This condition checks if both the prefix and suffix are valid and don't overlap, then appends them as a tuple. The completed function looks like this:
+
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            if j + min_length <= n and i + min_length <= n and string[i:i+min_length] != string[j:j+min_length]:
+                pairs.append((string[:i], string[j:]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```

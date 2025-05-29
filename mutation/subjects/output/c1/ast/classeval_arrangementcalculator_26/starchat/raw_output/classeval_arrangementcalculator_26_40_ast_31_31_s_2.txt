@@ -1,0 +1,4 @@
+```python
+        for i in range(n+1):  # Correct the bug in count_all method
+            total += ArrangementCalculator.count(n, i)
+```

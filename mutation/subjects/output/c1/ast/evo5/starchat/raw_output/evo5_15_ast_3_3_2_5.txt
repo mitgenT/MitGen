@@ -1,0 +1,22 @@
+## Output
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = isinstance(delimeter, float)
+    result = []
+    limit = min(limit, len(numbers) - 1) 
+    for i in range(len(numbers) - 1):
+        if set_float:
+            result.append(float(numbers[i]))
+        else:
+            result.append(numbers[i])
+        if i < limit:
+            result.append(delimeter)
+    if set_float:
+        result.append(float(numbers[-1]))
+    else:
+        result.append(numbers[-1])
+    return result
+```
+
+The change to `set_float = isinstance(delimeter, float)` instead of `type(delimeter) == float` is more accurate and concise because isinstance() checks the inheritance relationships while type() only checks the type. Also, to ensure the last element is appended without adding extra delimiter, I added code to append the last number to the result after iterating through the numbers list.

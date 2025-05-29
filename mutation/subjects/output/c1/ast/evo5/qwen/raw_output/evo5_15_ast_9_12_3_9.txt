@@ -1,0 +1,27 @@
+Here's how you can fill in the `<MASK>` sections in the given code:
+
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = False
+    if type(delimeter) == float:
+        set_float = True
+    result = []
+    limit = min(limit, len(numbers) - 1) 
+    for i in range(len(numbers) - 1):
+        if i < limit:
+            result.append(numbers[i])
+            if set_float:
+                result.append(delimeter)
+            else:
+                result.append(int(delimeter))  # Cast to int if delimeter is not float
+        else:
+            result.append(numbers[i])
+    return result
+```
+
+Explanation:
+
+1. The first `<MASK>` should check if `i` is within the limit of `limit` (inserting the delimiter).
+2. Since we want to insert the delimiter after each pair of consecutive numbers (up to the limit), we append the current `numbers[i]` to the `result` list before checking the `set_float` condition.
+3. If `set_float` is `True`, we directly append the `delimeter` (since it's already a float). Otherwise, we cast `delimeter` to an integer and append it.

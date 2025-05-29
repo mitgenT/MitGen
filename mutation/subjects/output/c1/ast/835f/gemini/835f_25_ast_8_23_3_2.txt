@@ -1,0 +1,29 @@
+
+for _ in range (int(input())):
+    n,c,d=map(int,input().split())
+    A=list(map(int,input().split()))
+    A=sorted(A)[::-1]
+    if sum(A[:d])>=c:
+        print("Infinity")
+    else:
+        k=1
+        st=0
+        en=d
+        f=0
+        while st<=en:
+            mid=(st+en)//2
+            sum=0
+            for j in range (mid):
+                sum+=A[min(j+(mid*j),n-1)]
+            if sum<c:
+                st=mid+1
+            else:
+                k=mid
+                en=mid-1
+                f=1
+        if f==1:
+            print(k)
+        else:
+            print("Impossible")
+
+        

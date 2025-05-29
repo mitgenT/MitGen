@@ -1,0 +1,12 @@
+Based on the provided docstring, we want to replace every `m`-th number with "Fizz". Since we are using 1-based indexing, we need to check if `i % m == 0`. Here's how to infill `<MASK>` in the given code:
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(1, n + 1):  # Start from 1 to include n
+        if i % m == 0:
+            result.append("Fizz")
+        else:
+            result.append(str(i))
+    return ' '.join(result)
+```

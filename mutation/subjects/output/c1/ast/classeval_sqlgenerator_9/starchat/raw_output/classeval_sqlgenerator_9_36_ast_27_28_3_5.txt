@@ -1,0 +1,10 @@
+```python
+def delete(self, condition):
+    if condition is not None:
+        sql = f"DELETE FROM {self.table_name} WHERE {condition}"
+    else:
+        sql = f"DELETE FROM {self.table_name}"
+    return sql + ";"
+```
+
+This solution completes the SQLGenerator class by filling in the missing code for the `delete` method. It checks if a condition is provided and constructs the SQL statement accordingly.

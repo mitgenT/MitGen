@@ -1,0 +1,20 @@
+Based on the given docstring, we need to sort the `pairs` list before returning it. Since tuples are compared lexicographically when put into a list, we don't need an explicit sorting step. However, if there's a requirement to sort the list based on the lengths of the pairs (first by length, then lexicographically), we can add a sorting condition. Here's how to fill in the `<MASK>`:
+
+```python
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x[0] + x[1]))  # Sort by length and lexicographically
+```
+
+The complete code would be:
+
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                pairs.append((string[:i], string[j:]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x[0] + x[1]))  # Sort by length and lexicographically
+    return pairs
+```

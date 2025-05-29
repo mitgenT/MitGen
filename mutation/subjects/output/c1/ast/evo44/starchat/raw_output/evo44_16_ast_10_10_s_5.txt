@@ -1,0 +1,1 @@
+new_base_num += str(base_10 % new_base)

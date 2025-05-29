@@ -1,0 +1,4 @@
+self.get_gpa(name) > top_gpa
+
+self.students[name]['courses'][course] += score
+count += 1

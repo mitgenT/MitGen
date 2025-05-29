@@ -1,0 +1,7 @@
+if string[i].islower():
+    result += string[i].upper()
+else:
+    result += string[i].lower()
+
+# or simply use the built-in string method
+# result += string[i].swapcase() if i!= special_index else string[i]

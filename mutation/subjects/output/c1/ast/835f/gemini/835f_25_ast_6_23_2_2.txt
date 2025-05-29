@@ -1,0 +1,12 @@
+k=10**9
+cur=0
+for i in range (n):
+    if cur+A[i]<=c:
+        k=min(k,(cur+A[i]-1)//A[i]+1)
+        cur+=A[i]
+    else:
+        break
+if cur>=c:
+    print(k)
+else:
+    print("Impossible")

@@ -1,0 +1,16 @@
+## Output
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            if (i+1) == m:
+                result.append("Fizz")
+            else:
+                result.append(str(i))
+        else:
+            result.append(str(i))
+    return''.join(result)
+```
+
+Here, in the given code, the <MASK> placeholders were replaced according to the given docstring requirements. It checks if the current number (one-based) is divisible by m. If it is, it checks whether the current number is equal to m (which is the 1st m-th number, and needs to be replaced with "Fizz"). If not, it appends the current number to the result list as a string. In any other case, it simply appends the current number as a string to the result list. Then it joins the result list elements into a single string with space-delimiters before returning it.

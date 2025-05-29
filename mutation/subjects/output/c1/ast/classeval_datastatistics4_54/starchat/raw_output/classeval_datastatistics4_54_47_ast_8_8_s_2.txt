@@ -1,0 +1,30 @@
+Infill <MASK> of the correlation_coefficient function based on the given docstring:
+
+```python
+if n < 2:
+    raise ValueError("Data lists need at least 2 elements to calculate the correlation coefficient.")
+```
+
+The complete function should look like this:
+
+```python
+import math
+
+class DataStatistics4:
+
+    @staticmethod
+    def correlation_coefficient(data1, data2):
+        n = len(data1)
+        if n < 2:
+            raise ValueError("Data lists need at least 2 elements to calculate the correlation coefficient.")
+
+        mean1 = sum(data1) / n
+        mean2 = sum(data2) / n
+
+        numerator = sum((data1[i] - mean1) * (data2[i] - mean2) for i in range(n))
+        denominator = math.sqrt(sum((data1[i] - mean1) ** 2 for i in range(n))) * math.sqrt(sum((data2[i] - mean2) ** 2 for i in range(n)))
+
+        return numerator / denominator if denominator!= 0 else 0
+```
+
+This function will now check if both input lists have at least two elements before proceeding to calculate the correlation coefficient. If not, it will raise a ValueError with a specific error message.

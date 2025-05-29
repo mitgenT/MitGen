@@ -1,0 +1,21 @@
+Based on the given docstring, we need to store a tuple containing the prefix and suffix in each iteration of the loop. Since the prefix is from `i` to `j` and the suffix is from `j+1` to the end, we can extract them and append them to the `pairs` list.
+
+Here's how to fill in `<MASK>`:
+
+```python
+            pairs.append((string[:j+1], string[j+1:]))
+```
+
+The complete code with the infilled `<MASK>` is:
+
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            pairs.append((string[:j+1], string[j+1:]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```

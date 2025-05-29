@@ -1,0 +1,10 @@
+alpha=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+alphav=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+for i in range(0,len(alphav)-1):
+  for j in range(len(alphav)-1):
+    if(alphav[j]>alphav[j+1]):
+      temp = alphav[j]  
+      alphav[j] = alphav[j+1]  
+      alphav[j+1] = temp  
+      ans=0
+print(alphav, ans)

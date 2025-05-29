@@ -1,0 +1,4 @@
+if top_student is None:
+    top_student = name
+else:
+    top_gpa = gpa

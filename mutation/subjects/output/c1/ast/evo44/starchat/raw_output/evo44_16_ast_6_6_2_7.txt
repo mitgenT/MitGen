@@ -1,0 +1,6 @@
+```python
+if 2 <= base and base <= 36 and 2 <= new_base and new_base <= 36:
+    new_base_num = ''
+```
+
+In the provided code, the docstring explains that the function `change_base()` converts a number from one base to another. The given code contains a check at `<MASK>` location to ensure that `base` and `new_base` are within the range of 2 to 36. If they are not, an empty string is initialized for `new_base_num` as it will be returned directly in this case.

@@ -1,0 +1,20 @@
+## Solution:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    counter = {substr: 0 for substr in substrings}
+    if any(substr == '' for substr in substrings):
+        return "Substrings cannot be empty"
+    for substr in substrings:
+        pos = 0
+        while pos < len(string):
+            pos = string.find(substr, pos)
+            if pos!= -1:
+                counter[substr] += 1
+                pos += len(substr)
+            else:
+                break
+    return counter
+```
+
+The added code initializes a dictionary `counter` with substrings as keys and 0 as initial values. Then, it checks if any of the substrings are empty. If they are, an error message is returned. After that, the code uses the `find()` method to locate each substring in the original string and increments the corresponding count in `counter`. It keeps looking for occurrences of the substring, accounting for overlapping cases. The final `counter` dictionary is then returned.

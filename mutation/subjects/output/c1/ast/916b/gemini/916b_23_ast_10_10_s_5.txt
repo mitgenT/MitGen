@@ -1,0 +1,11 @@
+    else:
+        l = (n+1)//2
+        if k<=l:
+            for i in range(l):
+                s = s +' '+str(k+1-i)
+        else:
+            k=k-l
+            for i in range(l):
+                s = s +' '+str(i+1)
+            for i in range(k):
+                s = s +' '+ str(n-i)

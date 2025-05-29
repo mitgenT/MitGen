@@ -1,0 +1,9 @@
+delete_query = f"DELETE FROM {table_name} WHERE name =?"
+cursor.execute(delete_query, (name,))
+
+conn.commit()
+if cursor.rowcount > 0:
+    conn.close()
+else:
+    conn.rollback()
+    conn.close()

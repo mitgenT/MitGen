@@ -1,0 +1,38 @@
+Based on the provided docstring, we need to modify the code such that when the character at `special_index` is lowercase, it remains unchanged, while converting uppercase characters to lowercase. Here's how the `<MASK>` part should be filled:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    if special_index < 0 or special_index >= len(string):
+        # Handle case where special_index is out of range
+        special_index = (special_index + len(string)) % len(string)
+
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+        else:
+            result += char.lower() if char.isupper() else char
+    return result
+```
+
+Now, the complete program looks like this:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    if special_index < 0 or special_index >= len(string):
+        special_index = (special_index + len(string)) % len(string)
+
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+        else:
+            result += char.lower() if char.isupper() else char
+    return result
+```

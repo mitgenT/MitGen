@@ -1,0 +1,17 @@
+Based on the provided docstring, we should check the case of the character at the `special_index` and flip it accordingly while keeping other characters as their respective cases. Here's the infilled code:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+        else:
+            result += char.swapcase()
+    return result
+
+```

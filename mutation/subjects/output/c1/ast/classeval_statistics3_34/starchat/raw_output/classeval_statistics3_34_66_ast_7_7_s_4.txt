@@ -1,0 +1,5 @@
+```python
+        if n % 2 == 0:
+```
+
+The output code is infilling <MASK> of the `median` method of the `Statistics3` class, which checks whether the length of the sorted data is even or odd. If it is even, it returns the average of the two middle values; if it is odd, it returns the middle value. This is done by checking whether `n % 2 == 0`, and returning the corresponding value accordingly.

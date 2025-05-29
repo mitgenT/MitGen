@@ -1,0 +1,3 @@
+```Python
+return l_string == l_string[::-1]
+```

@@ -1,0 +1,47 @@
+Here is the completed given code with the <MASK> filled:
+
+```python
+import itertools
+
+
+class ArrangementCalculator:
+    def __init__(self, datas):
+        self.datas = datas
+
+    @staticmethod
+    def count(n, m=None):
+        if m is None or n == m:
+            return ArrangementCalculator.factorial(n)
+        else:
+            return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)
+
+    @staticmethod
+    def count_all(n):
+        total = 0
+        for i in range(1, n + 1):
+            total += ArrangementCalculator.count(n, i)
+        return total
+
+    def select(self, m=None):
+        if m is None:
+            m = len(self.datas)
+        result = []
+        for subset in itertools.combinations(self.datas, m):
+            result.append(subset)
+        return result
+
+    def select_all(self):
+        result = []
+        for i in range(1, len(self.datas) + 1):
+            result.extend(self.select(i))
+        return result
+
+    @staticmethod
+    def factorial(n):
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
+
+```
+In this code, the `itertools.combinations` function was used to replace the <MASK>, allowing the `select` method to return all possible combinations of the given length `m` (or all elements if `m` is not provided) from the internal `datas`. This completes the implementation of the required permutation calculations and selection operations for the given set of data elements.

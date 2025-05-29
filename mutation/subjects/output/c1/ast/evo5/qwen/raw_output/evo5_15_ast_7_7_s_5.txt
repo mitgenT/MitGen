@@ -1,0 +1,4 @@
+```python
+    for i in range(limit):
+        result.append(delimeter)
+```

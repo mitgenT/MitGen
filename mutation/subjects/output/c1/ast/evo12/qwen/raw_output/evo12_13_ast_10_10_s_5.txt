@@ -1,0 +1,21 @@
+Based on the provided docstring, we need to find the longest substring that starts with a vowel in each string and update `longest_substring` and `longest_substring_index` accordingly. Here's how you can fill in the `<MASK>` sections:
+
+```python
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+    vowels = 'aeiouAEIOU'
+    longest_substring = None
+    longest_substring_index = None
+    for i, string in enumerate(strings):
+        substrings = [string[j:] for j in range(len(string)) if string[j] in vowels]
+        if substrings:
+            max_substring = max(substrings, key=len)
+            if max_substring:
+                # Check if the current max_substring is longer than the current longest_substring
+                if len(max_substring) > (longest_substring is not None and len(longest_substring)):
+                    longest_substring = max_substring
+                    longest_substring_index = i
+    return longest_substring, longest_substring_index
+```
+
+Now, the code should work as expected according to the given docstring.

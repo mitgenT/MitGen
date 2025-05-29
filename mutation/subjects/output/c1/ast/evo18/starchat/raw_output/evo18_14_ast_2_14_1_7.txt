@@ -1,0 +1,14 @@
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(s == '' for s in substrings):
+        return "Substrings cannot be empty"
+
+    result = {}
+    for substring in substrings:
+        count = 0
+        i = string.find(substring)
+        while i!= -1:
+            count += 1
+            i = string.find(substring, i + 1)
+        result[substring] = count
+
+    return result

@@ -1,0 +1,8 @@
+    else:
+        for i in range(k):
+            s = s +' '+str(i+1)
+        i = n
+        while i>k:
+            s = s +' '+str(i)
+            i = i-1
+        print(s.strip())

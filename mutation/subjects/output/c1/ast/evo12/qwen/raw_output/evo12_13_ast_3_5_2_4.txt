@@ -1,0 +1,27 @@
+Based on the provided docstring, we need to check if the input list is empty and handle that condition. We also need to define `vowels` and initialize `longest_substring` and `longest_substring_index`. Here's how the code should look:
+
+```python
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+    # Define vowels (case-insensitive)
+    vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}
+
+    # Check if the input list is empty
+    if not strings:
+        return None, None
+
+    # Initialize variables
+    longest_substring: Optional[str] = None
+    longest_substring_index: Optional[int] = None
+
+    for i, string in enumerate(strings):
+        substrings = [string[j:] for j in range(len(string)) if string[j].lower() in vowels]
+        if substrings:
+            max_substring = max(substrings, key=len)
+            if longest_substring is None or len(max_substring) == len(longest_substring):
+                longest_substring = max_substring
+                longest_substring_index = i
+    return longest_substring, longest_substring_index
+```
+
+Now, `<MASK>` has been replaced with appropriate logic according to the given docstring.

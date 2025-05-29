@@ -1,0 +1,7 @@
+n=int(input())
+a=0
+for i in range(n):
+    a=int(input())
+    s=input()
+    alphabet_set = set(s)
+    print(len(alphabet_set))

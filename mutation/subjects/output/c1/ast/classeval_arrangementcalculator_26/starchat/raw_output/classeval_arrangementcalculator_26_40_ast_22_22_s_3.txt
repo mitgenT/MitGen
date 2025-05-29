@@ -1,0 +1,90 @@
+The bug is in the `count_all` method. Instead of using the formula `ArrangementCalculator.factorial(n)`, it's incorrectly using a for loop to sum `ArrangementCalculator.count(n, i)`. I will fix it by replacing the bug with the correct formula.
+
+Here is the infilled code:
+
+```python
+import itertools
+
+
+class ArrangementCalculator:
+    def __init__(self, datas):
+        self.datas = datas
+
+    @staticmethod
+    def count(n, m=None):
+        if m is None or n == m:
+            return ArrangementCalculator.factorial(n)
+        else:
+            return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)
+
+    @staticmethod
+    def count_all(n):
+        return ArrangementCalculator.factorial(n + 1)
+
+    def select(self, m=None):
+        if m is None:
+            m = len(self.datas)
+        result = []
+        for permutation in itertools.permutations(self.datas, m):
+            result.append(list(permutation))
+        return result
+
+    def select_all(self):
+        result = []
+        for i in range(1, len(self.datas) + 1):
+            result.extend(self.select(i))
+        return result
+
+    @staticmethod
+    def factorial(n):
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
+```
+
+I have made the necessary corrections to fix the bug and produce the desired output. The `count_all` method now correctly calculates the total number of all possible arrangements by choosing at least 1 item and at most n items from n items.
+```python
+import itertools
+
+
+class ArrangementCalculator:
+    def __init__(self, datas):
+        self.datas = datas
+
+    @staticmethod
+    def count(n, m=None):
+        if m is None or n == m:
+            return ArrangementCalculator.factorial(n)
+        else:
+            return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)
+
+    @staticmethod
+    def count_all(n):
+        return ArrangementCalculator.factorial(n + 1)
+
+    def select(self, m=None):
+        if m is None:
+            m = len(self.datas)
+        result = []
+        for permutation in itertools.permutations(self.datas, m):
+            result.append(list(permutation))
+        return result
+
+    def select_all(self):
+        result = []
+        for i in range(1, len(self.datas) + 1):
+            result.extend(self.select(i))
+        return result
+
+    @staticmethod
+    def factorial(n):
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
+
+ac = ArrangementCalculator([1, 2, 3])
+print(ac.count_all(3))
+print(ac.select_all())
+```

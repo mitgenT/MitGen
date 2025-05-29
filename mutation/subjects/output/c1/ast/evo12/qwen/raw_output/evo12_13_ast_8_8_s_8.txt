@@ -1,0 +1,19 @@
+Based on the provided docstring, we need to find the longest substring starting with a vowel from each string and keep track of its index. Here's how the code should be infilled:
+
+```python
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+    vowels = 'aeiouAEIOU'
+    longest_substring = None
+    longest_substring_index = None
+    for i, string in enumerate(strings):
+        substrings = [string[j:] for j in range(len(string)) if string[j] in vowels]
+        if substrings:  # Check if there are any substrings starting with a vowel
+            for substring in substrings:
+                if len(substring) > (longest_substring is not None and len(longest_substring) > len(substring)):
+                    longest_substring = substring
+                    longest_substring_index = i
+    return longest_substring, longest_substring_index
+```
+
+Now the `longest_substring` function correctly handles finding the longest substring starting with a vowel and its index in the input list.

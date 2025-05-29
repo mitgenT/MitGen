@@ -1,0 +1,22 @@
+Here's the infilled code:
+
+```python
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+    vowels = 'aeiouAEIOU'
+    longest_substring = None
+    longest_substring_index = None
+    for i, string in enumerate(strings):
+        substrings = [string[j:] for j in range(len(string)) if string[j] in vowels]
+        if substrings:
+            max_substring = max(substrings, key=len)
+            if longest_substring is None or len(max_substring) == len(longest_substring):
+                longest_substring = max_substring
+                if i == 0 or (i > 0 and max_substring[0] != strings[i - 1][-1]):
+                    longest_substring_index = i
+    return longest_substring, longest_substring_index
+```
+
+Explanation:
+- I added the condition `i == 0` to check if it's the first string in the list, which would satisfy the requirement of returning the first substring starting with a vowel if multiple have the same length.
+- I added the condition `(i > 0 and max_substring[0] != strings[i - 1][-1])` to ensure that we don't consider the current substring if its first character is the same as the last character of the previous string. This ensures we don't get duplicate substrings from the same string.

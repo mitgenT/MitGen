@@ -1,0 +1,6 @@
+def update(self, data, condition):
+    set_clause = ", ".join([f"{field} = '{value}'" for field, value in data.items()])
+    sql = f"UPDATE {self.table_name} SET {set_clause} WHERE {condition}"
+    if not data or not condition:
+        raise ValueError("Data and condition must be provided.")
+    return sql + ";"

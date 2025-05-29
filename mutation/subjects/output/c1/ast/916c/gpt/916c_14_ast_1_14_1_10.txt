@@ -1,0 +1,12 @@
+def max_experience(t, quests, completions, first_experience, subsequent_experience):
+    results = []
+    for i in range(t):
+        n, k = quests[i]
+        a = first_experience[i]
+        b = subsequent_experience[i]
+        quests_completed = min(k, n) # complete at most k or n quests, whichever is smaller
+        max_experience = 0
+        for j in range(quests_completed):
+            max_experience += a[j] + (k - j - 1) * b[j] # calculate experience for each completed quest
+        results.append(max_experience)
+    return results

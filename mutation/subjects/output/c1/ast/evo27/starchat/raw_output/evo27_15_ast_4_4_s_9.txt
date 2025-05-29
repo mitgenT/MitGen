@@ -1,0 +1,8 @@
+```python
+for i in range(len(string)):
+    char = string[i]
+    if char.isupper():
+        result += char.lower()
+    else:
+        result += char
+```

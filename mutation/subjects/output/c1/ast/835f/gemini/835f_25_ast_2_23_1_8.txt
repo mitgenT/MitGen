@@ -1,0 +1,19 @@
+
+t=int(input())
+for i in range(t):
+    n,c,d=map(int,input().split())
+    a=list(map(int,input().split()))
+    a.sort(reverse=True)
+    s=0
+    ans=0
+    for i in range(len(a)):
+        ans+=1
+        s+=a[i]
+        if s>=c:
+            break
+    if s<c:
+        print("Impossible")
+    else:
+        print(ans)
+
+        

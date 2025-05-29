@@ -1,0 +1,20 @@
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    s = [int(x) for x in input().split()]
+    mx = [0,0]
+    for i in range(n):
+        if s[i]>=s[mx[0]]:
+            mx[1] = mx[0]
+            mx[0] = i
+        elif s[i]>=s[mx[1]]:
+            mx[1] = i
+    for x in s:
+        if x!=s[mx[0]]:
+            print(s[mx[0]]-x,end=" ")
+        else:
+            print(s[mx[1]]-x,end=" ")
+    print()
+
+    

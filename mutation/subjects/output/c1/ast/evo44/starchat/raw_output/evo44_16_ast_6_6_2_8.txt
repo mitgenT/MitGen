@@ -1,0 +1,3 @@
+```python
+            base_10 //= new_base
+```

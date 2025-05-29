@@ -1,0 +1,24 @@
+## Output
+
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = False
+    if type(delimeter) == float:
+        set_float = True
+    result = []
+    limit = min(limit, len(numbers) - 1) 
+    for i in range(len(numbers) - 1):
+        if set_float:
+            result.append(float(numbers[i]))
+        if i < limit:
+            result.append(numbers[i])
+            result.append(delimeter)
+    if set_float:
+        result.append(float(numbers[-1]))
+    else:
+        result.append(numbers[-1])
+    return result
+```
+
+In the solution, I used an if-statement to check if a float-type delimiter is used, and then convert the numbers in the original list to float before appending them to the results list. For the interspersed numbers, I added a check to ensure that only up to 'limit' pairs of consecutive numbers have the delimiter inserted between them. Lastly, I appended the last number to the results list.

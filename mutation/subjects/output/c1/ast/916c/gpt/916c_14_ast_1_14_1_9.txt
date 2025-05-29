@@ -1,0 +1,14 @@
+t = int(input())
+for _ in range(t):
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    exp = []
+    for i in range(n):
+        exp.append(a[i])
+        if i != 0:
+            exp[i] += exp[i-1]
+    ans = exp[k-1]
+    for i in range(k, n):
+        ans = max(ans, exp[i] + b[i]*(i//k+1) - b[i]*((i+1)%k))
+    print(ans)

@@ -1,0 +1,11 @@
+```python
+    def get_all_students_with_fail_course(self):
+        students = []
+        for name, student in self.students.items():
+            for score in student['courses'].values():
+                if score < 60:
+                    students.append(name)
+                    break
+        return students
+```
+In the given code, to complete the `get_all_students_with_fail_course` method, I've added a loop to check each student's course scores. If the score is less than 60, I append the student's name to the `students` list. Since `break` is used to exit the inner loop once the student's fail score is found, we don't end up with duplicate student names in the result.

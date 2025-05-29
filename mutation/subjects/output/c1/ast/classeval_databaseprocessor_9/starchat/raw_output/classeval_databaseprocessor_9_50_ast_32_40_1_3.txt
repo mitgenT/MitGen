@@ -1,0 +1,13 @@
+def search_database(self, table_name, name):
+    if name:
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+
+        select_query = f"SELECT * FROM {table_name} WHERE name =?"
+        cursor.execute(select_query, (name,))
+
+        result = cursor.fetchall()
+
+        conn.close()
+
+        return result

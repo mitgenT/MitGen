@@ -1,0 +1,14 @@
+import re
+
+t = int(input())
+p = re.compile(r"([0-9]+)")
+
+for i in range(t):
+    ab = input()
+    match = p.search(ab)
+    a = int(match.group())
+    b = int(p.search(ab[len(match.group()):]).group())
+    if a < b:
+        print(a, b)
+    else:
+        print(-1)

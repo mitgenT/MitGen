@@ -1,0 +1,5 @@
+```python
+if len(data) < 3:
+    mean = sum(data) / len(data)
+    std_deviation = math.sqrt(sum((x - mean) ** 2 for x in data) / len(data))
+```

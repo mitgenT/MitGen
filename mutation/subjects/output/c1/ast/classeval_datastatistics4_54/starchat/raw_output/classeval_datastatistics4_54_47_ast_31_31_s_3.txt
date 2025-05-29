@@ -1,0 +1,9 @@
+```python
+n = len(data)
+if n > 1:
+    mean = sum(data) / n
+else:
+    mean = data[0]  # Mean is the only element for a single-element list
+```
+
+This fills in the missing parts of the kurtosis calculation. If there's only one element, the function returns the kurtosis for that element, as kurtosis requires a set of multiple values.

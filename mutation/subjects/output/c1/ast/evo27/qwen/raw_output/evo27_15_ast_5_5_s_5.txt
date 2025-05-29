@@ -1,0 +1,21 @@
+Based on the provided docstring, we need to check if the current character at `i` should be flipped or not according to the `special_index`. Here's how we can fill in `<MASK>`:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index or (i - special_index) % len(string) == special_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+        else:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+    return result
+```
+
+Now the given code has been modified according to the requirements of the problem.

@@ -1,0 +1,5 @@
+self.students[name]['courses'].get(course) is not None
+
+if self.students[name]['courses'].get(course):
+    total += self.students[name]['courses'][course]
+    count += 1

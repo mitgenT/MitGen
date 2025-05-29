@@ -1,0 +1,14 @@
+## Masked Code:
+```python
+conn = sqlite3.connect(self.database_name)
+cursor = conn.cursor()
+
+select_query = f"SELECT * FROM {table_name} WHERE name =?"
+<MASK>
+cursor.execute(select_query, (name,))
+result = cursor.fetchall()
+
+return result
+```
+
+In the given solution, I replaced the `<MASK>` with appropriate context - `cursor.execute(select_query, (name,))`. This allows us to execute a parameterized SQL query to search for a given name in the specified table. Then, the `fetchall()` method retrieves all rows that match the query and returns them as a list of tuples.

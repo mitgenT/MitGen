@@ -1,0 +1,6 @@
+```python
+    if new_base == 10:
+        return str(base_10)
+    return new_base_num
+```
+The added if statement checks if the new base is 10 before converting the base 10 number back into a string, as the original conversion was ignored in the given code. The check helps in maintaining the original functionality of the program.

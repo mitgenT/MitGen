@@ -1,0 +1,48 @@
+In the given code, you need to fill in the `<MASK>` inside the `ArrangementCalculator.count` static method. In Python, to calculate permutations (also known as arrangements), you can use the `math.perm()` function if you're using Python 3.8 and later, or use `math.factorial()` as shown in the code below:
+
+## Output
+```python
+import itertools
+import math
+
+
+class ArrangementCalculator:
+    def __init__(self, datas):
+        self.datas = datas
+
+    @staticmethod
+    def count(n, m=None):
+        if m is None:
+            m = n
+        # Use the formula: nPr = n! / (n-r)!
+        return math.factorial(n) // math.factorial(n - m)
+
+    @staticmethod
+    def count_all(n):
+        total = 0
+        for i in range(1, n + 1):
+            total += ArrangementCalculator.count(n, i)
+        return total
+
+    def select(self, m=None):
+        if m is None:
+            m = len(self.datas)
+        result = []
+        for permutation in itertools.permutations(self.datas, m):
+            result.append(list(permutation))
+        return result
+
+    def select_all(self):
+        result = []
+        for i in range(1, len(self.datas) + 1):
+            result.extend(self.select(i))
+        return result
+
+    @staticmethod
+    def factorial(n):
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
+```
+In this solution, the `ArrangementCalculator.count()` method uses the formula `nPr = n! / (n-r)!` to calculate the number of arrangements. The method returns `math.factorial(n) // math.factorial(n - m)` as the number of arrangements.

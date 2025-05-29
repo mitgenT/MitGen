@@ -1,0 +1,11 @@
+for _ in range(int(input())):
+    n, k = map(int, input().split())
+    a = [0] * n
+    for i in range(n-k, n):
+        a[i] = i+1
+    j = 1
+    for i in range(n):
+        if a[i] == 0:
+            a[i] = j
+            j += 1
+    print(*a)

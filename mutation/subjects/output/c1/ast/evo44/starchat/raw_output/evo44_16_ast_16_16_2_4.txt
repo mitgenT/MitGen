@@ -1,0 +1,6 @@
+return new_base_num
+```python
+# Check the infilled code with doctest
+import doctest
+doctest.testmod()
+```

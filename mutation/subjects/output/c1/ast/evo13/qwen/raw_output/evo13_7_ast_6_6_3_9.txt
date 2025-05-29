@@ -1,0 +1,12 @@
+Based on the given docstring, we need to find the greatest common divisor (GCD) of the list of integers. Here's how the code should be filled:
+
+```python
+from typing import List
+def multiple_greatest_common_divisors(numbers: List[int]) -> int:
+    import math
+    gcd = numbers[0]
+    for num in numbers[1:]:
+        if gcd > 1:  # Check if GCD is greater than 1
+            gcd = math.gcd(gcd, num)  # Calculate GCD
+    return gcd
+```

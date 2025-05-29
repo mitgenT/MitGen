@@ -1,0 +1,7 @@
+```python
+if n > 3:
+    return skewness
+else:
+    raise ValueError("Kurtosis calculation requires at least 4 data points")
+```
+This completes the `skewness` function as requested in the docstring. It will raise a `ValueError` with an appropriate error message if the number of data points is less than 4, as kurtosis calculation requires at least 4 data points.

@@ -1,0 +1,7 @@
+if m == 0:
+    total = 1
+for i in range(1, n + 1):
+    total += ArrangementCalculator.count(n, i)
+    #bug location
+
+# At the bug location, the condition "m == 0" was added to set total to 1 when there were no items to choose. Then, the count of arrangements was calculated for each possible value of m (from 1 to n inclusive) and added to total.

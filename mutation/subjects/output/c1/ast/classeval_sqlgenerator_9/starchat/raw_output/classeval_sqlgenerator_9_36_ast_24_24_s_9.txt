@@ -1,0 +1,10 @@
+```python
+def update(self, data, condition):
+    set_clause = ", ".join([f"{field} = '{value}'" for field, value in data.items()])
+    sql = f"UPDATE {self.table_name} SET {set_clause} WHERE {condition}"
+    if data:
+        return sql + ";"
+    else:
+        raise ValueError("No data to update")
+```
+In the `update` function, the generated SQL statement is only appended with a semicolon if `data` is not empty. Otherwise, it raises a `ValueError` with the message "No data to update".

@@ -1,0 +1,11 @@
+for _ in range(int(input())):
+    n = int(input())
+    problems = list(input())
+    solved = 0
+    time = 0
+    for p in problems:
+        time+= ord(p)-ord('A')+1
+        if time>=ord(p)-ord('A')+1:
+            solved += 1
+            time = 0
+    print(solved)

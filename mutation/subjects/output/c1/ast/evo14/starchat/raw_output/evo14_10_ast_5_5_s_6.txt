@@ -1,0 +1,14 @@
+## Output
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n - min_length + 1):
+        for j in range(i, n + 1 - min_length):
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                pairs.append((string[:i], string[j:]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```
+In the given output, I infilled the `<MASK>` by adding a loop over the `i` starting from `min_length` to `n - min_length + 1` and inside this loop, I added a conditional check `if len(set(string[:i]).intersection(set(string[j:]))) == 0` to ensure the prefix and suffix don't overlap. Then, I appended pairs to the `pairs` list. Finally, I sorted the `pairs` list based on the required key (sum of lengths of prefix and suffix, and pair itself). This completes the implementation of the given docstring.

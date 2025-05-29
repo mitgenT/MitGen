@@ -1,0 +1,8 @@
+Infill the <MASK> in the provided code based on the given docstring:
+
+```python
+        if n == 0 or std_dev == 0:
+            <MASK>
+            return math.nan
+```
+This corresponds to the "kurtosis" method. It handles the cases when either `n` or `std_dev` is 0, which might cause division by zero errors when calculating the kurtosis. The mask should be replaced by `continue` statement if we are calculating kurtosis for each subsets of data separately, or `return 0` if it's a specific case where kurtosis is undefined. In this given case, the implementation in the problem states that we should return `math.nan` when `std_dev` is 0.

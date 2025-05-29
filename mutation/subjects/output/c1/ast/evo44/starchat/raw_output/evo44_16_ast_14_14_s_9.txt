@@ -1,0 +1,20 @@
+## Output
+```python
+def change_base(x: str, base: int, new_base: int):
+    try:
+        base_10 = int(x, base)
+    except ValueError:
+        return "invalid base"
+    new_base_num = ""
+    if base_10 == 0:
+        return '0'
+    while base_10 > 0:
+        remainder = base_10 % new_base
+        base_10 -= new_base
+        if 0 <= remainder <= 9:
+            new_base_num = str(remainder) + new_base_num
+        elif new_base > 10:
+            new_base_num = chr(remainder + 55) + new_base_num 
+    return new_base_num
+```
+In the given code, I filled in <MASK> to check if the remainder is between 10 and the new_base. If it is, then convert the remainder to a character using ASCII value. The character ASCII values range from 65 to 90 for digits 10 to 35, we added 55 to the remainder to get the corresponding ASCII value for digits 10 to 35. This change_base function successfully converts a number from one base to another.

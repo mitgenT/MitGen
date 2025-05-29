@@ -1,0 +1,7 @@
+```Python
+                if char == char.upper():
+                    result += char.lower()
+                else:
+                    result += char.upper()
+```
+The output makes sure that the character at `special_index` keeps its case unchanged, while the other characters' cases are flipped. This is consistent with the provided docstring.

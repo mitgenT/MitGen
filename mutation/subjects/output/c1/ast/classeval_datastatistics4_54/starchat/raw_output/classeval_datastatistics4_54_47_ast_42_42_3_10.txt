@@ -1,0 +1,7 @@
+```python
+        if kurtosis_value > 3:
+            kurtosis_value -= 3
+        elif kurtosis_value < 3:
+            kurtosis_value = 3 - kurtosis_value
+```
+In the example given, we completed the `kurtosis` method to adjust the kurtosis value according to the provided rules. In this case, we reduced excess kurtosis to 0 by subtracting 3 from any value greater than 3 and adding 3 to any value less than 3. Adjust `<MASK>` accordingly to implement the kurtosis calculation as per the given requirements.

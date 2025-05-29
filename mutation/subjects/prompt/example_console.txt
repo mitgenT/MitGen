@@ -1,0 +1,25 @@
+Your task is to perform infilling for a given code. Specifically, you need to infill <MASK> in given code based on the its docstring. You only need to output the code to be infilled to <MASK>. I will show you one examples first.
+
+# Example
+
+## Docstring:
+"""
+The program implements a bubble-sort。
+"""
+
+## Given code:
+```Python
+def program(list1):  
+    for i in range(0,len(list1)-1):  
+        for j in range(len(list1)-1):  
+            if(list1[j]>list1[j+1]):  
+                temp = list1[j]  
+                <MASK>
+                list1[j+1] = temp  
+    return list1  
+```
+
+## Output
+```Python
+                list1[j] = list1[j+1]
+```

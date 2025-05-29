@@ -1,0 +1,11 @@
+N=int(input())
+alpha='ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+for _ in range(N):
+    n=int(input())
+    s=input()
+    ans=0
+    cur=0
+    for i in s:
+        ans+=(i!=cur)
+        cur=i
+    print(ans)

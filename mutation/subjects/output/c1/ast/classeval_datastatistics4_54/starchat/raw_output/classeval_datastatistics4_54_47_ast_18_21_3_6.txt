@@ -1,0 +1,13 @@
+```python
+    @staticmethod
+    def skewness(data):
+        n = len(data)
+        mean = sum(data) / n
+        std_deviation = math.sqrt(sum((x - mean) ** 2 for x in data) / n)
+
+        skewness = sum((x - mean) ** 3 for x in data) * n / ((n - 1) * (n - 2) * std_deviation ** 3) if std_deviation!= 0 else 0
+
+        return skewness
+```
+
+In the given `skewness` method, I have filled the `<MASK>` with the correct calculation to compute the skewness of the given data set. The rest of the methods in the `DataStatistics4` class remain unchanged.

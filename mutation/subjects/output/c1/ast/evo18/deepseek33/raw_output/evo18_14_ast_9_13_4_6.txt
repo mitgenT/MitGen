@@ -1,0 +1,33 @@
+The code to infill <MASK> is:
+```python
+if pos != -1:
+    while pos != -1:
+        result[sub] += 1
+        start = pos + 1
+        pos = string.find(sub, start)
+else:
+    start += 1
+```
+
+The final code will be:
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                while pos != -1:
+                    result[sub] += 1
+                    start = pos + 1
+                    pos = string.find(sub, start)
+            else:
+                start += 1
+    return result
+```
+This infilled code is a while loop which will increment the count of a substring every time it finds the substring in the string, and it will change the starting index to the next position after the found substring.
+
+If it does not find any match for the substring, it will increment the starting index by one, thus it will go to the next character. The while loop will end once the starting index is equal to or greater than the string's length - 1.

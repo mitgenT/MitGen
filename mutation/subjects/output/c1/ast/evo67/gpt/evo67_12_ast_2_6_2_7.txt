@@ -1,0 +1,11 @@
+def advanced_fruit_distribution(s, n, m):
+    s_list = s.split()
+    mangoes = n - (int(s_list[0]) + int(s_list[3]))
+    mangoes = max(mangoes, 0)
+    mangoes
+
+    # Check if the number of mangoes is less than the minimum requirement
+    if mangoes < m:
+        return -1
+    else:
+        return mangoes - 1

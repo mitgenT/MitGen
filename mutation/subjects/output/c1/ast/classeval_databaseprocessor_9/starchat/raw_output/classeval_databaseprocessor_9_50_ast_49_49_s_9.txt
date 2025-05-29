@@ -1,0 +1,7 @@
+```python
+        rows_deleted = cursor.rowcount
+
+        if rows_deleted > 0:
+            conn.commit()
+        conn.close()
+```

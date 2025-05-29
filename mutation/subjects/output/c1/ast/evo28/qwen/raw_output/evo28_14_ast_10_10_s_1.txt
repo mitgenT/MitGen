@@ -1,0 +1,20 @@
+Based on the given docstring, we need to interleave the elements from both lists `strings` and `integers` by checking the index of each element and appending the corresponding element from the other list if the current index is valid. Here's the updated code:
+
+```python
+from typing import List, Tuple
+def interleave_and_concatenate(strings: List[str], integers: List[int]) -> Tuple[str, int]:
+    interleaved = []
+    len_strings = len(strings)
+    len_integers = len(integers)
+    max_len = max(len_strings, len_integers)
+    for i in range(max_len):
+        if i < len_strings:
+            interleaved.append(strings[i])
+        if i < len_integers:
+            interleaved.append(integers[i])
+    concatenated_string = ' '.join([str(i) for i in interleaved if isinstance(i, str)]) 
+    sum_integers = sum([i for i in interleaved if isinstance(i, int)])
+    return (concatenated_string, sum_integers)
+```
+
+Now the `interleave_and_concatenate` function correctly interleaves elements from both lists, strings and integers, and returns the concatenated string and the sum of integers as a tuple.

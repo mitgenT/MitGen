@@ -1,0 +1,18 @@
+t=int(input())
+for _ in range(t):
+    a, b, c = map(int, input().split())
+    if a > b:
+        if b > c:
+            median = b
+        elif a > c:
+            median = c
+        else:
+            median = a
+    else:
+        if a > c:
+            median = a
+        elif b > c:
+            median = c
+        else:
+            median = b
+    print(median)

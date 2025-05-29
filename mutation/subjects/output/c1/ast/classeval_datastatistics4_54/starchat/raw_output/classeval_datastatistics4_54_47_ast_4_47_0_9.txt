@@ -1,0 +1,45 @@
+Here is the completed code:
+
+```python
+import math
+
+class DataStatistics4:
+    
+    @staticmethod
+    def correlation_coefficient(data1, data2):
+        n = len(data1)
+        sum_xy = sum(i*j for i, j in zip(data1, data2))
+        sum_x = sum(data1)
+        sum_y = sum(data2)
+        sum_x2 = sum([i**2 for i in data1])
+        sum_y2 = sum([i**2 for i in data2])
+        numerator = n * sum_xy - sum_x * sum_y
+        denominator = math.sqrt((n*sum_x2 - sum_x**2)*(n*sum_y2 - sum_y**2))
+        return numerator / denominator
+
+    @staticmethod
+    def skewness(data):
+        mean = sum(data) / len(data)
+        variance = sum((x - mean) ** 2 for x in data) / len(data)
+        std_dev = math.sqrt(variance)
+        skewness = sum((x - mean) ** 3 for x in data) / len(data)
+        skewness = skewness / (std_dev ** 3)
+        return skewness
+
+    @staticmethod
+    def kurtosis(data):
+        mean = sum(data) / len(data)
+        variance = sum((x - mean) ** 2 for x in data) / len(data)
+        std_dev = math.sqrt(variance)
+        kurtosis = sum((x - mean) ** 4 for x in data) / len(data)
+        kurtosis = kurtosis / (std_dev ** 4)
+        kurtosis -= 3
+        return kurtosis
+
+    @staticmethod
+    def pdf(data, mu, sigma):
+        pdf_values = [(1/(sigma * math.sqrt(2*math.pi))) * math.exp(-((x-mu)**2 / (2*sigma**2))) for x in data]
+        return pdf_values
+```
+
+The methods for the correlation coefficient, skewness, kurtosis, and probability density function (PDF) for a normal distribution have been completed based on the given docstring and requirements.

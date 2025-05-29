@@ -1,0 +1,8 @@
+In the `insert` method, add the following <MASK>:
+
+```python
+if not data:
+    raise ValueError("Data dictionary is empty.")
+```
+
+This code raises a ValueError when the data dictionary is empty, as an INSERT operation requires some data to be inserted into the table.

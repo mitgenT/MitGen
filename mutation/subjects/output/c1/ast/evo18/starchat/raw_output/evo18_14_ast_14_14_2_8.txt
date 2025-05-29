@@ -1,0 +1,19 @@
+## Output
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos!= -1:
+                result[sub] += 1
+                start = pos + len(sub)  # Update the start position with the length of the substring
+            else:
+                break
+    return result
+
+```
+In this output, the `<MASK>` has been replaced with `start = pos + len(sub)`. This line ensures that overlapping cases are properly counted in the final result.

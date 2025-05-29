@@ -1,0 +1,8 @@
+    else:
+        lst=[]
+        for i in range(n-k,n):
+            lst.append(i+1)
+        lst = lst[::-1]
+        for i in range(n-k-1,-1,-1):
+            lst.append(i+1)
+        s = ' '.join(map(str,lst))

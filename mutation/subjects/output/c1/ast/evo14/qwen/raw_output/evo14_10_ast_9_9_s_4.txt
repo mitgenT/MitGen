@@ -1,0 +1,19 @@
+Based on the provided docstring, we want to sort the `pairs` list first by length (in ascending order), and then lexicographically if the lengths are equal. We can achieve this by adding a sorting step inside the if condition. Here's how you can fill in the `<MASK>` parts:
+
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                pairs.append((string[:i], string[j:]))
+
+    # Sort the pairs list based on length and lexicographically
+    pairs.sort(key=lambda x: (len(x[0]), x[0]))
+
+    return pairs
+```
+
+Now the `all_prefix_suffix_pairs` function will return the list of prefix-suffix pairs sorted according to the specified criteria.

@@ -1,0 +1,15 @@
+## Output
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    if n <= 0 or m <= 0:
+        return ''
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        else:
+            result.append(str(i))
+    return''.join(result)
+```
+
+Explanation: The code uses two conditions to handle the cases of n=0 or m=0. If n or m is less than or equal to 0, it returns an empty string. Then, it iterates from 0 to n-1 and checks if the current number plus one is divisible by m. If yes, it appends "Fizz" to the `result` list; otherwise, it appends the current number. Finally, it joins all the elements in the `result` list with a space and returns the string.

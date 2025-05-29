@@ -1,0 +1,5 @@
+total += ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(i)  # bug location
+```python
+            if permutation not in result:
+                result.append(list(permutation))
+```

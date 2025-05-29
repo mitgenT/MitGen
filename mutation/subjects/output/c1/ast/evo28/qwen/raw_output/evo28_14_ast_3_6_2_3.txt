@@ -1,0 +1,29 @@
+Here's the code with the `<MASK>` parts filled in according to the given docstring:
+
+```python
+from typing import List, Tuple
+
+def interleave_and_concatenate(strings: List[str], integers: List[int]) -> Tuple[str, int]:
+    max_len = max(len(strings), len(integers))
+    interleaved = []
+
+    # If one list is shorter, iterate with the remaining elements of the longer list
+    if len(strings) < max_len:
+        for i in range(len(integers)):
+            interleaved.append(strings[i % len(strings)])
+            interleaved.append(integers[i])
+    elif len(integers) < max_len:
+        for i in range(len(strings)):
+            interleaved.append(strings[i])
+            interleaved.append(integers[i % len(integers)])
+    else:
+        for i in range(max_len):
+            interleaved.append(strings[i])
+            interleaved.append(integers[i])
+
+    concatenated_string = ' '.join([str(i) for i in interleaved if isinstance(i, str)]) 
+    sum_integers = sum([i for i in interleaved if isinstance(i, int)])
+    return (concatenated_string, sum_integers)
+```
+
+This code calculates the maximum length between the two input lists and then iterates over them, interleaving their elements. If one list is shorter, it uses the modulus operator to ensure that elements from the longer list are repeated until they have been exhausted. Finally, it concatenates the string elements and sums the integer elements to return a tuple.

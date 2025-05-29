@@ -1,0 +1,31 @@
+
+t = int(input())
+for _ in range(t):
+    n,c,d = list(map(int, input().split()))
+    q =  list(map(int, input().split()))
+    q.sort()
+    cur = 0
+    ans = 0
+    msk = [False] * n
+    j = 0
+    for i in range(d):
+        while j < n and cur+q[j] <= c :
+            cur+=q[j]
+            msk[j] = True
+            j+=1
+        if cur>=c:
+            ans += 1
+        cur = 0
+        for r in range(n):
+            if i+1 - msk[r] * ans >=2:
+                msk[r] = False
+    if cur>=c:
+        ans += 1
+    if ans==0:
+        print('Impossible')
+    elif ans==d:
+        print('Infinity')
+    else:
+        print(ans-1)
+
+        

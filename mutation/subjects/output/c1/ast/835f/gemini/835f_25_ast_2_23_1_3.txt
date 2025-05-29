@@ -1,0 +1,10 @@
+def solve(n, c, d, a):
+    a.sort(reverse=True)
+    need = c - sum(a[:d])
+    if need <= 0:
+        return -1
+    k = (need - 1) // a[d] + 1
+    if k > 1:
+        return k
+    else:
+        return -1

@@ -1,0 +1,101 @@
+```python
+class AssessmentSystem:
+    def __init__(self):
+        self.students = {}
+
+    def add_student(self, name, grade, major):
+        self.students[name] = {'name': name, 'grade': grade,'major': major, 'courses': {}}
+
+    def add_course_score(self, name, course, score):
+        self.students[name]['courses'][course] = score
+
+    def get_gpa(self, name):
+        if name in self.students and self.students[name]['courses']:
+            total = sum(self.students[name]['courses'].values())
+            return total / len(self.students[name]['courses'])
+        else:
+            return None
+
+    def get_all_students_with_fail_course(self):
+        students = []
+        for name, student in self.students.items():
+            for course, score in student['courses'].items():
+                if score < 60:
+                    students.append(name)
+                    break
+        return students
+
+    def get_course_average(self, course):
+        total = 0
+        count = 0
+        for student in self.students.values():
+            if course in student['courses']:
+                score = student['courses'][course]
+                if score is not None:
+                    total += score
+                    count += 1
+        return total / count if count > 0 else None
+
+    def get_top_student(self):
+        top_student = None
+        top_gpa = 0
+        for name, student in self.students.items():
+            gpa = self.get_gpa(name)
+            if gpa is not None and gpa > top_gpa:
+                top_gpa = gpa
+                top_student = name
+        return top_student
+```
+I've filled in the `<MASK>` in the `get_gpa` method with `total = sum(self.students[name]['courses'].values()) and total / len(self.students[name]['courses'])`. This calculates the total score of all courses for the student, and then divides by the total number of courses to calculate the GPA. 
+
+Now the complete class definition is as follows:
+
+```python
+class AssessmentSystem:
+    def __init__(self):
+        self.students = {}
+
+    def add_student(self, name, grade, major):
+        self.students[name] = {'name': name, 'grade': grade,'major': major, 'courses': {}}
+
+    def add_course_score(self, name, course, score):
+        self.students[name]['courses'][course] = score
+
+    def get_gpa(self, name):
+        if name in self.students and self.students[name]['courses']:
+            total = sum(self.students[name]['courses'].values())
+            return total / len(self.students[name]['courses'])
+        else:
+            return None
+
+    def get_all_students_with_fail_course(self):
+        students = []
+        for name, student in self.students.items():
+            for course, score in student['courses'].items():
+                if score < 60:
+                    students.append(name)
+                    break
+        return students
+
+    def get_course_average(self, course):
+        total = 0
+        count = 0
+        for student in self.students.values():
+            if course in student['courses']:
+                score = student['courses'][course]
+                if score is not None:
+                    total += score
+                    count += 1
+        return total / count if count > 0 else None
+
+    def get_top_student(self):
+        top_student = None
+        top_gpa = 0
+        for name, student in self.students.items():
+            gpa = self.get_gpa(name)
+            if gpa is not None and gpa > top_gpa:
+                top_gpa = gpa
+                top_student = name
+        return top_student
+```
+This complete program can be used to create an assessment system for students, allowing them to add, delete, and manage course scores, and other functions as specified in the docstring.

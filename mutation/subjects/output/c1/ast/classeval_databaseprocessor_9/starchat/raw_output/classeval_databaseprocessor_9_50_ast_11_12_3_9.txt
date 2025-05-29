@@ -1,0 +1,5 @@
+conn = sqlite3.connect(self.database_name)
+cursor = conn.cursor()
+
+if not cursor:
+    raise sqlite3.Error("Failed to create database connection")

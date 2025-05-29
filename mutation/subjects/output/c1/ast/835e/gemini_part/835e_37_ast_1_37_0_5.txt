@@ -1,0 +1,28 @@
+
+def get_max_num_inversions(n: int, arr: list) -> int:
+    """
+    You are given a binary array of length n. You are allowed to perform one operation on it at most once. In an operation, you can choose any element and flip it: turn a 0 into a 1 or vice-versa.
+    What is the maximum number of inversions the array can have after performing at most one operation?
+    A binary array is an array that contains only zeroes and ones.
+    The number of inversions in an array is the number of pairs of indices i,j such that i<j and ai>aj.
+
+    Input
+    The input consists of multiple test cases. The first line contains an integer t (1<=t<=10^4) - the number of test cases. The description of the test cases follows.
+    The first line of each test case contains an integer n (1<=n<=2⋅10^5) - the length of the array.
+    The following line contains n space-separated positive integers a1 , a2 ,..., an (0<=ai<=1) - the elements of the array.
+    It is guaranteed that the sum of n over all test cases does not exceed 2⋅10^5.
+
+    Output
+    For each test case, output a single integer  - the maximum number of inversions the array can have after performing at most one operation.
+    """
+    max_num_inversions = 0
+    num_zeros = 0
+
+    for el in arr:
+        num_zeros += (el == 0)
+
+    num_ones = n - num_zeros
+
+    max_num_inversions = num_zeros * num_ones
+
+    return max_num_inversions

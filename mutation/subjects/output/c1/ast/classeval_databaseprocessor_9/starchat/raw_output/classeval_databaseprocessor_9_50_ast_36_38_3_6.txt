@@ -1,0 +1,6 @@
+```python
+if (not result) or (name.lower() in [r[1].lower() for r in result]):
+    select_query = f"SELECT * FROM {table_name} WHERE name =?"
+    cursor.execute(select_query, (name,))
+    result = cursor.fetchall()
+```

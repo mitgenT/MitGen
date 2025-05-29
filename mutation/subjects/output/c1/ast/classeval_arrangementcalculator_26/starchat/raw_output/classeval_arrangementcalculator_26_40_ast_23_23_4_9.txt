@@ -1,0 +1,1 @@
+return total // ArrangementCalculator.factorial(n - i)  # bug fixed in this line

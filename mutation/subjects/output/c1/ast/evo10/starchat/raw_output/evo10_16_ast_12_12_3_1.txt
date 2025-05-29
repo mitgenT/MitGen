@@ -1,0 +1,21 @@
+## Output
+```python
+def is_palindrome(string: str) -> bool:
+    """ 
+    Test if given string is a palindrome.
+    """
+
+    return string == string[::-1]
+
+
+def make_palindrome(string: str) -> str:
+    l_string = string.lower()
+    if is_palindrome(l_string):
+        return string
+    else:
+        for i in range(len(string)):
+            if is_palindrome(string):
+                return string + string[:i][::-1]
+
+```
+In the solution, I first convert the input string to lowercase using the `lower()` function and then check if the lowercase string is a palindrome with `is_palindrome(l_string)`. If it is, return the string. If not, we iterate through the original string from both ends and check if any slice of it is a palindrome using the same method. If a palindrome slice is found, we concatenate it with the reverse of the slice that comes before it and return the result. If no palindrome slice is found within the given string, it means that the string itself is the shortest palindrome that begins with the input string. In that case, the code simply returns the string.

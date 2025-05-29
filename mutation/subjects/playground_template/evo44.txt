@@ -1,0 +1,125 @@
+from wrapt_timeout_decorator import *
+
+
+<generated_code_here>
+
+import numpy as np
+from numpy import nan, inf # for some outputs.
+import sys
+
+sys.set_int_max_str_digits(0)
+
+from enum import IntEnum, auto
+
+def is_floats(x) -> bool:
+    # check if it is float; List[float]; Tuple[float]
+    # TODO: search for any close floats? (other data structures)
+    if isinstance(x, float):
+        return True
+    if isinstance(x, (list, tuple)):
+        return all(isinstance(i, float) for i in x)
+    if isinstance(x, np.ndarray):
+        return x.dtype == np.float64 or x.dtype == np.float32
+    return False
+
+
+class DataType(IntEnum):
+    Float = auto()
+    Bool = auto()
+    Int = auto()
+    Str = auto()
+    Null = auto()
+    Tuple = auto()
+    List = auto()
+    Dict = auto()
+    Set = auto()
+    Type = auto()
+    Unknown = auto()
+
+
+def get_type(x):
+    if x is None:
+        return DataType.Null
+    elif isinstance(x, bool):
+        return DataType.Bool
+    elif isinstance(x, int):
+        return DataType.Int
+    elif isinstance(x, str):
+        return DataType.Str
+    elif is_floats(x):
+        return DataType.Float
+    elif isinstance(x, tuple):
+        return DataType.Tuple
+    elif isinstance(x, list):
+        return DataType.List
+    elif isinstance(x, dict):
+        return DataType.Dict
+    elif isinstance(x, set):
+        return DataType.Set
+    elif isinstance(x, type):
+        return DataType.Type
+    else:
+        return DataType.Unknown
+
+
+def is_equal(x, y) -> tuple[bool, str]:
+    x_type, y_type = get_type(x), get_type(y)
+    if x_type != y_type:
+        return False, "Type mismatch: {} vs {}".format(str(x_type), str(y_type))
+
+    if x_type in [DataType.Int, DataType.Bool, DataType.Null, DataType.Str, DataType.Set, DataType.Type]:
+        if x == y:
+            return True, None
+        try:
+            error_msg = "INT/BOOL/NULL/ Value mismatch: {} vs {}".format(repr(x)[:300], repr(y)[:300])
+        except:
+            error_msg = "Value mismatch: too large for display"
+        return False, error_msg
+    elif x_type == DataType.Float:
+        if np.allclose(x, y, equal_nan=True, atol=1e-6): # guard against nan
+            return True, None
+        else:
+            return False, "FLOAT Value mismatch: {} vs {}".format(x, y)
+    elif x_type in [DataType.List, DataType.Tuple]:
+        if len(x) != len(y):
+            return False, "Length mismatch: {} vs {}".format(len(x), len(y))
+        for i in range(len(x)):
+            equal, msg = is_equal(x[i], y[i])
+            if not equal:
+                return False, msg
+        return True, None
+    elif x_type == DataType.Dict:
+        if len(x) != len(y):
+            return False, "Length mismatch: {} vs {}".format(len(x), len(y))
+        for k, v in x.items():
+            if k not in y:
+                return False, "DICT Value mismatch: key {} in {} but not in {}".format(k, x, y)
+            equal, msg = is_equal(v, y[k])
+            if not equal:
+                return False, msg
+        return True, None
+    else:
+        try:
+            if x == y:  # e.g., object comparison
+                return True, None
+            else:
+                return False, "ELSE Value mismatch: {} vs {}".format(x, y)
+        except:
+            return False, "Unsupported type: {} <-- {}".format(x_type, type(x))
+
+def check(candidate):
+    inputs = [eval(f"[{i}]") for i in ["'Z', 36, 16", "'1A', 16, 10", "'7', 10, 2", "'8', 10, 2", "'8', 10, 3", "'1', 2, 10", "'0', 2, 10", "'10', 2, 10", "'11', 2, 10", "'ZZZ', 36, 10", "'ZZZ', 36, 36", "'1', 10, 2", "'10', 10, 2", "'16', 10, 16", "'10', 10, 16", "'100', 10, 16", "'1', 10, 36", "'10', 10, 36", "'36', 10, 36", "'ZZ', 36, 2", "'ZZ', 36, 10", "'ZZ', 36, 16", "'FF', 16, 2", "'FF', 16, 10", "'FF', 16, 36", "'100', 2, 10", "'100', 2, 36", "'A', 16, 10", "'1G', 16, 10", "'1G', 36, 10", "'10', 37, 10", "'10', 1, 10", "'10', 10, 37", "'10', 10, 2", "'1', 2, 10", "'1', 1, 36", "'ZZ', 36, 2", "'1A', 16, 36", "'0', 10, 2", "'A1', 12, 10", "'F', 16, 15", "'1001', 2, 10", "'10', 8, 5", "'B', 11, 10", "'A', 10, 36", "'10', 36, 16", "'0', 2, 10", "'100', 2, 10", "'2A6', 11, 10", "'1', 10, 36", "'1Z', 36, 10", "'1000', 2, 10", "'1', 36, 2", "'0', 10, 2", "'1', 2, 10", "'FF', 16, 10", "'10', 2, 36", "'Z', 36, 2", "'0', 36, 2", "'7A', 10, 16", "'A1', 36, 16", "'1A', 16, 36", "'AA', 36, 10", "'1', 1, 10", "'Z', 35, 16", "'G', 16, 10", "'10', 10, 36", "'100', 2, 10", "'1E9A', 16, 2", "'1Z', 36, 10", "'ABCD', 16, 2", "'100101', 2, 16", "'ZZZZ', 36, 10", "'10011', 2, 36", "'FEDCBA', 16, 36", "'101010', 2, 10", "'1234567890', 10, 36", "'ABCDEFG', 16, 2", "'ZXYWVUT', 36, 10", "'101010101010', 2, 16", "'10', 2, 10", "'101', 2, 10", "'FF', 16, 10", "'ZZ', 36, 10", "'1001', 2, 3", "'A', 11, 2", "'1F', 16, 10", "'100111', 2, 16", "'36', 10, 16", "'Z1', 36, 16", "'1A1B', 16, 10", "'123', 4, 2", "'321', 10, 5", "'FZ', 36, 16", "'GG', 17, 18", "'1Z', 36, 16", "'F00D', 16, 10"]]
+    outputs = ['23', '26', '111', '1000', '22', '1', '0', '2', '3', '46655', 'ZZZ', '1', '1010', '10', 'A', '64', '1', 'A', '10', '10100001111', '1295', '50F', '11111111', '255', '73', '4', '4', '10', 'invalid base', '52', 'invalid base', 'invalid base', 'A', '1010', '1', 'invalid base', '10100001111', 'Q', '0', '121', '10', '9', '13', 'invalid base', 'invalid base', '24', '0', '4', '358', '1', '71', '8', '1', '0', '1', '255', '2', '100011', '0', 'invalid base', '169', 'Q', '370', 'invalid base', 'invalid base', 'invalid base', 'A', '4', '1111010011010', '71', '1010101111001101', '25', '1679615', 'J', '9XZUI', '42', 'KF12OI', 'invalid base', '78241406789', 'AAA', '2', '5', '255', '1295', '100', '1010', '31', '27', '24', '4ED', '6683', '11011', '2241', '23F', 'G0', '47', '61453']
+    to_output = []
+    for i, (inp, exp) in enumerate(zip(inputs, outputs)):
+        try:
+            to_output.append((i,compute_output(candidate,inp)))
+        except:
+            to_output.append((i,"Exception"))
+    print(f"Final output of subject for prioritization is:::::{to_output}")
+
+@timeout(5)
+def compute_output(candidate,inp):
+    return candidate(*inp)
+    
+check(change_base)

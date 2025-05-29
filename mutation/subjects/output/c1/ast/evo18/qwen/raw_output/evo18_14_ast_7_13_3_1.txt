@@ -1,0 +1,15 @@
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while True:
+            index = string.find(sub, start)
+            if index == -1:
+                break
+            result[sub] += 1
+            start = index + 1
+    return result
+```

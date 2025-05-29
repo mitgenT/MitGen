@@ -1,0 +1,13 @@
+## Output
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if i % m == 0 and i!= 0:
+            result.append("Fizz")
+        else:
+            result.append(str(i))
+    return''.join(result)
+```
+In this modified code, we simply check if the current index `i` is divisible by `m`. If `i` is divisible by `m` and not 0 (since we assume 1-based indexing), we append "Fizz" to the list. Otherwise, we convert `i` to a string and append it to the list. Finally, we return the list joined into a space-delimited string.

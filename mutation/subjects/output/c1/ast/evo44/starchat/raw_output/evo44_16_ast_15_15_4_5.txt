@@ -1,0 +1,1 @@
+new_base_num = str(chr(remainder + 55)) + new_base_num

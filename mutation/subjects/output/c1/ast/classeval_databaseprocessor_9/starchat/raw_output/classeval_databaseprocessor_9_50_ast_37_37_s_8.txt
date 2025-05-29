@@ -1,0 +1,16 @@
+if cursor.execute(select_query, (name,)):
+    return cursor.fetchall()
+
+```python
+conn = sqlite3.connect(self.database_name)
+cursor = conn.cursor()
+
+select_query = f"SELECT * FROM {table_name} WHERE name =?"
+if cursor.execute(select_query, (name,)):
+    return cursor.fetchall()
+
+conn.commit()
+conn.close()
+```
+```
+I inserted the missing condition for executing the SQL query and retrieving the result from the search_database method. Now the code will correctly search for a matching name in the database and return the result.

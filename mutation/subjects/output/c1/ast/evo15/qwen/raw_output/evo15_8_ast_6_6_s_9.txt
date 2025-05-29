@@ -1,0 +1,14 @@
+Based on the provided docstring, we need to add a condition to check if `i+1` is not divisible by `m`, and then append the index value to the result list. Here's how to fill in the `<MASK>` parts:
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        elif i+1 != m:  # Check if not the m-th number
+            result.append(str(i+1))  # Append the number if it's not divisible by m
+        else:
+            pass  # Do nothing since it's already handled by the previous condition
+    return ' '.join(result)
+```

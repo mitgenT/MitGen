@@ -1,0 +1,26 @@
+Here's how you can infill the missing parts in the given code:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - len(sub) + 1:  # Adjusted the condition to avoid index out of range
+            if string[start:start+len(sub)] == sub:
+                pos = string.find(sub, start + 1)  # Use find() for overlapping checks
+            else:
+                pos = -1
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+```
+
+Explanation:
+1. Adjusted the `while` loop condition to `start < len(string) - len(sub) + 1` to prevent out-of-range errors when searching for substrings.
+2. Replaced `<MASK>` with `string[start:start+len(sub)] == sub` to check if the current substring matches within the original string.
+3. Used `string.find(sub, start + 1)` to find the next occurrence of the substring starting from `start + 1`, which allows counting overlapping occurrences. Set `pos = -1` if no match is found.

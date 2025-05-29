@@ -1,0 +1,9 @@
+In the `insert` method, replace `<MASK>` with these lines:
+
+```python
+if not data:
+    return f"INSERT INTO {self.table_name} DEFAULT VALUES;"
+else:
+    sql = f"INSERT INTO {self.table_name} ({fields}) VALUES ({values});"
+```
+This code checks whether `data` is empty. If so, it generates an INSERT statement with DEFAULT VALUES for all columns. If `data` is not empty, it generates an INSERT statement with specified fields and values.

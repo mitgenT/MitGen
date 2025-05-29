@@ -1,0 +1,10 @@
+```python
+def delete(self, condition):
+    if condition is not None:
+        sql = f"DELETE FROM {self.table_name} WHERE {condition}"
+        return sql + ";"
+    else:
+        raise ValueError("Condition cannot be None for DELETE operation.")
+```
+
+In the updated `delete()` method, I have added a check to see if the condition is None. If the condition is None, a `ValueError` is raised to ensure that the condition is provided for a DELETE operation. Otherwise, the DELETE SQL statement is generated as before.

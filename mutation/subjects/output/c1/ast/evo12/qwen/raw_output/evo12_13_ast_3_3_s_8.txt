@@ -1,0 +1,25 @@
+Based on the provided docstring, we need to check if the input list `strings` is empty and handle that case by returning `(None, None)`. We also need to define the `vowels` list, which contains all vowels in lowercase for case-insensitivity. Here's how to fill in the `<MASK>` parts:
+
+```python
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+    # Define vowels for case-insensitivity
+    vowels = ['a', 'e', 'i', 'o', 'u']
+    
+    # Check if the input list is empty
+    if not strings:
+        return (None, None)
+
+    longest_substring = None
+    longest_substring_index = None
+    for i, string in enumerate(strings):
+        substrings = [string[j:] for j in range(len(string)) if string[j].lower() in vowels]
+        if substrings:
+            max_substring = max(substrings, key=len)
+            if longest_substring is None or len(max_substring) == len(longest_substring):
+                longest_substring = max_substring
+                longest_substring_index = i
+    return longest_substring, longest_substring_index
+```
+
+Now the code is complete with the required logic according to the docstring.

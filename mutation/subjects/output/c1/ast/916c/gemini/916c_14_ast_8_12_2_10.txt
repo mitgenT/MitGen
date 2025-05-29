@@ -1,0 +1,17 @@
+for _ in range(int(input())):
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    result = 0
+    maxB = 0
+    sum = 0
+    can_be_done = [True for _ in range(n)]
+    for i in range(n - 1, -1, -1):
+        if i > 0 and not can_be_done[i - 1]:
+            can_be_done[i] = False
+        sum += b[i] * can_be_done[i]
+        if b[i] > maxB:
+            maxB = b[i]
+            result = sum + (min(k - i, 1) * a[i])
+    print(result)
+

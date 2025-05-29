@@ -1,0 +1,27 @@
+Based on the provided docstring, we need to check the character case for each non-'special_index' position. If the character is lowercase, leave it as is. Here's the completed code:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                result += char.lower()
+            elif char.islower():
+                # If the character at the special index is lowercase, keep it as is
+                pass
+            else:
+                result += char
+        else:
+            if char.isupper():
+                result += char.lower()
+            elif char.islower():
+                # If the character is lowercase, leave it as is
+                result += char
+            else:
+                result += char
+    return result
+```
+
+Now, the `flip_case_special` function handles the conditions specified in the docstring.

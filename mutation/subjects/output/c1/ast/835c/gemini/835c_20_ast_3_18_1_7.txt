@@ -1,0 +1,5 @@
+for i in range(t):
+    _ = input()
+    a = list(map(int, input().split()))
+    x = max(a)
+    print(*[x - i for i in a])

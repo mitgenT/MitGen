@@ -1,0 +1,5 @@
+if m == 0:
+    total = 1
+else:
+    total = ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)
+# bug location: n = 0 and m = 0 will lead to an division by zero error. The total should be set to 1 for these cases.

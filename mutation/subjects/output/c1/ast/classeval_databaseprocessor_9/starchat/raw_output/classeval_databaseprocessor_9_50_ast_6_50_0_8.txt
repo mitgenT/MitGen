@@ -1,0 +1,32 @@
+```python
+import sqlite3
+import pandas as pd
+
+
+class DatabaseProcessor:
+    def __init__(self, database_name):
+        self.database_name = database_name
+        self.conn = sqlite3.connect(database_name)
+        self.c = self.conn.cursor()
+
+    def create_table(self, table_name, key1, key2):
+        self.c.execute(f"CREATE TABLE IF NOT EXISTS {table_name} (id INTEGER PRIMARY KEY, {key1} TEXT, {key2} INTEGER)")
+        self.conn.commit()
+
+    def insert_into_database(self, table_name, data):
+        for item in data:
+            keys = ', '.join(item.keys())
+            values = ', '.join([f"'{val}'" for val in item.values()])
+            self.c.execute(f"INSERT INTO {table_name} ({keys}) VALUES ({values})")
+        self.conn.commit()
+
+    def search_database(self, table_name, name):
+        self.c.execute(f"SELECT * FROM {table_name} WHERE name = '{name}'")
+        return self.c.fetchall()
+
+    def delete_from_database(self, table_name, name):
+        self.c.execute(f"DELETE FROM {table_name} WHERE name = '{name}'")
+        self.conn.commit()
+```
+
+In this solution, the `DatabaseProcessor` class is completed with the necessary methods to create a table, insert data, search for data, and delete data from a database. The `sqlite3` library is used to interact with the SQLite database, and the `execute` method is used to execute SQL commands.

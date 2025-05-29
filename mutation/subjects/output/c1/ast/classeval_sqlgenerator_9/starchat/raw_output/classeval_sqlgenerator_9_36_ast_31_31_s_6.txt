@@ -1,0 +1,4 @@
+```Python
+if age is not None:
+    condition = f"age < {age} AND gender = 'female'"
+```

@@ -1,0 +1,1 @@
+result += char.upper() if char.isupper() else char.lower()

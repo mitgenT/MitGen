@@ -1,0 +1,19 @@
+from typing import List, Union
+
+def intersperse(numbers: List[Union[int, float]], delimiter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    result = []
+    count = 0
+
+    for i, num in enumerate(numbers):
+        if count < limit and i < len(numbers) - 1:
+            result.append(num)
+            result.append(delimiter)
+            count += 1
+        else:
+            result.append(num)
+
+    # If the last element was not appended due to the limit, add it directly
+    if count < limit and i == len(numbers) - 1:
+        result.pop()  # Remove the last delimiter
+
+    return result

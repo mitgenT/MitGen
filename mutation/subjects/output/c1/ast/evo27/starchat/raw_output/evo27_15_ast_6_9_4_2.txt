@@ -1,0 +1,20 @@
+## Solution
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                result += char
+            else:
+                result += char.upper()
+        else:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+    return result
+```
+This solution fulfills the requirement by flipping lowercase characters to uppercase and vice versa, while keeping the uppercase character at'special_index'. If'special_index' is out of range, it treats it as an index in a circular list.

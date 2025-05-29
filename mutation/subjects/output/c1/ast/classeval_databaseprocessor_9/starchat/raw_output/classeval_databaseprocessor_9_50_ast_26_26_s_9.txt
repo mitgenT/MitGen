@@ -1,0 +1,3 @@
+insert_query = f"INSERT INTO {table_name} (name, age) VALUES (?,?)"
+if item['name'] == name:
+    cursor.execute(insert_query, (item['name'], item['age']))

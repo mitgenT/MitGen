@@ -1,0 +1,12 @@
+for _ in range(int(input())):
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    dp = [0]*(k+1)
+    dp[1] = a[0]
+    for i in range(2,n+1):
+        for j in range(k,i-1,-1):
+            dp[j] = max(dp[j],dp[j-i]+a[i-1])
+        dp[i] = max(dp[i-1],dp[i-i]+b[i-1])
+
+    print(dp[k])

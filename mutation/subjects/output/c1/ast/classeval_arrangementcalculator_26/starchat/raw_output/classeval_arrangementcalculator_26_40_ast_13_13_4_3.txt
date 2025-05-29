@@ -1,0 +1,2 @@
+if m > n:
+    raise ValueError("m cannot be greater than n")

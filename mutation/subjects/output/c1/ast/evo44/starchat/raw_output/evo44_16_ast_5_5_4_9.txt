@@ -1,0 +1,5 @@
+```Python
+                return "invalid base"
+            if <MASK>:
+                base_10 //= base
+```

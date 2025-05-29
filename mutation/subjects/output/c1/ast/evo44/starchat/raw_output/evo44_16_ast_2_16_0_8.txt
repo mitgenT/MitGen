@@ -1,0 +1,17 @@
+```python
+def change_base(x: str, base: int, new_base: int):
+    if any(c not in string.digits + string.ascii_uppercase[:base-10] for c in x):
+        return "invalid base"
+    num = int(x, base)
+    if new_base == 10:
+        return str(num)
+    elif new_base == 16:
+        return hex(num).upper()[2:]
+    else:
+        res = ''
+        while num > 0:
+            res = string.ascii_uppercase[num % new_base] + res
+            num //= new_base
+        return res
+```
+Here, the `<MASK>` in the code was replaced with if statement to validate base, a conversion from the initial base to decimal using Python's built-in `int()` function with proper base parameter, conditional checks for new_base 10 and 16 for direct conversions, and a while loop to convert decimal to required base when necessary. It also makes use of the `string` module for upper-case letters in base greater than 9.

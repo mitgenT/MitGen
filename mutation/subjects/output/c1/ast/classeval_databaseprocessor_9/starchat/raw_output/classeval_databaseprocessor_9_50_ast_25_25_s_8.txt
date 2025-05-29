@@ -1,0 +1,8 @@
+```python
+conn = sqlite3.connect(self.database_name)
+cursor = conn.cursor()
+
+insert_query = f"INSERT INTO {table_name} ({key1}, {key2}) VALUES (?,?)"
+cursor.execute(insert_query, (item['name'], item['age']))
+```
+This will correctly fill in the <MASK> part in the given code. In the insert_into_database method, we prepare an SQL statement to insert new rows into the specified table. The values for 'name' and 'age' come from the data list.

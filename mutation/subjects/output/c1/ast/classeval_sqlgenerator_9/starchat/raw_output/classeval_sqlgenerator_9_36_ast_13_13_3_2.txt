@@ -1,0 +1,4 @@
+if fields == "*":
+    sql += ";"
+elif isinstance(fields, list):
+    sql += f" {', '.join(fields)};"

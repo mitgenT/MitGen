@@ -1,0 +1,17 @@
+```python
+    def search_database(self, table_name, name):
+
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+
+        select_query = f"SELECT * FROM {table_name} WHERE name =?"
+        cursor.execute(select_query, (name,))
+        result = cursor.fetchall()
+
+        conn.commit()
+        conn.close()
+
+        return result
+```
+
+We just need to move the `conn.commit()` and `conn.close()` lines to the end of `search_database` since you're returning result before closing the connection. In other functions like `insert_into_database` and `delete_from_database`, these lines are appropriately located before closing the connection.

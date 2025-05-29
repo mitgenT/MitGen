@@ -1,0 +1,14 @@
+Here is the correct infill for the <MASK> in the given Python program. The function finds the n longest strings, sorted by increasing length that are common in two lists. If there is a tie in length, it prefers the string that appears first in list1.
+
+```python
+def common(l1: list, l2: list, n: int):
+    common_strings = list(set(l1) & set(l2))
+    common_strings.sort(key=lambda x: (-len(x), l1.index(x)))
+    return common_strings[:n]
+
+print(common(["apple", "banana", "cherry", "date", "elderberry"], ["banana", "date", "fig", "grape", "elderberry"], 3))
+print(common(["cat", "dog", "elephant", "fox", "goat"], ["dog", "fox", "cat", "horse", "iguana", "goat"], 3))
+print(common(["hello", "goodbye", "yes", "no", "maybe", "absolutely", "never"], ["no", "maybe", "absolutely", "always", "sometimes"], 1))
+```
+
+This code first creates a list of common strings by intersecting the two input lists with the set data type. It then sorts this list in descending order of string length and, in the case of ties, ascending order of the index of the first appearance of the string in list1 using the sorted() function's 'key' argument. Finally, it slices this sorted list to return only the n longest strings.

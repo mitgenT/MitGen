@@ -1,0 +1,17 @@
+## Output
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    if min_length > n:
+        return pairs
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                pairs.append((string[:i], string[j:]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```
+
+In this solution, we added two if conditions to check if the `min_length` is greater than the length of the given string (`min_length > n`), which returns an empty list in that case. Otherwise, we continued with the rest of the logic. The main difference lies in the for loop structure which varies depending on your specific requirements.

@@ -1,0 +1,6 @@
+```python
+    if cursor.rowcount > 0:
+        print("Table created successfully")
+    else:
+        print("Table creation failed")
+```

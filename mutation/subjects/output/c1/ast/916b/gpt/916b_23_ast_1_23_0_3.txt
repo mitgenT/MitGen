@@ -1,0 +1,16 @@
+problems = []
+cases = int(input())
+
+for _ in range(cases):
+    n, k = map(int, input().split())
+    problems.append([n, k])
+
+for problem in problems:
+    n, k = problem
+    numbers = list(range(1, n + 1))
+    order = []
+    for i in range(k):
+        order.append(numbers[-(i + 2)])
+    for i in range(k, n):
+        order.append(numbers[i])
+    print(' '.join(map(str, order)))

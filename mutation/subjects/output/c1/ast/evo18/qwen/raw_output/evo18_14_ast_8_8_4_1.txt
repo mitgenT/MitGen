@@ -1,0 +1,3 @@
+```python
+            pos = string.find(sub, start)
+```

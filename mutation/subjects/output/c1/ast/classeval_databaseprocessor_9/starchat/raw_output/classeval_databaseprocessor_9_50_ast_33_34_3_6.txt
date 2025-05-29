@@ -1,0 +1,16 @@
+```python
+    def search_database(self, table_name, name):
+
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+
+        select_query = f"SELECT * FROM {table_name} WHERE name =?"
+        cursor.execute(select_query, (name,))
+        result = cursor.fetchall()
+
+        conn.commit()
+        conn.close()
+
+        return result
+```
+In the provided solution, I've filled in the missing code for the `search_database` method, ensuring that the database connection and cursor are opened correctly and properly closed after executing the search query. The method now returns the matching rows from the specified table.

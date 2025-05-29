@@ -1,0 +1,4 @@
+if result:
+```python
+    return result
+```

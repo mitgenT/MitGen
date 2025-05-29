@@ -1,0 +1,6 @@
+Here's the output code with `<MASK>` infilled:
+
+```python
+        if i < limit:
+            result.append(numbers[i + 1])
+```

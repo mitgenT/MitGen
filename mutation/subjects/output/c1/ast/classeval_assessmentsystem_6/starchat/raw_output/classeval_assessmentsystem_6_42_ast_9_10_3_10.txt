@@ -1,0 +1,48 @@
+```python
+class AssessmentSystem:
+    def __init__(self):
+        self.students = {}
+
+    def add_student(self, name, grade, major):
+        self.students[name] = {'name': name, 'grade': grade,'major': major, 'courses': {}}
+
+    def add_course_score(self, name, course, score):
+        if name in self.students:
+            self.students[name]['courses'][course] = score
+
+    def get_gpa(self, name):
+        total = sum(self.students[name]['courses'].values())
+        count = len(self.students[name]['courses'])
+        return total / count if count > 0 else None
+
+    def get_all_students_with_fail_course(self):
+        students = []
+        for name, student in self.students.items():
+            for course, score in student['courses'].items():
+                if score < 60:
+                    students.append(name)
+                    break
+        return students
+
+    def get_course_average(self, course):
+        total = 0
+        count = 0
+        for student in self.students.values():
+            if course in student['courses']:
+                score = student['courses'][course]
+                if score is not None:
+                    total += score
+                    count += 1
+        return total / count if count > 0 else None
+
+    def get_top_student(self):
+        top_student = None
+        top_gpa = 0
+        for name, student in self.students.items():
+            gpa = self.get_gpa(name)
+            if gpa is not None and gpa > top_gpa:
+                top_gpa = gpa
+                top_student = name
+        return top_student
+```
+In this code, I first ensured that the student exists in the `self.students` dictionary before adding a course score. I did this by using the `if name in self.students:` condition before `self.students[name]['courses'][course] = score`. This ensures that no `KeyError` will be raised if the student name does not exist. Then, I modified `get_gpa(self, name)` to use the total and count of scores directly instead of using the list of values. This reduces the need for multiple dictionary lookups in the loop. For calculating the average score of a course, I added an additional `if score is not None:` condition to exclude `None` values from the calculation. Finally, I used the `get_gpa` method to calculate the GPAs for all students and found the top student based on the highest GPA.

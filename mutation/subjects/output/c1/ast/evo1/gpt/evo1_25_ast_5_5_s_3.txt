@@ -1,0 +1,27 @@
+from typing import List, Tuple
+
+def separate_paren_groups(paren_string: str, remove_unbalanced: bool = False) -> Tuple[List[str], int]:
+    stack = []
+    groups = []  # initialize an empty list for storing separate groups
+    if remove_unbalanced:  # check if remove_unbalanced flag is True
+        stack = []  # initialize an empty stack
+    removed = 0  # initialize the count of removed unbalanced groups to 0
+    group = ''  # initialize an empty string for constructing separate groups
+    for char in paren_string:
+        if char == '(':  # if the character is an opening parenthesis
+            stack.append(char)  # push it onto the stack
+            group += char  # add it to the current group
+        elif char == ')':  # if the character is a closing parenthesis
+            if stack:  # check if the stack is not empty
+                stack.pop()  # pop the topmost opening parenthesis from the stack
+                group += char  # add it to the current group
+                if len(stack) == 0:  # if the stack becomes empty
+                    groups.append(group)  # add the current group to the list of separate groups
+                    group = ''  # reset the current group to an empty string
+            else:  # if the stack is empty
+                removed += 1  # increment the count of removed unbalanced groups
+    if remove_unbalanced and stack:  # if remove_unbalanced flag is True and stack is not empty
+        removed += len(stack)  # add the count of remaining opening parentheses in the stack to removed
+    if not remove_unbalanced:  # if remove_unbalanced flag is False
+        removed = 0  # set the count of removed unbalanced groups to 0
+    return groups, removed

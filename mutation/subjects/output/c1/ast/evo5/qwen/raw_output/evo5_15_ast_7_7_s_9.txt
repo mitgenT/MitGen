@@ -1,0 +1,5 @@
+```python
+    for i in range(limit):
+        if i < len(numbers) - 1:
+            result.append(numbers[i])
+```

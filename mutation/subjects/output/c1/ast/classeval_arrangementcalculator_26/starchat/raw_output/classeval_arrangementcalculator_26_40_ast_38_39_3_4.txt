@@ -1,0 +1,10 @@
+```python
+    @staticmethod
+    def factorial(n):
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
+```
+
+In the above solution, the missing factorial operation in the `factorial()` method was completed by using a for loop to calculate the product from 2 up to the given number `n`. This corrects the bug that was indicated in the given code snippet. The complete program now includes the missing code to correctly calculate the factorials of numbers, which is essential for the calculation of permutations in the `ArrangementCalculator` class.

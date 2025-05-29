@@ -1,0 +1,11 @@
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    result = []
+    for i in range(len(numbers)):
+        result.append(numbers[i])
+        if i < limit:
+            result.append(delimeter)
+    return result[:-1] if len(numbers) > limit else result
+```
+In this solution, the 'for' loop iterates over the range of numbers, adding each number to the'result' list. For each iteration, it also checks if the current index is less than 'limit' and if true, it appends the 'delimeter' to the'result' list. Lastly, if the number of 'numbers' is greater than 'limit', the last 'delimeter' is removed from the'result' list using list slicing (`[:-1]`).

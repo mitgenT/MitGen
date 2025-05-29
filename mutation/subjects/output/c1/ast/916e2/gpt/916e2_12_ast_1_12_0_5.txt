@@ -1,0 +1,16 @@
+for _ in range(t):
+    n = int(input())
+    alice_marbles = list(map(int, input().split()))
+    bob_marbles = list(map(int, input().split()))
+    # Sorting alice_marbles and bob_marbles in descending order
+    alice_marbles.sort(reverse=True)
+    bob_marbles.sort(reverse=True)
+    # Calculating the score
+    alice_score = 0
+    bob_score = 0
+    for i in range(n):
+        if alice_marbles[i] > bob_marbles[i]:
+            alice_score += alice_marbles[i] - bob_marbles[i]
+        elif alice_marbles[i] < bob_marbles[i]:
+            bob_score += bob_marbles[i] - alice_marbles[i]
+    print(alice_score - bob_score)

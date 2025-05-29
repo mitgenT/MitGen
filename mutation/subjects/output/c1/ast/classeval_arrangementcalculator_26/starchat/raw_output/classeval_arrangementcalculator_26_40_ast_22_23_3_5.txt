@@ -1,0 +1,2 @@
+if m is not None:
+            m = min(m, len(self.datas))

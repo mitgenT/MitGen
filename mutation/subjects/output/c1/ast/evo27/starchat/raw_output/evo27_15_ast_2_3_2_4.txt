@@ -1,0 +1,5 @@
+```Python
+result = ''
+if special_index >= len(string):
+    special_index = special_index % len(string)
+```

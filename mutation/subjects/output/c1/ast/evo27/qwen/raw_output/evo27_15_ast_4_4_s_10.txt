@@ -1,0 +1,21 @@
+Based on the provided docstring, we need to modify the code so that if the character at `special_index` is lowercase, it remains unchanged. Here's the completed code:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+        else:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char.upper()  # Change .lower() to .upper() here
+    return result
+```
+
+Now, when the `special_index` refers to a lowercase character, it will remain unchanged.

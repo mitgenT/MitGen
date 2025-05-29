@@ -1,0 +1,1 @@
+result += char.swapcase()  # For swapping uppercase and lowercase characters.

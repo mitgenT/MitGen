@@ -1,0 +1,15 @@
+## Output
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                pairs.append((string[:i], string[j:]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    if not pairs:  # Check if pairs is empty
+        return []  # Return an empty list if pairs is empty
+```
+In the solution, I added an if statement at the end of the function to check if `pairs` is empty. If it is, the function will return an empty list. This handles the case where there are no valid prefix-suffix pairs meeting the given criteria.

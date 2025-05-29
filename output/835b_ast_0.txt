@@ -1,0 +1,10 @@
+4
+7
+abacadbacadab
+3
+
+10
+abcdefghabcdefghi
+2
+abcc
+9

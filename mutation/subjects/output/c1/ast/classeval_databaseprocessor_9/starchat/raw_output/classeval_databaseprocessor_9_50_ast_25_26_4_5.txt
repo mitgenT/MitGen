@@ -1,0 +1,3 @@
+for item in data:
+    values = (item.get('name'), item.get('age'))
+    cursor.execute("INSERT INTO {} (name, age) VALUES (?,?)".format(table_name), values)

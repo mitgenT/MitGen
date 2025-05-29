@@ -1,0 +1,51 @@
+In the example code, the bug location was found in the 'count_all' method, where the calculation was not correct for finding the total count of all arrangements. The missing code should calculate the factorial for each value from 1 to 'n' and sum them up.
+
+For the given code, we need to infill '<MASK>' in the'select_all' method. The correct code should iterate from 1 to the length of the internal datas and call the'select' method with each iteration value to generate a list of all arrangements.
+
+Here is the revised code:
+
+```python
+import itertools
+
+
+class ArrangementCalculator:
+    def __init__(self, datas):
+        self.datas = datas
+
+    @staticmethod
+    def count(n, m=None):
+        if m is None or n == m:
+            return ArrangementCalculator.factorial(n)
+        else:
+            return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)
+
+    @staticmethod
+    def count_all(n):
+        total = 0
+        for i in range(1, n + 1):
+            total += ArrangementCalculator.count(n, i)
+        return total
+
+    def select(self, m=None):
+        if m is None:
+            m = len(self.datas)
+        result = []
+        for permutation in itertools.permutations(self.datas, m):
+            result.append(list(permutation))
+        return result
+
+    def select_all(self):
+        result = []
+        for m in range(1, len(self.datas) + 1):
+            result.extend(self.select(m))
+        return result
+
+    @staticmethod
+    def factorial(n):
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
+```
+
+The code should be correct now.

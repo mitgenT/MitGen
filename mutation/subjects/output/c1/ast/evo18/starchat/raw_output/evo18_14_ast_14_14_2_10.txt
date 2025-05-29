@@ -1,0 +1,23 @@
+## Output
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos!= -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    if not string:
+        return {sub: 0 for sub in substrings}
+    return result
+```
+
+Here, the <MASK> part is completed with an if-condition to return a dictionary with zero counts for each substring if the input string is empty.
+
+I have corrected the given code according to the provided docstring's description and requirements. The function will return a dictionary where keys are the substrings and values are their counts, considering overlapping cases and returning error messages as required.

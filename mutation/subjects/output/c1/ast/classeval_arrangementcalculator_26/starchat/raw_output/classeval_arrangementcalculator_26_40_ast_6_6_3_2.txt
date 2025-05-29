@@ -1,0 +1,6 @@
+if datas is None:
+    self.datas = []
+if __MASK__ in dir(self) and callable(getattr(self, __MASK__)):
+    getattr(self, __MASK__)(datas)
+else:
+    self.datas = datas

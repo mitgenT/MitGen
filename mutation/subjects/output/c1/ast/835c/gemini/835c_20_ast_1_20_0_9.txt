@@ -1,0 +1,7 @@
+def solve(n, strengths):
+    max_other_than_i = [0] * n  # max_other_than_i[i] stores the maximum strength of any participant other than participant i
+    max_so_far = -1
+    for i in range(n - 1, -1, -1):
+        max_other_than_i[i] = max_so_far
+        max_so_far = max(max_so_far, strengths[i])
+    return max_other_than_i

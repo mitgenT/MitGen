@@ -1,0 +1,12 @@
+```Python
+        if fields == "*":
+            pass
+        else:
+            fields = ", ".join(fields)
+```
+
+In the `insert` method, add the following code before returning the SQL statement:
+
+```Python
+        sql = f"INSERT INTO {self.table_name} ({fields}) VALUES ({values})"
+```

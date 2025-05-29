@@ -1,0 +1,5 @@
+Here's the output code to fill in the `<MASK>` in the given code:
+
+```python
+    result = []
+```

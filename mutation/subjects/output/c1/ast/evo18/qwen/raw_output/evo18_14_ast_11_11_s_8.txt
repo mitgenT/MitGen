@@ -1,0 +1,4 @@
+```python
+            if pos != -1 and start + len(sub) <= len(string):
+                start = pos + 1
+```

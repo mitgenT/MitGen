@@ -1,0 +1,6 @@
+```python
+                result += char.lower()
+            else:
+                result += char.upper()
+```
+This replaces `<MASK>` with the correct conditional check and operation.

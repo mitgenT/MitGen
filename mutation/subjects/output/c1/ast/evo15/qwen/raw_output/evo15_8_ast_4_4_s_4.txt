@@ -1,0 +1,12 @@
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if i % m == 0:
+            result.append("Fizz")
+        elif i + 1 < m:  # Adjust for 1-based indexing
+            result.append(str(i + 1))
+        else:
+            result.append(str(i))
+    return ' '.join(result)
+```

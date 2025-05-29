@@ -1,0 +1,62 @@
+In your code, when looking for students who have a course score below 60, you are currently adding the name directly into the list without checking whether the student already exists in the list or not. To prevent duplicate entries, you can use a set instead of a list for storing the student names. After declaring the'students' set, you can modify the given function as follows:
+
+```python
+def get_all_students_with_fail_course(self):
+    students = set()
+    for name, student in self.students.items():
+        for course, score in student['courses'].items():
+            if score < 60:
+                students.add(name)
+                break
+    return list(students)
+```
+
+The rest of the code remains the same. Now the 'get_all_students_with_fail_course' function will correctly return a list of students who have at least one course score below 60, without any duplicates. The entire program is as follows:
+
+```python
+class AssessmentSystem:
+    def __init__(self):
+        self.students = {}
+
+    def add_student(self, name, grade, major):
+        self.students[name] = {'name': name, 'grade': grade,'major': major, 'courses': {}}
+
+    def add_course_score(self, name, course, score):
+        if name in self.students:
+            self.students[name]['courses'][course] = score
+
+    def get_gpa(self, name):
+        return sum(self.students[name]['courses'].values()) / len(self.students[name]['courses'])
+
+    def get_all_students_with_fail_course(self):
+        students = set()
+        for name, student in self.students.items():
+            for course, score in student['courses'].items():
+                if score < 60:
+                    students.add(name)
+                    break
+        return list(students)
+
+    def get_course_average(self, course):
+        total = 0
+        count = 0
+        for student in self.students.values():
+            if course in student['courses']:
+                score = student['courses'][course]
+                if score is not None:
+                    total += score
+                    count += 1
+        return total / count if count > 0 else None
+
+    def get_top_student(self):
+        top_student = None
+        top_gpa = 0
+        for name, student in self.students.items():
+            gpa = self.get_gpa(name)
+            if gpa is not None and gpa > top_gpa:
+                top_gpa = gpa
+                top_student = name
+        return top_student
+```
+
+This modified code should meet all the requirements outlined in your given docstring.

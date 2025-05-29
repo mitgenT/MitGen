@@ -1,0 +1,24 @@
+Here's the infilled code:
+
+```python
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+    vowels = 'aeiouAEIOU'
+    if strings:  # Check if the list is not empty
+        longest_substring = ""
+        longest_substring_index = None
+    for i, string in enumerate(strings):
+        substrings = [string[j:] for j in range(len(string)) if string[j] in vowels]
+        if substrings:
+            max_substring = max(substrings, key=len)
+            if longest_substring is None or len(max_substring) > len(longest_substring):
+                longest_substring = max_substring
+                longest_substring_index = i
+    return longest_substring, longest_substring_index
+```
+
+Explanation:
+
+- I added `longest_substring = ""` to initialize the variable that will store the longest substring.
+- I replaced `<MASK>` with `if strings:` to check if the input list is not empty.
+- I changed the condition in the `if` statement from `len(max_substring) == len(longest_substring)` to `len(max_substring) > len(longest_substring)` to ensure that we update the longest substring only when a longer one is found.

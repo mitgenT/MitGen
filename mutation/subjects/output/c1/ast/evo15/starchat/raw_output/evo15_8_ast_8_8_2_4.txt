@@ -1,0 +1,14 @@
+## Output
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        else:
+            result.append(str(i))
+    if result:
+        return''.join(result)
+```
+
+Infill <MASK> has been replaced by `return''.join(result)`. This code returns a string containing space-delimited numbers starting from 0 upto n inclusive, but replaces every m-th number with "Fizz". The final string is constructed by joining the elements in `result` using a space as the separator.

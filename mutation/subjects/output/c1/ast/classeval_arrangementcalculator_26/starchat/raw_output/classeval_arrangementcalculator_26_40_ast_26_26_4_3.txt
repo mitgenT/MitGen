@@ -1,0 +1,10 @@
+return ArrangementCalculator.factorial(n - m)  # bug location
+
+# Update select() function to convert permutation tuples to lists
+if m is None:
+    m = len(self.datas)
+result = []
+for permutation in itertools.permutations(self.datas, m):
+    if permutation not in result:
+        result.append(list(permutation))
+return result

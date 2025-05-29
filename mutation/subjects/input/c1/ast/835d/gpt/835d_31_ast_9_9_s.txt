@@ -1,0 +1,31 @@
+
+import sys
+from bisect import bisect_left as bs
+
+input = sys.stdin.readline
+ii = lambda: int(input())
+iilist = lambda: list(map(int, input().split()))
+
+<missing code>
+    #print('Solving', L)
+    if len(L) == 1: return True
+    valleys = [[0, 0]]; found = False; n = len(L); win = None
+    for i in range(1, len(L)):
+        if L[i] == L[i-1]: # continuation!
+            valleys[-1][1] = i
+        else:
+            # account for the last valley
+            b, e = valleys[-1]
+            if (not b or (L[b-1] > L[b])) and (e == n - 1 or (L[e] < L[e+1])):
+                if found: return False #print('Contenders:', (b, e), win); return False
+                else: found = True; win = (b, e)
+            valleys.append([i, i])
+    if found and (not (win[0] and win[1])): # trivial win!
+        if L[n-2] > L[n-1]: found = False
+    return found
+
+for crossmyheart in range(ii()):
+    input()
+    print(['NO', 'YES'][solve(iilist())])
+
+    

@@ -1,0 +1,6 @@
+## Output
+
+```python
+pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x[0] + x[1]), reverse=True)
+return pairs
+```

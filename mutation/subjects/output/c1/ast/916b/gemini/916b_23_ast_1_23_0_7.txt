@@ -1,0 +1,26 @@
+def is_valid(order, n, k):
+    cnt = 0
+    for i in range(1, n):
+        if order[i] > order[i - 1]:
+            cnt += 1
+    return cnt == k
+
+
+def generate(order, n, k):
+    if n == 1:
+        return [1]
+    if k == 0:
+        return list(range(1, n + 1))
+    for i in range(1, n + 1):
+        order[0] = i
+        order_ = generate(order[1:], n - 1, k - (i > order[-1]))
+        if order_:
+            return [i] + order_
+    return []
+
+
+for _ in range(int(input())):
+    n, k = map(int, input().split())
+    order = [0] * n
+    ans = generate(order, n, k)
+    print(*ans)

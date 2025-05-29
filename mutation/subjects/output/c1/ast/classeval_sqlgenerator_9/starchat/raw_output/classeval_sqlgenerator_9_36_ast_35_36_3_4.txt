@@ -1,0 +1,3 @@
+```python
+condition = f"age BETWEEN {min_age} AND {max_age}"
+```

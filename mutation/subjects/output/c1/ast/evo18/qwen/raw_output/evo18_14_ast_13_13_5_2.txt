@@ -1,0 +1,22 @@
+Based on the provided docstring, we need to keep track of the last found position of each substring in the `while` loop and increment the count if we find a new occurrence after it. Here's how to infill the `<MASK>`:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                # Check if there are more substrings left to search after not finding one
+                if start < len(string):
+                    start += 1
+    return result
+```
+
+Now, the `<MASK>` parts have been replaced with appropriate code that handles the case where no more occurrences are found within the current iteration.

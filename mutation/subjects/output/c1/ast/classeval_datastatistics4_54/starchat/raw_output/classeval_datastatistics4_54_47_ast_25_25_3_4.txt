@@ -1,0 +1,37 @@
+@staticmethod
+def skewness(data):
+    n = len(data)
+    mean = sum(data) / n
+    variance = sum((x - mean) ** 2 for x in data) / n
+    std_deviation = math.sqrt(variance)
+
+    skewness = sum((x - mean) ** 3 for x in data) * n / ((n - 1) * (n - 2) * std_deviation ** 3) if std_deviation!= 0 else 0
+
+    if skewness > 0:
+        print("Distribution is right-skewed.")
+    elif skewness < 0:
+        print("Distribution is left-skewed.")
+    else:
+        print("Distribution is symmetric.")
+
+@staticmethod
+def kurtosis(data):
+
+    n = len(data)
+    mean = sum(data) / n
+    std_dev = math.sqrt(sum((x - mean) ** 2 for x in data) / n)
+
+    if std_dev == 0:
+        return math.nan
+
+    centered_data = [(x - mean) for x in data]
+    fourth_moment = sum(x ** 4 for x in centered_data) / n
+
+    kurtosis_value = (fourth_moment / std_dev ** 4) * 3
+
+    if kurtosis_value > 3:
+        print("Leptokurtic (Thick-tailed) distribution.")
+    elif kurtosis_value < 3:
+        print("Platykurtic (Thin-tailed) distribution.")
+    else:
+        print("Normal distribution.")

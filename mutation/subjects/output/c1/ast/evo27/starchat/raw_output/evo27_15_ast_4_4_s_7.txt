@@ -1,0 +1,6 @@
+```Python
+    for i, char in enumerate(string):  
+        if i == 0:  
+            result += char.swapcase()  
+        else:  
+```

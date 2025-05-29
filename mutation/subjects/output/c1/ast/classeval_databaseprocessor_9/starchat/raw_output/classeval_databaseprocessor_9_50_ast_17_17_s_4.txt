@@ -1,0 +1,2 @@
+conn.execute(f"PRAGMA foreign_keys = {value}")
+conn.commit()

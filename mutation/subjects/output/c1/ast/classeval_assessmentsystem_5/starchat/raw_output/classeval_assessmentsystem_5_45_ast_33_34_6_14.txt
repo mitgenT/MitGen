@@ -1,0 +1,3 @@
+self.students[course]['courses'][course] = score
+total += score
+count += 1

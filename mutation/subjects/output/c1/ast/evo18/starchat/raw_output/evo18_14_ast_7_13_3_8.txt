@@ -1,0 +1,16 @@
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while True:
+            pos = string.find(sub, start)
+            if pos == -1:
+                break
+            result[sub] += 1
+            start = pos + 1
+    return result
+```
+Infill `<MASK>` as a `while` loop and inside this loop, use the `str.find()` method to locate the current substring starting from the `start` position. If the substring is found (`pos!= -1`), increase the count of the current substring in the `result` dictionary and update the `start` position for the next iteration. Repeat this until no more instances of the current substring are found.

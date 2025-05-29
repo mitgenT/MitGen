@@ -1,0 +1,43 @@
+Based on the provided docstring, we need to modify the `flip_case_special` function to treat characters differently based on whether they're uppercase or lowercase. If the character at `special_index` is uppercase, we should make it lowercase; if it's lowercase, we should leave it unchanged. Here's how we can fill in the `<MASK>` sections:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            # If the character is uppercase, make it lowercase
+            if char.isupper():
+                result += char.lower()
+            # If the character is lowercase, keep it as is
+            elif char.islower():
+                result += char
+        else:
+            # If the character is uppercase, make it lowercase
+            if char.isupper():
+                result += char.lower()
+            # If the character is lowercase, make it uppercase
+            elif char.islower():
+                result += char.upper()
+    return result
+```
+
+Now the complete code is:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                result += char.lower()
+            elif char.islower():
+                result += char
+        else:
+            if char.isupper():
+                result += char.lower()
+            elif char.islower():
+                result += char.upper()
+    return result
+```

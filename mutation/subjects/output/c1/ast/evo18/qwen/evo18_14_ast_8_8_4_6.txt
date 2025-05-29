@@ -1,0 +1,17 @@
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - len(sub) + 1:  # Adjust the end condition to avoid out-of-range errors
+            if string[start:start+len(sub)] == sub:  # Check if the substring matches at the current position
+                pos = string.find(sub, start + 1)  # Find the next occurrence (start + 1 to avoid overlapping)
+                if pos != -1:
+                    result[sub] += 1
+                    start = pos
+                else:
+                    break
+            else:
+                start += 1  # Move the start index forward if no match
+    return result

@@ -1,0 +1,7 @@
+```Python
+        if fields == "*":
+            return sql + ";"
+        else:
+            fields = ", ".join(fields)
+            return sql + f" ({fields})" if fields else sql + ";"
+```

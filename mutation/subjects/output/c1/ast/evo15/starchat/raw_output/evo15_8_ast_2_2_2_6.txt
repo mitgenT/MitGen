@@ -1,0 +1,12 @@
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        else:
+            result.append(str(i+1))
+    return''.join(result)
+```
+
+In the output program, I've added an increment to `i` inside the `for` loop to convert 0-based indexing to 1-based indexing before checking whether the number is divisible by `m`. The result string is then formed using `str.join()` instead of manual concatenation for better performance.

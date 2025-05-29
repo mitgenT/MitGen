@@ -1,0 +1,13 @@
+```python
+from typing import List, Union
+
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    result = []
+    count = 0
+    for i in range(len(numbers)):
+        result.append(numbers[i])
+        if i < len(numbers) - 1 and count < limit:
+            result.append(delimeter)
+            count += 1
+    return result
+```

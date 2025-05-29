@@ -1,0 +1,6 @@
+```python
+        if result is None or len(result) == 0:
+            cursor.close()
+            conn.close()
+            return None
+```

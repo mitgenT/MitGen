@@ -1,0 +1,3 @@
+conn.execute(create_table_query)
+cursor.close()
+conn.close()

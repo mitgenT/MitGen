@@ -1,0 +1,20 @@
+Based on the provided docstring, we need to find all substrings of each string that start with a vowel. We can use a nested loop to iterate over the characters in each string and check if the current character is a vowel. If it is, we append the substring starting from that character to a list. Here's how the code should be infilled:
+
+```python
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+    vowels = 'aeiouAEIOU'
+    longest_substring = None
+    longest_substring_index = None
+    for i, string in enumerate(strings):
+        substrings = []
+        for j, char in enumerate(string):
+            if char in vowels:
+                substrings.append(string[j:])
+        if substrings:
+            max_substring = max(substrings, key=len)
+            if longest_substring is None or len(max_substring) == len(longest_substring):
+                longest_substring = max_substring
+                longest_substring_index = i
+    return longest_substring, longest_substring_index
+```

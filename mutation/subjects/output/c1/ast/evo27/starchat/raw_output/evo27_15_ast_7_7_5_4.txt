@@ -1,0 +1,4 @@
+if char =='':
+    char = char
+else:
+    char = char.swapcase()

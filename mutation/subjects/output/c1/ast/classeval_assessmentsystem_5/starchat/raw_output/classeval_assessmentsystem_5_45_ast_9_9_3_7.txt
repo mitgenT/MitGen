@@ -1,0 +1,5 @@
+def add_course_score(self, name, course, score):
+    if name in self.students and course not in self.students[name]['courses']:
+        self.students[name]['courses'][course] = score
+    else:
+        raise ValueError('Student or course does not exist or has already been scored.')

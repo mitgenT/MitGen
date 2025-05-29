@@ -1,0 +1,19 @@
+In the given code, `<MASK>` refers to a missing part which needs to be filled in order to insert data into the database. Let's fill it in:
+
+```python
+def insert_into_database(self, table_name, data):
+    conn = sqlite3.connect(self.database_name)
+    cursor = conn.cursor()
+
+    # Preparing SQL query to insert data
+    insert_query = f"INSERT INTO {table_name} ({','.join(data[0].keys())}) VALUES ({','.join(['?' for _ in data[0]])})"
+    
+    # Executing SQL query for each row of data
+    for row in data:
+        cursor.execute(insert_query, tuple(row.values()))
+
+    conn.commit()
+    conn.close()
+```
+
+In this updated code, the `insert_into_database` function prepares an SQL `INSERT INTO` query that includes the column names and placeholders for the data values. It then iterates over each row of input data, executing the prepared query with the corresponding values. This effectively inserts all the rows into the database.

@@ -1,0 +1,20 @@
+In the given code, infill the <MASK> in the method get_all_students_with_fail_course() as follows:
+
+```python
+class AssessmentSystem:
+    def __init__(self):
+        self.students = {}
+
+    #... (other methods remain unchanged)
+
+    def get_all_students_with_fail_course(self):
+        students = []
+        for name, student in self.students.items():
+            if any(score < 60 for score in student['courses'].values()):
+                students.append(name)
+        return students
+
+    #... (other methods remain unchanged)
+```
+
+In the above code, the Python's built-in function `any` is used with a generator expression to check if there is any score below 60 for a particular student. If any score is below 60, the student's name is added to the list'students'. At the end of the function, the list of all students with failing scores is returned.

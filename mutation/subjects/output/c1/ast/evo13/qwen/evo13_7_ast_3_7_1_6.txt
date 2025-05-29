@@ -1,0 +1,15 @@
+from typing import List
+def multiple_greatest_common_divisors(numbers: List[int]) -> int:
+    def gcd(a, b):
+        while b != 0:
+            a, b = b, a % b
+        return a
+
+    result = numbers[0]
+    for num in numbers[1:]:
+        result = gcd(result, num)
+
+    if result == 1:
+        return -1
+    else:
+        return result

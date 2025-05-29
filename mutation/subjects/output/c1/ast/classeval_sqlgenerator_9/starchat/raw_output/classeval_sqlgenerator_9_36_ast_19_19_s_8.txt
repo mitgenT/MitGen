@@ -1,0 +1,10 @@
+In the `insert` function, you need to add a condition to check if `data` is not empty. If it's empty, the function should return an appropriate message, like:
+
+```Python
+if data:
+    fields = ", ".join(data.keys())
+    values = ", ".join([f"'{value}'" for value in data.values()])
+    sql = f"INSERT INTO {self.table_name} ({fields}) VALUES ({values})"
+else:
+    sql = "Data for insertion is empty. Please provide valid data."
+```

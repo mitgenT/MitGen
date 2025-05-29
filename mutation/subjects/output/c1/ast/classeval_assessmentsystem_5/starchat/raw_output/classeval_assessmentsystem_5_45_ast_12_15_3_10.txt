@@ -1,0 +1,10 @@
+def get_gpa(self, name):
+    if name in self.students:
+        total_score = 0
+        count = 0
+        for score in self.students[name]['courses'].values():
+            if score is not None:
+                total_score += score
+                count += 1
+        return total_score / count if count > 0 else None
+    return None  # or any default value you want to return when the student does not exist in the system

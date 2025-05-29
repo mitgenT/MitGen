@@ -1,0 +1,35 @@
+Here's how you can infill the `<MASK>` sections in the given code:
+
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = False
+    if type(delimeter) == float:
+        set_float = True
+    if limit > 0:
+        if set_float:
+            result = [float(numbers[0])]
+        else:
+            result = [numbers[0]]
+        for _ in range(limit - 1):
+            if set_float:
+                result.append(float(delimeter))
+            else:
+                result.append(delimeter)
+    for i in range(1, len(numbers) - 1):
+        if set_float:
+            result.append(float(numbers[i]))
+        else:
+            result.append(numbers[i])
+    if set_float:
+        result.append(float(numbers[-1]))
+    else:
+        result.append(numbers[-1])
+    return result
+```
+
+Explanation:
+
+1. The first `<MASK>` is replaced with `limit > 0` since we want to check if there's a limit before starting to insert the delimeter.
+2. Inside this condition, we initialize `result` with the first element from `numbers` and then add the delimeter `limit - 1` times, considering the limit restriction.
+3. The second `<MASK>` is replaced with a loop that iterates from the second element to the second last element of `numbers`, adding each number to the `result` after the delimeter (if set_float is True, we convert the number to float). For the last number, we append it without a delimeter because there won't be another pair to insert it between.

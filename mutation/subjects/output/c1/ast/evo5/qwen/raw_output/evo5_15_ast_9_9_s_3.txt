@@ -1,0 +1,4 @@
+```python
+        if i + 1 < limit:
+            result.append(numbers[i+1])
+```

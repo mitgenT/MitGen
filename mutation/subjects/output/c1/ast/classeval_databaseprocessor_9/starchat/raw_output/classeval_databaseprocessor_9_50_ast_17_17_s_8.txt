@@ -1,0 +1,6 @@
+```python
+        if cursor.rowcount > 0:
+            print(f"{cursor.rowcount} rows created for table {table_name}")
+        else:
+            print(f"Table {table_name} already exists")
+```

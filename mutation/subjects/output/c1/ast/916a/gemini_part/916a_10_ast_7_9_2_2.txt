@@ -1,0 +1,13 @@
+N=int(input())
+alpha='ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+for i in range(0,N):
+    a=int(input())
+    b=str(input())
+    ans=0
+    c=0
+    for i in b:
+        c=c+1
+        if c<=a:
+            ind=alpha.index(i)
+            ans=ind+1
+    print(ans)

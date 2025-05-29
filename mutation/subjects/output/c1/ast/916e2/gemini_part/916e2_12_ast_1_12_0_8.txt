@@ -1,0 +1,44 @@
+from typing import List, Tuple
+
+def optimal_score(n: int, a: List[int], b: List[int]) -> int:
+    """
+    Recently, Alice and Bob were given marbles of n different colors by their parents. Alice has received a1 marbles of color 1 , a2 marbles of color 2 ,..., an marbles of color n. Bob has received b1 marbles of color 1 , b2 marbles of color 2,...,bn marbles of color n. All ai and bi are between 1 and 10^9.
+
+    After some discussion, Alice and Bob came up with the following game: players take turns, starting with Alice. On their turn, a player chooses a color i such that both players have at least one marble of that color. The player then discards one marble of color i , and their opponent discards all marbles of color i . The game ends when there is no color i such that both players have at least one marble of that color.
+
+    The score in the game is the difference between the number of remaining marbles that Alice has and the number of remaining marbles that Bob has at the end of the game. In other words, the score in the game is equal to (A−B) , where A is the number of marbles Alice has and B is the number of marbles Bob has at the end of the game. Alice wants to maximize the score, while Bob wants to minimize it.
+
+    Calculate the score at the end of the game if both players play optimally.
+
+    Input
+
+    The first line contains a single integer t (1<=t<=10^4) - the number of test cases.
+
+    Each test case consists of three lines:
+    - the first line contains a single integer n (2<=n<=2⋅10^5) - the number of colors;
+    - the second line contains n integers a1,a2,…,an (1<=ai<=10^9), where ai is the number of marbles of the i-th color that Alice has;
+    - the third line contains n integers b1,b2,…,bn (1<=bi<=10^9), where bi is the number of marbles of the i-th color that Bob has.
+
+    Additional constraint on the input: the sum of n for all test cases does not exceed 2⋅10^5.
+
+    Output
+
+    For each test case, output a single integer - the score at the end of the game if both Alice and Bob act optimally.
+    """
+    ans = []
+    for _ in range(int(input())):
+      n = int(input())
+      a = list(map(int, input().split()))
+      b = list(map(int, input().split()))
+      a.sort()
+      b.sort()
+      sa = 0
+      sb = 0
+      for i in range(n):
+        if a[i] > b[i]:
+          sa += a[i] - b[i]
+        else:
+          sb += b[i] - a[i]
+      ans.append(sa - sb)
+
+    return ans

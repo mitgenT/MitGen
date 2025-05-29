@@ -1,0 +1,4 @@
+if base < 2 or base > 36:
+    return 'invalid base'
+if new_base < 2 or new_base > 36:
+    return 'invalid base'

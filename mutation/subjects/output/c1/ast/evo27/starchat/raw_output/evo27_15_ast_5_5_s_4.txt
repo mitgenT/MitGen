@@ -1,0 +1,21 @@
+```python
+        if i == special_index:
+            <MASK>
+            if char.isupper():
+                result += char
+            else:
+                result += char
+```
+
+Here's the infilled line:
+
+```python
+        if i == special_index:
+            continue
+            if char.isupper():
+                result += char
+            else:
+                result += char
+```
+
+This code will continue to the next iteration without making any changes if the current index is equal to the special index, allowing the special character to remain unchanged as specified in the docstring. If the index is not equal to the special index, the character will be flipped to uppercase if it's lowercase and vice versa.

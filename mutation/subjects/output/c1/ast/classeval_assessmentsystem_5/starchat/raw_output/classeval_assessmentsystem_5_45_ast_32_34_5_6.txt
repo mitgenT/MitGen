@@ -1,0 +1,3 @@
+self.students[course] > 59
+total += score
+count += 1

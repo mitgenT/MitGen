@@ -1,0 +1,11 @@
+```python
+    def get_all_students_with_fail_course(self):
+        students = []
+        for name, student in self.students.items():
+            for course, score in student['courses'].items():
+                if score < 60:
+                    students.append(name)
+                    break
+        return students
+```
+This updated code will correctly gather a list of students who have any course score less than 60 and return them as a list. The `break` statement within the inner loop prevents the same student's name from being appended multiple times if they have more than one failing course.

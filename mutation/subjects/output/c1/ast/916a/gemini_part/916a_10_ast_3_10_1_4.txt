@@ -1,0 +1,9 @@
+N=int(input())
+alpha='ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+for i in range(N):
+    n=int(input())
+    prob=list(input())
+    monocarp=0
+    for x in prob:
+        monocarp=max(monocarp, ord(x)-ord('A')+1)
+    print(monocarp)

@@ -1,0 +1,5 @@
+```python
+    if strings:
+        longest_substring = ""
+        longest_substring_index = None
+```

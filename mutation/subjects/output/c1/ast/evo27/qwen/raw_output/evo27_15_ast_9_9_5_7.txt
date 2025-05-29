@@ -1,0 +1,42 @@
+Based on the provided docstring, we need to modify the code so that if `char` is lowercase and `i` is equal to `special_index`, it remains unchanged. Let's fill in `<MASK>` in the code accordingly:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                # If the character is lowercase and we are at 'special_index', keep it as is.
+                if not char.islower() or not i == special_index:
+                    result += char
+        else:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+    return result
+```
+
+Now the entire program looks like this:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                if not char.islower() or not i == special_index:
+                    result += char
+        else:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+    return result
+```

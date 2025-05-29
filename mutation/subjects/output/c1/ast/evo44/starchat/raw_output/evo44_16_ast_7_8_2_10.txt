@@ -1,0 +1,22 @@
+## Output
+```python
+def change_base(x: str, base: int, new_base: int):
+    try:
+        base_10 = int(x, base)
+    except ValueError:
+        return "invalid base"
+    new_base_num = ""
+    if base_10 == 0:
+        new_base_num = '0'
+    else:
+        while base_10 > 0:
+            remainder = base_10 % new_base
+            base_10 //= new_base
+            if 0 <= remainder <= 9:
+                new_base_num = str(remainder) + new_base_num
+            else:
+                new_base_num = chr(remainder + 55) + new_base_num
+    return new_base_num
+
+```
+Here, in the second loop, I replaced the '-=' operator with '//=' because we're dealing with quotient after division, not the remainder. I also added a check to return '0' when the base_10 number is 0, because '0' in any base is '0'.

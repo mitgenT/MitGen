@@ -1,0 +1,8 @@
+```python
+    def insert(self, data):
+        fields = ", ".join(data.keys())
+        values = ", ".join([f"'{value}'" for value in data.values()])
+        sql = f"INSERT INTO {self.table_name} ({fields}) VALUES ({values})"
+        return sql + ";"
+```
+The `insert` method first joins the keys (field names) and values (field values) from the data dictionary to generate SQL statements. Then it combines the SQL statement parts and returns the complete SQL string for inserting records into the table.

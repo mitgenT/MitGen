@@ -1,0 +1,4 @@
+sql = f'DELETE FROM {self.table_name}'
+if condition is not None:
+    sql += f' WHERE {condition}'
+return sql + ';'

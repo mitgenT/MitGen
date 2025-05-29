@@ -1,0 +1,8 @@
+```python
+def select_all(self):
+    result = []
+    for i in range(1, len(self.datas) + 1):
+        result.extend(self.select(i))
+    return result
+```
+Infilling <MASK> with `result.extend(self.select(i))` inside the `select_all` method makes it complete and correct. Now, this program should correctly calculate the number of permutations and select different combinations of data elements based on given parameters.

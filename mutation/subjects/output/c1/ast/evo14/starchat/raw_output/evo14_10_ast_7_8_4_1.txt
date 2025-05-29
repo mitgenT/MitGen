@@ -1,0 +1,14 @@
+## Output
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            if string[:i] == string[j:]:
+                pairs.append((string[:i], string[j:]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```
+In the provided solution, the condition checks if a substring from start to 'i' is equal to a substring from 'j' to the end of the input string. If they match, it means a valid prefix-suffix pair, so it's added to the list. Finally, the list of pairs is sorted based on the length of prefix and suffix combined, with secondary sorting based on the pair itself.

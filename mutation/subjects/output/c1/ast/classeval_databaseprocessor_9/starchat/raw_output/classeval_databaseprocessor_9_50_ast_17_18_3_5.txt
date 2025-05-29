@@ -1,0 +1,6 @@
+```python
+if cursor:
+    cursor.close()
+```
+
+This code closes the cursor after performing database operations to prevent resource leaks and maintain a consistent state with the database connection.

@@ -1,0 +1,20 @@
+for _ in range (int(input())):
+    n,c,d=map(int,input().split())
+    A=list(map(int,input().split()))
+    left, right = 0, n - 1
+    while left < right:
+        mid = (left + right + 1) // 2
+        selecsum = sum(A[:mid+1])
+        numselec = d // (mid + 1)
+        remain = d % (mid + 1)
+        coins = numselec * selecsum + sum(A[:remain])
+        if coins >= c:
+            left = mid
+        else:
+            right = mid - 1
+    if sum(A[:d]) >= c:
+        print("Infinity")
+    elif A[0] * d < c:
+        print("Impossible")
+    else:
+        print(left - 1)

@@ -1,0 +1,4 @@
+```Python
+if condition:
+    sql = f"UPDATE {self.table_name} SET {set_clause} WHERE {condition}"
+```

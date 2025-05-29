@@ -1,0 +1,7 @@
+if condition is not None:
+            sql += f" WHERE {condition};"
+
+        if condition is None:
+            sql += ";"
+```
+In the solution, the <MASK> is filled with the correct code to handle the case when the condition is None in the delete() method and when fields are None in the select() method. The code is also updated in the other methods to generate the correct SQL statements based on the given data and conditions.

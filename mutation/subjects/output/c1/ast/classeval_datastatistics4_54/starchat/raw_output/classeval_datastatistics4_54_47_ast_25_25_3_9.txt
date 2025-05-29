@@ -1,0 +1,10 @@
+```python
+    skewness = sum((x - mean) ** 3 for x in data) * n / ((n - 1) * (n - 2) * std_deviation ** 3) if std_deviation!= 0 else 0
+
+    if abs(skewness) > 3:
+        skewness = "Leptokurtic (Skewness > 3)"
+    elif abs(skewness) < 3 and abs(skewness) > 1:
+        skewness = "Mesokurtic"
+    else:
+        skewness = "Platykurtic (Skewness < 1)"
+```

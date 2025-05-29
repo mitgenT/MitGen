@@ -1,0 +1,15 @@
+The given code for the `get_course_average` method is missing an inner loop structure. This loop should iterate through each student's courses and check for the given course. If a matching course is found, the scores should be added to the total and the count should be incremented. Here is the corrected code:
+
+```python
+def get_course_average(self, course):
+    total = 0
+    count = 0
+    for student in self.students.values():
+        for course_name, score in student['courses'].items():
+            if course_name == course:
+                total += score
+                count += 1
+    return total / count if count > 0 else None
+```
+
+Now, the `AssessmentSystem` class has the correct implementation for the `get_course_average` method.

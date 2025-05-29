@@ -1,0 +1,7 @@
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    ma = max(a)
+    for i in range(n):
+        print(ma-a[i], end=" ")
+    print()

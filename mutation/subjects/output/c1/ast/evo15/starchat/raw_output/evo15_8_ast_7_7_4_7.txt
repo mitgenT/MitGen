@@ -1,0 +1,16 @@
+## Output
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        else:
+            if i+1 < m:
+                result.append(str(i+1))
+            else:
+                result.append(str(i+1))
+    return''.join(result)
+```
+
+In this case, <MASK> should be `result.append(str(i+1))` in both branches of the else statement. This ensures that the number from 1 to n (inclusive) is added to the result list unless it is divisible by m, in which case "Fizz" is added instead.

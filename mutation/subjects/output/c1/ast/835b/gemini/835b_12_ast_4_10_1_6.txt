@@ -1,0 +1,20 @@
+
+n=int(input())
+a=0
+test=[]
+for i in range(n):
+    b=int(input())
+    c=list(input())
+    test.append([b,c])
+
+for i in range(n):
+    b=test[i][0]
+    c=test[i][1]
+    d=[]
+  
+    for j in range(b):
+        d.append(c[j])
+    d.sort()
+    print(len(d))
+
+            

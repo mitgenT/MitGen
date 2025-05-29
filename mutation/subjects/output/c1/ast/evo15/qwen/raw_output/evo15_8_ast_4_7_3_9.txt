@@ -1,0 +1,12 @@
+Based on the provided docstring, we need to insert code that replaces every m-th number with "Fizz". Since we're using a range from 0 to n (inclusive), we need to check if the index `i` is divisible by `m`. If it is, replace the value at that index with "Fizz". Otherwise, add the index value to the result list. Here's how the code should look:
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i + 1) % m == 0:  # Add 1 for 1-based indexing
+            result.append("Fizz")
+        else:
+            result.append(str(i + 1))  # Include the number or "Fizz"
+    return ' '.join(result)
+```

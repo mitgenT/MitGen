@@ -1,0 +1,15 @@
+In this case, we need to loop over each substring in the provided list. For each substring, we need to count the number of times it appears in the original string. We can do this by using the `count()` method of the string object.
+
+Here's how we can do it:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        result[sub] = string.count(sub)
+    return result
+```
+
+This function works by initially creating a dictionary with the count of zero for each substring. Then, for each substring, it uses the `count()` method of the original string to count the number of times that substring appears. This count is then stored in the dictionary for that substring.

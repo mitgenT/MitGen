@@ -1,0 +1,20 @@
+def change_base(x: str, base: int, new_base: int):
+    if base < 2 or base > 36 or new_base < 2 or new_base > 36:
+        return 'invalid base'
+    
+    char_set = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    x_dec = 0
+    for char in x:
+        if not char in char_set[:base]:
+            return 'invalid base'
+        x_dec = base * x_dec + char_set.index(char)
+
+    if x_dec == 0:
+        return '0'
+    
+    y = ''
+    while x_dec > 0:
+        y = char_set[x_dec % new_base] + y
+        x_dec //= new_base
+
+    return y

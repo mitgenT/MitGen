@@ -1,0 +1,4 @@
+if data and isinstance(data, list):
+    for item in data:
+        if not isinstance(item, dict) or 'name' not in item or 'age' not in item:
+            raise ValueError('Each item in data must be a dictionary with keys: "name", "age"')

@@ -1,0 +1,17 @@
+Infill <MASK> of the following code:
+
+```python
+def search_database(self, table_name, name):
+    conn = sqlite3.connect(self.database_name)
+    cursor = conn.cursor()
+
+    search_query = f"SELECT * FROM {table_name} WHERE name =?"
+    cursor.execute(search_query, (name,))
+    results = cursor.fetchall()
+
+    conn.close()
+
+    return results
+```
+
+This fills the <MASK> placeholder in the search_database method, implementing the database search functionality as described in the given docstring. The method connects to the database, executes a SELECT query based on the provided table_name and name, retrieves all matching rows using cursor.fetchall(), and then closes the database connection. Finally, it returns the results.

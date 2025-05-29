@@ -1,0 +1,4 @@
+```python
+if not (2 <= base <= 36 or 2 <= new_base <= 36):
+    return "invalid base"
+```

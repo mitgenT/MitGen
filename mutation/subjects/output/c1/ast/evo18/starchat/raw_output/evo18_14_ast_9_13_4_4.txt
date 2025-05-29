@@ -1,0 +1,22 @@
+## Output
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos!= -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+```
+Here in this code, I replaced <MASK> with:
+
+1. `result[sub] += 1` for the condition when the substring is found in the string. I increased the count of the substring and also updated the starting point for the next search.
+
+2. `break` for the case when the substring is not found in the string. This breaks the inner while loop to go to the next substring.

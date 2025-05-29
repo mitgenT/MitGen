@@ -1,0 +1,17 @@
+## Output
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i!= special_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char.upper()
+        else:
+            result += char
+    return result
+
+```
+Here, `<MASK>` has been replaced to check if the index is not the `special_index`. If it is not, the character's case is flipped using `lower()` and `upper()`. If it is the `special_index`, the character is left unchanged. The result is compiled in the `result` string and returned at the end.

@@ -1,0 +1,26 @@
+Here's the completed code with `<MASK>` filled in:
+
+```python
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+    longest_str: Optional[str] = None
+    longest_index: Optional[int] = None
+    vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}
+
+    for i, string in enumerate(strings):
+        for j, char in enumerate(string):
+            if char.lower() in vowels:  # Check if character is a vowel (case-insensitive)
+                substring = string[j:]
+                if not longest_str or len(substring) > len(longest_str):
+                    longest_str = substring
+                    longest_index = i
+
+    # Return (None, None) if no vowels found or empty list
+    if not longest_str:
+        return (None, None)
+
+    return (longest_str, longest_index)
+
+```
+
+This code defines a function `longest_substring` that iterates through the provided list of strings and checks each string for a vowel-containing substring. It keeps track of the longest substring found so far and its index. If no vowels are found or the input list is empty, it returns `(None, None)`.

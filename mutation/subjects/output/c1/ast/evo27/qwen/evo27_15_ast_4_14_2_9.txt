@@ -1,0 +1,15 @@
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    def flip_case_special(string: str, special_index: int) -> str:
+        special_index %= len(string)
+        result = ''
+        for i in range(len(string)):
+            if i == special_index:  # Check if the character is at the special index
+                result += string[i]  # Keep it as is if lowercase
+            elif string[i].islower():  # If it's lowercase, convert to uppercase
+                result += string[i].upper()
+            else:  # If it's uppercase or other characters, keep as is
+                result += string[i]
+        return result
+    return result

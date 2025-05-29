@@ -1,0 +1,4 @@
+if char == char.lower():
+    result += char.upper()
+else:
+    result += char.lower()

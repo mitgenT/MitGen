@@ -1,0 +1,8 @@
+def enhanced_solve(N, M):
+    def enhanced_solve(N, M):
+        binary_N = bin(N)[2:]
+        binary_M = bin(M)[2:]
+        sum_of_digits = bin(int(binary_N, 2) + int(binary_M, 2))[2:]
+        count_primes = len([x for x in range(N, M+1) if all(x % i != 0 for i in range(2, int(x**0.5)+1))])
+        result = bin(int(sum_of_digits, 2) * count_primes)[2:]
+        return result

@@ -1,0 +1,6 @@
+```python
+                break
+    else:
+        result[sub] = 0
+    return result
+```

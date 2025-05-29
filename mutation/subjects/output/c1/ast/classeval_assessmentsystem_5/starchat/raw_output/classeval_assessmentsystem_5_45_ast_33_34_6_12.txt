@@ -1,0 +1,5 @@
+```Python
+        if score < 60:
+            count += 1
+            total += score
+```

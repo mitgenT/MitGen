@@ -1,0 +1,44 @@
+I have infilled <MASK> of the given code based on the provided docstring.
+
+Here is the entire program:
+
+```python
+import itertools
+
+
+class ArrangementCalculator:
+    def __init__(self, datas):
+        self.datas = datas
+
+    @staticmethod
+    def count(n, m=None):
+        if m is None or n == m:
+            return ArrangementCalculator.factorial(n)
+        else:
+            return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)
+
+    @staticmethod
+    def count_all(n):
+        total = 0
+        for i in range(1, n + 1):
+            total += ArrangementCalculator.count(n, i)
+        return total
+
+    def select(self, m=None):
+        return list(itertools.permutations(self.datas, r=m))
+
+    def select_all(self):
+        result = []
+        for i in range(1, len(self.datas) + 1):
+            result.extend(self.select(i))
+        return result
+
+    @staticmethod
+    def factorial(n):
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
+```
+
+In this program, I used the `itertools.permutations` function from the itertools module to generate the arrangements for the `select` method. The `select_all` method generates arrangements for all possible lengths (from 1 to the total number of datas) and appends them to the result list.

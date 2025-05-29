@@ -1,0 +1,10 @@
+```python
+        while start < len(string):
+            index = string.find(sub, start)
+            if index != -1:
+                result[sub] += 1
+                start = index + 1
+            else:
+                break
+    return result
+```

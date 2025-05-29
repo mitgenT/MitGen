@@ -1,0 +1,6 @@
+```python
+        if cursor.rowcount > 0:
+            result = cursor.fetchall()
+
+        conn.close()
+```

@@ -1,0 +1,14 @@
+Based on the provided docstring and the context, we need to fill in the `result.append()` statements. Here's how the code should look:
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        elif i+1 != n:  # Check if it's not the last number
+            result.append(str(i+1))  # Append the number if not divisible by m
+    return ' '.join(result)
+```
+
+Now, `<MASK>` has been replaced with the appropriate conditions. The first `if` statement handles the case where the number is divisible by `m`, and the `elif` statement ensures that non-divisible numbers are appended to the result list. The final `else` block is not needed because we already check if `i+1 != n` before appending, which covers the same condition.

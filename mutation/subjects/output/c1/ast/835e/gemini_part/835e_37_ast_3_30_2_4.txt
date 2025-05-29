@@ -1,0 +1,28 @@
+from sys import stdin, stdout
+class Solution:
+    def BinaryInversions(self, n, bits):
+            inversion_count = 0 # Initializing the inversion count to 0
+            for index in range(0,n):
+                if bits[index] == 0: # Checking if the current element is zero
+                    inversion_count += n- index - 1
+            max_idx = -1 # Initializing the index of the maximum element to -1
+            maximum = 0 # Initializing the maximum element to 0
+            for index in range(0,n):
+                if bits[index] == 1: # Checking if the current element is one
+                    if index > maximum: # Checking if the current element is greater than the maximum element so far
+                        maximum = index # Updating the maximum element
+                        max_idx = index # Updating the index of the maximum element
+            if inversion_count == 0: # If the inversion count is zero
+                ans = n - 1
+            elif max_idx == n - 1: # If the maximum element is at the last index
+                ans = inversion_count - 1
+            else:
+                ans = inversion_count - n + max_idx
+            return ans
+
+sol = Solution()
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    bits = list(map(int, input().split()))
+    print(sol.BinaryInversions(n, bits))

@@ -1,0 +1,15 @@
+## Output
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(1, n + 1 - min_length):  
+        for j in range(i, n + 1 - min_length):
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                pairs.append((string[:i], string[j:]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```
+
+In this case, I have completed the program by looping through possible prefix and suffix combinations and adding them to the 'pairs' list if there are no overlapping characters between the prefix and suffix. After generating all possible pairs, I've sorted them in ascending order by their combined lengths and lexicographical order.

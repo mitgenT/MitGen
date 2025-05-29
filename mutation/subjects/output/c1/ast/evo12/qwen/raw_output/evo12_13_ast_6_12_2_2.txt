@@ -1,0 +1,11 @@
+```python
+    for index, string in enumerate(strings):
+        for i in range(len(string)):
+            if string[i] in vowels:
+                current_substring = string[i:]
+                inner_length = len(current_substring)
+                if longest_substring is None or inner_length > len(longest_substring):
+                    longest_substring = current_substring
+                    longest_substring_index = index
+    return longest_substring, longest_substring_index
+```

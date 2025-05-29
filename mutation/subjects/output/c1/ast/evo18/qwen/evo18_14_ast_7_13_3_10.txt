@@ -1,0 +1,14 @@
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string):
+            index = string.find(sub, start)
+            if index != -1:
+                result[sub] += 1
+                start = index + 1  # Move the start position to check for overlapping cases
+            else:
+                break
+    return result

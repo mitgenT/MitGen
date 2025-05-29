@@ -1,0 +1,11 @@
+passedDays = 0
+currentCoins = 0
+for val in A:
+    if(passedDays >= d):
+        break
+    passedDays += 1
+    currentCoins += val
+if(currentCoins >= c):
+    print(passedDays-1)
+else:
+    print('Impossible')

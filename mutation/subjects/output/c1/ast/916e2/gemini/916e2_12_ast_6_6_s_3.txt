@@ -1,0 +1,16 @@
+import array
+t=int(input())
+for i in range(t):
+    n=int(input())
+    a=[int(ele) for ele in input().split()]
+    b=[int(ele) for ele in input().split()]
+    d=array.array('i',range(n))
+    for i in range(n):
+        d[i]=[a[i]-b[i],i]
+    d.sort(key=lambda x:-x[0])
+    res=0
+    for i in range(n):
+        if i%2:res-=(b[d[i][1]]-1)
+        else:res+=(b[d[i][1]]-1)
+    print(res)
+

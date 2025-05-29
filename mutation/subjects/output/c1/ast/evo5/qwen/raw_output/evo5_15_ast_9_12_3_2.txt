@@ -1,0 +1,20 @@
+Based on the given docstring, the correct code to insert the `delimeter` between every two consecutive elements should only be done up to `limit` times. Here's how to fill in the `<MASK>` parts:
+
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = False
+    if type(delimeter) == float:
+        set_float = True
+    result = []
+    limit = min(limit, len(numbers) - 1) 
+    for i in range(len(numbers) - 1):
+        if i < limit:
+            result.append(numbers[i])
+            result.append(delimeter)
+    if set_float and isinstance(delimeter, float):
+        result = [float(num) for num in result]
+    return result
+```
+
+In this code, we check if `i` is less than `limit` before appending the current element from `numbers` and the `delimeter` to the `result` list. If the `delimeter` is a float and we need to maintain float type, we convert all elements in the `result` list to floats using a list comprehension.

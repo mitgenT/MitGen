@@ -1,0 +1,17 @@
+## Output
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        if string.find(sub, start)!= -1:
+            while string.find(sub, start)!= -1:
+                start += 1
+                result[sub] += 1
+        else:
+            continue
+    return result
+```
+The solution uses the `find()` method to find the first occurrence of the substring, then uses a `while` loop to find all occurrences of the substring by adjusting the start position each time. If a substring is not found in the string, it skips to the next substring.

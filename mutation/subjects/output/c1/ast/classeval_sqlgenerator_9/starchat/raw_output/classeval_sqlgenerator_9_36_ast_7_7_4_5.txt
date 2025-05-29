@@ -1,0 +1,1 @@
+fields = " *" if fields is None else ", ".join(fields) # Infill <MASK> as " *" if fields is None else ", ".join(fields)

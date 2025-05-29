@@ -1,0 +1,7 @@
+
+    while k>0:
+        s = s +' '+ str(i)
+        i = i+1
+        if i==n:
+            i=1
+        k = k-1

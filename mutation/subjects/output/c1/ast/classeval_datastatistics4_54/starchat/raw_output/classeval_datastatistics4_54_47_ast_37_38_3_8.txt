@@ -1,0 +1,18 @@
+```python
+    @staticmethod
+    def kurtosis(data):
+
+        n = len(data)
+        mean = sum(data) / n
+        std_dev = math.sqrt(sum((x - mean) ** 2 for x in data) / n)
+
+        if std_dev == 0:
+            return math.nan
+
+        fourth_moment = sum((x - mean) ** 4 for x in data) / n
+
+        kurtosis_value = (fourth_moment / std_dev ** 4) * 3
+
+        return kurtosis_value
+```
+In the given code, the <MASK> in the `kurtosis` method refers to the calculation of the fourth moment. I have added the necessary code to calculate the fourth moment and return the kurtosis value.

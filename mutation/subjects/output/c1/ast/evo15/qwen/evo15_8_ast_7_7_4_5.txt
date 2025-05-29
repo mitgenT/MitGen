@@ -1,0 +1,11 @@
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        else:
+            if i+1 is not None:  # Check if we should include the number
+                result.append(str(i+1))
+            else:
+                pass  # Do nothing, as it's already covered by the Fizz condition
+    return ' '.join(result)

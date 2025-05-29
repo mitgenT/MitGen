@@ -1,0 +1,14 @@
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n - 1):
+        if i+1+min_length<=n: # checking to ensure the length condition of the suffix
+            for j in range(i+min_length, n): # starting from i+min_length to avoid overlap and ensure the length condition of the prefix
+                if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                    pairs.append((string[:i], string[j:]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```
+In the modified code, I've added `i+1+min_length<=n` in the range condition for outer loop `for i in range(min_length, n - 1)` to ensure that the length condition of the suffix is satisfied. Then for the inner loop, I've used `for j in range(i+min_length, n)` to start from `i+min_length` to avoid overlap and ensure that the length condition of the prefix is satisfied.

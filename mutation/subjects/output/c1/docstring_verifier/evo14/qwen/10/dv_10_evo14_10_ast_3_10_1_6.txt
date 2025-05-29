@@ -1,0 +1,24 @@
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+   """
+   Return a sorted list of all unique prefix-suffix pairs derived from the given string.
+   Each prefix and suffix in the pair must not share any overlapping characters, should
+   individually be at least 'min_length' characters long, and the pairs should be arranged
+   first by their increasing length and then lexicographically if lengths are equal.
+   For example:
+   - Given the string 'abcadg' and minimum length '2', the output will be [('ab', 'dg'), ('abc', 'dg'), ('abca', 'dg')]
+   This is because:
+       - 'ab' forms a valid prefix and 'dg' a suffix with no overlap.
+       - 'abc' also forms a valid prefix and 'dg' a suffix without overlap.
+       - 'abca' is another valid prefix that doesn't overlap with the suffix 'dg'.
+   Note: The pairs are ordered such that shorter ones precede longer ones. Among pairs of the same length, they are sorted in lexicographical order (dictionary order).
+   """
+   n = len(string)
+   result = []
+   for length in range(min_length, n + 1):
+       for i in range(n - length + 1):
+           prefix = string[i:i + length]
+           suffix = string[-length:]
+           if set(prefix) & set(suffix) == set():
+               result.append((prefix, suffix))
+   return sorted(result, key=lambda x: (len(x[0]), x[0]))

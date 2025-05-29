@@ -1,0 +1,12 @@
+
+n=int(input())
+a=0
+for i in range(0,n):
+        leng=int(input())
+        s=input()
+        dictt={}
+        for x in s:
+            dictt[x]=1
+        a=max(a,len(dictt))
+
+            

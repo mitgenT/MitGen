@@ -1,0 +1,9 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    alice = list(map(int, input().split()))
+    bob = list(map(int, input().split()))
+    max_score = 0
+    for i in range(n):
+        max_score += min(alice[i], bob[i])
+    print(max(alice) - max_score)

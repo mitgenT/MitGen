@@ -1,0 +1,110 @@
+The given Python class 'AssessmentSystem' has several functions:
+
+- `__init__(self)`: Initializes an empty dictionary'students' to keep track of student information.
+- `add_student(self, name, grade, major)`: Adds a new student to the dictionary'students'.
+- `add_course_score(self, name, course, score)`: Adds a course score for a specific student.
+- `get_gpa(self, name)`: Calculates the GPA (average grade) of a specific student.
+- `get_all_students_with_fail_course(self)`: Finds all students who have any course score below 60.
+- `get_course_average(self, course)`: Returns the average score of a specific course.
+- `get_top_student(self)`: Calculates the GPA of all students and identifies the student with the highest GPA.
+
+Now, let's fill the <MASK> in the given code snippet for the 'get_top_student' function:
+
+```python
+def get_top_student(self):
+    top_student = None
+    top_gpa = 0
+    for name, student in self.students.items():
+        gpa = self.get_gpa(name)
+        if gpa is not None and gpa > top_gpa:
+            top_student = name
+            top_gpa = gpa
+    return top_student
+```
+
+After filling the <MASK>, the entire program looks like this:
+
+```python
+class AssessmentSystem:
+    def __init__(self):
+        self.students = {}
+
+    def add_student(self, name, grade, major):
+        self.students[name] = {'name': name, 'grade': grade,'major': major, 'courses': {}}
+
+    def add_course_score(self, name, course, score):
+        if name in self.students:
+            self.students[name]['courses'][course] = score
+
+    def get_gpa(self, name):
+        return sum(self.students[name]['courses'].values()) / len(self.students[name]['courses']) if self.students[name]['courses'] else None
+
+    def get_all_students_with_fail_course(self):
+        students = []
+        for name, student in self.students.items():
+            for course, score in student['courses'].items():
+                if score < 60:
+                    students.append(name)
+                    break
+        return students
+
+    def get_course_average(self, course):
+        total = 0
+        count = 0
+        for student in self.students.values():
+            if course in student['courses']:
+                score = student['courses'][course]
+                if score is not None:
+                    total += score
+                    count += 1
+        return total / count if count > 0 else None
+
+    def get_top_student(self):
+        top_student = None
+        top_gpa = 0
+        for name, student in self.students.items():
+            gpa = self.get_gpa(name)
+            if gpa is not None and gpa > top_gpa:
+                top_student = name
+                top_gpa = gpa
+        return top_student
+```
+
+You can use this 'AssessmentSystem' class to manage student information and perform the requested operations.
+```python
+class AssessmentSystem:
+    def __init__(self):
+        self.students = {}
+
+    def add_student(self, name, grade, major):
+        self.students[name] = {'name': name, 'grade': grade,'major': major, 'courses': {}}
+
+    def add_course_score(self, name, course, score):
+        if name in self.students:
+            self.students[name]['courses'][course] = score
+
+    def get_gpa(self, name):
+        return sum(self.students[name]['courses'].values()) / len(self.students[name]['courses']) if self.students[name]['courses'] else None
+
+    def get_all_students_with_fail_course(self):
+        students = []
+        for name, student in self.students.items():
+            for course, score in student['courses'].items():
+                if score < 60:
+                    students.append(name)
+                    break
+        return students
+
+    def get_course_average(self, course):
+        total = 0
+        count = 0
+        for student in self.students.values():
+            if course in student['courses']:
+                score = student['courses'][course]
+                if score is not None:
+                    total += score
+                    count += 1
+        return total / count if count > 0 else None
+
+    def get_top_student(self):
+       

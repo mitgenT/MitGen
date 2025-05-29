@@ -1,0 +1,9 @@
+for case in range(int(input())):
+    n = int(input())
+    array = list(map(int,input().split()))
+    zeros = array.count(0)
+    ones = n-zeros
+    if zeros>ones:
+        print(ones*(ones-1)//2)
+    else:
+        print(zeros*(zeros-1)//2)

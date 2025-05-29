@@ -1,0 +1,17 @@
+## Modified code:
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    if n > 0:
+        for i in range(n):
+            if (i+1) % m == 0:
+                result.append("Fizz")
+            else:
+                result.append(str(i))
+    else:
+        result.append("0")
+    return''.join(result)
+```
+
+Infill `MASK` with `result = []` and add an additional condition to handle cases when `n` is 0 or negative. This ensures that the function still works correctly even when the first index is not available, and returns "0" for such cases.

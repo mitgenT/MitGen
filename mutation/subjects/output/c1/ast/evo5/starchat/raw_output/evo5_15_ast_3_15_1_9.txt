@@ -1,0 +1,12 @@
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    result = []
+    for i, num in enumerate(numbers):
+        result.append(num)
+        if i < limit and i!= len(numbers) - 1:
+            result.append(delimeter)
+    return result
+```
+
+This updated function will correctly intersperse the `delimeter` among the elements of `numbers` up to `limit` times, as required.

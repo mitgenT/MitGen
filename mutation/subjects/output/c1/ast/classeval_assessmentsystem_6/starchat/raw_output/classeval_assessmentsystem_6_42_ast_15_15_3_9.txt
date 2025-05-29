@@ -1,0 +1,14 @@
+Infill `<MASK>` of the `get_all_students_with_fail_course` function as follows:
+
+```python
+def get_all_students_with_fail_course(self):
+    students = []  # Initiate an empty list to store names of students who have failed
+    for name, student in self.students.items():
+        for course, score in student['courses'].items():
+            if score < 60:
+                students.append(name)  # Append student name to the list
+                break  # Break the inner loop as the student has failed in at least one course
+    return students
+```
+
+This solution corrects the incomplete loop and ensures that the correct list of students who have at least one failed course is returned.

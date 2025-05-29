@@ -1,0 +1,15 @@
+Based on the provided docstring, it seems like we need to check if the length of the `numbers` list is 2 (in which case the GCD would be -1) before proceeding with the calculation. If the length is greater than 2, we should calculate the GCD iteratively using the `math.gcd` function. Here's how to fill in `<MASK>`:
+
+```python
+from typing import List
+import math
+
+def multiple_greatest_common_divisors(numbers: List[int]) -> int:
+    if len(numbers) == 2:
+        return -1
+    else:
+        gcd = numbers[0]
+        for num in numbers[1:]:
+            gcd = math.gcd(gcd, num)
+        return gcd
+```

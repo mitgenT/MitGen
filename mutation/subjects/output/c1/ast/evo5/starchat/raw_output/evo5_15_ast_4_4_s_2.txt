@@ -1,0 +1,18 @@
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = False
+    if any(isinstance(num, float) for num in numbers) or isinstance(delimeter, float):
+        set_float = True
+    result = []
+    limit = min(limit, len(numbers) - 1) 
+    for i in range(len(numbers) - 1):
+        if set_float:
+            result.append(float(numbers[i]))
+        else:
+            result.append(numbers[i])
+        if i < limit:
+            result.append(delimeter)
+    return result
+```
+In this solution, we check if the original list or the delimeter is a float, and set `set_float` to `True` accordingly. Then, for each pair of consecutive elements, we add the element to the result list and append the delimeter if the index is less than the limit. The result list is returned after going through all the elements of the input list.

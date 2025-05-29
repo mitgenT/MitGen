@@ -1,0 +1,14 @@
+t=int(input())
+for test in range(t):
+    n=int(input())
+    alice=list(map(int,input().split()))
+    bob=list(map(int,input().split()))
+    alice.sort(reverse=True)
+    bob.sort(reverse=True)
+    score=0
+    for i in range(n):
+        if (alice[i]>bob[i]):
+           score+=alice[i]-bob[i]
+        else:
+            break
+    print(score)

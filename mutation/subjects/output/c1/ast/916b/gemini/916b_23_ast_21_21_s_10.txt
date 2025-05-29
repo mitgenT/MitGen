@@ -1,0 +1,6 @@
+
+    while i<=n:
+        s =  s + ' ' +str(n+1-i)
+        i = i+1
+    print(s.strip())
+

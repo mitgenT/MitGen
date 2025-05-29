@@ -1,0 +1,5 @@
+```python
+n = len(data)
+mean = sum(data) / n
+variance = sum((data[i] - mean) ** 2 for i in range(n)) / n if n > 1 else 0
+```

@@ -1,0 +1,74 @@
+To complete the given code, we need to fill in the masks (<MASK>) based on the provided docstring.
+
+1. Inside the `ArrangementCalculator` class, complete the method `count`. Replace the `<MASK>` with the return statement that calculates the factorial using the `ArrangementCalculator.factorial()` method and divides it by the factorial of the difference between `n` and `m` (if `m` is provided).
+
+```python
+def count(n, m=None):
+    if m is None or n == m:
+        return ArrangementCalculator.factorial(n)
+    else:
+        return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)
+```
+
+2. Outside the `ArrangementCalculator` class, complete the method `count_all`. Replace the `<MASK>` with the `total` variable assignment and a for loop to calculate the permutation count for each number from 1 to `n` using the `ArrangementCalculator.count(n, i)` method. Add each result to the `total` variable.
+
+```python
+def count_all(n):
+    total = 0
+    for i in range(1, n + 1):
+        total += ArrangementCalculator.count(n, i)
+    return total
+```
+
+3. Outside both classes, complete the method `factorial`. Replace the `<MASK>` with a variable assignment for `result` initialized to 1, a for loop from 2 to `n` (inclusive) for multiplication with `i`, and a return statement for the final result.
+
+```python
+def factorial(n):
+    result = 1
+    for i in range(2, n + 1):
+        result *= i
+    return result
+```
+
+After completing the infilling, the entire program should look like this:
+
+```python
+import itertools
+
+
+class ArrangementCalculator:
+    def __init__(self, datas):
+        self.datas = datas
+
+    def count(n, m=None):
+        if m is None or n == m:
+            return ArrangementCalculator.factorial(n)
+        else:
+            return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)
+
+    def count_all(n):
+        total = 0
+        for i in range(1, n + 1):
+            total += ArrangementCalculator.count(n, i)
+        return total
+
+    def select(self, m=None):
+        if m is None:
+            m = len(self.datas)
+        result = []
+        for permutation in itertools.permutations(self.datas, m):
+            result.append(list(permutation))
+        return result
+
+    def select_all(self):
+        result = []
+        for i in range(1, len(self.datas) + 1):
+            result.extend(self.select(i))
+        return result
+
+    def factorial(n):
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
+```

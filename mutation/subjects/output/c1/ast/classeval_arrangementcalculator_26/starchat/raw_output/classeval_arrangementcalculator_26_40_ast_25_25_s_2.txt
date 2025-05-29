@@ -1,0 +1,6 @@
+```python
+if m <= len(self.datas):
+```
+```python
+for permutation in itertools.permutations(self.datas, m):
+```

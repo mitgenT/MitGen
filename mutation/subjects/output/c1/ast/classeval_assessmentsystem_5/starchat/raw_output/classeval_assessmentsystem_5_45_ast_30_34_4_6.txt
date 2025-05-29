@@ -1,0 +1,5 @@
+```Python
+if course in student['courses'].values():
+    total += sum(student['courses'].values())
+    count += 1
+```

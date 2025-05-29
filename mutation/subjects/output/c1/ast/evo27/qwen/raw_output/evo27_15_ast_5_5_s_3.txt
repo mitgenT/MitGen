@@ -1,0 +1,21 @@
+Based on the given docstring, we need to check if the current character is at the `special_index` and modify it accordingly. If not, we should simply flip the case. Here's the filled in code:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index or (i - special_index) % len(string) == 0:  # Check if the character is at the special_index or its equivalent in a circular list
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+        else:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char.upper()  # Flip the case if it's not at the special_index
+    return result
+```
+
+Now, the function correctly handles the flipping of case and the special behavior at the specified `special_index`.

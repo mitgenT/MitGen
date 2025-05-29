@@ -1,0 +1,50 @@
+To infill the <MASK> in the given code, we need to fill the correct method call in the `select` function to generate all permutations of the selected items.
+
+In Python, the itertools library provides the `permutations` function, which returns all possible permutations of the given iterable. We can use this function to fill the <MASK>. Here's the corrected code:
+
+```python
+import itertools
+
+
+class ArrangementCalculator:
+    def __init__(self, datas):
+        self.datas = datas
+
+    @staticmethod
+    def count(n, m=None):
+        if m is None or n == m:
+            return ArrangementCalculator.factorial(n)
+        else:
+            return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)
+
+    @staticmethod
+    def count_all(n):
+        total = 0
+        for i in range(1, n + 1):
+            total += ArrangementCalculator.count(n, i)
+        return total
+
+    def select(self, m=None):
+        if m is None:
+            m = len(self.datas)
+        result = []
+        for subset in itertools.permutations(self.datas, m):
+            result.append(list(subset))
+        return result
+
+    def select_all(self):
+        result = []
+        for i in range(1, len(self.datas) + 1):
+            result.extend(self.select(i))
+        return result
+
+    @staticmethod
+    def factorial(n):
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
+
+```
+
+In the corrected code, the `itertools.permutations` function is used in the `select` method to generate all permutations of the selected items. The `select` function now returns a list of lists, where each inner list represents a unique permutation of the selected items.

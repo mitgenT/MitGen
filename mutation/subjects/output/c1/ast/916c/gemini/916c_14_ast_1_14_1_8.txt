@@ -1,0 +1,35 @@
+def min_cost_path(matrix, cost, m, n):
+    # step 1: Create a 2D array
+    # of size m+1 x n+1 to store the cost
+    # to each element in the array
+    dp = [[0 for i in range(n+1)] for j in range(m+1)]
+    
+    # step 2:  Fill the DP matrix in bottom
+    # up manner
+    for i in range(m+1):
+        for j in range(n+1):
+            # If it is the first row
+            # or column put the value
+            # from the cost array
+            if i == 0:
+                dp[i][j] = cost[j - 1]
+            elif j == 0:
+                dp[i][j] = cost[m*j + i - 1]
+                
+            # If any column
+            # in the cost array
+            # has -1, then dp[i][j] = -1
+            elif cost[m * j + i - 1] == -1:
+                dp[i][j] = -1
+            else:
+                dp[i][j] = cost[m*j + i - 1] + min(
+                    dp[i-1][j], dp[i][j-1])
+                
+    # step 3: Check if all cells
+    # from last row and column  of
+    # the cost array are reachable or not
+    dp[m][n] = (-1, dp[m][n]) if (dp[m - 1][n] == -1 
+                          or dp[m][n - 1] == -1) else dp[m][n]
+    
+    # step 4: Return the minimum cost path
+    return dp[m][n]

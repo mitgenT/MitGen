@@ -1,0 +1,4 @@
+```python
+digit_map = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+new_base_num += digit_map[remainder]
+```

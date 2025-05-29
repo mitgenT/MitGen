@@ -1,0 +1,24 @@
+## Output
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = False
+    if type(delimeter) == float:
+        set_float = True
+    result = []
+    limit = min(limit, len(numbers) - 1) 
+    for i in range(len(numbers) - 1):
+        if set_float:
+            result.append(float(numbers[i]))
+        else:
+            result.append(numbers[i])
+        if i < limit:
+            result.append(delimeter)
+    if i == len(numbers) - 2:
+        if set_float:
+            result.append(float(numbers[-1]))
+        else:
+            result.append(numbers[-1])
+    return result
+```
+This infills the missing parts in the given code to correctly implement the required function according to the docstring. In this case, it checks if we are on the last element (excluding the last number) of the list and adds it to the result list if it's required (up to `limit`) times. It also converts the delimeter to float if necessary.

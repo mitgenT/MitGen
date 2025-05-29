@@ -1,0 +1,14 @@
+for i in range(int(input())):
+    n,k = map(int,input().split())
+    arr = list(range(1,n+1))
+    if k == 0:
+        for num in arr:
+            print(num, end = " ")
+    else:
+        p = n-1-k
+        for j in range(p):
+            print(arr[j], end = " ")
+        print(arr[p],end = " ")
+        for j in range(p+1, n):
+            print(arr[j], end = " ")
+

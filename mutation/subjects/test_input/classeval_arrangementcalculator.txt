@@ -1,0 +1,186 @@
+import unittest
+import inspect
+
+
+<generated_code_here>
+
+
+class ArrangementCalculatorTestCount(unittest.TestCase):
+    def test_count_1(self):
+        res = ArrangementCalculator.count(5, 3)
+        return res
+
+    def test_count_2(self):
+        res = ArrangementCalculator.count(4, 3)
+        return res
+
+    def test_count_3(self):
+        res = ArrangementCalculator.count(6, 3)
+        return res
+
+    def test_count_4(self):
+        res = ArrangementCalculator.count(7, 3)
+        return res
+
+    def test_count_5(self):
+        res = ArrangementCalculator.count(4, 4)
+        return res
+
+
+class ArrangementCalculatorTestCountAll(unittest.TestCase):
+    def test_count_all_1(self):
+        res = ArrangementCalculator.count_all(4)
+        return res
+
+    def test_count_all_2(self):
+        res = ArrangementCalculator.count_all(1)
+        return res
+
+    def test_count_all_3(self):
+        res = ArrangementCalculator.count_all(2)
+        return res
+
+    def test_count_all_4(self):
+        res = ArrangementCalculator.count_all(3)
+        return res
+
+    def test_count_all_5(self):
+        res = ArrangementCalculator.count_all(5)
+        return res
+
+
+class ArrangementCalculatorTestSelect(unittest.TestCase):
+    def test_select_1(self):
+        ac = ArrangementCalculator([1, 2, 3, 4])
+        res = ac.select(2)
+        expected = [[1, 2], [1, 3], [1, 4], [2, 1], [2, 3], [2, 4], [3, 1], [3, 2], [3, 4], [4, 1], [4, 2], [4, 3]]
+        return res
+
+    def test_select_2(self):
+        ac = ArrangementCalculator([1, 2, 3])
+        res = ac.select(2)
+        expected = [[1, 2], [1, 3], [2, 1], [2, 3], [3, 1], [3, 2]]
+        return res
+
+    def test_select_3(self):
+        ac = ArrangementCalculator([2, 3, 4])
+        res = ac.select(2)
+        expected = [[2, 3], [2, 4], [3, 2], [3, 4], [4, 2], [4, 3]]
+        return res
+
+    def test_select_4(self):
+        ac = ArrangementCalculator([1, 2])
+        res = ac.select(2)
+        expected = [[1, 2], [2, 1]]
+        return res
+
+    def test_select_5(self):
+        ac = ArrangementCalculator([1, 2, 3, 4])
+        res = ac.select(1)
+        expected = [[1], [2], [3], [4]]
+        return res
+
+    def test_select_6(self):
+        ac = ArrangementCalculator([1, 2])
+        res = ac.select()
+        expected = [[1, 2], [2, 1]]
+        return res
+
+
+class ArrangementCalculatorTestSelectAll(unittest.TestCase):
+    def test_select_all_1(self):
+        ac = ArrangementCalculator([1, 2, 3])
+        res = ac.select_all()
+        expected = [[1], [2], [3], [1, 2], [1, 3], [2, 1], [2, 3], [3, 1], [3, 2], [1, 2, 3], [1, 3, 2], [2, 1, 3],
+                    [2, 3, 1], [3, 1, 2], [3, 2, 1]]
+        return res
+
+    def test_select_all_2(self):
+        ac = ArrangementCalculator([1, 2, 4])
+        res = ac.select_all()
+        expected = [[1], [2], [4], [1, 2], [1, 4], [2, 1], [2, 4], [4, 1], [4, 2], [1, 2, 4], [1, 4, 2], [2, 1, 4],
+                    [2, 4, 1], [4, 1, 2], [4, 2, 1]]
+        return res
+
+    def test_select_all_3(self):
+        ac = ArrangementCalculator([1, 2])
+        res = ac.select_all()
+        expected = [[1], [2], [1, 2], [2, 1]]
+        return res
+
+    def test_select_all_4(self):
+        ac = ArrangementCalculator([1, 3])
+        res = ac.select_all()
+        expected = [[1], [3], [1, 3], [3, 1]]
+        return res
+
+    def test_select_all_5(self):
+        ac = ArrangementCalculator([1])
+        res = ac.select_all()
+        expected = [[1]]
+        return res
+
+
+class ArrangementCalculatorTestFactorial(unittest.TestCase):
+    def test_factorial_1(self):
+        res = ArrangementCalculator.factorial(4)
+        return res
+
+    def test_factorial_2(self):
+        res = ArrangementCalculator.factorial(5)
+        return res
+
+    def test_factorial_3(self):
+        res = ArrangementCalculator.factorial(3)
+        return res
+
+    def test_factorial_4(self):
+        res = ArrangementCalculator.factorial(2)
+        return res
+
+    def test_factorial_5(self):
+        res = ArrangementCalculator.factorial(1)
+        return res
+
+
+class ArrangementCalculatorTest(unittest.TestCase):
+    def test_arrangementcalculator(self):
+        res1 = ArrangementCalculator.count(5, 3)
+
+        res2 = ArrangementCalculator.count_all(4)
+
+        ac = ArrangementCalculator([1, 2, 3, 4])
+        res3 = ac.select(2)
+        expected = [[1, 2], [1, 3], [1, 4], [2, 1], [2, 3], [2, 4], [3, 1], [3, 2], [3, 4], [4, 1], [4, 2], [4, 3]]
+
+        ac = ArrangementCalculator([1, 2, 3])
+        res4 = ac.select_all()
+        expected = [[1], [2], [3], [1, 2], [1, 3], [2, 1], [2, 3], [3, 1], [3, 2], [1, 2, 3], [1, 3, 2], [2, 1, 3],
+                    [2, 3, 1], [3, 1, 2], [3, 2, 1]]
+
+        res5 = ArrangementCalculator.factorial(4)
+        return [res1, res2, res3, res4, res5]
+
+
+def obtain_output():
+    classes = ['ArrangementCalculatorTestCount',
+               'ArrangementCalculatorTestCountAll',
+               'ArrangementCalculatorTestSelect',
+               'ArrangementCalculatorTestSelectAll',
+               'ArrangementCalculatorTestFactorial',
+               'ArrangementCalculatorTest']
+    output = []
+    output_idx = 0
+    for each_class in classes:
+        this_class = eval(f"{each_class}()")
+        test_functions = [name for name, obj in inspect.getmembers(eval(each_class))
+                  if inspect.isfunction(obj) and "test_" in name]
+        for each_func in test_functions:
+            function_output = eval(f"this_class.{each_func}()")
+            try:
+                function_output = eval(f"this_class.{each_func}()")
+                output.append([output_idx,function_output])
+            except Exception:
+                output.append([output_idx, "Exception"])
+            output_idx += 1
+    return output

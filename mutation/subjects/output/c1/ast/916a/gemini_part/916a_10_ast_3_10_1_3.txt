@@ -1,0 +1,17 @@
+N=int(input())
+alpha='ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+for i in range(N):
+
+    n=int(input())
+    s=input()
+    indx=1
+    ans=0
+    cur=''
+    for x in s:
+        if x!=cur:
+            indx=alpha.find(x)+1
+        if indx<=n:
+            ans+=1
+
+        cur=x
+    print(ans)

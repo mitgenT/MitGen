@@ -1,0 +1,12 @@
+def enhanced_solve(N, M):
+    def enhanced_solve(N, M):
+        bin_N = bin(N)[2:]
+        bin_M = bin(M)[2:]
+        sum_digits = bin_N.count('1') + bin_M.count('1')
+        prime_count = 0
+        for num in range(N, M+1):
+            if is_prime(num):
+                prime_count += 1
+        result = sum_digits * prime_count
+        binary_result = bin(result)[2:]
+        return binary_result

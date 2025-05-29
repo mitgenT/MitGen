@@ -1,0 +1,20 @@
+Here's the code with the `<MASK>` filled in according to the provided docstring:
+
+```python
+from typing import List, Union
+
+def intersperse(numbers: List[Union[int, float]], delimiter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    result = []
+    if limit >= len(numbers) - 1:
+        for i in range(0, len(numbers), 1):
+            result.append(numbers[i])
+            if i < len(numbers) - 1 and i + 1 <= limit:
+                result.append(delimiter)
+    else:
+        for i in range(0, limit, 1):
+            result.append(numbers[i])
+            result.append(delimiter)
+    return result
+```
+
+The `intersperse` function iterates over the `numbers` list, appending each number and then the delimiter (if applicable) up to the specified `limit`. If `limit` is less than `len(numbers) - 1`, it only adds the delimiter between the first `limit` pairs of consecutive numbers. The resulting list is then returned.

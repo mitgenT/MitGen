@@ -1,0 +1,16 @@
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    def how_many_times(string: str, substrings: list) -> dict:
+        if any(sub == '' for sub in substrings):
+            return "Substrings cannot be empty"
+        result = {sub: 0 for sub in substrings}
+        for index in range(len(string)):
+            for sub in substrings:
+                if string[index:].startswith(sub):
+                    result[sub] += 1
+                    # Skip over the found substring to avoid counting overlapping cases
+                    index += len(sub)
+        return result
+    return result

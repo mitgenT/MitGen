@@ -1,0 +1,55 @@
+Infilling the <MASK> in the given code,
+
+## Output
+```python
+class AssessmentSystem:
+    def __init__(self):
+        self.students = {}
+
+    def add_student(self, name, grade, major):
+        self.students[name] = {'name': name, 'grade': grade,'major': major, 'courses': {}}
+
+    def add_course_score(self, name, course, score):
+        if name in self.students:
+            self.students[name]['courses'][course] = score
+
+    def get_gpa(self, name):
+        return sum(self.students[name]['courses'].values()) / len(self.students[name]['courses']) if self.students[name]['courses'] else 0
+
+    def get_all_students_with_fail_course(self):
+        students = []
+        for name, student in self.students.items():
+            if any(score < 60 for score in student['courses'].values()):
+                students.append(name)
+        return students
+
+    def get_course_average(self, course):
+        total = 0
+        count = 0
+        for student in self.students.values():
+            if course in student['courses']:
+                score = student['courses'][course]
+                if score is not None:
+                    total += score
+                    count += 1
+        return total / count if count > 0 else None
+
+    def get_top_student(self):
+        top_student = None
+        top_gpa = 0
+        for name, student in self.students.items():
+            gpa = self.get_gpa(name)
+            if gpa is not None and gpa > top_gpa:
+                top_gpa = gpa
+                top_student = name
+        return top_student
+
+```
+
+The get_gpa method is modified to return 0 if a student does not have any courses. This is to ensure the method always returns a valid numerical GPA.
+
+The get_all_students_with_fail_course method uses the 'any' function and a generator expression to check if a student has any score below 60. It appends the name of such students to the'students' list and returns it.
+
+The get_course_average method remains unchanged. The same approach as before is used to calculate the average score for a specific course by iterating over all students and their respective course scores. The method returns None if no student has a score for the given course.
+
+The get_top_student method remains unchanged as it already calculates the GPA of each student using the 'get_gpa' method and identifies the student with the highest GPA.

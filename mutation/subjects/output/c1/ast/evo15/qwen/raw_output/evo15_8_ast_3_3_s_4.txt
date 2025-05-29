@@ -1,0 +1,13 @@
+Based on the given docstring, we need to check if `n` is greater than or equal to `m`, and then append either the number `i` or "Fizz" to the `result` list depending on whether it's the m-th number (1-based indexing). Here's how to fill in the `<MASK>` in the code:
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    if n >= m:
+        for i in range(1, n + 1):
+            if (i % m) == 0:
+                result.append("Fizz")
+            else:
+                result.append(str(i))
+    return ' '.join(result)
+```

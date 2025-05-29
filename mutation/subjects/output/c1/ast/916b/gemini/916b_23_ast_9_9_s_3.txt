@@ -1,0 +1,5 @@
+
+    else:
+        for i in range(n-k,0,-1):
+            s=str(i)+' '+s
+        print(s)

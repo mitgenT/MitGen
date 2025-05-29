@@ -1,0 +1,2 @@
+if m <= n and m > 0:
+    return ArrangementCalculator.factorial(n) / (ArrangementCalculator.factorial(n-m) * ArrangementCalculator.factorial(m))

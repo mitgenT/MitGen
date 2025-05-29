@@ -1,0 +1,15 @@
+## Output
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    result = []
+    count = 0
+    for num in numbers:
+        result.append(num)
+        if count < limit and num!= numbers[-1]:  # Don't add delimeter for the last element
+            result.append(delimeter)
+            count += 1
+    return result
+```
+
+Infill the `<MASK>` section to iterate through the `numbers` list and append each number to `result`. If the `count` is less than `limit` and the number isn't the last element of `numbers`, then append the `delimeter` to `result` and increment `count`. This will effectively insert the `delimeter` between every two consecutive elements of the input list `numbers`, but only up to `limit` times. If the `delimeter` is a float, the output list will also be in float. The output list `result` is returned as the final result.

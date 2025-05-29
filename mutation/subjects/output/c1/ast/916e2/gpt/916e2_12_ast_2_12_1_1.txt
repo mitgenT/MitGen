@@ -1,0 +1,6 @@
+t=int(input())
+t=int(input())
+for _ in range(t):
+    n = int(input())
+    alice_marbles = list(map(int, input().split()))
+    bob_marbles = list(map(int, input().split()))

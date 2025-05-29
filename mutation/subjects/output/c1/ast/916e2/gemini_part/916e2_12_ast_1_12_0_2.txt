@@ -1,0 +1,13 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    ans = 0
+    for i in range(n):
+        if a[i] + b[i] > 0:
+            x = min(a[i], b[i])
+            a[i] -= x
+            b[i] -= x
+            ans += x
+    print(ans * 2)

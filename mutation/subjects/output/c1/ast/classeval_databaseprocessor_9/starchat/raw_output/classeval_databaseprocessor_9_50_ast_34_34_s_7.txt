@@ -1,0 +1,5 @@
+if cursor:
+            cursor.close()
+
+if result == []:
+    return None

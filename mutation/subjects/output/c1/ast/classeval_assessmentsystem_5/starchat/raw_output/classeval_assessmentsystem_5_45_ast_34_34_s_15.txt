@@ -1,0 +1,9 @@
+In the code above, the missing lines to calculate the average score in the `get_course_average` function are filled as follows:
+
+```python
+        total += score
+        if count == 0:
+            count += 1
+```
+
+This will ensure that `count` is not zero when calculating the average score, and it correctly adds the score of the current course to the total.

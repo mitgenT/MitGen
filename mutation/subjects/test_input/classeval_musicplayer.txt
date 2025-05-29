@@ -1,0 +1,294 @@
+import inspect
+
+
+<generated_code_here>
+
+
+class MusicPlayerTestAddSong:
+    def add_song(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.add_song("song1")
+        return musicPlayer.playlist
+
+    def add_song2(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.add_song("song1")
+        musicPlayer.add_song("song2")
+        return musicPlayer.playlist
+
+    def add_song3(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.add_song("song1")
+        musicPlayer.add_song("song2")
+        musicPlayer.add_song("song3")
+        return musicPlayer.playlist
+
+    def add_song4(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.add_song("song1")
+        musicPlayer.add_song("song2")
+        musicPlayer.add_song("song3")
+        musicPlayer.add_song("song4")
+        return musicPlayer.playlist
+
+    def add_song5(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.add_song("song1")
+        musicPlayer.add_song("song2")
+        musicPlayer.add_song("song3")
+        musicPlayer.add_song("song4")
+        musicPlayer.add_song("song5")
+        return musicPlayer.playlist
+
+class MusicPlayerTestRemoveSong:
+    def remove_song(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.playlist = ["song1", "song2"]
+        musicPlayer.remove_song("song1")
+        return musicPlayer.playlist
+
+    def remove_song2(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.current_song = "song1"
+        musicPlayer.playlist = ["song1", "song2", "song3"]
+        musicPlayer.remove_song("song1")
+        return musicPlayer.playlist
+
+    def remove_song3(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.current_song = "song1"
+        musicPlayer.playlist = ["song1", "song2", "song3", "song4"]
+        musicPlayer.remove_song("song1")
+        return musicPlayer.playlist
+
+    def remove_song4(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.playlist = ["song1", "song2", "song3", "song4", "song5"]
+        musicPlayer.remove_song("song1")
+        return musicPlayer.playlist
+
+    def remove_song5(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.playlist = ["song1", "song2", "song3", "song4", "song5"]
+        musicPlayer.remove_song("song1")
+        musicPlayer.remove_song("song2")
+        return musicPlayer.playlist
+
+    def remove_song6(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.playlist = []
+        musicPlayer.remove_song("song1")
+        return musicPlayer.playlist
+
+
+class MusicPlayerTestPlay:
+    def play(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.playlist = ["song1", "song2"]
+        musicPlayer.current_song = "song1"
+        return musicPlayer.play()
+
+    def play_2(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.playlist = []
+        musicPlayer.current_song = "song2"
+        return musicPlayer.play() == None
+
+    def play_3(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.playlist = ["song1", "song2"]
+        return musicPlayer.play()
+
+    def play_4(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.playlist = ["song1", "song2"]
+        musicPlayer.current_song = "song3"
+        return musicPlayer.play()
+
+    def play_5(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.playlist = ["song1", "song2"]
+        musicPlayer.current_song = "song1"
+        return musicPlayer.play()
+
+class MusicPlayerTestStop:
+    def stop(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.playlist = ["song1", "song2"]
+        musicPlayer.current_song = "song1"
+        return musicPlayer.stop()
+
+    def stop_2(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.playlist = []
+        musicPlayer.current_song = "song1"
+        return musicPlayer.stop()
+
+    def stop_3(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.playlist = ["song1", "song2"]
+        return musicPlayer.stop()
+
+    def stop_4(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.playlist = ["song1", "song2"]
+        musicPlayer.current_song = "song1"
+        return musicPlayer.stop()
+
+    def stop_5(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.playlist = ["song1", "song2"]
+        musicPlayer.current_song = "song2"
+        return musicPlayer.stop()
+
+class MusicPlayerTestSwitchSong:
+    def switch_song(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.playlist = ["song1", "song2"]
+        musicPlayer.current_song = "song1"
+        return musicPlayer.switch_song()
+
+    def switch_song2(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.playlist = ["song1", "song2"]
+        musicPlayer.current_song = "song2"
+        return musicPlayer.switch_song()
+
+    def switch_song3(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.playlist = ["song1", "song2", "song3"]
+        musicPlayer.current_song = "song3"
+        return musicPlayer.switch_song()
+
+    def switch_song4(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.playlist = ["song1", "song2"]
+        return musicPlayer.switch_song()
+
+    def switch_song5(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.playlist = []
+        return musicPlayer.switch_song()
+
+class MusicPlayerTestPreviousSong:
+    def previous_song(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.playlist = ["song1", "song2", "song3"]
+        musicPlayer.current_song = "song2"
+        return musicPlayer.previous_song()
+
+    def previous_song2(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.playlist = ["song1", "song2", "song3"]
+        musicPlayer.current_song = "song1"
+        return musicPlayer.previous_song()
+
+    def previous_song3(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.playlist = ["song1", "song2", "song3"]
+        musicPlayer.current_song = "song3"
+        return musicPlayer.previous_song()
+
+    def previous_song4(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.playlist = ["song1", "song2", "song3"]
+        return musicPlayer.previous_song()
+
+    def previous_song5(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.playlist = []
+        return musicPlayer.previous_song()
+
+class MusicPlayerTestSetVolume:
+    def set_volume(self):
+        musicPlayer = MusicPlayer()
+        return [musicPlayer.set_volume(50) == None, musicPlayer.volume]
+
+    def set_volume2(self):
+        musicPlayer = MusicPlayer()
+        return [musicPlayer.set_volume(100) == None, musicPlayer.volume]
+
+    def set_volume3(self):
+        musicPlayer = MusicPlayer()
+        return [musicPlayer.set_volume(0) == None, musicPlayer.volume]
+
+    def set_volume4(self):
+        musicPlayer = MusicPlayer()
+        return [musicPlayer.set_volume(101) == None, musicPlayer.volume]
+
+    def set_volume5(self):
+        musicPlayer = MusicPlayer()
+        return [musicPlayer.set_volume(-1) == None, musicPlayer.volume]
+
+class MusicPlayerTestShuffle:
+    def shuffle(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.playlist = ["song1", "song2"]
+        return musicPlayer.shuffle()
+
+    def shuffle_2(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.playlist = []
+        musicPlayer.current_song = "song1"
+        return musicPlayer.shuffle()
+
+    def shuffle_3(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.playlist = ["song1", "song2"]
+        musicPlayer.current_song = "song2"
+        return musicPlayer.shuffle()
+
+    def shuffle_4(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.playlist = ["song1", "song2"]
+        musicPlayer.current_song = "song3"
+        return musicPlayer.shuffle()
+
+    def shuffle_5(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.playlist = ["song1", "song2"]
+        musicPlayer.current_song = "song1"
+        return musicPlayer.shuffle()
+
+class MusicPlayerTestMain:
+    def main(self):
+        musicPlayer = MusicPlayer()
+        musicPlayer.playlist = ["song1", "song2"]
+        musicPlayer.current_song = "song1"
+        res = []
+        res.append(musicPlayer.play())
+        res.append(musicPlayer.stop())
+        musicPlayer.playlist = ["song1", "song2"]
+        musicPlayer.current_song = "song1"
+        res.append(musicPlayer.switch_song())
+        res.append(musicPlayer.previous_song())
+        musicPlayer.set_volume(50)
+        res.append(musicPlayer.volume)
+        return res
+
+
+def obtain_output():
+    classes = ['MusicPlayerTestAddSong',
+               'MusicPlayerTestRemoveSong',
+               'MusicPlayerTestPlay',
+               'MusicPlayerTestStop',
+               'MusicPlayerTestSwitchSong',
+               'MusicPlayerTestPreviousSong',
+               'MusicPlayerTestSetVolume',
+               'MusicPlayerTestShuffle',
+               'MusicPlayerTestMain']
+    output = []
+    output_idx = 0
+    for each_class in classes:
+        this_class = eval(f"{each_class}()")
+        test_functions = [name for name, obj in inspect.getmembers(eval(each_class))
+                  if inspect.isfunction(obj)]
+        for each_func in test_functions:
+            function_output = None
+            try:
+                function_output = eval(f"this_class.{each_func}()")
+                output.append([output_idx,function_output])
+            except Exception:
+                output.append([output_idx, "Exception"])
+            output_idx += 1
+    return output

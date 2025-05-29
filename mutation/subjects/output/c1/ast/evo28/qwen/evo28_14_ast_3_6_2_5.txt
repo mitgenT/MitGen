@@ -1,0 +1,20 @@
+from typing import List, Tuple
+
+def interleave_and_concatenate(strings: List[str], integers: List[int]) -> Tuple[str, int]:
+    min_len = min(len(strings), len(integers))
+    max_len = max(len(strings), len(integers))
+    
+    # Initialize the interleaved list with the shorter list
+    interleaved: List[Union[str, int]] = strings[:min_len] + integers[:min_len]
+    
+    # If one list is shorter, append the remaining elements from the longer list
+    if len(strings) > min_len:
+        for i in range(min_len, len(strings)):
+            interleaved.append(strings[i])
+    if len(integers) > min_len:
+        for i in range(min_len, len(integers)):
+            interleaved.append(integers[i])
+
+    concatenated_string = ' '.join([str(i) for i in interleaved if isinstance(i, str)]) 
+    sum_integers = sum([i for i in interleaved if isinstance(i, int)])
+    return (concatenated_string, sum_integers)

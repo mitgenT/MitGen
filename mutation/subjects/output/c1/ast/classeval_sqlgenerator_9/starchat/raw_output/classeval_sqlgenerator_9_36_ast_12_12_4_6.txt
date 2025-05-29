@@ -1,0 +1,5 @@
+fields = ", ".join(fields) if isinstance(fields, list) else fields
+if condition is not None:
+    if sql.endswith(";"):
+        sql = sql[:-1]
+    sql += f" WHERE {condition}"

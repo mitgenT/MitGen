@@ -1,0 +1,19 @@
+## Output
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            if (i+1) % 3 == 0 and (i+1) % 5 == 0:  # Checking divisibility by both 3 and 5
+                result.append('FizzBuzz')
+            elif (i+1) % 3 == 0:
+                result.append('Fizz')
+            else:
+                result.append(str(i))
+        else:
+            result.append(str(i))
+    return''.join(result)
+```
+
+In the solution, I added a condition inside the if statement to check for the number that is divisible by both 3 and 5 (i.e., the FizzBuzz case), then handled individual cases for divisibility by 3 and otherwise added the number to the result list. After that, I joined all the elements of the result list into a single string with space as the delimiter, returning it as the final output.

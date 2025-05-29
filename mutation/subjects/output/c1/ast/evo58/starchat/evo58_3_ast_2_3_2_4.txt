@@ -1,0 +1,6 @@
+def common(l1: list, l2: list, n: int):
+    if len(l1) == 0 or len(l2) == 0 or n <= 0:
+        return []
+    common_strings = set(l1).intersection(l2)
+    sorted_common_strings = sorted(common_strings, key=lambda x: (len(x), l1.index(x)))
+    return sorted_common_strings[:n]

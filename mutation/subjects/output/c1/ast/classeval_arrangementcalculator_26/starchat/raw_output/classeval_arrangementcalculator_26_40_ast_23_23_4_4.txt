@@ -1,0 +1,57 @@
+Infill `<MASK>` of the given code based on the docstring is as follows:
+
+```python
+import itertools
+
+
+class ArrangementCalculator:
+    def __init__(self, datas):
+        self.datas = datas
+
+    @staticmethod
+    def count(n, m=None):
+        if m is None or n == m:
+            return ArrangementCalculator.factorial(n)
+        else:
+            return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)
+
+    @staticmethod
+    def count_all(n):
+        total = 0
+        for i in range(1, n + 1):
+            total += ArrangementCalculator.count(n, i)
+                                             #bug location
+
+    def select(self, m=None):
+        if m is None:
+            m = len(self.datas)  # Fill in missing code here
+        result = []
+        for permutation in itertools.permutations(self.datas, m):
+            result.append(list(permutation))
+        return result
+
+    def select_all(self):
+        result = []
+        for i in range(1, len(self.datas) + 1):
+            result.extend(self.select(i))
+        return result
+
+    @staticmethod
+    def factorial(n):
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
+
+```
+
+Bug Location: `ArrangementCalculator.count_all(n)` method does not currently calculate the total number of all arrangements. This is because the for loop in the `count_all(n)` method runs from 1 to n (inclusive) without calculating `ArrangementCalculator.count(n, i)`, which should be included in the sum for the total count. To fix this, you can modify the loop to run from 0 to n (inclusive) and add `ArrangementCalculator.count(n, i)` to the sum.
+
+Updated `ArrangementCalculator.count_all(n)` method:
+```python
+def count_all(n):
+    total = 0
+    for i in range(0, n + 1):  # Fix here
+        total += ArrangementCalculator.count(n, i)
+    return total
+```

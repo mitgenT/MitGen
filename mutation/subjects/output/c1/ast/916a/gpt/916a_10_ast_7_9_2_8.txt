@@ -1,0 +1,8 @@
+N=int(input())
+alpha='ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+for i in range(0,N):
+    a=int(input())
+    b=str(input())
+    ans=0
+    ans = len(set(list(b)) & set(alpha))
+    print(b, ans)

@@ -1,0 +1,5 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    log = input()
+    print(sum(ord(c) - ord('A') + 1 for c in log))

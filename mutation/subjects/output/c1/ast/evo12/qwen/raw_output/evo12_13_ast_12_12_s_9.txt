@@ -1,0 +1,22 @@
+Based on the provided docstring, we need to update the `longest_substring` function to store the index when the current substring is longer than the existing longest. Here's the updated code:
+
+```python
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+    vowels = 'aeiouAEIOU'
+    longest_substring = None
+    longest_substring_index = None
+    for i, string in enumerate(strings):
+        substrings = [string[j:] for j in range(len(string)) if string[j] in vowels]
+        if substrings:
+            max_substring = max(substrings, key=len)
+            if longest_substring is None or len(max_substring) == len(longest_substring):
+                longest_substring = max_substring
+                if i == 0 or max_substring != longest_substring:
+                    longest_substring_index = i
+    return longest_substring, longest_substring_index
+```
+
+Explanation:
+- The condition `if i == 0 or max_substring != longest_substring` checks if it's the first iteration or the current max_substring is different from the current longest_substring. This ensures that we only update the index when the longest substring changes.
+- If the condition is met, we set `longest_substring_index` to `i`.

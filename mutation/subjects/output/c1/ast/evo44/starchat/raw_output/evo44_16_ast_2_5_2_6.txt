@@ -1,0 +1,24 @@
+## Output:
+```python
+def change_base(x: str, base: int, new_base: int):
+    base_10 = 0
+    allowed_digits = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    if base < 2 or base > 36 or new_base < 2 or new_base > 36:
+        return "invalid base"
+    for digit in x:
+        if digit not in allowed_digits[:base]:
+            return "invalid base"
+        base_10 = base_10 * base + allowed_digits.index(digit)
+    new_base_num = ""
+    if base_10 == 0:
+        return '0'
+    while base_10 > 0:
+        remainder = base_10 % new_base
+        base_10 -= new_base
+        if 0 <= remainder <= 9:
+            new_base_num = str(remainder) + new_base_num
+        else:
+            new_base_num = chr(remainder + 55) + new_base_num 
+    return new_base_num
+```
+In this code, I've added a few lines to compute the base_10 value from x using the given base. Then, I've looped through base_10 and converted it to the new base while appending characters to `new_base_num`. If a character needs to be represented in uppercase for digits above 9 (base 10 - 36), the ASCII value of the character is obtained by adding 55 to the remainder. Finally, `new_base_num` is returned as the result.

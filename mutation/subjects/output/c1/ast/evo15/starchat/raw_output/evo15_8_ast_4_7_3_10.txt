@@ -1,0 +1,11 @@
+## Output
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n+1):  # Changed n to n+1 because we want numbers up to n inclusive
+        if (i+1) % m == 0:  # Changed 'i' to 'i+1' because we are using 1-based indexing
+            result.append("Fizz")
+        else:
+            result.append(str(i))
+    return''.join(result)
+```

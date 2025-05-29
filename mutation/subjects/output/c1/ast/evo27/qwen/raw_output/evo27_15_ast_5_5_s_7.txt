@@ -1,0 +1,21 @@
+Based on the provided docstring, we need to modify the code to check if the current character at `i` is at the `special_index`. If it is, we should reverse the case according to the rules specified. Here's the filled in code:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index or (i + special_index) % len(string) == special_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char.upper()  # Flip the case if it's lowercase
+        else:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+    return result
+```
+
+The modification checks if the index `i` is equal to `special_index` or if the sum of `i` and `special_index` wraps around the string length (using the modulo operator `%`). If either condition is met, the case of the character is flipped.

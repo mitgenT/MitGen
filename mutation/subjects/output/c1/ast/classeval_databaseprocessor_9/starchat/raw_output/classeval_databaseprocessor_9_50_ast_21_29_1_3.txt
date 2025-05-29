@@ -1,0 +1,54 @@
+## Output
+```python
+import sqlite3
+import pandas as pd
+
+
+class DatabaseProcessor:
+
+    def __init__(self, database_name):
+        self.database_name = database_name
+
+    def create_table(self, table_name, key1, key2):
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+
+        create_table_query = f"CREATE TABLE IF NOT EXISTS {table_name} (id INTEGER PRIMARY KEY, {key1} TEXT, {key2} INTEGER)"
+        cursor.execute(create_table_query)
+
+        conn.commit()
+        conn.close()
+
+    def insert_into_database(self, table_name, data):
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+
+        for row in data:
+            insert_query = f"INSERT INTO {table_name}({', '.join(row.keys())}) VALUES({', '.join('?' * len(row))})"
+            cursor.execute(insert_query, tuple(row.values()))
+
+        conn.commit()
+        conn.close()
+
+    def search_database(self, table_name, name):
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+
+        select_query = f"SELECT * FROM {table_name} WHERE name =?"
+        cursor.execute(select_query, (name,))
+        result = cursor.fetchall()
+
+        return result
+
+    def delete_from_database(self, table_name, name):
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+
+        delete_query = f"DELETE FROM {table_name} WHERE name =?"
+        cursor.execute(delete_query, (name,))
+
+        conn.commit()
+        conn.close()
+```
+
+In this solution, the `insert_into_database` method has been completed by iterating over the input data and using placeholders (`?`) for the values in the INSERT query to prevent SQL injection. The `search_database` method returns the result fetched from the database after the SELECT query. The `delete_from_database` method deletes rows from the specified table in the database with a matching name. These modifications ensure the database operations are secure and efficient.

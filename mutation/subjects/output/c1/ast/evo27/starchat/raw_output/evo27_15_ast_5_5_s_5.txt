@@ -1,0 +1,7 @@
+```python
+            if i == special_index:
+                if char.islower():
+                    result += char.upper()
+                else:
+                    result += char
+```

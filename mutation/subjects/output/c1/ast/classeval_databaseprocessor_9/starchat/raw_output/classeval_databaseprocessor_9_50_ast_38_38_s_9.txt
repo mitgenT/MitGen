@@ -1,0 +1,6 @@
+if cursor.fetchone() is not None:
+    result = cursor.fetchall()
+else:
+    result = None
+
+return result

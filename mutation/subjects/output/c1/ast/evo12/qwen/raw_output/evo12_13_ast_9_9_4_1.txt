@@ -1,0 +1,3 @@
+```python
+            max_substring = max(substrings, key=len)
+```

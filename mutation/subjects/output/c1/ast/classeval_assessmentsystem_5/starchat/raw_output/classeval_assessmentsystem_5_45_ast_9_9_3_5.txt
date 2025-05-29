@@ -1,0 +1,66 @@
+In the given code, you need to complete the `add_course_score` function. This function should add a score for a specific course for a student in the `self.students` dictionary. Here's how you can fill in the `<MASK>`:
+
+```python
+def add_course_score(self, name, course, score):
+    if name in self.students:
+        self.students[name]['courses'][course] = score
+    else:
+        print(f"Student {name} does not exist.")
+```
+
+With this implementation, the `add_course_score` function will add the score for the specified course for the student in the `self.students` dictionary. If the student does not exist, it will print a message stating that the student does not exist.
+
+Here's the entire code with the `add_course_score` function filled in:
+
+```python
+class AssessmentSystem:
+    def __init__(self):
+        self.students = {}
+
+    def add_student(self, name, grade, major):
+        self.students[name] = {'name': name, 'grade': grade,'major': major, 'courses': {}}
+
+    def add_course_score(self, name, course, score):
+        if name in self.students:
+            self.students[name]['courses'][course] = score
+        else:
+            print(f"Student {name} does not exist.")
+
+    def get_gpa(self, name):
+        if name in self.students and self.students[name]['courses']:
+            return sum(self.students[name]['courses'].values()) / len(self.students[name]['courses'])
+        else:
+            return None
+
+    def get_all_students_with_fail_course(self):
+        students = []
+        for name, student in self.students.items():
+            for course, score in student['courses'].items():
+                if score < 60:
+                    students.append(name)
+                    break
+        return students
+
+    def get_course_average(self, course):
+        total = 0
+        count = 0
+        for student in self.students.values():
+            if course in student['courses']:
+                score = student['courses'][course]
+                if score is not None:
+                    total += score
+                    count += 1
+        return total / count if count > 0 else None
+
+    def get_top_student(self):
+        top_student = None
+        top_gpa = 0
+        for name, student in self.students.items():
+            gpa = self.get_gpa(name)
+            if gpa is not None and gpa > top_gpa:
+                top_gpa = gpa
+                top_student = name
+        return top_student
+```
+
+This code implements an AssessmentSystem class with the required functionalities: adding students, adding course scores, calculating GPA, and finding students with failed courses, as well as calculating course averages and finding the top student based on their GPA.

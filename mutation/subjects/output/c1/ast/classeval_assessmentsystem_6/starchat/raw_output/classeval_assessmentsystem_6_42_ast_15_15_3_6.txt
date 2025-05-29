@@ -1,0 +1,58 @@
+## Infilled code
+
+```python
+class AssessmentSystem:
+    def __init__(self):
+        self.students = {}
+
+    def add_student(self, name, grade, major):
+        self.students[name] = {'name': name, 'grade': grade,'major': major, 'courses': {}}
+
+    def add_course_score(self, name, course, score):
+        if name in self.students:
+            self.students[name]['courses'][course] = score
+
+    def get_gpa(self, name):
+        if name in self.students and len(self.students[name]['courses']) > 0:
+            return sum(self.students[name]['courses'].values()) / len(self.students[name]['courses'])
+        else:
+            return None
+
+    def get_all_students_with_fail_course(self):
+        students = []
+        for name, student in self.students.items():
+            for course, score in student['courses'].items():
+                if score < 60:
+                    students.append(name)
+                    break
+        return students
+
+    def get_course_average(self, course):
+        total = 0
+        count = 0
+        for student in self.students.values():
+            if course in student['courses']:
+                score = student['courses'][course]
+                if score is not None:
+                    total += score
+                    count += 1
+        return total / count if count > 0 else None
+
+    def get_top_student(self):
+        top_student = None
+        top_gpa = 0
+        for name, student in self.students.items():
+            gpa = self.get_gpa(name)
+            if gpa is not None and gpa > top_gpa:
+                top_gpa = gpa
+                top_student = name
+        return top_student
+```
+
+In the infilled code, I included error handling in the `get_gpa` method. I added a condition to check whether the student exists and has any courses. If either condition is not met, the function now returns `None` instead of attempting a division by zero.
+
+Additionally, I fixed the bug in the `get_all_students_with_fail_course` method. The inner `for` loop should be `break`-ed only when a student fails a course. Before, it was breaking the outer `for` loop, causing every student to only be considered in the result if they failed at least one course. 
+
+This bug was fixed by moving the `break` statement inside the inner loop, ensuring that a single student is only added to the result list when they fail a course. With this change, the method now correctly returns a list of students who have failed at least one course.
+
+These changes align with the requirements in the given docstring and solve the bugs mentioned.

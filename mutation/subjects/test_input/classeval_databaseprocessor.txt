@@ -1,0 +1,430 @@
+import sqlite3
+import inspect
+
+
+<generated_code_here>
+
+
+class DatabaseProcessorTestCreateTable():
+    def setUp(self):
+        self.database_name = "test.db"
+        self.processor = DatabaseProcessor(self.database_name)
+
+    def tearDown(self):
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+        cursor.execute("DROP TABLE IF EXISTS test_table")
+        conn.commit()
+        conn.close()
+
+    def create_table_1(self):
+        table_name = "test_table"
+        self.processor.create_table(table_name, 'name', 'age')
+
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+        cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name=?", (table_name,))
+        result = cursor.fetchone()
+        conn.close()
+
+        return result[0]
+
+    def create_table_2(self):
+        table_name = "test_table2"
+        self.processor.create_table(table_name, 'name', 'age')
+
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+        cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name=?", (table_name,))
+        result = cursor.fetchone()
+        conn.close()
+
+        return result[0]
+
+    def create_table_3(self):
+        table_name = "test_table3"
+        self.processor.create_table(table_name, 'name', 'age')
+
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+        cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name=?", (table_name,))
+        result = cursor.fetchone()
+        conn.close()
+
+        return result[0]
+
+    def create_table_4(self):
+        table_name = "test_table4"
+        self.processor.create_table(table_name, 'name', 'age')
+
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+        cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name=?", (table_name,))
+        result = cursor.fetchone()
+        conn.close()
+
+        return result[0]
+
+    def create_table_5(self):
+        table_name = "test_table5"
+        self.processor.create_table(table_name, 'name', 'age')
+
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+        cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name=?", (table_name,))
+        result = cursor.fetchone()
+        conn.close()
+
+        return result[0]
+
+
+class DatabaseProcessorTestInsertIntoDatabase():
+    def setUp(self):
+        self.database_name = "test.db"
+        self.processor = DatabaseProcessor(self.database_name)
+
+    def tearDown(self):
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+        cursor.execute("DROP TABLE IF EXISTS test_table")
+        conn.commit()
+        conn.close()
+
+    def insert_into_database_1(self):
+        table_name = "test_table"
+        data = [
+            {'name': 'John', 'age': 25},
+            {'name': 'Alice', 'age': 30}
+        ]
+        self.processor.create_table(table_name, 'name', 'age')
+        self.processor.insert_into_database(table_name, data)
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+        cursor.execute(f"SELECT * FROM {table_name}")
+        result = cursor.fetchall()
+        conn.close()
+
+        return [len(result), result[0][2]]
+
+    def insert_into_database_2(self):
+        table_name = "test_table"
+        data = [
+            {'name': 'John', 'age': 15},
+            {'name': 'Alice', 'age': 30}
+        ]
+        self.processor.create_table(table_name, 'name', 'age')
+        self.processor.insert_into_database(table_name, data)
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+        cursor.execute(f"SELECT * FROM {table_name}")
+        result = cursor.fetchall()
+        conn.close()
+
+        return [len(result), result[0][2]]
+
+    def insert_into_database_3(self):
+        table_name = "test_table"
+        data = [
+            {'name': 'John', 'age': 16},
+            {'name': 'Alice', 'age': 30}
+        ]
+        self.processor.create_table(table_name, 'name', 'age')
+        self.processor.insert_into_database(table_name, data)
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+        cursor.execute(f"SELECT * FROM {table_name}")
+        result = cursor.fetchall()
+        conn.close()
+
+        return [len(result), result[0][2]]
+
+    def insert_into_database_4(self):
+        table_name = "test_table"
+        data = [
+            {'name': 'John', 'age': 17},
+            {'name': 'Alice', 'age': 30}
+        ]
+        self.processor.create_table(table_name, 'name', 'age')
+        self.processor.insert_into_database(table_name, data)
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+        cursor.execute(f"SELECT * FROM {table_name}")
+        result = cursor.fetchall()
+        conn.close()
+
+        return [len(result), result[0][2]]
+
+    def insert_into_database_5(self):
+        table_name = "test_table"
+        data = [
+            {'name': 'John', 'age': 18},
+            {'name': 'Alice', 'age': 30}
+        ]
+        self.processor.create_table(table_name, 'name', 'age')
+        self.processor.insert_into_database(table_name, data)
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+        cursor.execute(f"SELECT * FROM {table_name}")
+        result = cursor.fetchall()
+        conn.close()
+
+        return [len(result), result[0][2]]
+
+
+class DatabaseProcessorTestSearchDatabase():
+    def setUp(self):
+        self.database_name = "test.db"
+        self.processor = DatabaseProcessor(self.database_name)
+
+    def tearDown(self):
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+        cursor.execute("DROP TABLE IF EXISTS test_table")
+        conn.commit()
+        conn.close()
+
+    def search_database_1(self):
+        table_name = "test_table"
+        data = [
+            {'name': 'John', 'age': 25},
+            {'name': 'Alice', 'age': 30}
+        ]
+        self.processor.create_table(table_name, 'name', 'age')
+        self.processor.insert_into_database(table_name, data)
+
+        result = self.processor.search_database(table_name, 'John')
+        return [len(result), result[0][1]]
+
+    def search_database_2(self):
+        table_name = "test_table"
+        data = [
+            {'name': 'John', 'age': 25},
+            {'name': 'Alice', 'age': 30}
+        ]
+        self.processor.create_table(table_name, 'name', 'age')
+        self.processor.insert_into_database(table_name, data)
+
+        result = self.processor.search_database(table_name, 'Alice')
+        return [len(result), result[0][1]]
+
+    def search_database_3(self):
+        table_name = "test_table"
+        data = [
+            {'name': 'John', 'age': 25},
+            {'name': 'Alice', 'age': 30}
+        ]
+        self.processor.create_table(table_name, 'name', 'age')
+        self.processor.insert_into_database(table_name, data)
+
+        result = self.processor.search_database(table_name, 'Bob')
+        return result is not None
+
+    def search_database_4(self):
+        table_name = "test_table"
+        data = [
+            {'name': 'John', 'age': 25},
+            {'name': 'Alice', 'age': 30}
+        ]
+        self.processor.create_table(table_name, 'name', 'age')
+        self.processor.insert_into_database(table_name, data)
+
+        result = self.processor.search_database(table_name, 'aaa')
+        return result is not None
+
+    def search_database_5(self):
+        table_name = "test_table"
+        data = [
+            {'name': 'John', 'age': 25},
+            {'name': 'Alice', 'age': 30}
+        ]
+        self.processor.create_table(table_name, 'name', 'age')
+        self.processor.insert_into_database(table_name, data)
+
+        result = self.processor.search_database(table_name, 'bbb')
+        return result is not None
+
+
+class DatabaseProcessorTestDeteleFromDatabase():
+    def setUp(self):
+        self.database_name = "test.db"
+        self.processor = DatabaseProcessor(self.database_name)
+
+    def tearDown(self):
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+        cursor.execute("DROP TABLE IF EXISTS test_table")
+        conn.commit()
+        conn.close()
+
+    def delete_from_database_1(self):
+        table_name = "test_table"
+        data = [
+            {'name': 'John', 'age': 25},
+            {'name': 'Alice', 'age': 30}
+        ]
+        self.processor.create_table(table_name, 'name', 'age')
+        self.processor.insert_into_database(table_name, data)
+
+        self.processor.delete_from_database(table_name, 'John')
+
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+        cursor.execute(f"SELECT * FROM {table_name}")
+        result = cursor.fetchall()
+        conn.close()
+
+        return [len(result), result[0][1]]
+
+    def delete_from_database_2(self):
+        table_name = "test_table"
+        data = [
+            {'name': 'John', 'age': 25},
+            {'name': 'Alice', 'age': 30}
+        ]
+        self.processor.create_table(table_name, 'name', 'age')
+        self.processor.insert_into_database(table_name, data)
+
+        self.processor.delete_from_database(table_name, 'Alice')
+
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+        cursor.execute(f"SELECT * FROM {table_name}")
+        result = cursor.fetchall()
+        conn.close()
+
+        return [len(result), result[0][1]]
+
+    def delete_from_database_3(self):
+        table_name = "test_table"
+        data = [
+            {'name': 'John', 'age': 25},
+            {'name': 'Alice', 'age': 30}
+        ]
+        self.processor.create_table(table_name, 'name', 'age')
+        self.processor.insert_into_database(table_name, data)
+
+        self.processor.delete_from_database(table_name, 'John')
+        self.processor.delete_from_database(table_name, 'Alice')
+
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+        cursor.execute(f"SELECT * FROM {table_name}")
+        result = cursor.fetchall()
+        conn.close()
+
+        return len(result)
+
+    def delete_from_database_4(self):
+        table_name = "test_table"
+        data = [
+            {'name': 'John', 'age': 25},
+            {'name': 'aaa', 'age': 30}
+        ]
+        self.processor.create_table(table_name, 'name', 'age')
+        self.processor.insert_into_database(table_name, data)
+
+        self.processor.delete_from_database(table_name, 'John')
+
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+        cursor.execute(f"SELECT * FROM {table_name}")
+        result = cursor.fetchall()
+        conn.close()
+
+        return [len(result), result[0][1]]
+
+    def delete_from_database_5(self):
+        table_name = "test_table"
+        data = [
+            {'name': 'bbb', 'age': 25},
+            {'name': 'Alice', 'age': 30}
+        ]
+        self.processor.create_table(table_name, 'name', 'age')
+        self.processor.insert_into_database(table_name, data)
+
+        self.processor.delete_from_database(table_name, 'bbb')
+
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+        cursor.execute(f"SELECT * FROM {table_name}")
+        result = cursor.fetchall()
+        conn.close()
+
+        return [len(result), result[0][1]]
+
+
+class DatabaseProcessorTest():
+    def setUp(self):
+        self.database_name = "test.db"
+        self.processor = DatabaseProcessor(self.database_name)
+
+    def tearDown(self):
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+        cursor.execute("DROP TABLE IF EXISTS test_table")
+        conn.commit()
+        conn.close()
+
+    def DatabaseProcessor(self):
+        table_name = "test_table"
+        self.processor.create_table(table_name, 'name', 'age')
+
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+        cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name=?", (table_name,))
+        result = cursor.fetchone()
+        conn.close()
+
+        res1 = result[0]
+
+        data = [
+            {'name': 'John', 'age': 25},
+            {'name': 'Alice', 'age': 30}
+        ]
+        self.processor.insert_into_database(table_name, data)
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+        cursor.execute(f"SELECT * FROM {table_name}")
+        result = cursor.fetchall()
+        conn.close()
+
+        res2 = len(result)
+        res3 = result[0][2]
+
+        result = self.processor.search_database(table_name, 'John')
+        self.assertIsNotNone(result)
+        res4 = len(result)
+        res5 = result[0][1]
+
+        self.processor.delete_from_database(table_name, 'John')
+
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+        cursor.execute(f"SELECT * FROM {table_name}")
+        result = cursor.fetchall()
+        conn.close()
+
+        return [res1, res2, res3, res4, res5, len(result), result[0][1]]
+
+
+def obtain_output():
+    classes = ['DatabaseProcessorTestCreateTable',
+               'DatabaseProcessorTestInsertIntoDatabase',
+               'DatabaseProcessorTestSearchDatabase',
+               'DatabaseProcessorTestDeteleFromDatabase',
+               'DatabaseProcessorTest']
+    output = []
+    output_idx = 0
+    for each_class in classes:
+        this_class = eval(f"{each_class}()")
+        test_functions = [name for name, obj in inspect.getmembers(eval(each_class))
+                  if inspect.isfunction(obj)]
+        for each_func in test_functions:
+            function_output = None
+            try:
+                function_output = eval(f"this_class.{each_func}()")
+                output.append([output_idx,function_output])
+            except Exception as e:
+                output.append([output_idx, e])
+            output_idx += 1
+    return output

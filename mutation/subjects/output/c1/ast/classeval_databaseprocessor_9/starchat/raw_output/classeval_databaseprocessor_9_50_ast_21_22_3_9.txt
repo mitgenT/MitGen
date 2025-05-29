@@ -1,0 +1,3 @@
+if cursor is not None:
+    cursor.close()
+conn.close()

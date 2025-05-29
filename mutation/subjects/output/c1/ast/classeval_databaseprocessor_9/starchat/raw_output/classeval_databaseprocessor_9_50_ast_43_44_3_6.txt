@@ -1,0 +1,17 @@
+```python
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+
+        select_query = f"SELECT * FROM {table_name} WHERE name =?"
+        cursor.execute(select_query, (name,))
+        result = cursor.fetchall()
+
+        return result
+
+        delete_query = f"DELETE FROM {table_name} WHERE name =?"
+        cursor.execute(delete_query, (name,))
+
+        conn.commit()
+        conn.close()
+```
+The `<MASK>` in the `delete_from_database` method of the `DatabaseProcessor` class has been infilled, ensuring that the select operation for searching is separated from the delete operation. The select operation obtains the required records to delete, and the delete operation then removes these records, maintaining the integrity of the database operations.

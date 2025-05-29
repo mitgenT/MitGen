@@ -1,0 +1,17 @@
+The output can be obtained by simply removing the trailing "<MASK>" which serves no purpose. The docstring, in Python, can be used for documenting the purpose of the code, but is completely ignored by Python itself. Hence, the given code without <MASK> would simply be:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+```

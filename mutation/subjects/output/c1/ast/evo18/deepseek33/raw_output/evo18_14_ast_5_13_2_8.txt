@@ -1,0 +1,14 @@
+In this code, we need to fill in the correct code snippet to iterate over each character in the string and each substring to compare the string segment to the substring. The Python built-in function `range` and slicing is useful for this task. 
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        for i in range(len(string) - len(sub) + 1):
+            if string[i:i+len(sub)] == sub:
+                result[sub] += 1
+    return result
+```
+The `range(len(string) - len(sub) + 1)` is used to create a range of start indices that are possible for the substring in the string. For each substring, we iterate over these possible start indices, and we slice the string from the start index to `start index + length of the substring`, and compare it with the substring. If they match, we increase the count of that substring in the result dictionary.

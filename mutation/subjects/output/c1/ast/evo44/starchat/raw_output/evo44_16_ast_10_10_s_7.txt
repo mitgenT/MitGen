@@ -1,0 +1,4 @@
+```python
+if remainder < base_10:
+                remainder = base_10 % new_base
+```

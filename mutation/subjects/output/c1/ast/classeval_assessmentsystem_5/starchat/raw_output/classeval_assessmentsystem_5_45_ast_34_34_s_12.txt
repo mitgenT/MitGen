@@ -1,0 +1,2 @@
+self.course_average[course] += score
+count += 1

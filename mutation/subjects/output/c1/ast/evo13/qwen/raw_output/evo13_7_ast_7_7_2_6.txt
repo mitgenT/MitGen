@@ -1,0 +1,29 @@
+Based on the provided docstring, we need to check if the GCD is 1, and if so, return -1. Otherwise, return the GCD itself. Let's infill `<MASK>` in the code accordingly:
+
+```python
+from typing import List
+def multiple_greatest_common_divisors(numbers: List[int]) -> int:
+    import math
+    gcd = numbers[0]
+    for num in numbers[1:]:
+        gcd = math.gcd(gcd, num)
+    if gcd == 1:
+        return -1
+    else:
+        return gcd
+```
+
+Now, the complete code with `<MASK>` filled is as follows:
+
+```python
+from typing import List
+def multiple_greatest_common_divisors(numbers: List[int]) -> int:
+    import math
+    gcd = numbers[0]
+    for num in numbers[1:]:
+        gcd = math.gcd(gcd, num)
+    if gcd == 1:
+        return -1
+    else:
+        return gcd
+```

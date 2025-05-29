@@ -1,0 +1,11 @@
+```python
+if fields == "*":
+    <MASK>
+    fields = ", ".join(fields)
+```
+```python
+if fields == "*":
+    fields = "*"
+else:
+    fields = ", ".join(fields)
+```

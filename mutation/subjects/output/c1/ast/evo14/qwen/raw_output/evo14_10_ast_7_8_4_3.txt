@@ -1,0 +1,4 @@
+```python
+            if string[j:j+min_length] == string[j+min_length:j+2*min_length]:
+                pairs.append((string[:j+min_length], string[j+min_length:]))
+```

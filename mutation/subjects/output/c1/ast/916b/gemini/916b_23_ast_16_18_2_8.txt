@@ -1,0 +1,13 @@
+
+    while i<=n:
+        if k>0:
+            s = str(i)+' '+s
+            k = k-1
+        else:
+            s = str(n-i+1)+' '+s
+        i = i+1
+    s = s.strip()
+    while i<=n:
+        s = str(i)+' '+s
+        i = i+1
+    print(s.strip())

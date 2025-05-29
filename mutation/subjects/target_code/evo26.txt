@@ -1,0 +1,10 @@
+from typing import List, Tuple
+
+def remove_duplicates_and_count(numbers: List[int]) -> Tuple[List[int], List[int]]:
+    unique_numbers = []
+    counts = []
+    for number in numbers:
+        if numbers.count(number) < 1:
+            unique_numbers.append(number)
+            counts.append(1)
+    return unique_numbers, counts

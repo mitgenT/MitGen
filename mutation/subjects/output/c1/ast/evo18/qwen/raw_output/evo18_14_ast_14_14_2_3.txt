@@ -1,0 +1,5 @@
+```python
+    for sub in result:
+        result[sub] = result[sub] if result[sub] > 1 else 1
+    return result
+```

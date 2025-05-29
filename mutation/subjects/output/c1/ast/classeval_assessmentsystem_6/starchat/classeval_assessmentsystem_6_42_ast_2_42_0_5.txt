@@ -1,0 +1,31 @@
+class AssessmentSystem:
+    def __init__(self):
+        self.students = {}
+    def add_student(self, name, grade, major):
+        self.students[name] = {'name': name, 'grade': grade,'major': major, 'courses': {}}
+    def add_course_score(self, name, course, score):
+        if name in self.students:
+            self.students[name]['courses'][course] = score
+    def get_gpa(self, name):
+        if name in self.students:
+            scores = self.students[name]['courses'].values()
+            if scores:
+                return sum(scores) / len(scores)
+    def get_all_students_with_fail_course(self):
+        all_students_with_fail_course = []
+        for student, info in self.students.items():
+            for score in info['courses'].values():
+                if score < 60:
+                    all_students_with_fail_course.append(student)
+                    break
+        return list(set(all_students_with_fail_course))
+    def get_course_average(self, course):
+        scores = []
+        for info in self.students.values():
+            if course in info['courses']:
+                scores.append(info['courses'][course])
+        if scores:
+            return sum(scores) / len(scores)
+    def get_top_student(self):
+        max_gpa = 0
+        top_student

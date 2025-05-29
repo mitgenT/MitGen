@@ -1,0 +1,28 @@
+t=int(input())
+while t>1:
+    a,b,c=map(int,input().split())
+    if (a>b):
+        if (a<c):
+            print(a)
+            t=t-1
+        elif (c>b):
+            print(c)
+            t=t-1
+        else:
+            print(b)
+            t=t-1
+    else:
+        if (c>a):
+            if (b>c):
+                print(b)
+                t=t-1
+            elif (b<a):
+                print(a)
+                t=t-1
+        else:
+            if (b>a):
+                print(a)
+                t=t-1
+            else:
+                print(c)
+                t=t-1

@@ -1,0 +1,20 @@
+import sys
+
+def play(a,b):
+    a.sort(reverse=True)
+    b.sort(reverse=True)
+    ans = 0
+    for i in range(min(len(a),len(b))):
+        if a[i]>b[i]:
+            ans+= a[i]-b[i]
+        else:
+            break
+    return ans
+
+t = int(input())
+ 
+for i in range(t):
+    n = int(input())
+    a = list(map(int,input().split()))
+    b = list(map(int,input().split()))
+    print(play(a,b))

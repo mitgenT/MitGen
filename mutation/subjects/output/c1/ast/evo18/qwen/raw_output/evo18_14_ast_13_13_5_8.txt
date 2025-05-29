@@ -1,0 +1,25 @@
+Based on the given docstring, we need to fill in the <MASK> in the code to count overlapping occurrences of substrings and handle the case where no more occurrences are found. Here's the filled-in code:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                # If no more occurrences are found after the current position
+                break
+    else:
+        # If all substrings were found in the string without reaching the end
+        for sub in result:
+            result[sub] += 1
+    return result
+```
+
+The `else` clause after the `for` loop is used to handle the case where the loop completes normally (i.e., without breaking), indicating that there were no more occurrences of any substring after the last found occurrence. In this case, we increment the count by one for each substring.

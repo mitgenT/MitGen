@@ -1,0 +1,6 @@
+delete_query = f"DELETE FROM {table_name} WHERE name =?"
+cursor.execute(delete_query, (name,)) if cursor.rowcount > 0 else print('No matching name found in the database')
+
+# Close the cursor and connection
+cursor.close()
+conn.close()

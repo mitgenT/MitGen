@@ -1,0 +1,14 @@
+## Output
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        else:
+            if not result:
+                result.append(str(i+1))
+    return''.join(result)
+```
+
+In the given code snippet, `<MASK>` was filled with a condition to check if `result` is empty. If it is, the code appends `(i+1)` as a string to the `result` list. This ensures that the initial numbers from 0 up to n (inclusive) are correctly added to the string sequence in case there's no need to replace them with "Fizz".

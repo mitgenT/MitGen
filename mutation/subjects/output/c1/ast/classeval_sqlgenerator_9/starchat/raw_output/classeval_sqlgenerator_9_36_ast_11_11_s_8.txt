@@ -1,0 +1,6 @@
+```Python
+    fields = ", ".join(fields) if isinstance(fields, list) else fields
+    sql = f"SELECT {fields} FROM {self.table_name}"
+    if condition:
+        sql += f" WHERE {condition}"
+```

@@ -1,0 +1,14 @@
+t=int(input())
+for _ in range(t):
+  n=int(input())
+  a=list(map(int,input().split()))
+  b=list(map(int,input().split()))
+  mex=0
+  s=0
+  for i in range(n):
+    s+=min(a[i],b[i])
+    a[i]-=min(a[i],b[i])
+    b[i]-=min(a[i],b[i])
+    if a[i]:mex=1
+    if b[i]:mex=1
+  print(s+mex)

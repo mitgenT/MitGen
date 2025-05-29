@@ -1,0 +1,14 @@
+Based on the provided docstring, the `gcd` should be updated with the GCD of all elements in the list. If the GCD is 1, we should return -1. Here's how you can fill in the `<MASK>`:
+
+```python
+from typing import List
+def multiple_greatest_common_divisors(numbers: List[int]) -> int:
+    import math
+    gcd = numbers[0]
+    if len(numbers) > 1:
+        for num in numbers[1:]:
+            gcd = math.gcd(gcd, num)
+        if gcd == 1:
+            return -1
+    return gcd
+```

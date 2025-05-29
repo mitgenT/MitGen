@@ -1,0 +1,4 @@
+if cursor.rowcount > 0:  
+    conn.commit()
+else:  
+    print(f"No data found in {table_name} for {name}")

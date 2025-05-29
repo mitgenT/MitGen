@@ -1,0 +1,5 @@
+```python
+if i == special_index:
+    temp = char
+    continue
+```

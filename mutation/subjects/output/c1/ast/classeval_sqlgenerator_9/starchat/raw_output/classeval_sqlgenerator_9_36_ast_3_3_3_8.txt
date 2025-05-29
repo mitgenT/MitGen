@@ -1,0 +1,17 @@
+```Python
+if table_name!= "":
+    self.table_name = table_name
+```
+
+```Python
+    fields = ", ".join(fields)
+```
+
+```Python
+    values = ", ".join([f"'{value}'" for value in data.values()])
+```
+
+```Python
+    set_clause = ", ".join([f"{field} = '{value}'" for field, value in data.items()])
+```
+```

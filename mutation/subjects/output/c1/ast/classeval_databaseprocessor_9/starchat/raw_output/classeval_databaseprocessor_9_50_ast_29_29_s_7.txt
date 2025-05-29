@@ -1,0 +1,5 @@
+```python
+            if cursor.rowcount > 0:
+                print("Insertion successful")
+```
+This will print 'Insertion successful' if the insert operation in the 'insert_into_database' method has completed successfully.

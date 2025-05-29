@@ -1,0 +1,9 @@
+```python
+    vowels = set('aeiouAEIOU')  # Create a set of vowels for case-insensitive comparison
+    if not strings:  # Check if the input list is empty
+        longest_substring = None
+        longest_substring_index = None
+    else:
+        longest_substring = None
+        longest_substring_index = 0
+```

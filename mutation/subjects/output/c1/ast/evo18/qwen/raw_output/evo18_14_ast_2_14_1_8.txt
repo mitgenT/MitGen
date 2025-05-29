@@ -1,0 +1,19 @@
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if not string or not all(substring for substring in substrings):
+        return {substring: 0 for substring in substrings}
+
+    result = {}
+    for substring in substrings:
+        if substring == '':
+            return "Substrings cannot be empty"
+
+    for i in range(len(string)):
+        for j in range(i + len(substring), len(string) + 1):
+            if string[i:j] == substring:
+                if substring in result:
+                    result[substring] += 1
+                else:
+                    result[substring] = 1
+    return result
+```

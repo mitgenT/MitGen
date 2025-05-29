@@ -1,0 +1,23 @@
+Based on the given docstring, we can find out that we should increment the count of the substring in the result dictionary if it is found in the string and we should increment the starting position of the next find operation by 1. We also need to consider the case when substring is not found in the string to break the loop.
+
+Here is the infilled code:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                if string[pos:pos+len(sub)] == sub:
+                    result[sub] += 1
+                    start += 1
+            else:
+                break
+    return result
+```
+
+This code works by iterating over each substring and for each one it iterates over the string using a while loop. It finds the position of the substring in the string starting from the index `start`. If the position is not -1 (indicating the substring is found), it then checks if the substring in the string from the found position to the next `len(sub)` characters is equal to the substring itself. If so, it increments the count in the result dictionary for that substring and increments `start` by 1. If the substring is not found (indicated by `pos` being -1), it breaks out of the loop.

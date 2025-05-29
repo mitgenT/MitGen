@@ -1,0 +1,5 @@
+```python
+new_base_num = str(remainder)
+```
+
+Explanation: This solution fulfills the requirements by converting the remainder into a string and adding it to the `new_base_num` variable. The `str()` function is used to ensure that non-digit values (if they occur in the new base) are properly handled. If a digit remains in the new base, it is added as a string.

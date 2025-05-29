@@ -1,0 +1,7 @@
+```Python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    if not string:
+        return string
+    result = ''
+```

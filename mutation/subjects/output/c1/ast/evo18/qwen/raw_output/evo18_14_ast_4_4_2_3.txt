@@ -1,0 +1,22 @@
+Based on the given docstring, the `how_many_times` function needs to check if the input string is empty and handle that case, as well as initialize a dictionary to store the counts if the input is not empty. Here's how to fill in the `<MASK>` parts:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    
+    # Initialize an empty dictionary to store the counts
+    result = {sub: 0 for sub in substrings}
+
+    if string:  # Check if the string is not empty
+        for sub in substrings:
+            start = 0
+            while start < len(string) - 1:
+                pos = string.find(sub, start)
+                if pos != -1:
+                    result[sub] += 1
+                    start = pos + 1
+                else:
+                    break
+    return result
+```

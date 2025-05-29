@@ -1,0 +1,7 @@
+```python
+        if remainder < 10:
+            digit = remainder
+            new_base_num = str(digit) + new_base_num
+        else:
+            new_base_num = chr(remainder + 55) + new_base_num 
+```

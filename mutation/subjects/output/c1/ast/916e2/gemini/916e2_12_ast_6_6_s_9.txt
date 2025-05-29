@@ -1,0 +1,16 @@
+## Target code
+t=int(input())
+for i in range(t):
+    n=int(input())
+    a=[int(ele) for ele in input().split()]
+    b=[int(ele) for ele in input().split()]
+    d=[]
+    for i in range(0,len(a)):
+        if a[i]!=0 and b[i]!=0:d.append([min(a[i],b[i]),i])
+    d.sort(key=lambda x:-x[0])
+    res=0
+    for i in range(n):
+        if i%2:res-=(b[d[i][1]]-1)
+        else:res+=(b[d[i][1]]-1)
+    print(res)
+

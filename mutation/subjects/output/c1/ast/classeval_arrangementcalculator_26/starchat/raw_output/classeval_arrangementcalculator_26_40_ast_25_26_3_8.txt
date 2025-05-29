@@ -1,0 +1,73 @@
+In the given code, there are two locations where `<MASK>` needs to be filled.
+
+1. In the method `count_all(n)`, the bug line:
+    ```Python
+    total += ArrangementCalculator.count(n, i)
+    ```
+
+    This should be changed to:
+    ```Python
+    total += ArrangementCalculator.count(n, m=i)
+    ```
+    The `m` parameter needs to be explicitly specified with its value in the call to the `count` method.
+
+2. In the method `select(self, m=None)`, the missing code after `<MASK>`:
+    ```Python
+    <MASK>
+    for combo in itertools.combinations(self.datas, m):
+        result.append(list(combo))
+    return result
+    ```
+
+    This should be added to the code:
+    ```Python
+    for combo in itertools.combinations(self.datas, m):
+        result.append(list(combo))
+    return result
+    ```
+
+Here is the full code with the changes made:
+
+```python
+import itertools
+
+
+class ArrangementCalculator:
+    def __init__(self, datas):
+        self.datas = datas
+
+    @staticmethod
+    def count(n, m=None):
+        if m is None or n == m:
+            return ArrangementCalculator.factorial(n)
+        else:
+            return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)
+
+    @staticmethod
+    def count_all(n):
+        total = 0
+        for i in range(1, n + 1):
+            total += ArrangementCalculator.count(n, m=i)
+        return total
+
+    def select(self, m=None):
+        if m is None:
+            m = len(self.datas)
+        result = []
+        for combo in itertools.combinations(self.datas, m):
+            result.append(list(combo))
+        return result
+
+    def select_all(self):
+        result = []
+        for i in range(1, len(self.datas) + 1):
+            result.extend(self.select(i))
+        return result
+
+    @staticmethod
+    def factorial(n):
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
+```

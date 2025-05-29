@@ -1,0 +1,3 @@
+from typing import List
+def multiple_greatest_common_divisors(numbers: List[int]) -> int:
+    <MASK>

@@ -1,0 +1,5 @@
+```Python
+if fields is None:
+    fields = ", ".join(fields)
+```
+```

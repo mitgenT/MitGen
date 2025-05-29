@@ -1,0 +1,23 @@
+## Output:
+```python
+def change_base(x: str, base: int, new_base: int):
+    base_10 = 0
+    for digit in x:
+        if digit.isdigit():
+            base_10 = base * base_10 + int(digit)
+        else:
+            base_10 = base * base_10 + (ord(digit.upper()) - 55)  # Convert hex to dec
+
+    new_base_num = ""
+    if base_10 == 0:
+        return '0'
+    while base_10 > 0:
+        remainder = base_10 % new_base
+        base_10 -= new_base
+        if 0 <= remainder <= 9:
+            new_base_num = str(remainder) + new_base_num
+        else:
+            new_base_num = chr(remainder + 55) + new_base_num 
+    return new_base_num
+```
+In the given solution, a for loop and conditional statements are added to traverse each digit of the input number x and convert it into decimal (base_10). Then, the decimal number is converted to the desired base (new_base). Letters with a numerical value greater than 9 are converted to uppercase ASCII characters using the chr() function. The converted number is returned as a string.

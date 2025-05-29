@@ -1,0 +1,34 @@
+def how_many_times(string: str, substrings: list) -> dict:
+    """
+    This function determines the frequency of each provided substring within the original string, considering overlapping instances.
+    It returns a dictionary with substring keys and their respective counts.
+    An error message "Substrings cannot be empty" is returned if any empty string is encountered.
+    For an empty input string, the output will have zero counts for all substrings.
+    If a substring appears multiple times in the input list, its count will be incremented accordingly.
+    Examples include:
+    - With an empty string and 'a': {'a': 0}
+    - In 'aaa' with 'a' and 'a': {'a': 6}
+    - In 'aaaa' with 'aa' and 'a': {'aa': 3, 'a': 4}
+    - In 'abcabc' with 'a', 'b', and 'c': {'a': 2, 'b': 2, 'c': 2}
+    """
+    if "" in substrings:
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string):
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + len(sub)
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result

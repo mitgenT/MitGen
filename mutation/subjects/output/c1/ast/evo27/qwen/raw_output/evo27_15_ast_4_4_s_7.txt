@@ -1,0 +1,21 @@
+Based on the provided docstring, we need to modify the given code to check if the character at the `special_index` should be flipped according to the rules. Here's the modified code:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+        else:
+            if char.islower():
+                result += char.upper()
+            else:
+                result += char
+    return result
+```
+
+The `if i == special_index` condition has been updated to `if char.islower()` to match the rule for flipping lowercase characters, and `else` part remains the same to handle uppercase characters.

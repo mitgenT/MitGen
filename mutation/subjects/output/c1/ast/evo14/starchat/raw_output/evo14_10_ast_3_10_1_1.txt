@@ -1,0 +1,16 @@
+## Output
+```python
+from typing import List, Tuple
+
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+   result = []
+   for i in range(len(string) - min_length + 1):
+       prefix = string[:i+min_length]
+       for j in range(i + min_length, len(string)):
+           suffix = string[j:]
+           if prefix!= suffix and len(prefix) >= min_length and len(suffix) >= min_length:
+               result.append((prefix, suffix))
+   result.sort(key = lambda x: (len(x[0]), x[0]))
+   return result
+```
+In this solution, a nested loop constructs all possible prefix-suffix pairs. The prefix length varies from'min_length' to 'len(string) - min_length + 1', while the suffix length varies from'min_length' to 'len(string) - prefix length'. The prefix and suffix should also not overlap and each must be at least'min_length' characters long. After creating all pairs, they are sorted in increasing order of their lengths, then lexicographically. The'sort()' method is used with a lambda function to achieve this.

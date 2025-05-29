@@ -1,0 +1,13 @@
+```python
+def get_gpa(self, name):
+    if name in self.students:
+        total = 0
+        count = 0
+        for course, score in self.students[name]['courses'].items():
+            total += score
+            count += 1
+        return total / count if count > 0 else None
+    return None
+```
+
+This code implements the `get_gpa` method for the `AssessmentSystem` class, as per the given requirements in the docstring. It calculates the GPA (average grade) for a given student and returns the result. The method handles the case when the student does not exist in the system or when the student does not have any course scores. If the GPA can't be calculated, the method will return `None`.

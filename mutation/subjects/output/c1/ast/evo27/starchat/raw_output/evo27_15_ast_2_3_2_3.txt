@@ -1,0 +1,21 @@
+## Output
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    result = ""
+    special_index %= len(string)  # Treat'special_index' as an index in a circular list.
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+        else:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char.upper()
+    return result
+```
+
+In the above solution,'special_index' is made into a circular index by taking a modulus of its length with the length of the string. This allows the case transformation of the character at the'special_index' to be done correctly even when the'special_index' is out of the range of the string's length. The rest of the characters in the string are transformed as required by the given docstring.

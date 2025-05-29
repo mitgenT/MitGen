@@ -1,0 +1,32 @@
+for i in range(int(input())):
+    s = list(map(int,list(input())))
+    n = len(s)
+    p = str(s[0])
+    r = ""
+    x = 0
+    if s[1] == 0:
+        if s[0] < s[2] or s[0] < s[3]:
+            pass
+        else:
+            for i in range(2,n):
+                if s[i] != 0:
+                    x = i
+                    break
+                else:
+                    p += str(s[i])
+        for i in range(x,n):
+            r += str(s[i])
+
+        if int(p) < int(r):
+            print(p,r)
+        else:
+            print(-1)
+    else:
+        a = s[0]
+        b = ""
+        if s[1] > s[0]:
+            pass
+        else:
+            for i in range(2,n):
+                b += str(s[i])
+        print(a,b)

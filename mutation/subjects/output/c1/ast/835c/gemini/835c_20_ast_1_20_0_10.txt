@@ -1,0 +1,14 @@
+for tc in range(int(input())):
+    n = int(input())
+    strength = list(map(int,input().split()))
+    strength.sort()
+    ans = []
+    for i in strength:
+        idx = strength.index(i)
+        if idx==0:
+            ans.append(strength[1]-i)
+        elif idx==n-1:
+            ans.append(strength[n-2]-i)
+        else:
+            ans.append(max(strength[idx+1]-i,strength[idx-1]-i))
+    print(*ans)

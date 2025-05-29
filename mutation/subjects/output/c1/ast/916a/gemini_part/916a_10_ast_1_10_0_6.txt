@@ -1,0 +1,15 @@
+for _ in range(int(input())):
+    n = int(input())
+    a = list(input())
+    curr_prob = 0
+    time = 0
+    total = 0
+    for i in a:
+        if ord(i) - ord('A') > curr_prob:
+            continue
+        time += 1
+        if time == ord(i) - ord('A') + 1:
+            total += 1
+            time = 0
+            curr_prob = ord(i) - ord('A') + 1
+    print(total)

@@ -1,0 +1,25 @@
+from sys import stdin, stdout
+class Solution:
+    def BinaryInversions(self, n: int, Bits: list) -> int:
+        cnt0 = 0
+        cnt1 = 0
+        for x in Bits:
+            cnt1 += x
+        cnt0 = n - cnt1
+        ans = cnt1 * cnt0
+        for i in range(n):
+            prefCnt = 0
+            suffCnt = 0
+            for j in range(i - 1, -1, -1):
+                prefCnt += (1 - Bits[j] > 0)
+            for j in range(i + 1, n):
+                suffCnt += (1 - Bits[j] > 0)
+            ans = max(ans, prefCnt * (cnt1 - Bits[i]) + suffCnt * Bits[i] + cnt0 * (1 - Bits[i]))
+        return ans
+
+sol = Solution()
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    bits = list(map(int, input().split()))
+    print(sol.BinaryInversions(n, bits))

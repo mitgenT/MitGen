@@ -1,0 +1,13 @@
+```python
+def get_top_student(self):
+    top_student = None
+    top_gpa = 0
+    for name, student in self.students.items():
+        gpa = self.get_gpa(name)
+        if gpa is not None and gpa > top_gpa:
+            top_gpa = gpa
+            top_student = name
+    return top_student
+```
+
+In the given Python code, <MASK> refers to the missing code block in the get_top_student() method. By calculating the GPA for each student using the get_gpa() method and keeping track of the student with the highest GPA, the missing code correctly identifies and returns the name of the top-scoring student.

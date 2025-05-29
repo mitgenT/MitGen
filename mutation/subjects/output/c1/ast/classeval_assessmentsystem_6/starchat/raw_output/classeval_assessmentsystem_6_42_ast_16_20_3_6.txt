@@ -1,0 +1,12 @@
+```python
+    def get_all_students_with_fail_course(self):
+        students = []
+        for name, student in self.students.items():
+            for course, score in student['courses'].items():
+                if score < 60:
+                    students.append(name)
+                    break
+        return students
+```
+
+This program implements a student assessment system class that supports various functions such as adding students, adding course scores, calculating GPA, and finding students with failing courses. The provided code infills the missing <MASK> in the get_all_students_with_fail_course method to iterate over the students and courses to identify those with scores less than 60. The completed class now allows for comprehensive operations on student and course data.

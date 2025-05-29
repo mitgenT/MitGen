@@ -1,0 +1,19 @@
+In the `get_course_average` method, infill `<MASK>` as shown below:
+
+```Python
+def get_course_average(self, course):
+    total = 0
+    count = 0
+    for student in self.students.values():
+        if course in student['courses']:
+            if'score' in student['courses'][course]:
+                score = student['courses'][course]['score']
+            else:
+                score = None
+            if score is not None:
+                total += score
+                count += 1
+    return total / count if count > 0 else None
+```
+
+In the given code, it seems like there was a nested dictionary inside the `courses` dictionary. However, in this case, since there is no nested dictionary, I have taken a different approach where I check if `score` is directly available inside the `courses` dictionary for the given `course`. If it's not available, I assign `score` to be `None`.

@@ -1,0 +1,8 @@
+for test in range(t):
+    n = int(input())
+    s = list(map(int, input().split()))
+    max_ = max(s)
+    ans = [0]*n
+    for i in range(n):
+        ans[i] = max_ - s[i]
+    print(*ans)

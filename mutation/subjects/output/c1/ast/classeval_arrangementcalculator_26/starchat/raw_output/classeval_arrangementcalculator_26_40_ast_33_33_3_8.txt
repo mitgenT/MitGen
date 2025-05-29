@@ -1,0 +1,8 @@
+```python
+def select_all(self):
+    result = []
+    for i in range(1, len(self.datas) + 1):
+        result.extend(self.select(i))
+    return result
+```
+In the `select_all` method, the line `<MASK>` was present, indicating that we were missing the return statement after extending the result. The corrected code now properly includes the `return` statement, thus making the complete program.

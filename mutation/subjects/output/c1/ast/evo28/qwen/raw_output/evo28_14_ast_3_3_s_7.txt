@@ -1,0 +1,33 @@
+Here's the completed code with the `<MASK>` parts filled in based on the given docstring:
+
+```python
+from typing import List, Tuple
+
+def interleave_and_concatenate(strings: List[str], integers: List[int]) -> Tuple[str, int]:
+    # If either list is empty, continue with the other list
+    if not strings and integers or not integers and strings:
+        # If the non-empty list has elements, interleave them
+        if strings:
+            interleaved = strings
+        else:
+            interleaved = integers
+    else:
+        interleaved = []
+        # Interleave elements from both lists
+        for i in range(max(len(strings), len(integers))):
+            if i < len(strings):
+                interleaved.append(strings[i])
+            if i < len(integers):
+                interleaved.append(integers[i])
+
+    concatenated_string = ' '.join([str(i) for i in interleaved if isinstance(i, str)]) 
+    sum_integers = sum([i for i in interleaved if isinstance(i, int)])
+    return (concatenated_string, sum_integers)
+
+# Test cases
+print(interleave_and_concatenate([], []))   # ('', 0)
+print(interleave_and_concatenate(['a', 'b', 'c'], [1, 2, 3]))  # ('abc', 6)
+print(interleave_and_concatenate(['a', 'b'], [1, 2, 3]))    # ('ab', 6)
+```
+
+In this code, we check if either list is empty and handle that case by directly assigning the non-empty list to `interleaved`. If both lists have elements, we iterate over the maximum length of the two lists and interleave their elements.

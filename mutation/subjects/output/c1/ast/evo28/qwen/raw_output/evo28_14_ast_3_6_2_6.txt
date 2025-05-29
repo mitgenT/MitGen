@@ -1,0 +1,30 @@
+Based on the provided docstring, we need to iterate through both lists simultaneously, adding elements from strings and integers to the `interleaved` list. If one list is shorter, we'll continue with the remaining elements of the longer list. Let's fill in the `<MASK>` sections with appropriate logic:
+
+```python
+from typing import List, Tuple
+
+def interleave_and_concatenate(strings: List[str], integers: List[int]) -> Tuple[str, int]:
+    max_len = max(len(strings), len(integers))
+    interleaved = []
+    
+    # Check if either list is empty
+    if not strings and not integers:
+        return ('', 0)
+
+    # Iterate through both lists simultaneously
+    for i in range(max_len):
+        if i < len(strings):
+            interleaved.append(strings[i])
+        if i < len(integers):
+            interleaved.append(integers[i])
+
+    # Concatenate string elements
+    concatenated_string = ' '.join([str(i) for i in interleaved if isinstance(i, str)])
+
+    # Sum integer elements
+    sum_integers = sum([i for i in interleaved if isinstance(i, int)])
+
+    return (concatenated_string, sum_integers)
+```
+
+Now the code is completed according to the given docstring.

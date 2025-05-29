@@ -1,0 +1,12 @@
+```python
+    def insert_into_database(self, table_name, data):
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+
+        for item in data:
+            insert_query = f"INSERT INTO {table_name} ({','.join(item.keys())}) VALUES ({','.join(['?' for _ in range(len(item))])})"
+            cursor.execute(insert_query, tuple(item.values()))
+
+        conn.commit()
+        conn.close()
+```

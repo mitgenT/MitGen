@@ -1,0 +1,17 @@
+Based on the provided docstring, we need to create a string with space-separated numbers from 0 to `n` and replace every `m`-th number with "Fizz". Since we are using 1-based indexing, we should add 1 to `i` when checking the condition. Here's how the code should be filled:
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(1, n + 1):  # Start from 1 instead of 0 for 1-based indexing
+        if (i) % m == 0:  # Use i directly without +1 since we've already incremented in the loop
+            result.append("Fizz")
+        else:
+            if i < 10:  # Check if number is single-digit
+                result.append(str(i))
+            else:
+                result.append(str(i).rjust(len(str(m * m)), '0'))  # Add leading zeros if necessary
+    return ' '.join(result)
+```
+
+Here, I added a condition to handle single-digit numbers and used `str(i).rjust(len(str(m * m)), '0')` to ensure that numbers have the same width as the largest possible Fizz (which is `m * m`).

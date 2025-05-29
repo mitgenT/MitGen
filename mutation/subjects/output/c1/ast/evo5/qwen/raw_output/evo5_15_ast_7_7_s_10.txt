@@ -1,0 +1,5 @@
+```python
+    if limit > 0:
+        for _ in range(limit):
+            result.append(delimeter)
+```

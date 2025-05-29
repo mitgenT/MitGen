@@ -1,0 +1,7 @@
+for tc in range(int(input())):
+    n = int(input())
+    message = input()
+    alphabet_size = 0
+    for char in message:
+        alphabet_size = max(alphabet_size, ord(char) - ord('a') + 1)
+    print(alphabet_size)

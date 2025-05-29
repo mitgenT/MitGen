@@ -1,0 +1,4 @@
+```python
+        if i < limit:
+            result.append(float(delimeter)) if set_float else result.append(delimeter)
+```

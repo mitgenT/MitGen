@@ -1,0 +1,15 @@
+```python
+        n = len(data1)
+        mean1 = sum(data1) / n
+        mean2 = sum(data2) / n
+
+        if n <= 1:
+            numerator = 0
+        else:
+            numerator = sum((data1[i] - mean1) * (data2[i] - mean2) for i in range(n))
+
+        denominator = math.sqrt(sum((data1[i] - mean1) ** 2 for i in range(n))) * math.sqrt(sum((data2[i] - mean2) ** 2 for i in range(n)))
+
+        return numerator / denominator if denominator!= 0 else 0
+```
+In this solution, the `if <MASK>` in the correlation_coefficient function is replaced with a condition that checks if the length of the data sets is less than or equal to 1, and if so, the numerator is set to 0. Otherwise, the regular calculation of the numerator is performed.

@@ -1,0 +1,14 @@
+Infill <MASK> of the given code by modifying the get_all_students_with_fail_course method:
+
+```python
+def get_all_students_with_fail_course(self):
+    students = []
+    for name, student in self.students.items():
+        for course, score in student['courses'].items():
+            if score < 60:
+                students.append(name)
+                break
+    return list(set(students))  # convert list to set to remove duplicates and then back to list
+```
+
+This change ensures that if a student fails a course, their name will only appear once in the returned list.

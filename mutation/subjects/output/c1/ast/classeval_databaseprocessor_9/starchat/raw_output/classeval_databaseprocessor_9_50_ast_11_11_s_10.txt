@@ -1,0 +1,5 @@
+```python
+        if not hasattr(self, 'conn'):
+            conn = sqlite3.connect(self.database_name)
+        self.conn = conn
+```

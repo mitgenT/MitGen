@@ -1,0 +1,24 @@
+## Output
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = False
+    if type(delimeter) == float:
+        set_float = True
+    result = []
+    if limit < len(numbers) - 1:
+        limit += 1  # Make the limit inclusive
+    else:
+        limit = len(numbers)  # No need to intersperse beyond the length
+    for i in range(len(numbers) - 1):
+        if set_float:
+            result.append(float(numbers[i]))
+        else:
+            result.append(numbers[i])
+        if i < limit - 1:  # Only intersperse up to limit
+            result.append(delimeter)
+    result.append(numbers[-1])  # Don't forget to add the last element
+    return result
+```
+
+This solution adjusts the limit to include the last pair in case limit is equal to `len(numbers) - 1` and correctly appends the last element after the interspersing loop. The input type conversion is also handled.

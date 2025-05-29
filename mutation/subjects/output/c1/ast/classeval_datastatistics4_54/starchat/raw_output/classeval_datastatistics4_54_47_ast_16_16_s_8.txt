@@ -1,0 +1,19 @@
+if __name__ == "__main__":
+
+    # Let's test the methods of the class with some data
+
+    list1 = [1, 2, 3]
+    list2 = [4, 5, 6]
+    print('Correlation Coefficient:', DataStatistics4.correlation_coefficient(list1, list2))
+
+    data = [1, 2, 5]
+    print('Skewness:', DataStatistics4.skewness(data))
+
+    data = [1, 20, 100]
+    print('Kurtosis:', DataStatistics4.kurtosis(data))
+
+    data = [1, 2, 3]
+    mu = 1
+    sigma = 1
+    print('PDF:', DataStatistics4.pdf(data, mu, sigma))
+```

@@ -1,0 +1,16 @@
+Based on the provided docstring, it seems that we want to find the greatest common divisor (GCD) of the list of integers, updating `gcd` as we iterate through the list. If the GCD is 1 after calculating with each number, we should return -1. Here's how to fill in the `<MASK>` in the code:
+
+```python
+from typing import List
+def multiple_greatest_common_divisors(numbers: List[int]) -> int:
+    import math
+    gcd = numbers[0]
+    for num in numbers[1:]:
+        if gcd > 1:  # Check if GCD is not 1
+            gcd = math.gcd(gcd, num)
+        else:  # If GCD is 1, break the loop and return -1
+            return -1
+    return gcd
+```
+
+The `math.gcd()` function is used to calculate the GCD between `gcd` and `num`. If `gcd` is 1, we don't need to continue the loop since the GCD won't change. So, we return -1 directly.

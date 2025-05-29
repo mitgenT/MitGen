@@ -1,0 +1,15 @@
+```Python
+        sql = f"SELECT * FROM {self.table_name} WHERE {condition}"
+        return sql + ";"
+```
+
+For the method `select_female_under_age(self, age)`, here is the infill <MASK>:
+
+```Python
+        if condition is not None:
+            condition += f" AND {condition}"
+        else:
+            condition = f"age < {age} AND gender = 'female'"
+        sql = f"SELECT * FROM {self.table_name} WHERE {condition}"
+        return sql + ";"
+```

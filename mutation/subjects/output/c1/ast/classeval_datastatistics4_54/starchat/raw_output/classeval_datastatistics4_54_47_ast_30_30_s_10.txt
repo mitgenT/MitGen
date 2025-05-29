@@ -1,0 +1,21 @@
+Infill <MASK> of the kurtosis method in the given code based on the docstring:
+
+```python
+    @staticmethod
+    def kurtosis(data):
+
+        if len(data) < 4:
+            raise ValueError("Kurtosis is undefined for datasets with fewer than four data points.")
+        mean = sum(data) / len(data)
+        std_dev = math.sqrt(sum((x - mean) ** 2 for x in data) / len(data))
+
+        if std_dev == 0:
+            return math.nan
+
+        centered_data = [(x - mean) for x in data]
+        fourth_moment = sum(x ** 4 for x in centered_data) / len(data)
+
+        kurtosis_value = (fourth_moment / std_dev ** 4) * 3
+
+        return kurtosis_value
+```

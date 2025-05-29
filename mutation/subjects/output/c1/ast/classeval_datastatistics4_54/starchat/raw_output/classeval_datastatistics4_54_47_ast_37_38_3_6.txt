@@ -1,0 +1,19 @@
+```python
+@staticmethod
+def kurtosis(data):
+    n = len(data)
+    mean = sum(data) / n
+    std_dev = math.sqrt(sum((x - mean) ** 2 for x in data) / n)
+
+    if std_dev == 0:
+        return math.nan
+
+    third_moment = sum((x - mean) ** 3 for x in data) / n
+    fourth_moment = sum((x - mean) ** 4 for x in data) / n
+
+    kurtosis_value = (fourth_moment / std_dev ** 4) * 3
+
+    return kurtosis_value
+```
+
+The `<MASK>` in the `kurtosis` method of the `DataStatistics4` class has been filled with the necessary calculation to determine the kurtosis value. The solution follows the docstring description provided.

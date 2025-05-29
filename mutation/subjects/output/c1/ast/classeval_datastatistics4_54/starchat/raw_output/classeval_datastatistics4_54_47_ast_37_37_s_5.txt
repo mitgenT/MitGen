@@ -1,0 +1,5 @@
+```python
+centered_data = [x - sum(data) / len(data) for x in data]
+```
+
+The missing code in the kurtosis method has been infilled to first calculate the centered data, which is then used to calculate the fourth moment ( kurtosis ) for the given data set.

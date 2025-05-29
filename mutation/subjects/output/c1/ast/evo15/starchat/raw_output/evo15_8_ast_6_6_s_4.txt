@@ -1,0 +1,12 @@
+## Output
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        if (i+1) % m!= 0 and i!= n - 1:
+            result.append(str(i))
+    return''.join(result)
+```
+The modification includes checking if the current index is not the (m-th) one and not the last one. In these cases, it appends the current index to the `result`.

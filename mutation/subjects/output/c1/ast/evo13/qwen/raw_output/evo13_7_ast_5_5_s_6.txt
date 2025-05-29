@@ -1,0 +1,20 @@
+Based on the given docstring, we need to check if all the elements in the list have a common divisor other than 1. If they do, we calculate the greatest common divisor (GCD) iteratively. Here's how to fill in the `<MASK>` parts:
+
+```python
+from typing import List
+import math
+
+def multiple_greatest_common_divisors(numbers: List[int]) -> int:
+    gcd = numbers[0]
+    
+    # Iterate through the rest of the numbers
+    for num in numbers[1:]:
+        if gcd > 1:  # Only check if there's a common divisor other than 1
+            gcd = math.gcd(gcd, num)
+        else:
+            break  # If GCD is 1, no need to continue
+
+    return gcd
+```
+
+The output code with `<MASK>` filled is as above.

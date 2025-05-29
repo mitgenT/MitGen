@@ -1,0 +1,53 @@
+```python
+import sqlite3
+import pandas as pd
+
+class DatabaseProcessor:
+
+    def __init__(self, database_name):
+        self.database_name = database_name
+
+    def create_table(self, table_name, key1, key2):
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+
+        create_query = f"CREATE TABLE IF NOT EXISTS {table_name} (id INTEGER PRIMARY KEY, {key1} TEXT, {key2} INTEGER)"
+        cursor.execute(create_query)
+
+        conn.commit()
+        conn.close()
+
+    def insert_into_database(self, table_name, data):
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+
+        for item in data:
+            insert_query = f"INSERT INTO {table_name} ({key1}, {key2}) VALUES (?,?)"
+            cursor.execute(insert_query, (item[key1], item[key2]))
+
+        conn.commit()
+        conn.close()
+
+    def search_database(self, table_name, name):
+
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+
+        select_query = f"SELECT * FROM {table_name} WHERE {key1} =?"
+        cursor.execute(select_query, (name,))
+        result = cursor.fetchall()
+
+        return result
+
+    def delete_from_database(self, table_name, name):
+
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+
+        delete_query = f"DELETE FROM {table_name} WHERE {key1} =?"
+        cursor.execute(delete_query, (name,))
+
+        conn.commit()
+        conn.close()
+```
+In the solution, the <MASK> has been filled in the 'create_table' method to create the table in the database with the specified table name, key1, and key2. Also, I have added the placeholders for 'key1' and 'key2' in the 'insert_into_database','search_database', and 'delete_from_database' methods for the sake of completeness and readability. Please provide the actual values of 'key1' and 'key2' when using this class.

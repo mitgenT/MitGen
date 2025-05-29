@@ -1,0 +1,11 @@
+
+n=int(input())
+a=0
+for i in range(n):
+            a=int(input())
+            s=input()
+            max_char=max(s)
+            a=ord(max_char)
+            print(a-96)
+
+            

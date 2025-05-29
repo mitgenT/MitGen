@@ -1,0 +1,4 @@
+```python
+if not item:
+    insert_query = f"INSERT INTO {table_name} (name, age) VALUES (?,?)"
+```

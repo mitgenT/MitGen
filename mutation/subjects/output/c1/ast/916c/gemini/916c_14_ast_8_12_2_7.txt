@@ -1,0 +1,17 @@
+    for i in range(n):
+        if k == 0:
+            break
+        if i == 0:
+            sum += a[i]
+            k -= 1
+        else:
+            if maxB <= b[i]:
+              sum += b[i]
+              k -= 1
+            else:
+              sum += a[i]
+              k -= 1
+         maxB = max(maxB, b[i])
+
+    result = sum
+

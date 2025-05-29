@@ -1,0 +1,4 @@
+if fields == "*":
+    sql = f"SELECT {fields} FROM {self.table_name}"
+else:
+    sql = f"SELECT {fields} FROM {self.table_name}"

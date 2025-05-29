@@ -1,0 +1,17 @@
+```python
+    def get_course_average(self, course):
+        total = 0
+        count = 0
+        for student in self.students.values():
+            if course in student['courses']:
+                score = student['courses'][course]
+                if score is not None:
+                    total += score
+                    count += 1
+        if count == 0:
+            return None
+        else:
+            return total / count
+```
+
+In the solution, for calculating the average score of a specific course in the `get_course_average` method, added a condition to check if `count` is 0 to prevent dividing by zero. Also, added the appropriate return statement when `count` is not 0 to calculate the average.

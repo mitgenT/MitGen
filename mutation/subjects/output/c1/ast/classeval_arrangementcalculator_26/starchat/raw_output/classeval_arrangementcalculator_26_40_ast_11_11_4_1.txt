@@ -1,0 +1,6 @@
+if m is None or n == m:
+    result = ArrangementCalculator.factorial(n)
+else:
+    return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)
+
+# Fix the bug by replacing `return` with `result` at the line marked with 'bug location' to return the calculated factorial permutation when m is not provided or n equals m.

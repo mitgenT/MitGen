@@ -1,0 +1,5 @@
+for i in range(n):
+    b=int(input())
+    s=input()
+    a=max({ord(char)-96 for char in s  if ord(char)>=97 and ord(char)<=122},default=0)
+    print(a)

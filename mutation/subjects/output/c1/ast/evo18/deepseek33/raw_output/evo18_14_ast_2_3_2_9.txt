@@ -1,0 +1,21 @@
+In order to properly fill in the code, you need to make sure that the given code includes the correct logic to calculate how many times each substring appears in the string. You also need to check if there are any empty strings in the substring list.
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(not sub for sub in substrings):
+        return "Substrings cannot be empty"
+    if not string:
+        return {sub: 0 for sub in substrings}
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+```
+This python program iterates over each character in the string, searching for instances of the substrings and then increments the corresponding count in the dictionary. If any substring in the list is empty, it returns "Substrings cannot be empty". If the input string is empty, it returns a dictionary with zero counts for each substring.

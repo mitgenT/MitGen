@@ -1,0 +1,7 @@
+```Python
+            if fields == "*":
+                fields = "* "
+            else:
+                fields = ", ".join(fields) + " "
+```
+This infills the given code such that it correctly handles the default value of the fields parameter in the select() method and concatenates the fields correctly in the generated SQL statement.

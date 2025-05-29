@@ -1,0 +1,3 @@
+if remainder < 10:
+    new_base_num = str(remainder) + new_base_num
+else:

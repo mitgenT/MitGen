@@ -1,0 +1,7 @@
+```python
+if 'name' in item:
+    insert_query = f"INSERT INTO {table_name} (name, age) VALUES (?,?)"
+```
+
+Just for a quick recap of the infilled code:
+The `insert_into_database` function now checks if 'name' and 'age' keys are present in the `item` dictionary. If they exist, it constructs an `insert_query` to insert data into the specified table in the database. If they don't exist, it moves on to the next item in the `data` list.

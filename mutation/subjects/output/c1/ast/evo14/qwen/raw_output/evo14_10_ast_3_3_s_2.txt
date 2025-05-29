@@ -1,0 +1,19 @@
+The code is missing the initialization of `n` and the condition to check if the string has at least one character. Here's how you can fill in the `<MASK>` parts:
+
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    if n < min_length:
+        raise ValueError("Input string must be at least 'min_length' characters long.")
+    
+    pairs = []
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                pairs.append((string[:i], string[j:]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```
+
+Now the code is complete with the necessary checks and initialization.

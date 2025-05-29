@@ -1,0 +1,20 @@
+Based on the provided docstring, we need to modify the given code to handle flipping lowercase to uppercase and uppercase to lowercase for all characters except the one at `special_index`. If `special_index` is out of range, it should be treated as a circular index. Here's the modified code:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    
+    def toggle_case(char: str) -> str:
+        if char.isupper():
+            return char.lower() if special_index == i else char
+        else:
+            return char.upper() if special_index == i else char
+
+    result = ''
+    for i, char in enumerate(string):
+        result += toggle_case(char)
+        
+    return result
+```
+
+Now, the `toggle_case` function checks whether the current character's case should be flipped based on the `special_index` condition, and the main loop applies this change to each character in the string.

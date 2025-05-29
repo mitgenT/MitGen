@@ -1,0 +1,20 @@
+t = int(input())
+for _ in range(t):
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    # sort the experience points in decreasing order
+    for i in range(n):
+        a[i] *= -1
+    a.sort()
+    for i in range(n):
+        a[i] *= -1
+    # find the maximum possible total experience
+    pref_sum = [0] * (n + 1)
+    for i in range(n):
+        pref_sum[i + 1] = pref_sum[i] + a[i]
+    max_exp = pref_sum[k]
+    for i in range(k + 1, n + 1):
+        curr_exp = pref_sum[i] + (i - k) * b[i - 1]
+        max_exp = max(max_exp, curr_exp)
+    print(max_exp)

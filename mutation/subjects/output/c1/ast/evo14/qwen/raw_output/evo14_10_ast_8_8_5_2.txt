@@ -1,0 +1,4 @@
+```python
+                pairs.append((string[:i], string[j:]))
+    return pairs
+```

@@ -1,0 +1,8 @@
+if fields == "*":
+    fields = "*"
+else:
+    fields = ", ".join(fields)
+sql = f"SELECT {fields} FROM {self.table_name}"
+if condition:
+    sql += f" WHERE {condition}"
+return sql + ";"

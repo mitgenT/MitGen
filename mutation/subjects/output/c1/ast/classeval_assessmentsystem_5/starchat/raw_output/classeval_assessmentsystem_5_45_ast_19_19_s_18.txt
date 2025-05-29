@@ -1,0 +1,20 @@
+In the given code, <MASK> must be replaced with:
+
+1. `self.students.values()` in the function `get_all_students_with_fail_course()`. This will loop through all students and their courses.
+2. `return students` after the loop ends in the same function.
+
+The updated function is as follows:
+
+```python
+    def get_all_students_with_fail_course(self):
+        students = []
+        if self.students.values():
+            for student in self.students.values():
+                for course, score in student['courses'].items():
+                    if score < 60:
+                        students.append(student['name'])
+                        break
+        return students
+```
+
+Please review and let me know if you need any further assistance!

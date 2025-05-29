@@ -1,0 +1,24 @@
+Based on the given docstring, we need to iterate over the `numbers` list and insert the `delimeter` between every pair of consecutive elements, up to `limit` times. If `set_float` is True, we need to ensure the output list is in float format. Here's the filled-in code:
+
+```python
+from typing import List, Union
+
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = False
+    if type(delimeter) == float:
+        set_float = True
+    result = []
+    limit = min(limit, len(numbers) - 1)
+
+    # Iterate over the list, inserting the delimeter
+    for i in range(0, len(numbers), limit + 1):
+        result.extend(numbers[i:i+limit])
+        if i + limit < len(numbers) and set_float:
+            result.append(float(delimeter))
+        elif i + limit < len(numbers):
+            result.append(delimeter)
+    
+    return result
+```
+
+This code now correctly implements the behavior described in the docstring.

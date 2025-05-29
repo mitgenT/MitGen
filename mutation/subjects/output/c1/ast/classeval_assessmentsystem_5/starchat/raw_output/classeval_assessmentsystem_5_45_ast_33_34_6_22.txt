@@ -1,0 +1,5 @@
+self.get_gpa(name) > top_gpa
+
+# Code to calculate the total score for each student and count the number of courses
+total += score
+count += 1

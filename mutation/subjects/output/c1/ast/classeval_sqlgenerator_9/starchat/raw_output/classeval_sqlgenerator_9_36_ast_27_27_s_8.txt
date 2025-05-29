@@ -1,0 +1,9 @@
+```python
+def delete(self, condition):
+    if condition:
+        sql = f"DELETE FROM {self.table_name} WHERE {condition}"
+    else:
+        sql = f"DELETE FROM {self.table_name}"
+    return sql + ";"
+```
+In the given code, `<MASK>` should be replaced with a conditional statement. If a condition is provided in the `delete()` function, the SQL statement will contain that condition. If no condition is given, the function will generate a delete SQL statement without a condition.

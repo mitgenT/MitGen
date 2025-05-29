@@ -1,0 +1,22 @@
+Here's the infilled code:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        if start := string.find(sub):  # Initialize or update the start position
+            while start < len(string) - 1:
+                pos = string.find(sub, start)
+                if pos != -1:
+                    result[sub] += 1
+                    start = pos + 1
+                else:
+                    break
+        else:
+            result[sub] = 0  # No occurrences found, set count to 0
+    return result
+```
+
+Explanation: In the original code, there was a missing logic to handle the case when a substring is found in the `string`. By adding an `if start := string.find(sub):` statement, we initialize or update the `start` variable to find the next occurrence of the substring. If no occurrence is found within the string, `start` remains unchanged, which will lead to a `break` statement in the outer loop, resulting in a count of 0 for that substring.

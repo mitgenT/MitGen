@@ -1,0 +1,25 @@
+Based on the provided docstring, we need to sort the list of tuples in `pairs` first by the length of the prefixes (suffixes) and then lexicographically if they have equal length. Here's how you can fill in the `<MASK>` sections in the code:
+
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                pairs.append((string[:i], string[j:]))
+
+    # Sort the list of tuples based on length and lexicographically
+    pairs.sort(key=lambda x: (len(x[0]), x[0]))
+
+    # If there are more than one pair with the same length, break ties lexicographically
+    if len(pairs) > 1:
+        pairs.sort(key=lambda x: x[0])
+    else:
+        pass  # No need to sort when there's only one pair
+
+    return pairs
+```
+
+Here, I added a `sort` method to the `pairs` list, using a lambda function as the key which sorts first by length (`len(x[0])`) and then by the prefix itself (`x[0]`) for lexicographic sorting when lengths are equal. The `else` block is left empty because it's only necessary to sort when there are multiple pairs with the same length, which is handled within the first `sort` call.

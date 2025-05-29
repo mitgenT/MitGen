@@ -1,0 +1,15 @@
+In the update method, you can fill <MASK> with the condition to check if the data dictionary is not empty before the update clause.
+
+Here's the updated code:
+
+```python
+def update(self, data, condition):
+    set_clause = ", ".join([f"{field} = '{value}'" for field, value in data.items()])
+    sql = f"UPDATE {self.table_name} SET {set_clause} WHERE {condition}"
+    if data:
+        return sql + ";"
+    else:
+        return "No data to update."
+```
+
+This will add a check to the update method to only generate and return the SQL statement if the data dictionary is not empty. If the data dictionary is empty, it will return a message indicating that no data to update.

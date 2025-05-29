@@ -1,0 +1,6 @@
+```python
+        if m is None or n == m:
+            if n < 0:
+                return 1
+            else:
+```

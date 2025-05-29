@@ -1,0 +1,12 @@
+for _ in range (int(input())):
+    n,c,d=map(int,input().split())
+    A=list(map(int,input().split()))
+    A=sorted(A)[::-1]
+    rewards_sum = sum(A[:d])
+    if rewards_sum < c:
+        print("Impossible")
+    elif rewards_sum == c:
+        print("Infinity")
+    else:
+        max_k = (rewards_sum - c) // d + 1
+        print(max_k)        

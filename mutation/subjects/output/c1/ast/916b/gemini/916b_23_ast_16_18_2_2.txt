@@ -1,0 +1,11 @@
+exp=0
+while exp != k:
+    s = str(i) +' '+s
+    exp=exp+1
+    if exp==k:
+        break
+    s = str(n-i+1) +' '+s
+    exp=exp+1
+    if exp==k:
+        break
+    i = i+1

@@ -1,0 +1,4 @@
+```python
+        if cursor.fetchall():
+            result = cursor.fetchall()
+```

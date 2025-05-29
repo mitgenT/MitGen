@@ -1,0 +1,8 @@
+from typing import List
+import math
+
+def multiple_greatest_common_divisors(numbers: List[int]) -> int:
+    result = numbers[0]
+    for num in numbers[1:]:
+        result = math.gcd(result, num)
+    return result if result > 1 else -1

@@ -1,0 +1,15 @@
+def is_palindrome(string: str) -> bool:
+    """ 
+    Test if given string is a palindrome.
+    """
+
+    return string == string[::-1]
+
+
+def make_palindrome(string: str) -> str:
+    l_string = string.lower()
+    if is_palindrome(l_string):
+        return string
+    else:
+        end_idx = next((i for i, ch in enumerate(l_string) if l_string[:i] == l_string[i:][::-1]), len(l_string))
+        return string + string[:end_idx][::-1]

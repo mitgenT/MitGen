@@ -1,0 +1,7 @@
+
+    j=n
+    while j>0:
+        if j==k : break
+        s =str(j)+' '+s
+        j = j-1
+

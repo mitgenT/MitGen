@@ -1,0 +1,15 @@
+self.students[name]['courses']
+
+count = 0
+total = 0
+
+for student in self.students.values():
+    if course in student['courses']:
+        score = student['courses'][course]
+        if score is not None:
+            total += score
+            count += 1
+
+# This condition check if any course scores are recorded for the given course, and if so, returns the average score.
+# If no scores are recorded, it returns None.
+return total / count if count > 0 else None

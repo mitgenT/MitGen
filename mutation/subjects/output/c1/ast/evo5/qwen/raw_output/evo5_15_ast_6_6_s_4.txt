@@ -1,0 +1,3 @@
+```python
+    new_list = result = []
+```

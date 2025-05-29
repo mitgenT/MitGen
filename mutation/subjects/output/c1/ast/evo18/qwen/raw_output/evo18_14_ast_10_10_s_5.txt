@@ -1,0 +1,23 @@
+Based on the provided docstring, the function `how_many_times` is supposed to find the occurrences of each substring in the given string and update the count in a dictionary. Here's the infilled code:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - len(sub) + 1:  # Adjust the loop condition to avoid index out-of-bounds
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+```
+
+The missing parts in the code were:
+
+- Incrementing the count when a match is found
+- Updating the `start` index for the next search after a match. In this case, we simply increment `start = pos + 1`. There was no need for additional checks or assignments in the `<MASK>` positions.

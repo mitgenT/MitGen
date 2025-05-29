@@ -1,0 +1,18 @@
+Based on the provided docstring, the function `all_prefix_suffix_pairs` is looking for non-overlapping prefix-suffix pairs in the input string that are at least `min_length` characters long. Here's how you can fill in the `<MASK>` parts:
+
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    if min_length <= 0:
+        raise ValueError("Minimum length must be a positive integer.")
+    pairs = []  # Create an empty list to store the pairs
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                pairs.append((string[:i], string[j:]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```
+
+In this code, we check if `min_length` is less than or equal to 0 and raise a `ValueError` if it is, ensuring that the minimum length is a positive integer as per the requirements. We also initialize an empty list `pairs` to store the prefix-suffix pairs before starting the loop.

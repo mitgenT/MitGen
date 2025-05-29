@@ -1,0 +1,7 @@
+if m is None:
+    m = n
+if m == n:
+    return ArrangementCalculator.factorial(n)
+else:
+    return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)
+    #bug location: It should be `total += ArrangementCalculator.count(n, i)` to count arrangements of various lengths.

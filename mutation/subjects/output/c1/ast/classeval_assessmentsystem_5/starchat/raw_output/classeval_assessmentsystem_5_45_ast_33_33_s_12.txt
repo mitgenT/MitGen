@@ -1,0 +1,2 @@
+self.course_sum += score
+self.course_count += 1

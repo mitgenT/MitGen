@@ -1,0 +1,7 @@
+```python
+    def select_female_under_age(self, age):
+        condition = f"age < {age} AND gender = 'female'"
+        return self.select(condition=condition)
+```
+
+Note: In the updated `select_female_under_age` method, the condition for selecting females under a specific age is properly formatted and used with the `select` method. The `SELECT` statement for this specific purpose is also correctly generated.

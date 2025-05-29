@@ -1,0 +1,15 @@
+The missing part of the code should be like the following:
+
+```python
+def get_top_student(self):
+    top_student = None
+    top_gpa = 0
+    for name, student in self.students.items():
+        gpa = self.get_gpa(name)
+        if gpa is not None and gpa > top_gpa:
+            top_gpa = gpa
+            top_student = name
+    return top_student
+```
+
+In this case, the missing `<MASK>` is just the `return top_student` line that completes the function to return the name of the student with the highest GPA. This line retrieves the `top_student` value, which is updated in the for loop whenever a student with a higher GPA than the current `top_student` is found. When the loop finishes, `top_student` will be the student with the highest GPA, so it is returned by the function.

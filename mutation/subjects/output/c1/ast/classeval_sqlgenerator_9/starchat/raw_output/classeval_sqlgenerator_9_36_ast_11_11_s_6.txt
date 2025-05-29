@@ -1,0 +1,8 @@
+```Python
+        if fields == "*":
+            return sql
+        else:
+            return sql + f" WHERE {fields} = {', '.join(fields)}"
+```
+
+The infilled mask replaces the existing check for `None` in the `select` method, allowing it to correctly process a list of fields or to default to `*` when no fields are specified. The added check ensures that a `WHERE` clause is only added when there are specified fields, providing a more precise implementation of the original requirement.

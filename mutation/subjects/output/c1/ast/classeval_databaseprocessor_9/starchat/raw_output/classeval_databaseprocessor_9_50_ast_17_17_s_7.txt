@@ -1,0 +1,2 @@
+if cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name=?", (table_name,)):
+            print(f"Table {table_name} already exists.")

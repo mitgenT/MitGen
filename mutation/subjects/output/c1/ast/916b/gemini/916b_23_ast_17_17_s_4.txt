@@ -1,0 +1,9 @@
+    i=1
+    for j in range(k+1):
+        s = s +' '+str(n-j)
+        i = i+1
+    s = s.strip()
+    while i<=n:
+        s = str(i)+' '+s
+        i = i+1
+    print(s.strip())

@@ -1,0 +1,17 @@
+```python
+def common(l1: list, l2: list, n: int):
+    # Convert both lists to sets for efficient intersection
+    set1 = set(l1)
+    set2 = set(l2)
+
+    # Find common elements and store them with their lengths in a list of tuples
+    common_lengths = [(s, len(s)) for s in set1 & set2]
+
+    # Sort the list of tuples by length (second element) and then lexicographically (first element)
+    common_lengths.sort(key=lambda x: (x[1], x[0]))
+
+    # Extract the first n strings and return
+    return [s[0] for s in common_lengths[:n]]
+```
+
+In the solution, the function converts both lists to sets for efficient intersection and stores common elements with their lengths in a list of tuples. The list of tuples is then sorted based on length and lexicographically, and the first n strings are extracted and returned.

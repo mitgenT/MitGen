@@ -1,0 +1,22 @@
+from typing import List, Union
+
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = False
+    if type(delimeter) == float:
+        set_float = True
+    result = []
+    limit = min(limit, len(numbers) - 1)
+
+    for _ in range(limit):  # Insert delimeter up to 'limit' times
+        for index, num in enumerate(numbers[:-1]):
+            result.append(num)
+            if set_float:
+                result.append(delimeter)
+            else:
+                result.append(delimeter if index + 1 < limit else 0)  # Add delimeter only if it's not the last iteration or the delimiter is a float
+
+        numbers = numbers[1:]  # Remove the already processed element from the original list
+
+    result.append(numbers[-1])  # Add the last element without a delimeter
+
+    return result

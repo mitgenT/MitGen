@@ -1,0 +1,11 @@
+```Python
+if fields == "*":
+    fields = "*"
+else:
+    fields = ", ".join(fields)
+```
+
+```Python
+if condition is not None:
+    sql += f" WHERE {condition}"
+```

@@ -1,0 +1,15 @@
+from sys import stdin, stdout
+class Solution:
+        def BinaryInversions(self, n: int, bits) -> int:
+            "Determine the maximum number of inversions the array can have after performing at most one operation."
+            ans = bits.count(1) * (n - bits.count(1))
+            bits.reverse()
+            ans = max(ans, bits.count(1) * (n - bits.count(1)))
+            return ans
+
+sol = Solution()
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    bits = list(map(int, input().split()))
+    print(sol.BinaryInversions(n, bits))

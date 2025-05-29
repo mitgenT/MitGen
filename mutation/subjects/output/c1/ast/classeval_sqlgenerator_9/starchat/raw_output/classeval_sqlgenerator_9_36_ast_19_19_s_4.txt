@@ -1,0 +1,7 @@
+def insert(self, data):
+    fields = ", ".join(data.keys())
+    values = ", ".join([f"'{value}'" for value in data.values()])
+    sql = f"INSERT INTO {self.table_name} ({fields}) VALUES ({values})"
+    if not fields or not values:
+        raise ValueError("Data for insertion cannot be empty")
+    return sql + ";"

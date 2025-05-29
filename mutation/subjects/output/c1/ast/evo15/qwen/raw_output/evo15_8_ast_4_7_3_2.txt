@@ -1,0 +1,12 @@
+Based on the given docstring, we want to replace every `m`-th number with "Fizz". Since we are using 1-based indexing, we need to check if `i + 1` is divisible by `m`. If it is, we append "Fizz" to the result list, otherwise, we append the number itself. Here's how the code should look:
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(1, n + 1):  # Changed to 1-based indexing
+        if (i + 1) % m == 0:  # Checking divisibility by m
+            result.append("Fizz")
+        else:
+            result.append(str(i))  # Appending the number as a string
+    return ' '.join(result)
+```

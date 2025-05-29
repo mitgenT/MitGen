@@ -1,0 +1,26 @@
+
+import sys
+input = sys.stdin.readline
+
+def solve():
+    n, c, d = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    a.sort(reverse=True)
+    cur = 0
+    ans = -1
+    for i in range(n):
+        if cur + a[i] < c:
+            k = (c - cur - a[i]) // a[i]
+            if k < 1:
+                ans = -1
+                break
+            k = min(k, d - 1)
+            if k > ans:
+                ans = k
+            cur += a[i] * (d // (k + 1))
+    if cur >= c:
+        return ans
+    return -1
+
+        

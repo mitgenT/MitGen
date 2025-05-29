@@ -1,0 +1,2 @@
+new_base_num = str(base_10 % new_base)
+remainder = base_10 % new_base

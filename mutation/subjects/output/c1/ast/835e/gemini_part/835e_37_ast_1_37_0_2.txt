@@ -1,0 +1,9 @@
+for test in range(int(input())):
+    n = int(input())
+    array = list(map(int, input().split()))
+    cnt0 = array.count(0)
+    cnt1 = array.count(1)
+    if cnt1 >= cnt0:
+        print(cnt0 * (cnt0 - 1) // 2)
+    else:
+        print(cnt1 * (cnt1 - 1) // 2 + cnt1)

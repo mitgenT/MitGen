@@ -1,0 +1,15 @@
+## Output
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n + 1):
+        if i == 0:
+            result.append('0')
+        else:
+            if (i+1) % m == 0:
+                result.append("Fizz")
+            else:
+                result.append(str(i))
+    return''.join(result)
+```
+In this example, I added a condition to check if `i` is 0. If it's 0, I directly append '0' to the result. Then, for all other positions, I check if `(i+1)` is divisible by `m`, if it is then append "Fizz" to the result. Otherwise, append the current number `i` as a string to the result. Finally, join all the elements in the result list with a space and return it.

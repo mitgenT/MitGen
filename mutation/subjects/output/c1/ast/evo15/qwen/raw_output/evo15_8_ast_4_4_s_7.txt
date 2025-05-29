@@ -1,0 +1,12 @@
+Based on the provided docstring, we need to check if `i` is divisible by `m`. If it is not divisible, we append the number as a string; if it is divisible, we replace it with "Fizz". Here's how to fill in the `<MASK>` parts:
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(1, n + 1):  # 1-based indexing
+        if i % m == 0:  # Check if i is divisible by m
+            result.append("Fizz")
+        else:
+            result.append(str(i))
+    return ' '.join(result)
+```

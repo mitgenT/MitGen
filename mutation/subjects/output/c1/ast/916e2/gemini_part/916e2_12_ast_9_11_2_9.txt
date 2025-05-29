@@ -1,0 +1,25 @@
+t=int(input())
+for i in range(t):
+    n=int(input())
+    a=[int(ele) for ele in input().split()]
+    b=[int(ele) for ele in input().split()]
+    d=[[a[i]+b[i],i] for i in range(n)]
+    d.sort(key=lambda x:-x[0])
+    res=0
+    for i in d:
+        col=i[1]
+        if a[col]==0:
+            continue
+        if b[col]==0:
+            a[col]-=1
+            res+=1
+        else:
+            if a[col]<b[col]:
+                b[col]-=a[col]
+                a[col]=0
+                res+=a[col]
+            else:
+                a[col]-=b[col]
+                b[col]=0
+                res-=b[col]
+    print(res)

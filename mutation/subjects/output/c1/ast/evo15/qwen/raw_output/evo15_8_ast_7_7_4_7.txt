@@ -1,0 +1,25 @@
+Based on the given docstring, we need to append either the number or "Fizz" to the `result` list, skipping the "Fizz" every `m`-th iteration. Here's how to fill in the `<MASK>` parts:
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        else:
+            result.append(str(i+1))
+    return ' '.join(result)
+```
+
+So the final code is:
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        else:
+            result.append(str(i+1))
+    return ' '.join(result)
+```

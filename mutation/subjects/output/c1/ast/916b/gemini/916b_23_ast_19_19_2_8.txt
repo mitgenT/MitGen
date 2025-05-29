@@ -1,0 +1,5 @@
+    l = []
+    for j in range(n-1-i-k,0,-1):
+        l.append(j)
+    for j in l:
+        s = s +' '+str(j)

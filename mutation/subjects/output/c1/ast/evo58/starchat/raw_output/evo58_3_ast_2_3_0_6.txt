@@ -1,0 +1,6 @@
+if len(l1) == 0 or len(l2) == 0 or n <= 0:  
+    return []
+
+common_str_list = list(set(l1) & set(l2))
+common_str_list.sort(key=lambda x: (-len(x), l1.index(x)))
+return common_str_list[:n]

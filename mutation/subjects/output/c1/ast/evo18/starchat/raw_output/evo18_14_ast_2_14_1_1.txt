@@ -1,0 +1,25 @@
+## Output
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(s == '' for s in substrings):
+        return "Substrings cannot be empty"
+
+    result = {s: 0 for s in substrings}
+
+    for substring in substrings:
+        length = len(substring)
+        count = string.count(substring)
+
+        while count > 0:
+            result[substring] += 1
+            string = string[string.find(substring) + length:]
+            count = string.count(substring)
+
+    return result
+```
+
+In the above solution, I used the `any()` function to check if any substring is an empty string, and returned the appropriate message if it is. Then, I initialized a dictionary `result` with keys as the substrings and zero values.
+
+Next, I iterated over each substring, calculated its length, and used the `count()` method to count the occurrence of the substring in the string. I then used a `while` loop to find and update the count for overlapping occurrences, incrementing the value in the `result` dictionary and updating the string by slicing it from the position after the last found occurrence.
+
+Finally, I returned the resulting dictionary.

@@ -1,0 +1,27 @@
+Based on the provided docstring, the logic for flipping lowercase to uppercase and vice versa should be implemented while preserving the character at the `special_index`. Here's how the code should look:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.islower():
+                result += char.upper()
+            else:
+                result += char.lower()
+        else:
+            if char.isupper():
+                result += char.lower()
+            elif char.islower():
+                result += char.upper()
+            else:
+                result += char
+    return result
+```
+
+The changes made are:
+
+1. If `char` is lowercase at `special_index`, it's converted to uppercase.
+2. If `char` is not lowercase at `special_index`, it's left as is (since it's either already correct or doesn't apply to the special rule).
+3. For all other characters (`else` branch), if they're uppercase, they're converted to lowercase; otherwise, they're left as is.

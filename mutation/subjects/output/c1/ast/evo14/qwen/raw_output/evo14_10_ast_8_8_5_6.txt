@@ -1,0 +1,19 @@
+Based on the provided docstring, the function `all_prefix_suffix_pairs` is looking for non-overlapping prefix and suffix pairs with a minimum length. The logic to add the pairs to the list can be implemented using tuple construction. Here's how to fill in the `<MASK>` parts:
+
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                # Create a tuple with prefix and suffix, and append if not already in the list
+                pair = (string[:i], string[j:])
+                if pair not in pairs:
+                    pairs.append(pair)
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```
+
+This code adds the found prefix-suffix pair to the `pairs` list only if it's not already included, which ensures that there are no duplicates based on the criteria described in the docstring.

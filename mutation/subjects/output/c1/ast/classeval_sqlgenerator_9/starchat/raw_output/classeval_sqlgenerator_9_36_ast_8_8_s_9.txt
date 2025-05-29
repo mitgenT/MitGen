@@ -1,0 +1,12 @@
+def select(self, fields=None, condition=None):
+    if fields is None:
+        fields = "*"
+    if condition:
+        condition = f"WHERE {condition}"
+    else:
+        condition = ""
+    fields = ", ".join(fields) if isinstance(fields, list) else fields
+    sql = f"SELECT {fields} FROM {self.table_name}"
+    if condition:
+        sql += f" {condition}"
+    return sql + ";"

@@ -1,0 +1,5 @@
+```python
+if isinstance(data, list) and all('name' in item and 'age' in item for item in data):
+```
+
+You will notice the added `isinstance` function to check whether `data` is of type `list` and verify that every dictionary in `data` has both 'name' and 'age' fields. This ensures that the data is correctly formatted for insertion into the database. The rest of the code remains unchanged.

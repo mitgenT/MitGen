@@ -1,0 +1,4 @@
+    if not pairs:
+        pairs = [(string[:min_length], string[min_length:min_length * 2]),
+                 (string[min_length], string[min_length * 2:min_length * 3])]
+    return pairs

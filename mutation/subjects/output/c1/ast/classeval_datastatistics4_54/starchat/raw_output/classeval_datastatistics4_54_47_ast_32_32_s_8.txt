@@ -1,0 +1,16 @@
+Infill <MASK> of the kurtosis method as follows:
+
+```python
+variance = sum((x - mean) ** 2 for x in data) / n
+std_dev = math.sqrt(variance)
+
+if <MASK> == 0:
+    return math.nan
+```
+
+It should be replaced with:
+
+```python
+if std_dev == 0:
+    return math.nan
+```

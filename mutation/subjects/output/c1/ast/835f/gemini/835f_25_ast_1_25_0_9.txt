@@ -1,0 +1,18 @@
+def solve(n,c,d,a):
+    a.sort(reverse=True)
+    need = c
+    cur = 0
+    ans = 0
+    for i in range(0,n):
+        if(cur+a[i]<=need):
+          cur+=a[i]
+          ans+=1
+        else:
+          temp = (need-cur+a[i]-1)//a[i]
+          ans+=temp
+          cur+=temp*a[i]
+          break  
+    if(cur>=need):
+      return ans
+    else:
+      return -1   

@@ -1,0 +1,15 @@
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        index = 0
+        while index < len(string):
+            # Check if substring is found in the original string
+            if string[index:].startswith(sub):
+                result[sub] += 1
+                # Move the index after the found substring
+                index += len(sub)
+            else:
+                index += 1
+    return result

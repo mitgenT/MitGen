@@ -1,0 +1,22 @@
+## Output
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    if string == '':
+        result = {sub: 0 for sub in substrings}
+    else:
+        result = {sub: string.count(sub) for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos!= -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+```
+
+In this code, in addition to calculating the count of each substring without overlapping cases, we also implemented a loop that checks for overlapping cases by incrementing the start position after each find operation. This ensures that all occurrences of substrings are counted.

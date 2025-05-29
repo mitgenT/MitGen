@@ -1,0 +1,25 @@
+def is_palindrome(string: str) -> bool:
+    """ 
+    Test if given string is a palindrome.
+    """
+
+    return string == string[::-1]
+
+
+def make_palindrome(string: str) -> str:
+    l_string = string.lower()
+    longest_postfix = ""
+    for i in range(len(l_string)):
+        postfix = l_string[-(i+1):]
+        if postfix == postfix[::-1]:
+            longest_postfix = postfix
+            break
+    if is_palindrome(string):
+        return string
+    prefix = string[:-len(longest_postfix)]
+    reversed_prefix = prefix[::-1]
+    palindrome = string + reversed_prefix
+    return palindrome
+    print(make_palindrome(''))
+    print(make_palindrome('Cat'))
+    print(make_palindrome('cAta'))

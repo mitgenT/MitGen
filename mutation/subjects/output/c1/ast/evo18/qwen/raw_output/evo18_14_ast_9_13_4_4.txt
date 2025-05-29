@@ -1,0 +1,7 @@
+```python
+            result[sub] += 1
+            if pos != -1:
+                start = pos + 1
+            else:
+                break
+```

@@ -1,0 +1,4 @@
+```python
+        if sigma == 0:
+            return math.nan
+```

@@ -1,0 +1,3 @@
+if min_age is not None and max_age is not None:
+    condition = f"age BETWEEN {min_age} AND {max_age}"
+return self.select(condition=condition)

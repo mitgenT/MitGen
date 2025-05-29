@@ -1,0 +1,4 @@
+if isinstance(fields, list):  
+    fields = ", ".join(fields)
+else:
+    raise ValueError("Fields must be a list or None.")

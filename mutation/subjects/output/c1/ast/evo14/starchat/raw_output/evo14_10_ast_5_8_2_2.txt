@@ -1,0 +1,18 @@
+## Output
+
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(n - min_length + 1):
+        for j in range(min_length, n - i + 1):
+            prefix = string[:i+j]
+            suffix = string[i+j:]
+            if not set(prefix) & set(suffix):
+                pairs.append((prefix, suffix))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```
+
+Here, the infill `<MASK>` has been filled in the form of nested loops iterating over `i` and `j` to generate all possible substrings for the prefix-suffix pairs based on the `min_length`. The `set` intersection check ensures that the prefix and suffix do not have any overlapping characters. Finally, pairs are sorted based on the sum of their lengths and lexicographically when lengths are equal.

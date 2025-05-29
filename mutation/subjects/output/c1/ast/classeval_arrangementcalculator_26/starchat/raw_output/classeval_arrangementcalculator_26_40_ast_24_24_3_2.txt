@@ -1,0 +1,49 @@
+In the code, you need to fill in `<MASK>` in the `select` method and update the calculation in the `count_all` method. Here's the corrected program:
+
+```python
+import itertools
+
+
+class ArrangementCalculator:
+    def __init__(self, datas):
+        self.datas = datas
+
+    @staticmethod
+    def count(n, m=None):
+        if m is None or n == m:
+            return ArrangementCalculator.factorial(n)
+        else:
+            return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)
+
+    @staticmethod
+    def count_all(n):
+        total = 1
+        for i in range(1, n + 1):
+            total *= ArrangementCalculator.count(n, i)
+        return total
+
+    def select(self, m=None):
+        if m is None:
+            m = len(self.datas)
+        result = []
+        for permutation in itertools.permutations(self.datas, m):
+            result.append(list(permutation))
+        return result
+
+    def select_all(self):
+        result = []
+        for i in range(1, len(self.datas) + 1):
+            result.extend(self.select(i))
+        return result
+
+    @staticmethod
+    def factorial(n):
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
+```
+
+In the corrected program, I've changed the calculation in the `count_all` method from adding up the count of each possible arrangement (`ArrangementCalculator.count(n, i)`) to multiplying the counts together, which is the correct way to calculate the total number of all possible arrangements.
+
+The `<MASK>` in the `select` method is replaced with an empty list `result` that is initialized before the loop, where `itertools.permutations(self.datas, m)` generates all possible permutations of `m` items from the given data. Each permutation is appended as a list to the `result` list. Finally, the `result` list is returned.

@@ -1,0 +1,6 @@
+```python
+def select_by_age_range(self, min_age, max_age):
+    condition = f"age BETWEEN {min_age} AND {max_age}"
+    return self.select(condition=condition)
+```
+The `<MASK>` in the `select_by_age_range` method is replaced with the condition `age BETWEEN {min_age} AND {max_age}`, ensuring that SQLGenerator can generate a correct SQL statement for selecting records within a specified age range. The `self.select` method remains unchanged.

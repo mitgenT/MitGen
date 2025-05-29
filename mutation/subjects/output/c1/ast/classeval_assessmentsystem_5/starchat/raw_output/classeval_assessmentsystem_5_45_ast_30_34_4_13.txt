@@ -1,0 +1,5 @@
+self.students[name]['courses'].get(course, 0)
+
+# and in the get_all_students_with_fail_course method, replace'score < 60' with'self.students[name]['courses'].get(course, 0) < 60'
+
+# In the get_course_average method, replace '<MASK>' in both 'if' and 'total' with'self.students[name]['courses'].get(course, 0)'

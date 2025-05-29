@@ -1,0 +1,13 @@
+In the `insert` method, you need to check if `data` is a dictionary. If it is, the method should proceed to generate the INSERT SQL statement. Here's the correct code for the `insert` method:
+
+```Python
+    def insert(self, data):
+        if not isinstance(data, dict):
+            raise ValueError("Data must be a dictionary.")
+        fields = ", ".join(data.keys())
+        values = ", ".join([f"'{value}'" for value in data.values()])
+        sql = f"INSERT INTO {self.table_name} ({fields}) VALUES ({values})"
+        return sql + ";"
+```
+
+You can add the `isinstance` check at the beginning of the method to ensure that the `data` argument is a dictionary. If it is not, you can raise a `ValueError` with an appropriate error message.

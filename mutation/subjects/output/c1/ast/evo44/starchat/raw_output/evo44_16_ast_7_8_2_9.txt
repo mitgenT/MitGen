@@ -1,0 +1,24 @@
+## Output
+```python
+def change_base(x: str, base: int, new_base: int):
+    try:
+        base_10 = int(x, base)
+    except ValueError:
+        return "invalid base"
+    new_base_num = ""
+    while base_10 > new_base:
+        remainder = base_10 % new_base
+        base_10 //= new_base
+        if 0 <= remainder <= 9:
+            new_base_num = str(remainder) + new_base_num
+        else:
+            new_base_num = chr(remainder + 55) + new_base_num
+    if 0 <= base_10 <= 9:
+        new_base_num = str(base_10) + new_base_num
+    else:
+        new_base_num = chr(base_10 + 55) + new_base_num
+    return new_base_num
+
+```
+
+In the solution, I have completed the while loop with base_10 > new_base condition. Then, to handle the last digit (base_10) of the conversion, I have added a separate condition to check if it is less than or equal to 9 and convert it to a string. Otherwise, it is converted to the respective character.

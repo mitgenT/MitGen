@@ -1,0 +1,6 @@
+if fields is not None:
+    fields = ", ".join(fields)
+sql = f"SELECT {fields} FROM {self.table_name}"
+if condition is not None:
+    sql += f" WHERE {condition}"
+return sql + ";"

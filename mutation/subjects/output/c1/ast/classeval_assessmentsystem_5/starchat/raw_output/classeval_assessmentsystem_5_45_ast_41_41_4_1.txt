@@ -1,0 +1,20 @@
+```python
+    def get_gpa(self, name):
+        if name in self.students and self.students[name]['courses']:
+            return sum(self.students[name]['courses'].values()) / len(self.students[name]['courses'])
+        else:
+            return None
+
+    def get_top_student(self):
+        top_student = None
+        top_gpa = 0
+        for name, student in self.students.items():
+            gpa = self.get_gpa(name)
+            if gpa is not None and gpa > top_gpa:
+                top_gpa = gpa
+                top_student = name
+        return top_student
+
+```
+
+In the given code snippet, I filled the <MASK> in the get_top_student method, and it now correctly calls the get_gpa method to calculate the GPA for each student, and then finds the student with the highest GPA.

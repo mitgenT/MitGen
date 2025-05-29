@@ -1,0 +1,11 @@
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            if m is not None:  # Check if m is defined
+                result.append("Fizz")
+            else:  # If m is not specified, just append the number
+                result.append(str(i))
+        else:
+            result.append(str(i))
+    return ' '.join(result)

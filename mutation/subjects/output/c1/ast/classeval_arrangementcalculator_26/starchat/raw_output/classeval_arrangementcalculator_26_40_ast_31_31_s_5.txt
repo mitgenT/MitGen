@@ -1,0 +1,56 @@
+The bug location is in the `count_all` method. Instead of `ArrangementCalculator.count(n, i)`, it should be `ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - i)` to correctly calculate the number of permutations for each 'i' and add it to `total`.
+
+Here's the corrected `count_all` method:
+
+```python
+def count_all(self, n):
+    total = 0
+    for i in range(1, n + 1):
+        total += ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - i)
+    return total
+```
+
+And the complete program with the correction:
+
+```python
+import itertools
+
+class ArrangementCalculator:
+    def __init__(self, datas):
+        self.datas = datas
+
+    @staticmethod
+    def count(n, m=None):
+        if m is None or n == m:
+            return ArrangementCalculator.factorial(n)
+        else:
+            return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)
+
+    @staticmethod
+    def count_all(n):
+        total = 0
+        for i in range(1, n + 1):
+            total += ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - i)
+        return total
+
+    def select(self, m=None):
+        if m is None:
+            m = len(self.datas)
+        result = []
+        for permutation in itertools.permutations(self.datas, m):
+            result.append(list(permutation))
+        return result
+
+    def select_all(self):
+        result = []
+        for i in range(1, len(self.datas) + 1):
+            result.extend(self.select(i))
+        return result
+
+    @staticmethod
+    def factorial(n):
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
+```

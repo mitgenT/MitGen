@@ -1,0 +1,2 @@
+sql = f"age BETWEEN {min_age} AND {max_age}"
+return self.select(condition=sql)

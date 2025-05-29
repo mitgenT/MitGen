@@ -1,0 +1,8 @@
+for i in range(t):
+    n = int(input())
+    s = list(map(int, input().split()))
+    s.sort(reverse = True)
+
+    max = s[0]
+    for item in s:
+        print(max-item, end = ' ')

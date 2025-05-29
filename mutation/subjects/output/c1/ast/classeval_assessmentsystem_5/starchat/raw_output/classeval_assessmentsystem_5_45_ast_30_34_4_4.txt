@@ -1,0 +1,6 @@
+```Python
+        if course in student['courses'].values():
+            total += student['courses'][course]
+            count += 1
+```
+This code should be added in `get_course_average` method to compute the average of a given course. The indentation of this code is the same as its parent function's indent.

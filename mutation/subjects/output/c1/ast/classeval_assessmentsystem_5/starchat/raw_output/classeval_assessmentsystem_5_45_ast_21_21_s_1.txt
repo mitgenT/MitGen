@@ -1,0 +1,12 @@
+```python
+    def get_all_students_with_fail_course(self):
+        students = []
+        for name, student in self.students.items():
+            for course, score in student['courses'].items():
+                if score < 60:
+                    students.append(name)
+                    break
+        return students
+```
+
+In this case, the program has been completed by filling in the `<MASK>` in the `get_all_students_with_fail_course` method. The new logic checks if the score of a course is less than 60 before appending the student's name to the `students` list. This ensures that only students with failing scores in any course are included in the returned list.

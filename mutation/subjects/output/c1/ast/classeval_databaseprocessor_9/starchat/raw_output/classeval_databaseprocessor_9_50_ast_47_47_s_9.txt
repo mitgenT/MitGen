@@ -1,0 +1,2 @@
+if result is not None:
+            cursor.execute(delete_query, (name,))

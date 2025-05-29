@@ -1,0 +1,8 @@
+```python
+        if n < 0:
+            return 1
+        else:
+            return n * ArrangementCalculator.factorial(n - 1)
+```
+
+In this code, the `count()` method checks if `m` is `None` or `n` equals `m`. If so, it computes the factorial of `n` if `n` is greater or equal to 0. Else, it performs the permutation operation with `n` and `n-m`. This solution takes into account the missing condition in the docstring for the `count()` method and bug present in the code snippet where `ArrangementCalculator.count()` was not called for `n` in `count_all()`.

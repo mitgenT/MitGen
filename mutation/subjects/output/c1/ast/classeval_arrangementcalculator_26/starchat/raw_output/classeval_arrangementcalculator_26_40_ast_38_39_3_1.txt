@@ -1,0 +1,9 @@
+```python
+    @staticmethod
+    def factorial(n):
+        result = 1
+        for i in range(1, n + 1):
+            result *= i
+        return result
+```
+In the given code, the `<MASK>` was replaced with a for loop to calculate the factorial. The loop starts from 1 to `n` and multiplies each number into the `result` variable, resulting in the factorial of the input number `n`. The loop completes the calculation of the factorial.

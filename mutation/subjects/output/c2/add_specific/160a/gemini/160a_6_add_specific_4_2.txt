@@ -1,0 +1,21 @@
+for i in range(int(input())):
+    s = list(map(int,list(input())))
+    n = len(s)
+    p = str(s[0])
+    r = ""
+    for j in range(1,n):
+        if s[j]==0 and len(p)>1:
+            print(-1)
+            break
+        if s[j]!=0:
+            r += str(s[j])
+        else:
+            p += str(s[j])
+    if r=="" or p=="":
+        print(-1)
+        continue
+
+    if int(p) < int(r):
+        print(p,r)
+    else:
+        print(-1)

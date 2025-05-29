@@ -1,0 +1,21 @@
+## Output:
+
+```python
+def change_base(x: str, base: int, new_base: int):
+    try:
+        base_10 = int(x, base)
+    except ValueError:
+        return "invalid base"
+    new_base_num = ""
+    if base < 2 or base > 36 or new_base < 2 or new_base > 36:
+        return '0'  # return '0' if base or new_base is invalid
+    while base_10 > 0:
+        remainder = base_10 % new_base
+        base_10 -= new_base
+        if 0 <= remainder <= 9:
+            new_base_num = str(remainder) + new_base_num
+        else:
+            new_base_num = chr(remainder + 55) + new_base_num 
+    return new_base_num
+```
+This program first converts the input number from a given base to decimal. Then, it converts the decimal number to a new base using division and modulus operations. The output number uses uppercase letters for digits above 9. The program returns "invalid base" if the input number contains invalid digits for the specified base or if the base or new_base is invalid (not between 2 and 36).

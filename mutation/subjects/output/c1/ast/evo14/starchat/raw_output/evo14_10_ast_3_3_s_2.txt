@@ -1,0 +1,18 @@
+## Infilled code:
+
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    if n < min_length:
+        return []
+    pairs = []
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                pairs.append((string[:i], string[j:]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```
+
+In this code, the `if` condition in the `all_prefix_suffix_pairs` function is filled with `n < min_length`, which returns an empty list if the length of the input string is less than the minimum length required. Then, the algorithm iterates through the prefixes and suffixes to check if they satisfy the conditions specified in the docstring. Finally, the prefix-suffix pairs are sorted in increasing order of their lengths and lexicographically.

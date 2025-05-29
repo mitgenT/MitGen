@@ -1,0 +1,3 @@
+```python
+if len(sorted_data) % 2 == 0:
+```

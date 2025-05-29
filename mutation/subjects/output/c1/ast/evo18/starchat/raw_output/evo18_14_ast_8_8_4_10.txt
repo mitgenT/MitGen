@@ -1,0 +1,21 @@
+## Output
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            if string[start:start+len(sub)] == sub:
+                pos = start
+            else:
+                pos = -1
+            if pos!= -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+```
+In this output, `<MASK>` is replaced by `string[start:start+len(sub)] == sub` to identify if the substring `sub` exists at the current position `start`. If it exists, `pos` gets the value of `start`. Then, if `pos` is not `-1`, the count for the substring `sub` is incremented and the search starts at the next position (`start = pos + 1`). If `pos` is `-1`, the search breaks out of the inner while loop and continues with the next substring.

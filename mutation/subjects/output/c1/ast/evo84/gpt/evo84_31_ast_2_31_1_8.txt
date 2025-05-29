@@ -1,0 +1,16 @@
+def enhanced_solve(N, M):
+    def enhanced_solve(N, M):
+        binary_N = bin(N)[2:]
+        binary_M = bin(M)[2:]
+        sum_digits = sum(int(digit) for digit in binary_N) + sum(int(digit) for digit in binary_M)
+        primes = []
+        for num in range(N, M+1):
+            if num > 1:
+                for i in range(2, num):
+                    if (num % i) == 0:
+                        break
+                else:
+                    primes.append(num)
+        result = sum_digits * len(primes)
+        binary_result = bin(result)[2:]
+        return binary_result

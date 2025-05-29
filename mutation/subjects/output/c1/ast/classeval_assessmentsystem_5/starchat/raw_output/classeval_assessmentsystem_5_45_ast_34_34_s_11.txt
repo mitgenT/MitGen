@@ -1,0 +1,17 @@
+self.course_average_exist[course] = True
+
+```Python
+    def get_course_average(self, course):
+        total = 0
+        count = 0
+        for student in self.students.values():
+            if course in student['courses']:
+                score = student['courses'][course]
+                if score is not None:
+                    total += score
+                    if course not in self.course_average_exist:
+                        self.course_average_exist[course] = True
+                    count += 1
+        return total / count if count > 0 else None
+```
+I added a dictionary `course_average_exist` and check it within `get_course_average` function to avoid re-calculation for the same course. If a course has been calculated before, we don't need to do it again. This enhancement will make your program more efficient.

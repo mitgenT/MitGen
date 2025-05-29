@@ -1,0 +1,5 @@
+def modp(n: int, p: int, m: int):
+    if p % m == 0:
+        <MASK>
+    else:
+        return 0

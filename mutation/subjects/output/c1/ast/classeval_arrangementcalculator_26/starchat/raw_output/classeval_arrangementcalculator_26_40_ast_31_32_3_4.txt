@@ -1,0 +1,11 @@
+The bug location in the `count_all` method is due to the missing return statement. Let's infill the <MASK> with the appropriate code:
+
+```python
+def select_all(self):
+    result = []
+    for i in range(1, len(self.datas) + 1):
+        result.extend(itertools.permutations(self.datas, i))
+    return list(map(list, result))
+```
+
+The code uses `itertools.permutations` to generate all possible permutations for the given set of data elements and then extends the `result` list with these permutations. Finally, we convert the permutations back to lists and return the `result`.

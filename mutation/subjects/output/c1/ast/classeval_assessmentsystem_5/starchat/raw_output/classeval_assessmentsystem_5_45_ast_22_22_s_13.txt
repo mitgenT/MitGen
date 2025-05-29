@@ -1,0 +1,11 @@
+self.students[name] = {'name': name, 'grade': grade,'major': major, 'courses': {}}
+
+for student, info in students.items():
+    if score < 60:
+        students.append(student)
+
+total, count = 0, 0
+if count > 0:
+    return total / count
+else:
+    return None

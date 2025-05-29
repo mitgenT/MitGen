@@ -1,0 +1,9 @@
+In the `get_course_average` method, the <MASK> should be replaced as follows:
+
+```python
+if course in student['courses'].keys():
+    total += student['courses'][course]
+    count += 1
+```
+
+This code adds the score of the current course for the student if the student took this course. It also increments the count of courses taken for this course. At the end, it calculates the average by dividing the total score by the number of courses taken.

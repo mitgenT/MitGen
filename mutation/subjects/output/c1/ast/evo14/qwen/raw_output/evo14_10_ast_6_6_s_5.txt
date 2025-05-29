@@ -1,0 +1,27 @@
+Based on the provided docstring, we want to find all non-overlapping prefix-suffix pairs in the input string that are at least `min_length` characters long and sort them by length and lexicographically. Here's how the code should be filled in:
+
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n - 1):
+        # Check if the substring from i to n-1 is a suffix of the string
+        if string[i:] == string[-(n - i):]:
+            # Find the longest common prefix between the current prefix and the remaining string
+            common_prefix = ""
+            for j in range(i, max(0, i - min_length), -1):
+                if string[:j] == string[j:i]:
+                    common_prefix = string[:j]
+                    break
+            # If there's no overlap, add the prefix and suffix to the pairs list
+            if len(set(common_prefix).intersection(set(string[j:]))) == 0:
+                pairs.append((string[:i], string[j:]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```
+
+The changes made are:
+1. Added a condition to check if the substring from `i` to `n-1` (the suffix) is equal to the reverse of the remaining string to ensure it's a valid suffix.
+2. Implemented a loop to find the longest common prefix between the current prefix and the remaining string, ensuring there's no overlap.
+3. Added the check for the length of the intersection between the common prefix and the remaining string to confirm they don't overlap.

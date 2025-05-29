@@ -1,0 +1,124 @@
+from wrapt_timeout_decorator import *
+
+<generated_code_here>
+
+import numpy as np
+from numpy import nan, inf # for some outputs.
+import sys
+
+sys.set_int_max_str_digits(0)
+
+from enum import IntEnum, auto
+
+def is_floats(x) -> bool:
+    # check if it is float; List[float]; Tuple[float]
+    # TODO: search for any close floats? (other data structures)
+    if isinstance(x, float):
+        return True
+    if isinstance(x, (list, tuple)):
+        return all(isinstance(i, float) for i in x)
+    if isinstance(x, np.ndarray):
+        return x.dtype == np.float64 or x.dtype == np.float32
+    return False
+
+
+class DataType(IntEnum):
+    Float = auto()
+    Bool = auto()
+    Int = auto()
+    Str = auto()
+    Null = auto()
+    Tuple = auto()
+    List = auto()
+    Dict = auto()
+    Set = auto()
+    Type = auto()
+    Unknown = auto()
+
+
+def get_type(x):
+    if x is None:
+        return DataType.Null
+    elif isinstance(x, bool):
+        return DataType.Bool
+    elif isinstance(x, int):
+        return DataType.Int
+    elif isinstance(x, str):
+        return DataType.Str
+    elif is_floats(x):
+        return DataType.Float
+    elif isinstance(x, tuple):
+        return DataType.Tuple
+    elif isinstance(x, list):
+        return DataType.List
+    elif isinstance(x, dict):
+        return DataType.Dict
+    elif isinstance(x, set):
+        return DataType.Set
+    elif isinstance(x, type):
+        return DataType.Type
+    else:
+        return DataType.Unknown
+
+
+def is_equal(x, y) -> tuple[bool, str]:
+    x_type, y_type = get_type(x), get_type(y)
+    if x_type != y_type:
+        return False, "Type mismatch: {} vs {}".format(str(x_type), str(y_type))
+
+    if x_type in [DataType.Int, DataType.Bool, DataType.Null, DataType.Str, DataType.Set, DataType.Type]:
+        if x == y:
+            return True, None
+        try:
+            error_msg = "INT/BOOL/NULL/ Value mismatch: {} vs {}".format(repr(x)[:300], repr(y)[:300])
+        except:
+            error_msg = "Value mismatch: too large for display"
+        return False, error_msg
+    elif x_type == DataType.Float:
+        if np.allclose(x, y, equal_nan=True, atol=1e-6): # guard against nan
+            return True, None
+        else:
+            return False, "FLOAT Value mismatch: {} vs {}".format(x, y)
+    elif x_type in [DataType.List, DataType.Tuple]:
+        if len(x) != len(y):
+            return False, "Length mismatch: {} vs {}".format(len(x), len(y))
+        for i in range(len(x)):
+            equal, msg = is_equal(x[i], y[i])
+            if not equal:
+                return False, msg
+        return True, None
+    elif x_type == DataType.Dict:
+        if len(x) != len(y):
+            return False, "Length mismatch: {} vs {}".format(len(x), len(y))
+        for k, v in x.items():
+            if k not in y:
+                return False, "DICT Value mismatch: key {} in {} but not in {}".format(k, x, y)
+            equal, msg = is_equal(v, y[k])
+            if not equal:
+                return False, msg
+        return True, None
+    else:
+        try:
+            if x == y:  # e.g., object comparison
+                return True, None
+            else:
+                return False, "ELSE Value mismatch: {} vs {}".format(x, y)
+        except:
+            return False, "Unsupported type: {} <-- {}".format(x_type, type(x))
+
+def check(candidate):
+    inputs = [eval(f"[{i}]") for i in ['147, 247', '1000, 2000', '150, 250', '123456, 654321', '999999, 1000000', '2, 200000', '250000, 500000', '100, 10000', '987654, 1000000', '1, 99999', '100000, 200000', '1, 10000', '200, 500', '500, 1000', '5000, 10000', '7000, 8000', '2500, 7500', '300, 700', '8000, 12000', '9000, 15000', '100, 400', '123456, 654321', '987654, 1234567', '111111, 666666', '222222, 777777', '333333, 888888', '444444, 999999', '10000, 20000', '50000, 60000', '100000, 200000', '500, 1000', '1000, 2000', '100, 500', '5000, 10000', '100, 20000']]
+    outputs = ['11010001', '11001010100', '10110100', '11001010110111001000', '0', '11110101111000000', '1000010101000010100', '10010110100000', '11001111001100', '11001110000101000', '11000100101100000', '1110011001110', '110111001', '1101101100', '1010111100000', '10101101111', '1101101010100', '1001110110', '1010111100011', '1110111011100', '100111110', '11001010110111001000', '1010010010100010110', '10101010000001010000', '11001111100010100000', '10100011010101010000', '11001001001010101100', '10100001011010', '10111011101100', '11000100101100000', '1101101100', '11001010100', '1001110110', '1010111100000', '100010111101000']
+    to_output = []
+    for i, (inp, exp) in enumerate(zip(inputs, outputs)):
+        try:
+            to_output.append((i,compute_output(candidate,inp)))
+        except:
+            to_output.append((i,"Exception"))
+    print(f"Final output of subject for prioritization is:::::{to_output}")
+
+@timeout(5)
+def compute_output(candidate,inp):
+    return candidate(*inp)
+    
+check(enhanced_solve)

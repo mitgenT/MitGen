@@ -1,0 +1,14 @@
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                pairs.append((string[:i], string[j:]))
+    pairs.sort(key=lambda pair: (len(pair[0]) + len(pair[1]), pair[0]))
+    return pairs
+```
+
+Here, I added a line to sort the 'pairs' list based on the custom key, which is a tuple containing the sum of lengths of prefix and suffix and the prefix itself. This ensures that pairs are sorted first by their lengths and then lexicographically if they have equal lengths.

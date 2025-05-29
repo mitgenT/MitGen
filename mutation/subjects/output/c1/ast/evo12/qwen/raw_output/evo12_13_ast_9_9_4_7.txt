@@ -1,0 +1,22 @@
+Based on the provided docstring, we can fill in the `<MASK>` sections in the given code as follows:
+
+```python
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+    vowels = 'aeiouAEIOU'
+    longest_substring = None
+    longest_substring_index = None
+    for i, string in enumerate(strings):
+        substrings = [string[j:] for j in range(len(string)) if string[j] in vowels]
+        if substrings:
+            max_substring = max(substrings, key=len)  # Find the longest substring
+            if longest_substring is not None and len(max_substring) > len(longest_substring):
+                longest_substring = max_substring
+                longest_substring_index = i
+            else:
+                longest_substring = max_substring
+                longest_substring_index = i  # Update if this is the first occurrence of a longest substring
+    return longest_substring, longest_substring_index
+```
+
+Here, `max_substring = max(substrings, key=len)` is used to find the longest substring from the list of substrings that start with a vowel. The comparison `if longest_substring is not None and len(max_substring) > len(longest_substring):` checks if the current substring is longer than the previously found longest one. If it is, we update the `longest_substring` and `longest_substring_index`. Otherwise, if the current substring has the same length as the current longest, we still update `longest_substring` to ensure we always keep the first occurrence of a substring of the same length.

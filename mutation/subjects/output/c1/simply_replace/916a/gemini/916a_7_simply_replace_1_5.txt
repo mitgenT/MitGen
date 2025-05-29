@@ -1,0 +1,5 @@
+
+    for j in range(0,min(a,26)):
+        if j+1<=b.count(alpha[j]):
+            ans+=1
+    print(ans)

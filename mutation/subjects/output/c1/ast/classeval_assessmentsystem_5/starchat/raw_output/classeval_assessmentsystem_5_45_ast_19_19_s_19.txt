@@ -1,0 +1,8 @@
+```Python
+    if self.students[name]['courses']:
+```
+```Python
+                if score < 60:
+                    students.append(name)
+                    break
+```

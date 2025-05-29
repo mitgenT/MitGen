@@ -1,0 +1,19 @@
+Based on the given docstring, we need to iterate through the string and check for occurrences of each substring while keeping track of the counts. Here's how to fill in the `<MASK>` parts:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string):
+            if string[start:start+len(sub)] == sub:
+                result[sub] += 1
+                start += len(sub)  # Move the start index after finding a match
+            else:
+                start += 1  # If no match, move the start index forward by one character
+    return result
+```
+
+Now, the `how_many_times` function checks for occurrences of each substring in the given string, incrementing the count in the result dictionary when a match is found, and moving the start index accordingly.

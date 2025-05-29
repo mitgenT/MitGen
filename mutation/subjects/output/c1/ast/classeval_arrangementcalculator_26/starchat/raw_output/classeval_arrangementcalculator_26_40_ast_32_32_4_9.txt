@@ -1,0 +1,5 @@
+result.append(list(itertools.permutations(self.datas, i)))
+
+# Add 'break' statement to avoid unnecessary iterations
+if i >= len(self.datas):
+    break

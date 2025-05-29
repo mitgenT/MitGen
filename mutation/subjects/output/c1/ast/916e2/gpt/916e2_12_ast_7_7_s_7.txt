@@ -1,0 +1,16 @@
+t=int(input())
+for i in range(t):
+    n=int(input())
+    a=[int(ele) for ele in input().split()]
+    b=[int(ele) for ele in input().split()]
+    d=[[a[i]+b[i],i] for i in range(n)]
+    for i in range(n):
+        min_index = min(range(n), key=lambda x: d[x][0])
+        if i % 2: res -= (b[d[min_index][1]] - 1)
+        else: res += (b[d[min_index][1]] - 1)
+        d[min_index][0] -= 1
+    res=0
+    for i in range(n):
+        if i%2:res-=(b[d[i][1]]-1)
+        else:res+=(b[d[i][1]]-1)
+    print(res)

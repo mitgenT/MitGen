@@ -1,0 +1,5 @@
+```Python
+    common_list = list(set(l1) & set(l2))
+    if not common_list:
+        return []
+```

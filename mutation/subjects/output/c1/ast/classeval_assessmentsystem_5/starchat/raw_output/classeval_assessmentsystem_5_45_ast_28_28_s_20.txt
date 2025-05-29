@@ -1,0 +1,5 @@
+```Python
+        if student['courses']:
+            return len(student['courses'])
+        count = 0
+```

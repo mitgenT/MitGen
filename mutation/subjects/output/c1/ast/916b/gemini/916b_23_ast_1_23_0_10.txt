@@ -1,0 +1,44 @@
+import sys
+
+# define a function to return the next number in the cyclic order of the length n
+def next_cyclic(n, i):
+    return (i + 1) % n
+
+# define a function to construct a cycle of length n
+def build_cycle(n):
+    cycle = []
+    for i in range(n):
+        cycle.append(i + 1)
+    return cycle
+
+# define a function to break a cycle of length n at the index i
+def break_cycle(cycle, i):
+    new_cycle = []
+    for j in range(len(cycle)):
+        if j == i:
+            continue
+        new_cycle.append(cycle[j])
+    return new_cycle
+
+# get the number of test cases
+t = int(input())
+
+# loop over the test cases
+for test_case in range(t):
+
+    # get the input for the current test case
+    n, k = map(int, input().split())
+
+    # check if it's possible to get exactly k excitations
+    if k > n - 1 or k == 0:
+        print(-1)
+        continue
+
+    # construct a cycle of length n
+    cycle = build_cycle(n)
+
+    # break the cycle at the index k
+    cycle = break_cycle(cycle, k)
+
+    # print the cycle
+    print(*cycle)

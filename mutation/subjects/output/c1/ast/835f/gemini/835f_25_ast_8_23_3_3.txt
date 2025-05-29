@@ -1,0 +1,22 @@
+
+for _ in range (int(input())):
+    n,c,d=map(int,input().split())
+    A=list(map(int,input().split()))
+    A=sorted(A)[::-1]
+    if sum(A[:d])>=c:
+        print("Infinity")
+    else:
+        start = 1
+        end = c // A[0]
+        while start <= end:
+            mid = (start + end) // 2
+            coins = 0
+            for i in range(d):
+                coins += A[i] // mid
+            if coins >= c:
+                start = mid + 1
+            else:
+                end = mid - 1
+        print(end)
+
+        

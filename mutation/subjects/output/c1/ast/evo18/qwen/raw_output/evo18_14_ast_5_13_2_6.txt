@@ -1,0 +1,13 @@
+```python
+    for sub in substrings:
+        count = 0
+        index = 0
+        while index < len(string):
+            index = string.find(sub, index)
+            if index != -1:
+                result[sub] += 1
+                index += len(sub)  # Move forward to avoid overlapping
+            else:
+                break
+    return result
+```

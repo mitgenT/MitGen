@@ -1,0 +1,9 @@
+self.students[name]['courses'].get(course, 0)
+
+And in the 'get_course_average' method, the code inside the loop should be:
+
+```Python
+score = student['courses'].get(course, 0)
+total += score
+count += 1 if score > 0 else 0
+```

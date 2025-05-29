@@ -1,0 +1,2 @@
+if l_string == l_string[::-1]:
+    return True

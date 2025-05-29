@@ -1,0 +1,21 @@
+Infill <MASK> of the following given code:
+
+```python
+def select_all(self):
+    result = []
+    for i in range(1, len(self.datas) + 1):
+        result.extend(list(itertools.permutations(self.datas, i)))
+    return result
+```
+
+The corrected version should look like this:
+
+```python
+def select_all(self):
+    result = []
+    for i in range(1, len(self.datas) + 1):
+        result.extend(list(itertools.permutations(self.datas, i)))
+    return result
+```
+
+Here, `itertools.permutations(self.datas, i)` generates all permutations of `i` items from `self.datas`, and `extend(list(...))` adds these permutations to the `result` list. This correctly fills in the missing part in the `select_all` function.

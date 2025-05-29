@@ -1,0 +1,22 @@
+Infill <MASK> of the given code based on the Docstring:
+
+```python
+n = len(data1) if len(data1) == len(data2) else 0
+
+if not n:
+    raise ValueError('The input data lists must have the same length.')
+
+```
+This ensures that the code raises an error when data1 and data2 have different lengths. The correlation coefficient function will not execute correctly without proper handling of this condition.
+
+Also, infill <MASK> in the skewness and kurtosis functions to avoid division by zero:
+
+```python
+std_deviation = math.sqrt(variance) if variance > 0 else 0
+
+skewness = sum((x - mean) ** 3 for x in data) * n / ((n - 1) * (n - 2) * std_deviation ** 3) if std_deviation > 0 else 0
+
+kurtosis_value = (fourth_moment / std_dev ** 4) * 3 if std_dev > 0 else math.nan
+```
+
+These added checks protect against potential division-by-zero errors, and provide a more meaningful return value when the standard deviation is zero (which can happen when the input data is a constant sequence).

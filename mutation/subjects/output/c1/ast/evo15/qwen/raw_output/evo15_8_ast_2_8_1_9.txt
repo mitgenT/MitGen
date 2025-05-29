@@ -1,0 +1,15 @@
+Based on the provided docstring, the function `string_sequence_modified` should generate a sequence of numbers from 0 to n (inclusive), replacing every m-th number with "Fizz". Here's how the `<MASK>` part of the code should look:
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    if m > 0:
+        sequence = []
+        for i in range(0, n + 1):
+            if (i + 1) % m == 0:
+                sequence.append("Fizz")
+            else:
+                sequence.append(str(i))
+        return " ".join(sequence)
+```
+
+Here, we first check if `m` is greater than 0 to ensure it's not zero or negative. Then, we create an empty list `sequence` to store the modified numbers. We iterate from 0 to `n`, and for each number, we check if it's an m-th number using the modulo operator. If it is, we append "Fizz" to the sequence; otherwise, we append the number itself as a string. Finally, we join the sequence elements with spaces using the `join` method and return the resulting string.

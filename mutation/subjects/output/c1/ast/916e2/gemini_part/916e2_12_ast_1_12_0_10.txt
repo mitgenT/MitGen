@@ -1,0 +1,23 @@
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    a_cnt = sum((x > 0) for x in a)
+    b_cnt = sum((x > 0) for x in b)
+
+    if a_cnt == 0 or b_cnt == 0:
+        ans = 0
+    else:
+        a.sort()
+        b.sort(reverse=True)
+        ans = 0
+        for i in range(min(a_cnt, b_cnt)):
+            if a[i] > b[i]:
+                ans += a[i] - b[i]
+            else:
+                break
+
+    print(ans)

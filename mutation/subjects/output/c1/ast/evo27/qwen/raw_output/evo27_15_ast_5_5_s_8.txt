@@ -1,0 +1,18 @@
+Based on the given docstring, we need to check if the current character at `i` is equal to the character at `special_index` (cycling if necessary). If it matches, we should flip the case only if it's uppercase; otherwise, leave it as is. Here's the code with `<MASK>` filled in:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index or (i + special_index) % len(string) == special_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+        else:
+            result += char
+    return result
+```
+
+Now, the function `flip_case_special` correctly handles the flipping of case for characters at the specified `special_index`, while keeping the rest as they are.

@@ -1,0 +1,19 @@
+def enhanced_solve(N, M):
+    output = """def enhanced_solve(N, M):
+        binary_N = bin(N)[2:]
+        binary_M = bin(M)[2:]
+        sum_digits = bin(int(binary_N, 2) + int(binary_M, 2))[2:]
+        prime_count = 0
+        for num in range(N, M + 1):
+            if is_prime(num):
+                prime_count += 1
+        result = bin(int(sum_digits, 2) * prime_count)[2:]
+        return result
+    def is_prime(num):
+        if num < 2:
+            return False
+        for i in range(2, int(num ** 0.5) + 1):
+            if num % i == 0:
+                return False
+        return True"""
+    output

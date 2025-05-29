@@ -1,0 +1,2 @@
+if name == item['name']:
+ result = cursor.fetchall()

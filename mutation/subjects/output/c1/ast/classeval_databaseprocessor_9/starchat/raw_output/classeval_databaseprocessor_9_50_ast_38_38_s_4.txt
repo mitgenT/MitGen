@@ -1,0 +1,5 @@
+```python
+result = cursor.fetchall()
+return result
+```
+Here, `cursor.fetchall()` collects all rows after the `SELECT` operation, returning a list of tuples or an empty list if no rows are found. These tuples are then returned as the result of the `search_database` method.

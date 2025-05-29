@@ -1,0 +1,19 @@
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if '' in substrings:
+        return {'Substrings cannot be empty'}
+    else:
+        pass
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos!= -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+```
+In the solution, the `<MASK>` in the given code are filled as per the problem statement. The if block checks for empty substrings and returns a specific error message. If no empty substring is found, the counts for each substring in the original string are computed.

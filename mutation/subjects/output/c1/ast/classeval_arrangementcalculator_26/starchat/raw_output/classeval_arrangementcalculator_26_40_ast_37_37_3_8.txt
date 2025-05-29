@@ -1,0 +1,56 @@
+The bug location in the given code is in the `count_all` method. Instead of using the `ArrangementCalculator.count(n, i)` function, it is directly adding the result to the `total` variable without calling it. This would lead to incorrect counts of all possible arrangements. To fix this bug, the correct code should be:
+
+```python
+def count_all(n):
+    total = 0
+    for i in range(1, n + 1):
+        total += ArrangementCalculator.count(n, i)
+    return total
+```
+
+With this correction, the `ArrangementCalculator` class should function properly according to the given docstring.
+
+The complete code should look like this:
+
+```python
+import itertools
+
+class ArrangementCalculator:
+    def __init__(self, datas):
+        self.datas = datas
+
+    @staticmethod
+    def count(n, m=None):
+        if m is None or n == m:
+            return ArrangementCalculator.factorial(n)
+        else:
+            return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)
+
+    @staticmethod
+    def count_all(n):
+        total = 0
+        for i in range(1, n + 1):
+            total += ArrangementCalculator.count(n, i)
+        return total
+
+    def select(self, m=None):
+        if m is None:
+            m = len(self.datas)
+        result = []
+        for permutation in itertools.permutations(self.datas, m):
+            result.append(list(permutation))
+        return result
+
+    def select_all(self):
+        result = []
+        for i in range(1, len(self.datas) + 1):
+            result.extend(self.select(i))
+        return result
+
+    @staticmethod
+    def factorial(n):
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
+```

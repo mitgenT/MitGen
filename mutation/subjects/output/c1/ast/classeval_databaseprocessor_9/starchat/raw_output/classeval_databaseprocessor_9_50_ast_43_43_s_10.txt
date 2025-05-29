@@ -1,0 +1,23 @@
+In the `delete_from_database` method, you need to include error handling to ensure the database connection is established before executing the SQL statement. If there is a connection problem, the execution should fail gracefully. 
+
+Here is the corrected code:
+
+```python
+def delete_from_database(self, table_name, name):
+
+    try:
+        conn = sqlite3.connect(self.database_name)
+    except sqlite3.Error as e:
+        print(f"Error connecting to the database: {e}")
+        return
+
+    cursor = conn.cursor()
+
+    delete_query = f"DELETE FROM {table_name} WHERE name =?"
+    cursor.execute(delete_query, (name,))
+
+    conn.commit()
+    conn.close()
+```
+
+This ensures that the program will not crash due to a connection issue and provides appropriate feedback to the user when such an error occurs.

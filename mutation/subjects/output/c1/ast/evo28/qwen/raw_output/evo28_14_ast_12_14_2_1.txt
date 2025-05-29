@@ -1,0 +1,5 @@
+    str_concat = ''.join(interleaved[:-len_integers])
+    int_sum = sum(interleaved[-len_integers:])
+    return (str_concat, int_sum)
+
+```

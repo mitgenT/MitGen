@@ -1,0 +1,2 @@
+top_student = name
+top_gpa = gpa

@@ -1,0 +1,19 @@
+Based on the provided docstring, the `how_many_times` function needs to find overlapping occurrences of substrings in the input string and update the dictionary accordingly. Here's how the code should be filled:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while True:
+            index = string.find(sub, start)
+            if index == -1:  # Substring not found, break the loop
+                break
+            result[sub] += 1
+            start = index + 1  # Move the starting position for the next search
+    return result
+```
+
+In this code, the `find` method is used to locate the index of each substring within the original string. The loop continues until no more occurrences are found (when `find` returns `-1`). The overlapping cases are handled by incrementing the count and updating the starting position (`start = index + 1`) for the next search.

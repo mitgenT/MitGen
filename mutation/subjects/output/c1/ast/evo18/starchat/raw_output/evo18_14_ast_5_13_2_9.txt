@@ -1,0 +1,13 @@
+## Output
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        temp_count = string.count(sub)
+        result[sub] += temp_count
+    return result
+```
+
+This solution uses a loop to iterate through each substring in the given list. It then calls the count method on the input string for each substring and adds the result to the corresponding value in the result dictionary. The final result dictionary is returned.

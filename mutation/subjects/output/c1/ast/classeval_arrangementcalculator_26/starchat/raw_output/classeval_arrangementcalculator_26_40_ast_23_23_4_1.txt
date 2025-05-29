@@ -1,0 +1,5 @@
+```python
+if m is None:
+    return list(itertools.permutations(self.datas))
+```
+I filled <MASK> for the `select` method to return all possible permutations if no `m` is provided.

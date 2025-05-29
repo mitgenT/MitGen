@@ -1,0 +1,3 @@
+result = None
+if result:
+    return result

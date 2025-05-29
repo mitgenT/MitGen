@@ -1,0 +1,12 @@
+start = 1
+end = 10**9
+while start <= end:
+    mid = (start + end) // 2
+    ans = can(mid,A,c,d)
+    if ans == True:
+        start = mid + 1
+    else:
+        end = mid - 1
+
+if start == 10**9: print("Infinity")
+else: print(start - 1)

@@ -1,0 +1,2 @@
+new_base_num = ''
+base_10 = int(x, base)

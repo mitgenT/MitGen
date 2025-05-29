@@ -1,0 +1,30 @@
+t = int(input())
+for nt in range(t):
+    n,k = map(int,input().split())
+    s=''
+    t = int(input())
+    for nt in range(t):
+        n,k = map(int,input().split())
+        s=''
+        range_list = list(range(1, k+2))
+        range_list.reverse()
+        s = s.join([str(i) + ' ' for i in range_list])
+        s = s.strip()
+        while k+2<=n:
+            s = s + ' ' + str(k+2)
+            k = k+1
+        print(s.strip())
+    if k==1:
+        for i in range(1,n+1):
+            s = s +' '+str(i)
+        print(s.strip())
+        continue
+    i=1
+    for j in range(k+1):
+        s = s +' '+ str(i)
+        i = i+1
+    s = s.strip()
+    while i<=n:
+        s = str(i)+' '+s
+        i = i+1
+    print(s.strip())

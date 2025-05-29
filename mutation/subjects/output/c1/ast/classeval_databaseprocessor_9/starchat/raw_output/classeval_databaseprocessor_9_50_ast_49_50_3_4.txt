@@ -1,0 +1,11 @@
+```python
+        conn.commit()
+        conn.close()
+
+db = DatabaseProcessor('example.db')  # Initialize DatabaseProcessor instance
+db.create_table('user', 'name', 'age')  # Create a table named 'user'
+db.insert_into_database('user', [{'name': 'John', 'age': 25}, {'name': 'Alice', 'age': 30}])  # Insert data into the 'user' table
+db.search_database('user', 'John')  # Search for name 'John' in 'user' table
+db.delete_from_database('user', 'John')  # Delete rows with name 'John' from 'user' table
+```
+This completes the provided Python code to define the `DatabaseProcessor` class and test its methods. The `<MASK>` line in the `delete_from_database` method has been filled in with the necessary `conn.commit()` and `conn.close()` commands to commit changes and close the database connection. The class has also been instantiated, methods have been tested, and the results have been outputted as needed.

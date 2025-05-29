@@ -1,0 +1,15 @@
+def change_base(x: str, base: int, new_base: int):
+    if not all(c.isdigit() or c.upper() in 'ABCDEF'[:base] for c in x):
+        return "invalid base"
+    num = int(x, base)
+    alphabet = '0123456789ABCDEF'[:new_base]
+    result = ""
+    while num > 0:
+        result = alphabet[num % new_base] + result
+        num = num // new_base
+    return result
+    print(change_base('8', 10, 3))
+    print(change_base('8', 10, 2))
+    print(change_base('7', 10, 2))
+    print(change_base('1A', 16, 10))
+    print(change_base('Z', 36, 16))

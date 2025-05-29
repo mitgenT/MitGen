@@ -1,0 +1,7 @@
+t = int(input())
+
+for _ in range(t):
+    n = int(input())
+    s = input()
+    max_alphabet_size = len(set(s))
+    print(max_alphabet_size)

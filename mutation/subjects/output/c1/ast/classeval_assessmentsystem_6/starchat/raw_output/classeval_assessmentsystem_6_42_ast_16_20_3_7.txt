@@ -1,0 +1,47 @@
+Here is the output of the given example with the infilled <MASK>:
+
+```python
+class AssessmentSystem:
+    def __init__(self):
+        self.students = {}
+
+    def add_student(self, name, grade, major):
+        self.students[name] = {'name': name, 'grade': grade,'major': major, 'courses': {}}
+
+    def add_course_score(self, name, course, score):
+        if name in self.students:
+            self.students[name]['courses'][course] = score
+
+    def get_gpa(self, name):
+        return sum(self.students[name]['courses'].values()) / len(self.students[name]['courses'])
+
+    def get_all_students_with_fail_course(self):
+        students = []
+        for student, info in self.students.items():
+            if any(score < 60 for score in info['courses'].values()):
+                students.append(student)
+        return students
+
+    def get_course_average(self, course):
+        total = 0
+        count = 0
+        for student in self.students.values():
+            if course in student['courses']:
+                score = student['courses'][course]
+                if score is not None:
+                    total += score
+                    count += 1
+        return total / count if count > 0 else None
+
+    def get_top_student(self):
+        top_student = None
+        top_gpa = 0
+        for name, student in self.students.items():
+            gpa = self.get_gpa(name)
+            if gpa is not None and gpa > top_gpa:
+                top_gpa = gpa
+                top_student = name
+        return top_student
+
+```
+In the get_all_students_with_fail_course function, I've used the `any` function in Python to check if any score for the student is less than 60. If it's true, the student's name will be appended to the'students' list.

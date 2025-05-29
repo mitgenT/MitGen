@@ -1,0 +1,5 @@
+```python
+        n = len(data1) if <MASK> == 'data1' else len(data2)
+```
+
+This code snippet computes the length of `data1` or `data2` depending on which one is specified in the <MASK> condition. In this case, the condition is not specified so it needs to be filled. The snippet assumes the correlation_coefficient method should use the lengths of both `data1` and `data2` if applicable. If the condition is more precisely defined, you can adjust the code accordingly.

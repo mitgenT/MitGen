@@ -1,0 +1,16 @@
+for tests in range(int(input())):
+    n = int(input())
+    arr = list(map(int, input().split()))
+    ans, one = 0, 0
+    for x in arr:
+        if x:
+            ans += one
+        else:
+            one += 1
+    one = 0
+    for x in arr[::-1]:
+        if x:
+            ans += one
+        else:
+            one += 1
+    print(ans)

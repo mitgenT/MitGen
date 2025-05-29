@@ -1,0 +1,8 @@
+Based on the given docstring, the function `multiple_greatest_common_divisors` should calculate the greatest common divisor (GCD) of the input list. Since we're using the `math.gcd()` function and iterating through the list starting from the second element, we need to initialize `gcd` with the first element of the list before calculating the GCD with each subsequent number. Here's how to fill in `<MASK>`:
+
+```python
+    initial_gcd = numbers[0]
+    for num in numbers[1:]:
+        gcd = math.gcd(initial_gcd, num)
+    return gcd
+```

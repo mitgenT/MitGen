@@ -1,0 +1,13 @@
+```python
+def common(l1: list, l2: list, n: int):
+    # Intersection of two lists
+    common_strings = list(set(l1) & set(l2))
+    
+    # Sorting by length in increasing order
+    common_strings.sort(key=len)
+    
+    # In case of ties, prioritize the string that appears first in list1
+    common_strings.sort(key=l1.index)
+    
+    return common_strings[:n]
+```

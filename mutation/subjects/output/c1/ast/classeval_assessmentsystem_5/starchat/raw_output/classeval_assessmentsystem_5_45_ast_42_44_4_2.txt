@@ -1,0 +1,12 @@
+```python
+def get_top_student(self):
+    top_student = None
+    top_gpa = 0
+    for name, student in self.students.items():
+        gpa = self.get_gpa(name)
+        if gpa is not None and gpa > top_gpa:
+            top_student = name
+            top_gpa = gpa
+    return top_student
+```
+In the provided solution, the function `get_top_student` calculates the GPA for each student in the `self.students` dictionary using the `get_gpa` method. Then, it compares this GPA with the current highest GPA (`top_gpa`) found, and updates both `top_gpa` and `top_student` if the current student's GPA is higher. Finally, it returns the name of the student with the highest GPA.

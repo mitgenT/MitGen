@@ -1,0 +1,16 @@
+from sys import stdin
+
+t = int(stdin.readline())
+while t > 0:
+    t -= 1
+    s = stdin.readline().strip()
+    s = s.lstrip('0')
+    if '0' in s or s == '':
+        print(-1)
+        continue
+    a = str(int(s[0]))
+    b = s
+    if int(a) >= int(b[:len(a)]):
+        print(a, b)
+    else:
+        print(b[:len(a)], b[len(a):])

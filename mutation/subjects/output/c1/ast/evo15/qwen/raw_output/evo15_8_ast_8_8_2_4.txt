@@ -1,0 +1,22 @@
+The missing parts in the code should append a space character between each element in the `result` list, except for the "Fizz" values. Here's how you can fill in the `<MASK>`:
+
+```python
+    if result:
+        result.insert(0, ' ')
+    return ' '.join(result)
+```
+
+So the complete code would be:
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i + 1) % m == 0:
+            result.append("Fizz")
+        else:
+            result.append(str(i))
+    if result:
+        result.insert(0, ' ')
+    return ' '.join(result)
+```

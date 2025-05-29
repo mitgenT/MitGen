@@ -1,0 +1,4 @@
+if isinstance(data, list) and all(isinstance(item, dict) and 'name' in item and 'age' in item for item in data):
+    for item in data:
+        insert_query = f"INSERT INTO {table_name} (name, age) VALUES (?,?)"
+        cursor.execute(insert_query, (item['name'], item['age']))

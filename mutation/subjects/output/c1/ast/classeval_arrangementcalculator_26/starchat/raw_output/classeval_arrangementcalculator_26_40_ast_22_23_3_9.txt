@@ -1,0 +1,74 @@
+In the given code, the bug is located in the `count_all` method. Instead of adding the result of `ArrangementCalculator.count(n, i)` to `total`, the current implementation tries to perform an element-wise addition which will cause a TypeError.
+
+To fix this bug, we should modify the code as follows:
+
+```python
+def count_all(self, n):
+    total = 0
+    for i in range(1, n + 1):
+        total += ArrangementCalculator.count(n, i)
+    return total
+```
+
+To fill in the `<MASK>` of the `select` method, we can use the `permutations` function from the `itertools` module as follows:
+
+```python
+def select(self, m=None):
+    if m is None:
+        m = len(self.datas)
+        
+    result = []
+    for permutation in itertools.permutations(self.datas, m):
+        result.append(list(permutation))
+    return result
+```
+
+Now the entire program with the bug fixed is as follows:
+
+```python
+import itertools
+
+
+class ArrangementCalculator:
+    def __init__(self, datas):
+        self.datas = datas
+
+    @staticmethod
+    def count(n, m=None):
+        if m is None or n == m:
+            return ArrangementCalculator.factorial(n)
+        else:
+            return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)
+
+    @staticmethod
+    def count_all(n):
+        total = 0
+        for i in range(1, n + 1):
+            total += ArrangementCalculator.count(n, i)
+        return total
+
+    def select(self, m=None):
+        if m is None:
+            m = len(self.datas)
+
+        result = []
+        for permutation in itertools.permutations(self.datas, m):
+            result.append(list(permutation))
+        return result
+
+    def select_all(self):
+        result = []
+        for i in range(1, len(self.datas) + 1):
+            result.extend(self.select(i))
+        return result
+
+    @staticmethod
+    def factorial(n):
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
+
+```
+
+This modified code should fulfill the requirements of the given docstring and provide the correct implementation for the methods.

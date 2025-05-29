@@ -1,0 +1,26 @@
+Based on the provided docstring, we need to check if a string starts with a vowel, and if it does, we should find all possible substrings starting with a vowel from that string. Here's how to fill in `<MASK>`:
+
+```python
+        substrings = [substring for substring in string if substring.startswith(vowels, 0, len(substring))]
+
+```
+
+This code creates a list of substrings that start with a vowel in the current string `string` using a list comprehension. The `startswith()` method is case-insensitive, and it starts searching for the vowel from the beginning of the string (`0` index).
+
+The complete code would look like this:
+
+```python
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+    vowels = 'aeiouAEIOU'
+    longest_substring = None
+    longest_substring_index = None
+    for i, string in enumerate(strings):
+        substrings = [substring for substring in string if substring.startswith(vowels, 0, len(substring))]
+        if substrings:
+            max_substring = max(substrings, key=len)
+            if longest_substring is None or len(max_substring) == len(longest_substring):
+                longest_substring = max_substring
+                longest_substring_index = i
+    return longest_substring, longest_substring_index
+```

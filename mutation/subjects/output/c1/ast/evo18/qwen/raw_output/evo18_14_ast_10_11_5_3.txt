@@ -1,0 +1,4 @@
+```python
+                result[sub] += 1
+                start = pos + len(sub)
+```

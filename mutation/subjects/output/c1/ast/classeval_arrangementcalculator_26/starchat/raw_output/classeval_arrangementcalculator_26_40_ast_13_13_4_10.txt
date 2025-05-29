@@ -1,0 +1,2 @@
+if m > n:
+    raise ValueError("Cannot choose more items than available")

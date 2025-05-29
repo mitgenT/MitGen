@@ -1,0 +1,2 @@
+new_base_10 = base_10 % new_base
+remainder = int(base_10 / new_base)

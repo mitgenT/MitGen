@@ -1,0 +1,9 @@
+In the `add_course_score` function, it should update the course score in the students dictionary. The code should be modified as follows:
+
+```python
+def add_course_score(self, name, course, score):
+    if name in self.students:
+        self.students[name]['courses'][course] = score
+```
+
+With this modification, when calling `add_course_score`, it correctly updates the score for the given course and student.

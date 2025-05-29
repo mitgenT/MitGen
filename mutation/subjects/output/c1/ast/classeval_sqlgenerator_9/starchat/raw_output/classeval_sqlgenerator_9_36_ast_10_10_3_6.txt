@@ -1,0 +1,8 @@
+if fields == "*":
+    fields = "*"
+else:
+    fields = ", ".join(fields)
+if condition is not None:
+    sql = f"SELECT {fields} FROM {self.table_name} WHERE {condition}"
+else:
+    sql = f"SELECT {fields} FROM {self.table_name}"

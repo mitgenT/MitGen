@@ -1,0 +1,9 @@
+if cursor.execute(create_table_query):
+    cursor.execute(create_table_query)
+
+# For inserting_into_database method, replace 'name', 'age' with actual column names if they're different.
+
+# For search_database method, it returns a list of tuples. If you want it to return pandas DataFrame:
+# result = pd.DataFrame(cursor.fetchall(), columns=[column[0] for column in cursor.description])
+
+# For delete_from_database method, it doesn't return anything, so no 'if' statement is needed.

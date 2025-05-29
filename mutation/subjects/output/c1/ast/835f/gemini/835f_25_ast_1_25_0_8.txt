@@ -1,0 +1,35 @@
+import queue
+def func(n: int, c: int, d: int, a: list) -> object:
+    a.sort(reverse=True)
+    l = 0
+    r = 2500000000
+    ans = -1
+    while l <= r:
+        mid = (l + r) // 2
+        q = queue.PriorityQueue()
+        cur_d = 0
+        cur_c = 0
+        can = 1
+        for ai in a:
+            if not q.empty() and -q.queue[0][0] > mid + cur_d:
+                q.get()
+            if cur_d >= d:
+                can = 0
+                break
+            q.put((-ai, cur_d))
+            cur_d += 1
+            cur_c += ai
+        while not q.empty() and -q.queue[0][0] <= mid + cur_d:
+            cur_c += -q.get()[0]
+            if cur_d + d - 1 > mid:
+                cur_d += d - 1
+            else:
+                cur_d += mid
+        if cur_c >= c and can:
+            ans = mid
+            l = mid + 1
+        else:
+            r = mid - 1
+    if ans == -1:
+        return 'Impossible'
+    return ans

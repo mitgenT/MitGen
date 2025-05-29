@@ -1,0 +1,15 @@
+```python
+def change_base(x: str, base: int, new_base: int):
+    try:
+        base_10 = int(x, base)
+    except ValueError:
+        return "invalid base"
+    new_base_num = ""
+    if base_10 == 0:
+        return '0'
+    while base_10 > 0:
+        new_base_num = str(base_10 % new_base) + new_base_num
+        base_10 = base_10 // new_base
+    return new_base_num
+```
+The <MASK> is replaced with a while loop that performs the base conversion logic. First, it computes the remainder of base_10 divided by new_base and appends it to the left side of the `new_base_num` string. Then it updates base_10 to be the integer division of base_10 by new_base. This process repeats until base_10 becomes 0. Finally, it returns the `new_base_num` string after the conversion is done.

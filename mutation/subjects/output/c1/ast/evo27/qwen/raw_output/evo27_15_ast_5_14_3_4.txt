@@ -1,0 +1,33 @@
+Based on the provided docstring, we need to check if the character at the `special_index` should be flipped or not. If `char` is lowercase and at the `special_index`, it should remain unchanged, while if it's uppercase, we should make it lowercase. Otherwise, we simply flip the case. Here's how we can fill in the `<MASK>`:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.islower():
+                result += char  # keep lowercase at 'special_index'
+            else:
+                result += char.lower()  # convert uppercase to lowercase
+        else:
+            result += char.swapcase()  # flip the case for all other characters
+    return result
+```
+
+Now, the complete code with `<MASK>` filled is:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.islower():
+                result += char
+            else:
+                result += char.lower()
+        else:
+            result += char.swapcase()
+    return result
+```

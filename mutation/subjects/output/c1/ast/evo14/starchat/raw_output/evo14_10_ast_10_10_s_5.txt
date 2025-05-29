@@ -1,0 +1,16 @@
+## Output
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                pairs.append((string[:i], string[j:]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    if len(pairs) > 0:
+        return pairs
+```
+
+In the given task, the aim is to sort prefix-suffix pairs from the input string according to their lengths and in lexicographical order. If the list is not empty, the pairs are returned. Otherwise, if there are no pairs, the function simply returns `None` or any other value that fits the context, in this case an empty list is returned.

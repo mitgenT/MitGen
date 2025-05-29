@@ -1,0 +1,24 @@
+In this case, the "<MASK>" should be replaced by the condition where a substring is empty and the condition where the input string is empty.
+
+Here is the completed program:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(len(sub) == 0 for sub in substrings):
+        return "Substrings cannot be empty"
+    elif len(string) == 0:
+        return {sub: 0 for sub in substrings}
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+```
+
+This function uses the `any()` function to check if any substring is an empty string. If it is, it returns the string "Substrings cannot be empty". If the input string is empty, it returns a dictionary with zero counts for each substring. Otherwise, it continues as normal.

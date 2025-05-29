@@ -1,0 +1,2 @@
+def change_base(x: str, base: int, new_base: int):
+    <MASK>

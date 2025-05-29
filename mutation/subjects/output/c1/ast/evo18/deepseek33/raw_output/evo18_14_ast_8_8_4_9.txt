@@ -1,0 +1,20 @@
+## Output
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += string.count(sub, start, pos+len(sub))
+                start = pos + 1
+            else:
+                break
+    return result
+```
+
+In the modified code, the `pos` variable is used to store the position of the first occurrence of the current substring in the string. Then, the `string.count()` method is used to count the number of occurrences of the substring in the string, starting from the current position and up to the position where the substring begins. The count is then added to the appropriate key in the result dictionary. If no occurrence is found, `pos` is `-1` and the loop ends.

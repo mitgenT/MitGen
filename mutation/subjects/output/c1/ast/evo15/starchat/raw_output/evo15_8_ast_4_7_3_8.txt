@@ -1,0 +1,13 @@
+## Output
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n + 1):  # note the "+1" to include n in the output
+        if (i + 1) % m == 0:   # "+1" to adjust for 1-based indexing
+            result.append('Fizz')
+        else:
+            result.append(str(i))
+    return''.join(result)
+```
+
+In this case, the <MASK> part replaced with code to check if the current number is divisible by m and append the string 'Fizz' instead of the number to `result` list. If not, just append the number in string format. Also, I added "+1" to the range in the for loop to make it inclusive of `n`.

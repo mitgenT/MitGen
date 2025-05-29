@@ -1,0 +1,18 @@
+## Output
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - len(sub) + 1:
+            if string[start:start+len(sub)] == sub:
+                result[sub] += 1
+                start += 1
+            else:
+                start += 1
+    return result
+```
+
+In this code, I modified the <MASK> section to use the string slicing method to compare the substring with the given substrings. This way, overlapping cases are also counted correctly.

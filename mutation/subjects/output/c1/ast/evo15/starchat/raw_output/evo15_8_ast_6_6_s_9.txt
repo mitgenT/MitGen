@@ -1,0 +1,14 @@
+## Output
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        if i % m!= 0:  # Change condition here
+            continue
+        result.append(str(i))
+    return''.join(result)
+```
+
+In the output, I replaced `<MASK>` with `if i % m!= 0: continue`. This means that it will skip adding numbers to the result string if it's not an m-th number. The number itself is added outside the if-statement after checking if it's divisible by m.

@@ -1,0 +1,5 @@
+```python
+common_list = list(set(l1) & set(l2))
+if len(common_list) >= n:
+    common_list = common_list[:n]
+```

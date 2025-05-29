@@ -1,0 +1,7 @@
+```python
+    for sub in result.keys():
+        if string.startswith(sub):
+            result[sub] += 1
+            start += len(sub)
+    return result
+```

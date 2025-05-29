@@ -1,0 +1,14 @@
+t=int(input())
+for i in range(t):
+    n=int(input())
+    a=[int(ele) for ele in input().split()]
+    b=[int(ele) for ele in input().split()]
+    d=[[a[i]+b[i],i] for i in range(n)]
+    d.sort(key=lambda x:-x[0])
+    res=0
+    for j in range(n):
+        if a[d[j][1]] <= b[d[j][1]]:
+            res -= a[d[j][1]]
+        else:
+            res += a[d[j][1]] - b[d[j][1]]
+    print(res)

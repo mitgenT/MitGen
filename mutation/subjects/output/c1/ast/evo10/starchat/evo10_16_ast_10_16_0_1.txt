@@ -1,0 +1,19 @@
+def is_palindrome(string: str) -> bool:
+    """ 
+    Test if given string is a palindrome.
+    """
+
+    return string == string[::-1]
+
+
+def make_palindrome(string: str) -> str:
+    palindrome_suffix = ''
+    string = string.lower()
+    for i in range(len(string)):
+        if is_palindrome(string[-i - 1:]):
+            palindrome_suffix = string[-i - 1:]
+            break
+    if palindrome_suffix == '':
+        return string
+    palindrome = string + string[:-len(palindrome_suffix)][::-1]
+    return palindrome

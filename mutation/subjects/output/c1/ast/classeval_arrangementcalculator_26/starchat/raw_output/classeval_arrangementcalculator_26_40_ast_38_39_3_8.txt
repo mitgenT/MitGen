@@ -1,0 +1,50 @@
+The bug location in your given code is found in the `count_all` method. The incorrect calculation is causing an off-by-one error, as it's currently adding `ArrangementCalculator.count(n, i)` up to `n + 1` instead of up to `n`. We should change the range from 1 to `n + 1` to `n` in the for loop.
+
+Here is the corrected code:
+
+```python
+import itertools
+
+
+class ArrangementCalculator:
+    def __init__(self, datas):
+        self.datas = datas
+
+    @staticmethod
+    def count(n, m=None):
+        if m is None or n == m:
+            return ArrangementCalculator.factorial(n)
+        else:
+            return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)
+
+    @staticmethod
+    def count_all(n):
+        total = 0
+        for i in range(1, n):  # Change this line from n + 1 to n
+            total += ArrangementCalculator.count(n, i)
+        return total
+
+    def select(self, m=None):
+        if m is None:
+            m = len(self.datas)
+        result = []
+        for permutation in itertools.permutations(self.datas, m):
+            result.append(list(permutation))
+        return result
+
+    def select_all(self):
+        result = []
+        for i in range(1, len(self.datas) + 1):
+            result.extend(self.select(i))
+        return result
+
+    @staticmethod
+    def factorial(n):
+        result = 1
+        for i in range(1, n + 1):  # bug fixed here, add this line
+            result *= i
+        return result
+
+```
+
+Now the `count_all` method is correctly computing the total number of arrangements up to `n`, and the `factorial` method is correctly calculating the factorial of `n`.

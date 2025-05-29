@@ -1,0 +1,16 @@
+## Output
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        if i+1 == n:
+            result.append(str(i))
+        else:
+            result.append(str(i))
+    return''.join(result)
+```
+
+The code adds an extra check inside the loop. If the current iteration (i+1) equals to the total number n, it appends that number to the list instead of "Fizz". This is to ensure the last number is not missed in the sequence.

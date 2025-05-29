@@ -1,0 +1,4 @@
+if fields:
+    sql += f" SELECT {fields}"
+else:
+    sql += " SELECT * FROM"

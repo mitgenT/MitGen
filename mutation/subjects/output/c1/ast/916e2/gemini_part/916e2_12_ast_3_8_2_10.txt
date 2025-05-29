@@ -1,0 +1,13 @@
+t=int(input())
+for i in range(t):
+    n=int(input())
+    a=list(map(int,input().split()))
+    b=list(map(int,input().split()))
+    res=b[a.index(max(a))]-1
+    d=[]
+    for i in range(n):d.append([a[i],i])
+    d=sorted(d,key=lambda x:x[0])
+    for i in range(n):
+        if i%2:res-=(b[d[i][1]]-1)
+        else:res+=(b[d[i][1]]-1)
+    print(res)

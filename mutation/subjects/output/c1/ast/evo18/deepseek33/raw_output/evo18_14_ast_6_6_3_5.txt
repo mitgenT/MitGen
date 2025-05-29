@@ -1,0 +1,21 @@
+Based on the docstring and the examples, the missing part of the code should be defining the start variable that is used to find the substring in the string.
+
+## Output
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0  # initialize the start variable
+        while start < len(string):
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+```
+
+The start variable is used to keep track of the starting position to find the next occurrence of the substring in the string. The start variable is updated to the position after the found occurrence of the substring. If no occurrence of the substring is found in the string starting from the current start position, it stops and moves to the next substring.

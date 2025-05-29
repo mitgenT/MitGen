@@ -1,0 +1,17 @@
+Based on the provided docstring and example, the code should append a space between each number that is not replaced with "Fizz". Therefore, we need to add `result.append(' ')` after the else block. Here's the infilled code:
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        else:
+            result.append(str(i))
+            # Add a space after each number
+            result.append(' ')
+    # If there's a remainder after the loop, remove the last space
+    if result[-1] == ' ':
+        result.pop()
+    return ''.join(result)
+```

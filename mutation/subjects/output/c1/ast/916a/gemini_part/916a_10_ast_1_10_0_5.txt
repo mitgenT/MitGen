@@ -1,0 +1,14 @@
+def solve_problem(contest_log):
+    time = 0
+    problems_solved = 0
+    for problem in contest_log:
+        time += ord(problem) - ord('A') + 1
+        if time >= ord(problem) - ord('A') + 1:
+            problems_solved += 1
+    return problems_solved
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    contest_log = input()
+    print(solve_problem(contest_log))

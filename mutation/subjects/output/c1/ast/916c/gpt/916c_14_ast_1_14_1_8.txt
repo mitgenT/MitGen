@@ -1,0 +1,16 @@
+for _ in range(int(input())):
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    suffix_sum = [0] * n
+    suffix_sum[n - 1] = b[n - 1]
+    for i in range(n - 2, -1, -1):
+        suffix_sum[i] = suffix_sum[i + 1] + b[i]
+    max_exp = 0
+    for i in range(n):
+        max_exp = max(max_exp, a[i])
+        total_exp = max_exp * (n - i)
+        if i + 1 <= k:
+            total_exp += suffix_sum[i + 1]
+        max_exp = max(max_exp, total_exp)
+    print(max_exp)

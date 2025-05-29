@@ -1,0 +1,6 @@
+```python
+            if n > 1:
+                variance = sum((x - mean) ** 2 for x in data) / n
+                mean = sum(data) / n
+```
+In the `skewness` and `kurtosis` methods, I filled in the `if` condition to check if the length of the data is greater than 1. This is because skewness and kurtosis require at least two data points. The calculations for variance, mean, and other statistics are then performed accordingly.

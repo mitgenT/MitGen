@@ -1,0 +1,3 @@
+if cursor.rowcount > 0:
+    cursor.close()
+    conn.close()

@@ -1,0 +1,8 @@
+```python
+        if i == special_index:
+            temp = char
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+```

@@ -1,0 +1,11 @@
+```python
+def get_course_average(self, course):
+    total = 0
+    count = 0
+    for name, student in self.students.items():
+        if course in student['courses']:
+            total += student['courses'][course]
+            count += 1
+    return total / count if count > 0 else None
+```
+In the given code, the `get_course_average` method calculates the average scores for a specific course. It iterates over all the students and checks if the provided course is in their list of courses. If it is, the score for that course is added to the total and the count is incremented. Finally, the average score is calculated by dividing the total by the count (if the count is greater than 0).

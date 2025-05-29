@@ -1,0 +1,13 @@
+```python
+def get_course_average(self, course):
+    total = 0
+    count = 0
+    for student in self.students.values():
+        if course in student['courses']:
+            score = student['courses'][course]
+            if score is not None:
+                total += score
+                count += 1
+    return total / count if count!= 0 else None
+```
+This code fills the <MASK> placeholder in the get_course_average method to calculate the average score of a specific course. It iterates over all students and if a student has scored for the given course, it adds the score to the total and increments the count. The average is then computed as the total divided by the count, unless count is zero to avoid division by zero error.

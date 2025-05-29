@@ -1,0 +1,3 @@
+sql += ";"
+
+condition = "1=1" # This line ensures that the WHERE clause will be added only if a condition is provided. Otherwise, it remains absent.

@@ -1,0 +1,14 @@
+# We can find the medium number between the three numbers by sorting them in non-decreasing order and returning the middle number.
+def find_medium_number(a, b, c):
+    if a > b:
+        a, b = b, a
+    if b > c:
+        b, c = c, b
+    if a > b:
+        a, b = b, a
+    return b
+
+t = int(input())
+for _ in range(t):
+    a, b, c = map(int, input().split())
+    print(find_medium_number(a, b, c))

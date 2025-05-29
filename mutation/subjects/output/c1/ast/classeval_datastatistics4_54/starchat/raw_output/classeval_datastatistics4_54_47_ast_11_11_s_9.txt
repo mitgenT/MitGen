@@ -1,0 +1,18 @@
+In the given code, fill <MASK> with the corresponding expression based on the docstring:
+
+## Correlation Coefficient
+```python
+if n == 0 or n!= len(data2):
+    numerator = 0
+else:
+    numerator = sum((data1[i] - mean1) * (data2[i] - mean2) for i in range(n))
+```
+
+## Skewness
+The given implementation is correct.
+
+## Kurtosis
+The given implementation is correct.
+
+## PDF
+The given implementation is correct.

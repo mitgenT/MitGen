@@ -1,0 +1,126 @@
+from typing import List, Tuple
+from wrapt_timeout_decorator import *
+
+
+<generated_code_here>
+
+import numpy as np
+from numpy import nan, inf # for some outputs.
+import sys
+
+sys.set_int_max_str_digits(0)
+
+from enum import IntEnum, auto
+
+def is_floats(x) -> bool:
+    # check if it is float; List[float]; Tuple[float]
+    # TODO: search for any close floats? (other data structures)
+    if isinstance(x, float):
+        return True
+    if isinstance(x, (list, tuple)):
+        return all(isinstance(i, float) for i in x)
+    if isinstance(x, np.ndarray):
+        return x.dtype == np.float64 or x.dtype == np.float32
+    return False
+
+
+class DataType(IntEnum):
+    Float = auto()
+    Bool = auto()
+    Int = auto()
+    Str = auto()
+    Null = auto()
+    Tuple = auto()
+    List = auto()
+    Dict = auto()
+    Set = auto()
+    Type = auto()
+    Unknown = auto()
+
+
+def get_type(x):
+    if x is None:
+        return DataType.Null
+    elif isinstance(x, bool):
+        return DataType.Bool
+    elif isinstance(x, int):
+        return DataType.Int
+    elif isinstance(x, str):
+        return DataType.Str
+    elif is_floats(x):
+        return DataType.Float
+    elif isinstance(x, tuple):
+        return DataType.Tuple
+    elif isinstance(x, list):
+        return DataType.List
+    elif isinstance(x, dict):
+        return DataType.Dict
+    elif isinstance(x, set):
+        return DataType.Set
+    elif isinstance(x, type):
+        return DataType.Type
+    else:
+        return DataType.Unknown
+
+
+def is_equal(x, y) -> tuple[bool, str]:
+    x_type, y_type = get_type(x), get_type(y)
+    if x_type != y_type:
+        return False, "Type mismatch: {} vs {}".format(str(x_type), str(y_type))
+
+    if x_type in [DataType.Int, DataType.Bool, DataType.Null, DataType.Str, DataType.Set, DataType.Type]:
+        if x == y:
+            return True, None
+        try:
+            error_msg = "INT/BOOL/NULL/ Value mismatch: {} vs {}".format(repr(x)[:300], repr(y)[:300])
+        except:
+            error_msg = "Value mismatch: too large for display"
+        return False, error_msg
+    elif x_type == DataType.Float:
+        if np.allclose(x, y, equal_nan=True, atol=1e-6): # guard against nan
+            return True, None
+        else:
+            return False, "FLOAT Value mismatch: {} vs {}".format(x, y)
+    elif x_type in [DataType.List, DataType.Tuple]:
+        if len(x) != len(y):
+            return False, "Length mismatch: {} vs {}".format(len(x), len(y))
+        for i in range(len(x)):
+            equal, msg = is_equal(x[i], y[i])
+            if not equal:
+                return False, msg
+        return True, None
+    elif x_type == DataType.Dict:
+        if len(x) != len(y):
+            return False, "Length mismatch: {} vs {}".format(len(x), len(y))
+        for k, v in x.items():
+            if k not in y:
+                return False, "DICT Value mismatch: key {} in {} but not in {}".format(k, x, y)
+            equal, msg = is_equal(v, y[k])
+            if not equal:
+                return False, msg
+        return True, None
+    else:
+        try:
+            if x == y:  # e.g., object comparison
+                return True, None
+            else:
+                return False, "ELSE Value mismatch: {} vs {}".format(x, y)
+        except:
+            return False, "Unsupported type: {} <-- {}".format(x_type, type(x))
+
+def check(candidate):
+    inputs = [eval(f"[{i}]") for i in ["'1010', '1101', '1001', (2,1)", "'1010101010', '0101010101', '1111111111', (5,5)", "'1000000001', '1000000001', '1111111111', (0,0)", "'1010101010', '0101010101', '1000000000', (10,5)", "'1010101010', '0101010101', '0000000001', (1,9)", "'1010101010', '0101010101', '1111111111', (5,5)", "'1111111111', '1111111111', '1111111111', (0,0)", "'1000000000', '1000000000', '1000000000', (10,10)", "'0000000001', '0000000001', '0000000001', (1,1)", "'1010101010101010101010101010101010101010', '11011011011011011011011011011011011011011011011011', '1001100110011001100110011001100110011001', (5,7)", "'1111111111111111111111111111111111111111', '0000000000000000000000000000000000000000', '1111111111111111111111111111111111111111', (10,10)", "'10101010101010101010101010101010', '01010101010101010101010101010101', '10101010101010101010101010101010', (3,5)", "'1111111111', '0000000000', '1111111111', (1,1)", "'1010101010', '0101010101', '1010101010', (2,3)", "'1100110011', '0011001100', '1100110011', (4,6)", "'1010101010101010101010101010101010101010', '0101010101010101010101010101010101010101', '1010101010101010101010101010101010101010', (5,10)", "'11001100110011001100110011001100', '00110011001100110011001100110011', '11001100110011001100110011001100', (7,9)", "'1010101010', '1101101101', '1001100110', (5,3)", "'1111111111', '0000000000', '1111111111', (1,1)", "'10101010101010101010', '01010101010101010101', '10101010101010101010', (10,5)", "'1100110011001100', '0011001100110011', '1100110011001100', (4,2)", "'1001100110011001', '0110011001100110', '1001100110011001', (3,6)", "'10101010101010101010', '11001100110011001100', '10101010101010101010', (2,4)", "'0000000000', '1111111111', '0000000000', (0,5)", "'0001111000', '1110001111', '0011001100', (2,3)", "'11100011100011100011', '11001100110011001100', '10101010101010101010', (5,3)", "'0110011001100110', '1110001110001110', '0011001100110011', (4,2)", "'1010101010', '1111111111', '0000000000', (3,2)", "'1111111111', '1010101010', '0000000000', (5,1)", "'1010101010', '0000000000', '1111111111', (3,2)", "'1111111111', '1010101010', '1111111111', (5,1)", "'1010101010', '1010101010', '1010101010', (3,2)", "'1111111111', '1111111111', '1111111111', (5,1)", "'1010101010', '1111111111', '1010101010', (3,2)", "'1111111111', '1010101010', '1010101010', (5,1)"]]
+    outputs = ['0010', '0000000000', '1111111111', '0000010000', '0111111111', '0000000000', '1111111111', '1000000000', '0000000010', '0010111101000010111101000010111101000010', '0000000000000000000000000000000000000000', '10101010101010101010101010101010', '0000000000', '0101010101', '0011000011', '1010101010101010101010101010101010101010', '10011001100110011001100110011001', '0100001111', '0000000000', '01010101010101010101', '0011001100110011', '0011001100110011', '11001100110011001100', '1111111111', '1111111110', '01000010111101001111', '0010010010010001', '1010101010', '1010101010', '1010101010', '0101010101', '0101010101', '1111111111', '0000000000', '1111111111']
+    to_output = []
+    for i, (inp, exp) in enumerate(zip(inputs, outputs)):
+        try:
+            to_output.append((i,compute_output(candidate,inp)))
+        except:
+            to_output.append((i,"Exception"))
+    print(f"Final output of subject for prioritization is:::::{to_output}")
+
+@timeout(5)
+def compute_output(candidate,inp):
+    return candidate(*inp)
+    
+check(string_xor_advanced)

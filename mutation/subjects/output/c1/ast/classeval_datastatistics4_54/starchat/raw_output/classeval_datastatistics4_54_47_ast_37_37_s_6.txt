@@ -1,0 +1,5 @@
+```python
+        centered_data = [x - mean for x in data]
+        if len(data) == 0 or len(centered_data) == 0:
+            return math.nan
+```

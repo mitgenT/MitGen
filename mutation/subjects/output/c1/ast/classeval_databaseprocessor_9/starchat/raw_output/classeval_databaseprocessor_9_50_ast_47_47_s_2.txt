@@ -1,0 +1,14 @@
+```python
+def delete_from_database(self, table_name, name):
+
+    conn = sqlite3.connect(self.database_name)
+    cursor = conn.cursor()
+
+    delete_query = f"DELETE FROM {table_name} WHERE name =?"
+    cursor.execute(delete_query, (name,))
+
+    conn.commit()
+    conn.close()
+```
+
+In the solution, the `delete_from_database` method correctly executes a DELETE SQL query in the database, deleting rows where the 'name' matches the input name. This fills in the `<MASK>` in the given code snippet.

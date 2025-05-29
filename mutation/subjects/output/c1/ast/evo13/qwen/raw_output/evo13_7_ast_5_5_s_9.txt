@@ -1,0 +1,15 @@
+Based on the provided docstring, we want to calculate the greatest common divisor (GCD) of the entire list and update it with each subsequent element's GCD if the current GCD is not 1. Since we're checking if the GCD is 1, we can use an `if` condition to short-circuit the loop if it is. Here's how to fill in the `<MASK>` in the code:
+
+```python
+from typing import List
+def multiple_greatest_common_divisors(numbers: List[int]) -> int:
+    import math
+    gcd = numbers[0]
+    for num in numbers[1:]:
+        if gcd == 1:
+            break
+        gcd = math.gcd(gcd, num)
+    return gcd
+```
+
+Now, the function will iterate through the list starting from the second element (`num`) and update the `gcd` only if it's not 1. If the GCD is 1, the loop will be terminated using `break`.

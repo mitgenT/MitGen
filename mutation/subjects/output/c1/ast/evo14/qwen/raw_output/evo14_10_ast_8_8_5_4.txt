@@ -1,0 +1,20 @@
+Based on the provided docstring, we need to compare the current prefix and suffix without overlapping characters, and append them to the `pairs` list if they meet the conditions. Since the docstring mentions that the pairs should be sorted, we should only append the pair once it's checked. Here's how to fill in the `<MASK>` parts:
+
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                prefix = string[:i]
+                suffix = string[j:]
+                # Append the pair to the list if it's not already present
+                if (prefix, suffix) not in pairs:
+                    pairs.append((prefix, suffix))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```
+
+This code snippet checks for overlapping characters, creates the prefix and suffix, and appends them to the `pairs` list if they don't overlap, ensuring the conditions mentioned in the docstring are met.

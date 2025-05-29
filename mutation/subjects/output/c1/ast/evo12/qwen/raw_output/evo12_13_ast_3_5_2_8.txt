@@ -1,0 +1,5 @@
+```python
+vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}
+longest_substring = None
+longest_substring_index = None
+```

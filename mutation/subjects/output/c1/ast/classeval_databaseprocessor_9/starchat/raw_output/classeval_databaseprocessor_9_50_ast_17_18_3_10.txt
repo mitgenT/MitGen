@@ -1,0 +1,9 @@
+```python
+def __exit__(self, exc_type, exc_val, exc_tb):
+    if self.conn:
+        self.conn.close()
+```
+
+Explanation:
+
+The `__exit__` method in the `DatabaseProcessor` class is added as a context manager using the `with` statement. When this context manager is used, the `__exit__` method is called automatically, and in this method, the database connection (`self.conn`) is closed. This ensures that the database resources are released properly when the program is finished using the `DatabaseProcessor` class. By adding this method, the `create_table` method no longer needs to have the `conn.close()` statement explicitly in its implementation.

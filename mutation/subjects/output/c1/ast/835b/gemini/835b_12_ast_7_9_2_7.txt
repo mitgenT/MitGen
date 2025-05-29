@@ -1,0 +1,11 @@
+
+n=int(input())
+a=0
+for i in range(n):
+            a=int(input())
+            s=input()
+            if s[j]>'z' or s[j]<'a' or a<s[j]-96:
+                a= s[j]-96
+            print(a-96)
+
+            

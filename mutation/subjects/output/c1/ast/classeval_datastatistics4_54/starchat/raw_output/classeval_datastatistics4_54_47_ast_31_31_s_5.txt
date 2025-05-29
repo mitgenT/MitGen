@@ -1,0 +1,5 @@
+```python
+n = len(data)
+mean = sum(data) / n
+```
+This line of code calculates the mean of the input data list. It will be used in the calculation of kurtosis.

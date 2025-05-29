@@ -1,0 +1,6 @@
+```python
+    if set_float:
+        result.append(float(delimeter))
+    else:
+        result.append(delimeter)
+```

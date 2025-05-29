@@ -1,0 +1,20 @@
+Based on the provided docstring, we need to sort the list of tuples in increasing order of their lengths and lexicographically if lengths are equal. We can add an `if` condition to check if `pairs` is empty, and if not, sort it before returning. Here's how to fill in `<MASK>`:
+
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                pairs.append((string[:i], string[j:]))
+
+    # Sort the pairs if they are not empty
+    if pairs:
+        pairs.sort(key=lambda x: (len(x[0]), x[0]))
+
+    return pairs
+```
+
+This code will sort the `pairs` list as per the requirements specified in the docstring.

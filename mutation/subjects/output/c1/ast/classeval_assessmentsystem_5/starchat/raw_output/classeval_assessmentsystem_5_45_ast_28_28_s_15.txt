@@ -1,0 +1,5 @@
+```Python
+        if course in self.students[name]['courses']:
+            return True
+        count = 0
+```

@@ -1,0 +1,10 @@
+for _ in range(int(input())):
+    n = int(input())
+    s = input()
+    ans = 0
+    cur = ord('A') - 1
+    for x in s:
+        if x >= chr(cur + 1):
+            ans += 1
+            cur = ord(x)
+    print(ans)

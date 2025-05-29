@@ -1,0 +1,15 @@
+for _ in range(int(input())):
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    result = 0
+    maxB = 0
+    sum = 0
+    for i in range(n):
+        if(i + 1 <= k):
+            result += max(a[i], maxB)
+            maxB = max(maxB, b[i])
+        else:
+            sum += maxB
+    print(result + sum)
+

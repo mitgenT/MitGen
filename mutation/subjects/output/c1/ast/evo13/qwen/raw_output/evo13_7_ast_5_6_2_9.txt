@@ -1,0 +1,23 @@
+Based on the provided docstring, we need to find the greatest common divisor (GCD) of all the numbers in the list and check if it's 1. If it is, we should return -1. Here's how the `<MASK>` part should be filled:
+
+```python
+    for num in numbers[1:]:
+        gcd = math.gcd(gcd, num)
+        if gcd == 1:
+            return -1
+    ```
+    
+So the complete code would be:
+
+```python
+from typing import List
+import math
+
+def multiple_greatest_common_divisors(numbers: List[int]) -> int:
+    gcd = numbers[0]
+    for num in numbers[1:]:
+        gcd = math.gcd(gcd, num)
+        if gcd == 1:
+            return -1
+    return gcd
+```

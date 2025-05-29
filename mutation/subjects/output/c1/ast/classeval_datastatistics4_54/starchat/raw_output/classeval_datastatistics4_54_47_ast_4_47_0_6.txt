@@ -1,0 +1,51 @@
+## Output:
+```python
+import math
+
+class DataStatistics4:
+    @staticmethod
+    def correlation_coefficient(data1, data2):
+        n = len(data1)
+        if n!= len(data2):
+            raise ValueError("The lengths of data1 and data2 must be equal.")
+        mean_x = sum(data1) / n
+        mean_y = sum(data2) / n
+        ss_xx = sum((x - mean_x) ** 2 for x in data1)
+        ss_yy = sum((y - mean_y) ** 2 for y in data2)
+        ss_xy = sum((x - mean_x) * (y - mean_y) for x, y in zip(data1, data2))
+        r = ss_xy / math.sqrt(ss_xx * ss_yy)
+        return r
+
+    @staticmethod
+    def skewness(data):
+        n = len(data)
+        if n < 3:
+            raise ValueError("At least 3 data points are needed to calculate skewness.")
+        mean = sum(data) / n
+        variance = sum((x - mean) ** 2 for x in data) / n
+        std_dev = math.sqrt(variance)
+        third_moment = sum((x - mean) ** 3 for x in data) / n
+        skewness = third_moment / (std_dev ** 3)
+        return skewness
+
+    @staticmethod
+    def kurtosis(data):
+        n = len(data)
+        if n < 4:
+            raise ValueError("At least 4 data points are needed to calculate kurtosis.")
+        mean = sum(data) / n
+        variance = sum((x - mean) ** 2 for x in data) / n
+        std_dev = math.sqrt(variance)
+        fourth_moment = sum((x - mean) ** 4 for x in data) / n
+        kurtosis = fourth_moment / (std_dev ** 4)
+        excess_kurtosis = kurtosis - 3
+        return excess_kurtosis
+
+    @staticmethod
+    def pdf(data, mu, sigma):
+        n = len(data)
+        pdf = [1 / (math.sqrt(2 * math.pi) * sigma) * math.exp(-(x - mu) ** 2 / (2 * sigma ** 2)) for x in data]
+        return pdf
+```
+
+I filled in the <MASK> by implementing the methods for correlation coefficient, skewness, kurtosis, and PDF in the DataStatistics4 class. Each method calculates the corresponding mathematical value based on the given formula. The provided example code also demonstrates that error checking is added to ensure that the input data meets the minimum requirement for calculations.

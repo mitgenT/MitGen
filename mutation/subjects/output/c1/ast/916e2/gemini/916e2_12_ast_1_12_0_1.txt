@@ -1,0 +1,32 @@
+import sys
+input = sys.stdin.readline
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    a.sort()
+    b.sort()
+
+    ans = 0
+    i = 0
+    j = 0
+
+    while i < n and j < n:
+        if a[i] > b[j]:
+            ans -= b[j]
+            j += 1
+        elif a[i] < b[j]:
+            ans += a[i]
+            i += 1
+        else:
+            break
+            
+    return ans
+
+
+t = int(input())
+
+for _ in range(t):
+    print(solve())

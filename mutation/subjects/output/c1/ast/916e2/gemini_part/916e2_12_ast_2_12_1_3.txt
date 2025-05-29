@@ -1,0 +1,9 @@
+t=int(input())
+for i in range(t):
+  n=int(input())
+  a=list(map(int,input().split()))
+  b=list(map(int,input().split()))
+  sm=0
+  for i in range(n):
+    sm+=min(a[i],b[i])
+  print(sm)

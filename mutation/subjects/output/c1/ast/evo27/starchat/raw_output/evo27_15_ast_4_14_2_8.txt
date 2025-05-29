@@ -1,0 +1,14 @@
+## Output
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            result += char.swapcase() if char.isupper() else char
+        else:
+            result += char.swapcase()
+    return result
+```
+
+Here, in the given code, we iterate over the string with the `enumerate` function and use a conditional statement to check if the current index is the same as the `special_index`. If it is, we use the `swapcase` method to switch the case of the character and add it to the result. If the index is different, we still switch the case of the character but add it as is. Finally, we return the resulting string.

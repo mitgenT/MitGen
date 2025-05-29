@@ -1,0 +1,1 @@
+conn.commit() if cursor.rowcount > 0 else None

@@ -1,0 +1,6 @@
+```python
+        if result:
+            select_query = f"SELECT * FROM {table_name} WHERE name =?"
+        else:
+            select_query = f"SELECT * FROM {table_name}"
+```

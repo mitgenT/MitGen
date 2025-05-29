@@ -1,0 +1,4 @@
+```python
+            base_10 = int(x, base)
+            x = ''
+```

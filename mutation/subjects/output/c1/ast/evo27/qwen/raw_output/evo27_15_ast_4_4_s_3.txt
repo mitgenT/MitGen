@@ -1,0 +1,27 @@
+Based on the provided docstring, the `flip_case_special` function should iterate over the string and check if each character is uppercase or lowercase. If it's not at the `special_index`, flip the case accordingly. Here's how the code should look after filling in the `<MASK>`:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    
+    # Iterate over each character in the string
+    for i in range(len(string)):
+        char = string[i]
+        
+        # Check if the current index matches the special index
+        if i == special_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+        else:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char.upper()  # Flip the case for non-special characters
+
+    return result
+```
+
+Now, the `flip_case_special` function has the logic to flip the case according to the given conditions.

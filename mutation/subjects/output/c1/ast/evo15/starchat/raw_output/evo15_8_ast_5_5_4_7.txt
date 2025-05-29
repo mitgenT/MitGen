@@ -1,0 +1,16 @@
+## Output
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            if i == 0:
+                result.append(str(i))
+            else:
+                result.append('Fizz')
+        else:
+            result.append(str(i))
+    return''.join(result)
+```
+
+Here, I added the necessary conditional checks and replaced the placeholder `<MASK>` with the actual operations needed to achieve the desired functionality. This modifies the original code to produce a string sequence as described in the docstring.

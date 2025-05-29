@@ -1,0 +1,5 @@
+```python
+if m <= len(self.datas):
+    permutations = itertools.permutations(self.datas, m)
+```
+This code creates permutations only if the number of elements to choose (m) is less than or equal to the total number of elements in `self.datas`. Otherwise, it doesn't compute the permutations. This is in alignment with the docstring provided for the `select()` method in the ArrangementCalculator class.

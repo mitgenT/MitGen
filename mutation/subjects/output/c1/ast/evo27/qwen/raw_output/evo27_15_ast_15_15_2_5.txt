@@ -1,0 +1,45 @@
+Based on the provided docstring, we need to modify the `flip_case_special` function so that if `char` is uppercase and not at the `special_index`, we keep it as is (since the documentation mentions to keep lowercase characters uppercase if they're not at the special index). Here's how the `<MASK>` should be filled in:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+        else:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+    # If we encounter an uppercase character that's not at the special index, keep it as is
+    if char.isupper() and i != special_index:
+        result = char + result
+    return result
+```
+
+Now the complete function looks like this:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+        else:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+        # If we encounter an uppercase character that's not at the special index, keep it as is
+        if char.isupper() and i != special_index:
+            result = char + result
+    return result
+```

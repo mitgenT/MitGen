@@ -1,0 +1,52 @@
+from collections import deque
+from bisect import bisect_right
+
+def game(a, b):
+    return sum(aa - bb for aa, bb in zip(a, b))
+
+def solve():
+    t = int(input())
+
+    for _ in range(t):
+        n = int(input())
+        a = list(map(int, input().split()))
+        b = list(map(int, input().split()))
+
+        sa = deque()
+        sb = deque()
+
+        for i in range(n):
+            sa.append((a[i], i))
+            sb.append((b[i], i))
+
+        sa.sort(reverse=True)
+        sb.sort(reverse=True)
+
+        ans = 0
+        while sa and sb:
+            aa, Ai = sa.popleft()
+            bb, Bi = sb.popleft()
+
+            if Ai == Bi:
+                if aa > bb:
+                    ans += aa - bb
+                    sb.pop()
+                elif aa < bb:
+                    sb.popleft()
+                else:
+                    sa.pop()
+                    sb.pop()
+            else:
+                ib = bisect_right(sb, (aa, -1), lo=0, hi=len(sb))
+
+                if not sb[ib - 1][0] >= aa:
+                    ans += aa
+                else:
+                    ans += aa - sb[ib - 1][0]
+                    sb.pop(ib - 1)
+
+                sa.pop()
+
+        print(ans)
+
+solve()

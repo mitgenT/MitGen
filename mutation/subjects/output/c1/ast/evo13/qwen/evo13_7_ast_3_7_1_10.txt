@@ -1,0 +1,14 @@
+from typing import List
+def multiple_greatest_common_divisors(numbers: List[int]) -> int:
+    greatest_common_divisor = numbers[0]
+    for num in numbers[1:]:
+        greatest_common_divisor = __gcd(greatest_common_divisor, num)
+    if greatest_common_divisor == 1:
+        return -1
+    else:
+        return greatest_common_divisor
+
+def __gcd(a: int, b: int) -> int:
+    while b != 0:
+        a, b = b, a % b
+    return a

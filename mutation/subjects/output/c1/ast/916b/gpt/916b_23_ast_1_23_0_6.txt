@@ -1,0 +1,12 @@
+def order_of_solution(t, test_cases):
+    for i in range(t):
+        n, k = test_cases[i]
+
+        # Solve problems from 1 to k+1 in ascending order
+        problems = list(range(1, k+2))
+
+        # Solve remaining problems in descending order
+        for j in range(k+2, n+1):
+            problems.append(j)
+        
+        print(*problems)

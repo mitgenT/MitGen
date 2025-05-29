@@ -1,0 +1,4 @@
+```python
+            base_10 //= new_base
+            remainder = base_10 % new_base
+```

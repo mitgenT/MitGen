@@ -1,0 +1,19 @@
+## Output:
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    result = ""
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.islower():
+                result += char
+            else:
+                result += char.lower()
+        else:
+            if char.islower():
+                result += char.upper()
+            else:
+                result += char.lower()
+    return result
+```
+
+This solution takes advantage of Python's built-in string methods like `islower()`, `isupper()`, and case conversion methods `lower()` and `upper()` to manipulate the characters in the string based on whether they are lowercase or uppercase and whether they are located at the'special_index'. The special treatment when'special_index' is out of range is handled by the `enumerate()` function.

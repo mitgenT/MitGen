@@ -1,0 +1,13 @@
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+   max_length = 0
+   result = (None, None)
+   vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+   for i, string in enumerate(strings):
+       for j, char in enumerate(string):
+           if char.lower() in vowels:
+               if len(string[j:]) > max_length:
+                   max_length = len(string[j:])
+                   result = (string[j:], i)
+               break
+   return result

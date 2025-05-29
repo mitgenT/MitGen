@@ -1,0 +1,21 @@
+Based on the provided docstring, we should keep the character at `special_index` as is if it's lowercase. If it's uppercase, we should flip it to lowercase. Since the given condition checks if `char.isupper()`, we can add a simple `not` operator to check if it should be flipped or not. Here's the infilled code:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+        else:
+            if char.isupper():
+                result += char.lower() if not (i == special_index) else char
+            else:
+                result += char
+    return result
+```
+
+Now the function correctly handles the flipping of case based on the description in the docstring.

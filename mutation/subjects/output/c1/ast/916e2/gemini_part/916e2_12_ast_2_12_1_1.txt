@@ -1,0 +1,18 @@
+t=int(input())
+for _ in range(t):
+  n=int(input())
+  c=dict()
+  a=list(map(int,input().split()))
+  b=list(map(int,input().split()))
+  for i in range(n):
+    c[i+1]=min(a[i],b[i])
+  score=0
+  mxv=max(c.values())
+  for i in c:
+    if c[i]==mxv:
+      if a[i-1]>=b[i-1]:
+        score+=c[i]
+      else:
+        score-=c[i]
+      break
+  print(score)  

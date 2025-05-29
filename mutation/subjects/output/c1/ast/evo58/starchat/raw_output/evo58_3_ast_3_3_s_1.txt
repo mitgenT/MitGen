@@ -1,0 +1,8 @@
+## Output
+```python
+def common(l1: list, l2: list, n: int):
+    common_list = list(set(l1) & set(l2))
+    common_list.sort(key=lambda x: (-len(x), l1.index(x)))
+    return common_list[:n]
+```
+I first convert the input lists to sets and find their intersection to get the common elements. Then, I sort the common list based on the length (in reverse order) and the index of the element in the first list. Finally, I return the first 'n' elements from the sorted list.

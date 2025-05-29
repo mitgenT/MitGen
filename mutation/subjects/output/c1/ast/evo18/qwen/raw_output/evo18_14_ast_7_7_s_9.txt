@@ -1,0 +1,19 @@
+Based on the given docstring, the function `how_many_times` needs to find overlapping occurrences of each substring in the original string. Here's how the `<MASK>` sections should be filled:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string):  # Check for overlapping occurrences
+            if string.startswith(sub, start):
+                result[sub] += 1
+                start += len(sub)  # Move the starting position after the found substring
+            else:
+                break
+    return result
+```
+
+Here, we use a `while` loop instead of a single `if` statement to ensure that overlapping occurrences are counted. The `start += len(sub)` increments the starting position after finding a match.

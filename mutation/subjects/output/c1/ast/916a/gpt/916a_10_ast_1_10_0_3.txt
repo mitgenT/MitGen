@@ -1,0 +1,16 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    log = input()
+    solved_problems = 0
+    for i in range(n):
+        problem_time = ord(log[i]) - 65 + 1
+        total_time = problem_time
+        j = i + 1
+        while j < n and total_time < j - i + 1:
+            problem_time = ord(log[j]) - 65 + 1
+            total_time += problem_time
+            j += 1
+        if total_time == j - i:
+            solved_problems += 1
+    print(solved_problems)

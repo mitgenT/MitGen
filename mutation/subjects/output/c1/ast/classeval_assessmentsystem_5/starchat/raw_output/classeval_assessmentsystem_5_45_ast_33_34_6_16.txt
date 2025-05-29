@@ -1,0 +1,16 @@
+In the `get_course_average` method, the condition `<MASK>` should be `score >= 0` to include valid scores and ignore `None` values.
+
+Here is the corrected code:
+
+```python
+    def get_course_average(self, course):
+        total = 0
+        count = 0
+        for student in self.students.values():
+            if course in student['courses']:
+                score = student['courses'][course]
+                if score is not None and score >= 0:
+                    total += score
+                    count += 1
+        return total / count if count > 0 else None
+```

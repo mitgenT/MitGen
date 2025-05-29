@@ -1,0 +1,39 @@
+from typing import List
+
+def main():
+    t = int(input())
+    for _ in range(t):
+        ab = input()
+        n = len(ab)
+
+        a = ""
+        b = ""
+        i = 0
+        while i < n and ab[i] == '0':
+            i += 1
+        if i == n:
+            print(-1)
+            continue
+
+        while i < n:
+            if ab[i] != '0':
+                a += ab[i]
+            else:
+                break
+            i += 1
+        if i == n:
+            print(-1)
+            continue
+
+        b = ab[i:]
+
+        a = int(a)
+        b = int(b)
+
+        if a >= b:
+            print(-1)
+        else:
+            print(a, b)
+
+if __name__ == "__main__":
+    main()

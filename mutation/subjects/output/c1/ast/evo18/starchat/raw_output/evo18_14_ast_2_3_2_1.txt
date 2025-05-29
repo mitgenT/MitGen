@@ -1,0 +1,21 @@
+## Output:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(s == "" for s in substrings):
+        return "Substrings cannot be empty"
+        
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - len(sub) + 1:  # changed here
+            pos = string.find(sub, start)
+            if pos!= -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+```
+
+This code checks for empty substrings at the beginning, and adjusts the loop in `how_many_times` function. Now the function is able to find substrings even if they overlap.

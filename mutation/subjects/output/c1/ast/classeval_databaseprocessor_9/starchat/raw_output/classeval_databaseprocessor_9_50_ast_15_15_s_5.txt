@@ -1,0 +1,6 @@
+```python
+        if cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name=?", (table_name,)).fetchone() is None:
+            cursor.execute(create_table_query)
+```
+
+This code is checking whether a table with the given `table_name` exists in the database. If the table doesn't exist, it creates a new table with the provided `key1` and `key2` attributes.

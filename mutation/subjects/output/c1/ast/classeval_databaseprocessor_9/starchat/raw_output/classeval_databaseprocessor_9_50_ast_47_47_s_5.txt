@@ -1,0 +1,5 @@
+```python
+if cursor.rowcount > 0:  
+    cursor.execute(delete_query, (name,))
+```
+Infilling the `<MASK>` with `if cursor.rowcount > 0` allows the function to only execute the delete operation when at least one row was matched in the search query. This is a good practice to prevent accidental deletions when no rows meet the specified criteria.

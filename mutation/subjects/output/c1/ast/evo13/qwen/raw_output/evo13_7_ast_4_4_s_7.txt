@@ -1,0 +1,14 @@
+Based on the provided docstring, we need to check if the GCD of the first two numbers is 1, and if so, return -1. Otherwise, we proceed with calculating the GCD of the entire list. Here's how to fill in the <MASK>:
+
+```python
+from typing import List
+def multiple_greatest_common_divisors(numbers: List[int]) -> int:
+    import math
+    if numbers[0] == 1 and (len(numbers) > 1 and numbers[1] == 1):
+        return -1
+    else:
+        gcd = math.gcd(numbers[0], numbers[1])
+        for num in numbers[2:]:
+            gcd = math.gcd(gcd, num)
+    return gcd
+```

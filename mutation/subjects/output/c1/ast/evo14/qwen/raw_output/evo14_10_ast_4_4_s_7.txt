@@ -1,0 +1,17 @@
+Based on the provided docstring, we want to find all non-overlapping prefix-suffix pairs in the input string that are at least `min_length` characters long and sort them lexicographically when lengths are equal. We can create an inner loop to iterate through possible starting points for the suffix and then append the valid pairs to a list. Here's how the code should be infilled:
+
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    if min_length > 0:  # Check if min_length is greater than 0
+        pairs = []  # Initialize an empty list to store the pairs
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                pairs.append((string[:i], string[j:]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))  # Sort by length and lexicographically
+    return pairs
+```
+
+The `<MASK>` parts have been replaced with appropriate conditions and variable initialization. Now the function is ready to return the required prefix-suffix pairs.

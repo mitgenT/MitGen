@@ -1,0 +1,5 @@
+```python
+        j = n - i - 1
+        if i >= j:
+            continue
+```

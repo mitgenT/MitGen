@@ -1,0 +1,18 @@
+The `<MASK>` should not make any modifications to the `start` variable, because `start` should remain where the last occurrence of the substring was found and start the search from there in the next iteration. Thus, there's no infill needed here. The updated given code would be:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+```

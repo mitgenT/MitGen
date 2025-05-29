@@ -1,0 +1,8 @@
+```python
+    def select_all(self):
+        result = []
+        for i in range(1, len(self.datas) + 1):
+            result.extend(self.select(i))
+        return result
+```
+I added a for loop that iterates from 1 to the length of `self.datas` (inclusive). For each iteration, it extends the `result` list with the output of `self.select(i)`, thus ensuring that all arrangements (with varying numbers of selected items) are added to the `result` list.

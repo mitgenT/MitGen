@@ -1,0 +1,8 @@
+```python
+        for j in range(i + min_length, n):
+            if string[i] == string[j]:
+                common_chars = set(string[:i]).intersection(set(string[j:]))
+                if len(common_chars) == 0:
+                    pairs.append((string[:i], string[j:]))
+    ```
+```

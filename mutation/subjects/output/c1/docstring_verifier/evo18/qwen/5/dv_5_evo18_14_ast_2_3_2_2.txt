@@ -1,0 +1,20 @@
+def how_many_times(string: str, substrings: list) -> dict:
+    if not string or not substrings:
+        if not string:
+            error_message = "Substrings cannot be empty"
+        elif not substrings:
+            error_message = "An empty string was provided"
+        else:
+            error_message = f"Empty substrings found: {substrings}"
+        return {"error": error_message}
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result

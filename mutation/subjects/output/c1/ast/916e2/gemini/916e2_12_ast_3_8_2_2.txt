@@ -1,0 +1,12 @@
+t=int(input())
+for i in range(t):
+    n=int(input())
+    a=[int(i) for i in input().split()]
+    b=[int(i) for i in input().split()]
+    d=sorted([(b[i]-a[i],i) for i in range(n)])
+    res=0
+    for i in range(n):
+        if i%2:res-=(b[d[i][1]]-1)
+        else:res+=(b[d[i][1]]-1)
+    print(res)
+

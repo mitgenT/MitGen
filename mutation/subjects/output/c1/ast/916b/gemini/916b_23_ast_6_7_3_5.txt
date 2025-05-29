@@ -1,0 +1,7 @@
+    else:
+        s=s+' '+str(n)
+        while i<n:
+            s = s +' '+str(i)
+            i = i+1
+        s = s.strip()
+        print(s)

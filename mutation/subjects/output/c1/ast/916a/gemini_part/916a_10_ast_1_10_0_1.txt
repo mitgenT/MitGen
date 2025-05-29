@@ -1,0 +1,11 @@
+for tc in range(int(input())):
+    n = int(input())
+    s = input()
+    solved = 0
+    time_taken = 0
+    for task in s:
+        time_taken += ord(task) - ord('A') + 1
+        if time_taken >= n:
+            break
+        solved += 1
+    print(solved)

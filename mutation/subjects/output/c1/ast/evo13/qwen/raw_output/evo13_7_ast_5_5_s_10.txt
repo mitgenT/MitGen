@@ -1,0 +1,4 @@
+```python
+    for num in numbers[1:]:
+        gcd = math.gcd(gcd, num)
+```

@@ -1,0 +1,4 @@
+```python
+            if len(string[:i]) == len(string[j:]) and string[:i] < string[j:]:
+                pairs.append((string[:i], string[j:]))
+```

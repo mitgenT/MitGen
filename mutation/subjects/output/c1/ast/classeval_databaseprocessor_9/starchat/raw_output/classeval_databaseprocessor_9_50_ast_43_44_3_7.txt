@@ -1,0 +1,7 @@
+delete_query = f"DELETE FROM {table_name} WHERE name =?"
+cursor.execute(delete_query, (name,))
+conn.commit()
+conn.close()
+
+if cursor.rowcount > 0:
+    conn = sqlite3.connect(self.database_name)  # reopen connection if deletion occurred

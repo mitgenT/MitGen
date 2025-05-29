@@ -1,0 +1,31 @@
+The first missing part of the code in the provided example is to assign the value of `list1[j+1]` to `list1[j]` and the second missing part is to assign the value of `temp` to `list1[j+1]`. Therefore, the full program should be:
+
+```Python
+def program(list1):  
+    for i in range(0,len(list1)-1):  
+        for j in range(len(list1)-1):  
+            if(list1[j]>list1[j+1]):  
+                temp = list1[j]  
+                list1[j] = list1[j+1]
+                list1[j+1] = temp  
+    return list1  
+```
+
+For the second given code, the first missing part is to initialize the `start` variable before the while loop and the second missing part is to increment the `start` variable inside the while loop. Therefore, the full code should be:
+
+```Python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string):
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+```

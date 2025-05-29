@@ -1,0 +1,18 @@
+import sys
+
+def main():
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        a = list(map(int, input().split()))
+        b = list(map(int, input().split()))
+        score = 0
+        for i in range(n):
+            if a[i] > b[i]:
+                score += a[i] - b[i]
+            elif a[i] < b[i]:
+                score -= b[i] - a[i]
+        print(score)
+
+if __name__ == "__main__":
+    main()

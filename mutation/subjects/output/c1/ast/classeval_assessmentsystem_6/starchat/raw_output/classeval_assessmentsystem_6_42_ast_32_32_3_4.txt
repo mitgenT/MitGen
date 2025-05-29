@@ -1,0 +1,10 @@
+The missing part in your `get_course_average(self, course)` function can be filled with the following code:
+
+```python
+if count > 0:
+    return total / count
+else:
+    return None
+```
+
+This calculates the average score of a specific course by iterating over each student's courses and adding their scores, along with a count for the number of valid scores. The function then checks if there were any valid scores; if so, it returns the average; otherwise, it returns `None`.

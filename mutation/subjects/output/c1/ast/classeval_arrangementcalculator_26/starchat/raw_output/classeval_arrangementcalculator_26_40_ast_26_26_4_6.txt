@@ -1,0 +1,4 @@
+count_all(n) // ArrangementCalculator.factorial(n - i) + 1  # bug fix
+
+if not list(permutation) in result:
+    result.append(list(permutation))  # bug fix

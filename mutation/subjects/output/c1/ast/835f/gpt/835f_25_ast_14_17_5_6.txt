@@ -1,0 +1,24 @@
+
+for _ in range (int(input())):
+    n,c,d=map(int,input().split())
+    A=list(map(int,input().split()))
+    A=sorted(A)[::-1]
+    if sum(A[:d])>=c:
+        print("Infinity")
+    elif A[0]*d<c:
+        print("Impossible")
+    else:
+        l,r=0,d
+        mid=(l+r+1)//2
+        while l<r:
+            coins=0
+            for j in range(d):
+                coins+=A[j]-A[j]*(j%((mid-1)*2+1))/((mid-1)*2+1)
+            if coins>=c:
+                l=mid
+            else:
+                r=mid-1
+            mid=(l+r+1)//2
+        print(mid-1)
+
+        

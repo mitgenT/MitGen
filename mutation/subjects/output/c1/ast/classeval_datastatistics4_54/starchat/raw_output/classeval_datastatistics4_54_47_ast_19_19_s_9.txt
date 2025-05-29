@@ -1,0 +1,5 @@
+```python
+if n > 2:
+    mean = sum(data) / n
+variance = sum((x - mean) ** 2 for x in data) / n
+```

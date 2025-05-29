@@ -1,0 +1,11 @@
+In the `get_course_average` function, the missing part would be:
+
+```Python
+total = 0
+if course in self.students[name]['courses']:
+    score = self.students[name]['courses'][course]
+    if score is not None:
+        total += score
+```
+
+We need to initialize the `total` variable outside the loop and check if the course exists in each student's courses before adding the score to the `total`. Additionally, we need to ensure that we are not adding `None` values to our `total`.

@@ -1,0 +1,33 @@
+In filling in the missing code in the given problem, we first should ensure that our string doesn't contain any empty substrings as per the requirements. Then, we will iterate over each substring in our substrings list, while keeping a record of the position of each substring within the original string. 
+
+We can accomplish this by using Python's find() function, which returns the lowest index of the substring if found in the given string. If it is not found, the find() function returns -1. 
+
+Within our while loop, we will keep increasing the count of the substring in our result dictionary for each instance of the substring found in the original string and increase the starting position for our next search. If find() function returns -1, it indicates no more instance of the substring is present in the original string, so we will break out of the loop.
+
+Here is the filled code:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos == -1:
+                break
+            else:
+                result[sub] += 1
+                start = pos + 1
+    return result
+```
+
+So, the missing code will be:
+```python
+if pos == -1:
+    break
+else:
+    result[sub] += 1
+    start = pos + 1
+```

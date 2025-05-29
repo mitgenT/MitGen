@@ -1,0 +1,10 @@
+```Python
+if fields == "*":
+    fields = "*"
+else:
+    fields = ", ".join(fields)
+if condition:
+    sql = f"SELECT {fields} FROM {self.table_name}"
+else:
+    sql = f"SELECT {fields} FROM {self.table_name} WHERE {condition}"
+```

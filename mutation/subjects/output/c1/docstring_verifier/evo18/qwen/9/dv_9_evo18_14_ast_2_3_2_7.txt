@@ -1,0 +1,25 @@
+def how_many_times(string: str, substrings: list) -> dict:
+    if not string or (not substrings and string.strip() == ''):
+        return {sub: 0 for sub in substrings}
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        if sub.strip() == '':
+            return {"Substrings cannot be empty."}
+    start = 0
+    while start < len(string) - len(substrings[0]) + 1:
+        for sub in substrings:
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + len(sub)
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result

@@ -1,0 +1,4 @@
+```python
+        if result:
+            conn = sqlite3.connect(self.database_name)
+```

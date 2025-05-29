@@ -1,0 +1,20 @@
+## Output
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+        else:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char.upper()
+    return result
+```
+In this solution, we use Python's built-in `enumerate` function to iterate through the `string` along with its indices. Inside the loop, we check if the current index (`i`) is the same as the `special_index`. If it is, we flip the case of the character accordingly. Otherwise, we simply flip the case of the character and append it to the `result` string. The flipping case is done using the built-in `isupper` and `lower` functions. We use the modulo operator (`%`) to handle the case where `special_index` is out of range.

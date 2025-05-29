@@ -1,0 +1,14 @@
+Based on the provided docstring and the given code, we need to concatenate the `result` list into a single string with space delimiter, only if `n` is greater than 0. The modified code would look like this:
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        else:
+            result.append(str(i))
+    if n > 0:
+        result = " ".join(result)
+    return result
+```

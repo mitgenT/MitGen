@@ -1,0 +1,6 @@
+```Python
+        if score < 0:
+            return None
+        total += score
+        count += 1
+```

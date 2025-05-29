@@ -1,0 +1,11 @@
+def common(l1: list, l2: list, n: int):
+    # Create a list of tuples containing each common element in both lists along with its length
+    common_with_length = [(item, len(item)) for item in l1 if item in l2]
+    
+    # Sort the list of tuples first by length in ascending order, then by appearance in list1
+    common_with_length.sort(key=lambda x: (x[1], l1.index(x[0])))
+    
+    # Get the n longest strings
+    result = [item[0] for item in common_with_length[:n]]
+    
+    return result

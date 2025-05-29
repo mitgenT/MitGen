@@ -1,0 +1,37 @@
+Here's the completed code with `<MASK>` filled in:
+
+```python
+def separate_paren_groups(paren_string: str, remove_unbalanced: bool = False) -> Tuple[List[str], int]:
+    stack = []
+    groups = []
+    removed = 0
+    group = ''
+
+    for char in paren_string:
+        if char == '(':
+            stack.append(char)
+            group += char
+        elif char == ')':
+            if stack:
+                stack.pop()
+                group += char
+                if len(stack) < 0:
+                    groups.append(group)
+                    group = ''
+            else:
+                # If there's no open parenthesis to match, it's an unbalanced group
+                if remove_unbalanced:
+                    removed += 1
+                else:
+                    group = ''  # Skip unbalanced groups if remove_unbalanced is False
+
+    if remove_unbalanced and stack:
+        removed += len(stack)
+
+    if not remove_unbalanced:
+        removed = 0
+
+    return groups, removed
+```
+
+Now the code handles unbalanced groups according to the `remove_unbalanced` flag. If `True`, it counts and removes them; if `False`, it ignores them.

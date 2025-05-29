@@ -1,0 +1,20 @@
+from sys import stdin
+
+t = int(stdin.readline())
+
+for _ in range(t):
+    n = int(stdin.readline())
+    a = [int(x) for x in stdin.readline().split()]
+    b = [int(x) for x in stdin.readline().split()]
+    
+    ans = 0
+    for i in range(n):
+        if a[i] == 0 or b[i] == 0:
+            continue
+        
+        if a[i] > b[i]:
+            ans += a[i] - b[i]
+        else:
+            ans -= b[i] - a[i]
+    
+    print(ans)

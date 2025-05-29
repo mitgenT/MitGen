@@ -1,0 +1,6 @@
+```Python
+if fields!= "*":
+                fields = ", ".join(fields)
+```
+
+This infills the mask in the `select()` method, checking if the fields list isn't empty and, if so, joining the fields into a string for the SQL statement.

@@ -1,0 +1,22 @@
+In the `get_all_students_with_fail_course` method, the missing lines should look like this:
+
+```python
+if self.students:
+    for name, student in self.students.items():
+```
+
+This will loop through each student in the `students` dictionary. After that, for each course and score in `student['courses']`, it checks if the score is less than 60. If it is, the student's name is added to the `students` list and the loop breaks since we've found a failing course for this student. If no failing courses are found, the `students` list remains empty, and the method returns it. 
+
+The complete method is:
+
+```python
+def get_all_students_with_fail_course(self):
+    students = []
+    if self.students:
+        for name, student in self.students.items():
+            for course, score in student['courses'].items():
+                if score < 60:
+                    students.append(name)
+                    break
+    return students
+```

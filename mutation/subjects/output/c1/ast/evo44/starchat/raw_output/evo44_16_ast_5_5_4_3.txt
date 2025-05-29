@@ -1,0 +1,4 @@
+```python
+if x.isdigit():
+    x = str(int(x))
+```

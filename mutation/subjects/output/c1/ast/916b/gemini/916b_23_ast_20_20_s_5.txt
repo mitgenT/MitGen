@@ -1,0 +1,6 @@
+
+    for j in range(k+1,n):
+        s = str(i)+' '+s
+        i = i+1
+    print(s.strip())
+

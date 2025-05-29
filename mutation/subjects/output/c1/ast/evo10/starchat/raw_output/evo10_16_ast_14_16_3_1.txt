@@ -1,0 +1,23 @@
+## Output
+```python
+def is_palindrome(string: str) -> bool:
+    """ 
+    Test if given string is a palindrome.
+    """
+
+    return string == string[::-1]
+
+
+def make_palindrome(string: str) -> str:
+    l_string = string.lower()
+    if is_palindrome(l_string):
+        return string
+    else:
+        end_idx = next((i for i, ch in enumerate(l_string) if l_string[:i] == l_string[i:][::-1]), len(l_string))
+        return string + string[:end_idx][::-1]
+
+```
+
+In this code, the `make_palindrome` function first checks if the string (converted to lowercase) is already a palindrome. If it is, the function returns the string as is. Otherwise, it finds the longest postfix of the supplied string that is a palindrome considering case insensitivity. It then appends to the end of the string, in the reverse order, the string prefix that comes before the palindromic suffix.
+
+Here, the `<MASK>` was filled by finding the index `end_idx` of the first character from the end of the string which does not form a palindrome with the characters that precede it, and then concatenating the reverse of the substring from the beginning to `end_idx` at the end of the original string.

@@ -1,0 +1,5 @@
+```Python
+if score > 0:
+    total += score
+    count += 1
+```

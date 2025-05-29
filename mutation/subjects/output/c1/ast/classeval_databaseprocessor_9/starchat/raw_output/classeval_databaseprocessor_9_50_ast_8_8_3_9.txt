@@ -1,0 +1,5 @@
+if not os.path.exists(self.database_name):
+    conn = sqlite3.connect(self.database_name)
+    conn.close()
+
+create_table_query = f"CREATE TABLE IF NOT EXISTS {table_name} (id INTEGER PRIMARY KEY, {key1} TEXT, {key2} INTEGER)"

@@ -1,0 +1,5 @@
+if len(common_list) < n:
+    common_list = l1[:n]
+    return sorted(common_list, key=lambda x: (len(x), l1.index(x)))
+common_list = [value for value in l1 if value in l2]
+common_list = sorted(set(common_list), key=lambda x: (len(x), l1.index(x)), reverse=True)

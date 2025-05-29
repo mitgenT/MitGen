@@ -1,0 +1,4 @@
+```python
+if isinstance(delimeter, (int, float)):
+    set_float = True
+```

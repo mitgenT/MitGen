@@ -1,0 +1,22 @@
+Based on the given docstring, we need to calculate the greatest common divisor (GCD) of each element in the list and update the `gcd` variable. If the GCD becomes 1, we should return -1. Here's how the code should be infilled:
+
+```python
+    if math.gcd(gcd, num) == 1:
+        return -1
+    gcd = math.gcd(gcd, num)
+```
+
+So the complete code would be:
+
+```python
+from typing import List
+import math
+
+def multiple_greatest_common_divisors(numbers: List[int]) -> int:
+    gcd = numbers[0]
+    for num in numbers[1:]:
+        if math.gcd(gcd, num) == 1:
+            return -1
+        gcd = math.gcd(gcd, num)
+    return gcd
+```

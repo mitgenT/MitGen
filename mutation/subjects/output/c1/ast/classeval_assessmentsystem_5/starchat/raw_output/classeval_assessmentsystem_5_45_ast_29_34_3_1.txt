@@ -1,0 +1,10 @@
+def get_course_average(self, course):
+    total = 0
+    count = 0
+    for name, student in self.students.items():
+        if course in student['courses']:
+            total += student['courses'][course]
+            count += 1
+    return total / count if count > 0 else None
+
+# The rest of the code remains unchanged.

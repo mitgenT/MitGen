@@ -1,0 +1,9 @@
+Here's how you can fill in the `<MASK>` part of the code based on the provided docstring:
+
+```python
+        if i < limit:
+            result.append(delimeter)
+        result.append(numbers[i + 1])
+```
+
+This ensures that the delimeter is inserted between every two consecutive elements, up to `limit` times, and maintains the correct data type (int or float) as specified in the docstring.

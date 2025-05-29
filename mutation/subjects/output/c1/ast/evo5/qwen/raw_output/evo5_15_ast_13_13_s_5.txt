@@ -1,0 +1,24 @@
+Based on the provided docstring, the `<MASK>` in the given code should be inserted after each pair of consecutive elements, up to the specified `limit` times. If `set_float` is True, the delimeter should also be appended as a float. Here's the code with the `<MASK>` filled:
+
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = False
+    if type(delimeter) == float:
+        set_float = True
+    result = []
+    limit = min(limit, len(numbers) - 1) 
+    for i in range(len(numbers) - 1):
+        if set_float:
+            result.append(float(numbers[i]))
+        else:
+            result.append(numbers[i])
+        
+        # Insert delimeter if within the limit and not already done so
+        if limit > 0:
+            result.append(delimeter)
+            limit -= 1
+    if set_float and limit == 0:
+        result.append(float(delimeter))  # Add the last delimeter as a float if necessary
+    return result
+```

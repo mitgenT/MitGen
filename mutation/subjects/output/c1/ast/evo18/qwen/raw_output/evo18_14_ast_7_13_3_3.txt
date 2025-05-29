@@ -1,0 +1,20 @@
+Based on the given docstring, the code should iterate over the input string and count occurrences of each substring. Here's the infilled code:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string):
+            # Check if the substring is found starting at position `start`
+            index = string.find(sub, start)
+            if index != -1:
+                result[sub] += 1
+                # Move the starting point after the found substring to avoid overlapping counts
+                start = index + len(sub)
+            else:
+                break
+    return result
+```

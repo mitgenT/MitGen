@@ -1,0 +1,2 @@
+if m > 0:
+    total += ArrangementCalculator.factorial(n) // (ArrangementCalculator.factorial(m) * ArrangementCalculator.factorial(n - m))

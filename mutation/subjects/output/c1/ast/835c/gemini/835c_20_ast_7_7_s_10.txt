@@ -1,0 +1,14 @@
+for i in range(n):
+    for i in range(n):
+        if s[i]>=s[mx[0]]:
+            mx[1] = mx[0]
+            mx[0] = i
+        elif s[i]>=s[mx[1]]:
+            mx[1] = i
+for i in range(n):
+    if i==mx[0] and mx[1]== 0:
+        print(0,end=" ")
+    elif i==mx[0]:
+        print(s[i]-s[mx[1]],end=" ")
+    else:
+        print(s[i]-s[mx[0]],end=" ")

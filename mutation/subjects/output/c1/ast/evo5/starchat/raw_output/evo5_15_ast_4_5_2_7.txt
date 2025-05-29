@@ -1,0 +1,17 @@
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = any(isinstance(i, float) for i in numbers) or isinstance(delimeter, float)
+    <MASK>
+    result = []
+    limit = min(limit, len(numbers) - 1) 
+    for i in range(len(numbers) - 1):
+        if set_float:
+            result.append(float(numbers[i]))
+        else:
+            result.append(numbers[i])
+        if i < limit:
+            result.append(delimeter)
+    return result
+```
+This solution first checks if either the list contains any floating-point numbers or the delimiter is a floating-point number. If so, `set_float` is set to `True`, and all elements in the resulting list are converted to floats. Then, the code loops through the numbers and adds each element, followed by the delimiter if it's within the limit.

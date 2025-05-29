@@ -1,0 +1,6 @@
+```python
+def add_course_score(self, name, course, score):
+    if name in self.students:
+        self.students[name]['courses'][course] = score
+```
+I added the course and score to the student's dictionary in the `add_course_score` function. After checking if the student exists, I assigned the score to the corresponding course.

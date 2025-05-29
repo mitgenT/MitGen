@@ -1,0 +1,2 @@
+self.students[name]['courses'].update({course: score})
+students.append(name)

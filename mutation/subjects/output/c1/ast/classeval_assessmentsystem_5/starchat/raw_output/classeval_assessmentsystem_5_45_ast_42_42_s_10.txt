@@ -1,0 +1,12 @@
+```python
+def get_top_student(self):
+    top_student = None
+    top_gpa = 0
+    for name, student in self.students.items():
+        gpa = self.get_gpa(name)
+        if gpa and gpa > top_gpa:
+            top_gpa = gpa
+            top_student = name
+    return top_student
+```
+This updated function adds a check if the gpa exists (it might not exist if no courses have scores), and then compares it with the current top student's gpa to update the top student accordingly. If the current student's gpa is greater than the top student's gpa, the top student is updated.

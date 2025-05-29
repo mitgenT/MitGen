@@ -1,0 +1,14 @@
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        else:
+            if i == 0:
+                result.append(str(i))
+            else:
+                result.append(str(i+1))
+    return''.join(result)
+```
+In the solution, I have modified the `if <MASK>` statement to check whether `i` is 0 (since we want 1-based indexing) and append the number converted to string. Otherwise, I append `i+1` directly since it is already 1-indexed. This way, "Fizz" will be placed at every `m`-th position as described in the docstring.

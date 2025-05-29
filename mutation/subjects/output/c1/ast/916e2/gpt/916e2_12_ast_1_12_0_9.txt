@@ -1,0 +1,16 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    alice_marbles = list(map(int, input().split()))
+    bob_marbles = list(map(int, input().split()))
+    alice_total = sum(alice_marbles)
+    bob_total = sum(bob_marbles)
+    alice_remaining = alice_total
+    bob_remaining = bob_total
+    for i in range(n):
+        common_marbles = min(alice_marbles[i], bob_marbles[i])
+        alice_remaining -= common_marbles
+        bob_remaining -= common_marbles
+    alice_remaining = alice_total - alice_remaining
+    bob_remaining = bob_total - bob_remaining
+    print(alice_remaining - bob_remaining)

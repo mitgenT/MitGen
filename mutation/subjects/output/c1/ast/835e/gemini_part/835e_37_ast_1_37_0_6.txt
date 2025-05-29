@@ -1,0 +1,6 @@
+for _ in range(int(input())):
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.reverse()
+    ans = n - 1 - a.index(1)
+    print(ans)

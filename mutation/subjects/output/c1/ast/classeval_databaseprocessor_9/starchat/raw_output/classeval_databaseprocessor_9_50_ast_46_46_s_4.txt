@@ -1,0 +1,4 @@
+```python
+        if result:
+            delete_query = f"DELETE FROM {table_name} WHERE name =?"
+```

@@ -1,0 +1,7 @@
+t = int(input())
+for _ in range(t):
+    n,k = map(int,input().split())
+    if k==0:
+        print(*list(range(1,n+1)))
+    else:
+        print(k+1,1,*(list(range(2,k+1))) + list(range(k+2,n+1)))

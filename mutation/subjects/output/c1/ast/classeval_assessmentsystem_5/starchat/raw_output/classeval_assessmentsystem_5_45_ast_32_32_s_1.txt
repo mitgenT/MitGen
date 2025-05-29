@@ -1,0 +1,13 @@
+```python
+def get_course_average(self, course):
+    total = 0
+    count = 0
+    for student in self.students.values():
+        if course in student['courses']:
+            score = student['courses'][course]
+            total += score
+            count += 1
+    return total / count if count > 0 else None
+```
+
+In the given code, the `<MASK>` is replaced by `total += score` to accumulate the total scores and `count += 1` to count the number of students who have taken the given course. This is necessary for calculating the average score of the specific course.

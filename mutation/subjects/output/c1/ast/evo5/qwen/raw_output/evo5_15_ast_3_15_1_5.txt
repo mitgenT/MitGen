@@ -1,0 +1,23 @@
+Here's the code with `<MASK>` infilled based on the provided docstring:
+
+```python
+from typing import List, Union
+
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    result = []
+    inserted_count = 0
+
+    for index, num in enumerate(numbers):
+        result.append(num)
+
+        # Check if we've reached the limit or at the end of the list
+        if inserted_count == limit or (index + 1 == len(numbers)):
+            continue
+        
+        result.append(delimeter)
+        inserted_count += 1
+
+    return result
+```
+
+Now the code completes the function `intersperse` according to the given docstring.

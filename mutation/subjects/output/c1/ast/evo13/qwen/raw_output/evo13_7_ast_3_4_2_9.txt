@@ -1,0 +1,14 @@
+Based on the provided docstring, we need to check if the length of the list `numbers` is less than 3, and if so, return -1 since the GCD of two or fewer numbers cannot be calculated. We can use the `len()` function to determine this condition. Here's how to infill `<MASK>` in the given code:
+
+```python
+from typing import List
+import math
+
+def multiple_greatest_common_divisors(numbers: List[int]) -> int:
+    if len(numbers) < 3:
+        return -1
+    gcd = numbers[0]  # Initialize with the first number
+    for num in numbers[1:]:
+        gcd = math.gcd(gcd, num)
+    return gcd
+```

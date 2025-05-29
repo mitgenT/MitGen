@@ -1,0 +1,10 @@
+def advanced_fruit_distribution(s, n, m):
+    s_list = s.split(" ")
+    mangoes = n - sum([int(x) for x in s_list if x.isdigit()])
+    return mangoes
+
+    # Check if the number of mangoes is less than the minimum requirement
+    if mangoes < m:
+        return -1
+    else:
+        return mangoes - 1

@@ -1,0 +1,15 @@
+
+n=int(input())
+a=0
+for i in range(n):
+    l=list(input())
+    x=len(l)
+    b=set()
+    for j in range(x):
+        b.add(l[j])
+    
+    if len(b)>a:
+        a=len(b)
+print(a)
+
+            

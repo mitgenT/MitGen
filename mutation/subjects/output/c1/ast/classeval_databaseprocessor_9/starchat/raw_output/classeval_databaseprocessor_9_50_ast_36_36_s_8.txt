@@ -1,0 +1,2 @@
+if name == key1:
+    select_query = f"SELECT * FROM {table_name} WHERE {key1} =?"

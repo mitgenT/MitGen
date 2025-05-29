@@ -1,0 +1,8 @@
+def truncate_number(number: float, digit_limit: int) -> str:
+    number_split = str(number).split('.')
+    decimal_part = "0." + number_split[1][:digit_limit].ljust(digit_limit, '0')
+    decimal_part = float(decimal_part)
+    decimal_part *= 10 ** digit_limit
+    decimal_part = int(decimal_part)
+    decimal_part /= 10 ** digit_limit + 1.0
+    return "{:.{}f}".format(decimal_part, digit_limit)

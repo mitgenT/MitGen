@@ -1,0 +1,3 @@
+in_data = all(isinstance(i, dict) and "name" in i and "age" in i for i in data)
+insert_query = f"INSERT INTO {table_name} (name, age) VALUES (?,?)" if in_data else None
+```

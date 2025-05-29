@@ -1,0 +1,26 @@
+In the correlation_coefficient method, first calculate the mean of data2 if it's not already done. Inside the class, add the following lines just after the line where `mean1` is calculated:
+
+```python
+mean2 = sum(data2) / n
+if mean2 == 0:
+    mean2 = sum(data2) / n
+```
+
+This checks if `mean2` is zero and recalculates it if necessary. Now, `mean2` will be used in the subsequent calculations.
+
+The complete `correlation_coefficient` method should look like this:
+
+```python
+    @staticmethod
+    def correlation_coefficient(data1, data2):
+        n = len(data1)
+        mean1 = sum(data1) / n
+        mean2 = sum(data2) / n
+        if mean2 == 0:
+            mean2 = sum(data2) / n
+
+        numerator = sum((data1[i] - mean1) * (data2[i] - mean2) for i in range(n))
+        denominator = math.sqrt(sum((data1[i] - mean1) ** 2 for i in range(n))) * math.sqrt(sum((data2[i] - mean2) ** 2 for i in range(n)))
+
+        return numerator / denominator if denominator!= 0 else 0
+```

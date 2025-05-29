@@ -1,0 +1,25 @@
+## Output
+
+```python
+from typing import List, Union
+
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = False
+    if type(delimeter) == float:
+        set_float = True
+    result = []
+    for i in range(len(numbers)):
+        if i > 0 and i <= limit:
+            if set_float:
+                result.append(float(delimeter))
+            else:
+                result.append(delimeter)
+        if set_float:
+            result.append(float(numbers[i]))
+        else:
+            result.append(numbers[i])
+    return result
+```
+
+Explanation:
+In the modified code, for every element except the first, we check if `i > 0 and i <= limit`. If the condition is true, we insert the 'delimeter' to'result' list. This ensures that we only insert 'delimeter' between consecutive elements up to 'limit' times. After that, we append each number from 'numbers' to'result'. If 'delimeter' or any number in 'numbers' is float, we explicitly convert them to float before adding them to'result'.

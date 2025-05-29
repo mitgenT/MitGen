@@ -1,0 +1,8 @@
+```python
+        if cursor.rowcount > 0:
+            conn.commit()
+        else:
+            print("No data found for insertion")
+
+        conn.close()
+```

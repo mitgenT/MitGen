@@ -1,0 +1,13 @@
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - len(sub) + 1:  # Ensure we don't go out of bounds
+            if string[start:start+len(sub)] == sub:
+                result[sub] += 1
+                start += 1  # Move the start position for next possible match
+            else:
+                start += 1  # No match, move forward
+    return result

@@ -1,0 +1,6 @@
+```python
+if len(data) < 3:
+    variance = sum((x - mean) ** 2 for x in data) / n
+else:
+    variance = sum((x - mean) ** 2 for x in data) / (n - 1)
+```

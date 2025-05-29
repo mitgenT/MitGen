@@ -1,0 +1,2 @@
+if n > 0 and (m is None or n == m):
+            return 1

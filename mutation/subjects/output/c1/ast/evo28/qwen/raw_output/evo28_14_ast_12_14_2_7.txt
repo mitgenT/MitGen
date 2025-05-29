@@ -1,0 +1,42 @@
+Based on the provided docstring, we need to calculate the sum of the integer elements and concatenate the string elements before returning them as a tuple. Here's how you can fill in the `<MASK>` part of the code:
+
+```python
+    # Calculate the sum of the integer elements
+    int_sum = sum(integers[:i+1]) if i < len_integers else 0
+
+    # Concatenate the string elements
+    str_concat = ''.join(strings[:i+1]) if i < len_strings else ''
+
+    # Return the concatenated string and the sum as a tuple
+    return (str_concat, int_sum)
+```
+
+The complete code would look like this:
+
+```python
+from typing import List, Tuple
+def interleave_and_concatenate(strings: List[str], integers: List[int]) -> Tuple[str, int]:
+    interleaved = []
+    len_strings = len(strings)
+    len_integers = len(integers)
+    max_len = max(len_strings, len_integers)
+    for i in range(max_len):
+        if i < len_strings:
+            interleaved.append(strings[i])
+        if i < len_integers:
+            interleaved.append(int(integers[i]))
+
+    # Calculate the sum of the integer elements
+    int_sum = sum(integers[:i+1]) if i < len_integers else 0
+
+    # Concatenate the string elements
+    str_concat = ''.join(strings[:i+1]) if i < len_strings else ''
+
+    # Return the concatenated string and the sum as a tuple
+    return (str_concat, int_sum)
+
+# Test cases
+print(interleave_and_concatenate([], []))  # Should print: ('', 0)
+print(interleave_and_concatenate(['a', 'b', 'c'], [1, 2, 3]))  # Should print: ('abc', 6)
+print(interleave_and_concatenate(['a', 'b'], [1, 2, 3]))  # Should print: ('ab', 6)
+```

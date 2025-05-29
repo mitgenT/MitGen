@@ -1,0 +1,27 @@
+Based on the provided docstring, we need to add a conditional statement to check if `limit` is greater than 0, and then insert the `delimeter` between consecutive elements accordingly. Here's how to fill in the `<MASK>` parts:
+
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = False
+    if type(delimeter) == float:
+        set_float = True
+    if limit > 0:  # Check if limit is greater than 0
+        if set_float:
+            result = [float(numbers[0])]  # Initialize result with first element as float (if delimeter is a float)
+        else:
+            result = [numbers[0]]  # Initialize result with first element as integer
+    else:
+        if set_float:
+            result = []  # Initialize result as empty list since there's no limit and delimeter is a float
+        else:
+            result = []  # Initialize result as empty list since there's no limit
+    for i in range(len(numbers) - 1):
+        if set_float:
+            result.append(float(numbers[i]))
+        else:
+            result.append(numbers[i])
+        if i < limit:
+            result.append(delimeter)
+    return result
+```

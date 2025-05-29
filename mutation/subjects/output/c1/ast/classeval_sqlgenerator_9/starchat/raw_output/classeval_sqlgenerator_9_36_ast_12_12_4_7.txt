@@ -1,0 +1,6 @@
+sql = f"SELECT {fields} FROM {self.table_name} "
+if condition is not None:
+    if isinstance(condition, str):
+        sql += f"WHERE {condition} "
+    else:
+        sql += f"WHERE ({' AND '.join(condition)}) "

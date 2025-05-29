@@ -1,0 +1,15 @@
+In the given code, the `<MASK>` should be filled as follows:
+
+- Inside `correlation_coefficient()` method:
+```python
+        if n!= len(data2):
+            raise ValueError("data1 and data2 must have the same length.")
+        denominator = math.sqrt(sum((data1[i] - mean1) ** 2 for i in range(n))) * math.sqrt(sum((data2[i] - mean2) ** 2 for i in range(n)))
+        numerator = sum((data1[i] - mean1) * (data2[i] - mean2) for i in range(n))
+```
+
+- Inside `pdf()` method:
+```python
+        if sigma == 0:
+            raise ValueError("Standard deviation cannot be zero.")
+```

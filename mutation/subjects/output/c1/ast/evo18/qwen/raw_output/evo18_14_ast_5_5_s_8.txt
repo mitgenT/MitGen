@@ -1,0 +1,19 @@
+Based on the provided docstring, we need to iterate through the string and increment the count for each substring that matches starting from the beginning of the string. Here's the infilled code:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    if string:  # Check if the string is not empty
+        for sub in substrings:
+            start = 0
+            while start < len(string) - len(sub):  # Make sure we don't go out of bounds
+                pos = string.find(sub, start)
+                if pos != -1:
+                    result[sub] += 1
+                    start = pos + 1
+                else:
+                    break
+    return result
+```

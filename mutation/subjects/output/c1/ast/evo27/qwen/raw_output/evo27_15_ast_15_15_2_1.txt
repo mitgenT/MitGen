@@ -1,0 +1,19 @@
+Based on the provided docstring, we need to update the given code to handle the special case where `char` is at the `special_index`. Here's the completed code:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+        else:
+            # Invert the casing of the character if it's not at the special index
+            result += char.lower() if char.isupper() else char.upper()
+    return result
+```
+
+Now, the `flip_case_special` function correctly flips the casing of characters except for the one at the `special_index`, which maintains its original case if lowercase or gets converted to lowercase if uppercase.

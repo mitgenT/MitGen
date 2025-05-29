@@ -1,0 +1,20 @@
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        def fibonacci(n):
+            '''
+            Returnsn'th term of Fibonacci sequence.
+            '''
+            if n <= 0:
+               print("Input should be positive integer")
+            elif n == 1:
+               return 0
+            elif n == 2:
+               return 1
+            else:
+               first, second = 0, 1
+               for _ in range(2, n):
+                   temp = first + second
+                   first, second = second, temp
+               return second
+    return ' '.join(result)

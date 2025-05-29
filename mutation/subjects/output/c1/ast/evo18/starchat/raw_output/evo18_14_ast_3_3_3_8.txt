@@ -1,0 +1,22 @@
+## Output
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        if string == '':
+            return {sub: 0 for sub in substrings}
+        else:
+            raise ValueError('Substrings cannot be empty')
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - len(sub) + 1:  # fixed the end condition
+            pos = string.find(sub, start)
+            if pos!= -1:
+                result[sub] += 1
+                start = pos + len(sub)  # updated start position after successful find
+            else:
+                break
+    return result
+```
+
+In the output, I updated the if condition inside the loop where an empty string is passed in the `substrings` list. Instead of returning an empty dictionary, it raises a ValueError with a message "Substrings cannot be empty". Additionally, I fixed the end condition inside the while loop to prevent accessing an index out of range by subtracting the length of the substring from the total length of the string. And in the else clause, I updated the start position after successful find by adding the length of the substring.

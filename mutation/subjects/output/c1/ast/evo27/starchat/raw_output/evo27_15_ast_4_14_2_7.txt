@@ -1,0 +1,17 @@
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index and char.isalpha():
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+        else:
+            result += char.swapcase()
+    return result
+
+```
+
+In this solution, I use a for loop to iterate through each character in the input string. For each character, I check if its index is the special_index and whether it is a letter. If it meets these conditions, I add the character to the result with the opposite case; otherwise, I swap its case and add it to the result. Finally, I return the modified string.

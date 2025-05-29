@@ -1,0 +1,8 @@
+```Python
+        if fields == "*":
+            fields = "*"
+        else:
+            fields = ", ".join(fields)
+        condition = f"gender = 'female' AND age < {age}"
+        return self.select(fields=fields, condition=condition)
+```

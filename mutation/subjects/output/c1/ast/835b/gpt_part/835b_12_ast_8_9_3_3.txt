@@ -1,0 +1,13 @@
+
+n=int(input())
+a=0
+for i in range(n):
+            a=int(input())
+            s=input()
+            for i in range(len(s)):
+                        count = [0] * 26
+                        for i in range(len(s)):
+                            count[ord(s[i]) - ord('a')] += 1
+            print(a-96)
+
+            

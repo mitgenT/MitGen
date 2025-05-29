@@ -1,0 +1,20 @@
+Based on the provided docstring, it seems we need to increment the count inside the `while` loop when the substring is found and also check for overlapping cases. Here's how to fill in `<MASK>`:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1 + len(sub):  # Adjust the end condition to account for overlapping cases
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1  # Move the start position after the current match
+            else:
+                break
+    return result
+```
+
+Now, the code has been completed, and it will correctly handle the overlapping cases for counting substrings in the original string.

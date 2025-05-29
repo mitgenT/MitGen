@@ -1,0 +1,22 @@
+## Output
+
+```python
+def change_base(x: str, base: int, new_base: int):
+    try:
+        base_10 = int(x, base)
+    except ValueError:
+        return "invalid base"
+    new_base_num = ""
+    if base_10 == 0:
+        return '0'
+    while base_10 > 0:
+        remainder = base_10 % new_base
+        base_10 -= new_base
+        if 0 <= remainder <= 9:
+            new_base_num = str(remainder) + new_base_num
+        else:
+            new_base_num = chr(remainder + 55) + new_base_num 
+    return new_base_num
+```
+
+In this program, I used an `if-else` condition to decide whether to convert the remainder to a digit (if it's between 0 and 9) or a character (if it's above 9). If the remainder is above 9, it is added to the ASCII value of 'A', which is 65, to get the corresponding character. The ASCII value of '0' is 48, so the remainder is added to 55 to get the correct ASCII value for the character representation of the number (e.g., 10 becomes 'A', 11 becomes 'B', etc.) in the new base system. The program then concatenates this character at the beginning of `new_base_num` for each iteration. This way, the number is converted to the new base system in reverse order, but it is still the correct converted number when returned.

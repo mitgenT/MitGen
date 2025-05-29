@@ -1,0 +1,25 @@
+Based on the provided docstring, we need to iterate over both lists simultaneously, adding elements from each to the `interleaved` list until we reach the end of the longer list. If a list is empty, we should continue with the other. Here's the modified code:
+
+```python
+from typing import List, Tuple
+def interleave_and_concatenate(strings: List[str], integers: List[int]) -> Tuple[str, int]:
+    interleaved = []
+    for s, i in zip(strings, integers):
+        interleaved.append(s)
+        interleaved.append(i)
+    len_integers = len(integers)
+    len_strings = len(strings)
+    max_len = max(len_strings, len_integers)
+    if len_strings > len_integers:
+        for i in range(len_strings - len_integers):
+            interleaved.append(strings[len_integers + i])
+    elif len_integers > len_strings:
+        for i in range(len_integers - len_strings):
+            interleaved.append(integers[len_strings + i])
+
+    concatenated_string = ' '.join([str(i) for i in interleaved if isinstance(i, str)]) 
+    sum_integers = sum([i for i in interleaved if isinstance(i, int)])
+    return (concatenated_string, sum_integers)
+```
+
+Now the `<MASK>` part has been replaced with a proper loop that iterates through both lists simultaneously. The rest of the code remains the same.

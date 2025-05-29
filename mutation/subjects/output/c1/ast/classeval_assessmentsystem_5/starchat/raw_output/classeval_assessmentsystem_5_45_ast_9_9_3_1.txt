@@ -1,0 +1,9 @@
+```python
+def add_course_score(self, name, course, score):
+    if name in self.students and isinstance(score, (int, float)):
+        self.students[name]['courses'][course] = score
+    else:
+        raise ValueError(f"Invalid inputs: name {name} does not exist or score {score} is not a number.")
+```
+
+In the given example, we've added error checking in the `add_course_score` function to validate the inputs. This ensures that the `name` exists in the `students` dictionary and `score` is a number (int or float). If either condition is not met, a `ValueError` is raised.

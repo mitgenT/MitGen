@@ -1,0 +1,15 @@
+Based on the provided docstring, we need to replace every m-th number with "Fizz" and handle the cases when `m` is not specified. Here's how you should fill in the `<MASK>` sections:
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            if m is not None:  # Check if m is defined
+                result.append("Fizz")
+            else:  # If m is not specified, just append the number
+                result.append(str(i))
+        else:
+            result.append(str(i))
+    return ' '.join(result)
+```

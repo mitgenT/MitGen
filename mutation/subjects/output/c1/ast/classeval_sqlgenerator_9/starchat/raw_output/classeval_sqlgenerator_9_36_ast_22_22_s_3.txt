@@ -1,0 +1,6 @@
+fields = ", ".join(fields)
+
+set_clause = ", ".join([f"{key} = '{value}'" for key, value in data.items()])
+
+if data is None:
+    raise ValueError("The data parameter must not be None for the update method.")

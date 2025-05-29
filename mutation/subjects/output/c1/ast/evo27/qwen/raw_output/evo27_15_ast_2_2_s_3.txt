@@ -1,0 +1,28 @@
+Based on the provided docstring, we need to check if `special_index` is within the valid range and handle it accordingly. We can implement this by checking if `special_index` is less than the length of the string or if it wraps around using the modulo operator. Here's the infilled code:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    if 0 <= special_index < len(string):  # Check if special_index is within the range
+        if string[special_index].isupper():
+            string = string[:special_index] + string[special_index].lower() + string[special_index+1:]
+    else:  # Special_index is out of range, wrap around
+        special_index %= len(string)
+        if string[special_index].isupper():
+            string = string[:special_index] + string[special_index].lower() + string[special_index+1:]
+
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+        else:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+    return result
+```
+
+Now, when you run the program with the given test cases, it should work as expected.

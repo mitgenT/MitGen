@@ -1,0 +1,4 @@
+if condition:
+            sql += ";"
+else:
+            sql = f"{sql} WHERE 1 = 2;"

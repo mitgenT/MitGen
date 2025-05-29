@@ -1,0 +1,6 @@
+```python
+if isinstance(item, dict):
+    insert_query = f"INSERT INTO {table_name} ({', '.join(item.keys())}) VALUES ({', '.join('?' for _ in item.values())})"
+    cursor.execute(insert_query, tuple(item.values()))
+```
+This code is to be inserted in the `for item in data:` loop, inside the `insert_into_database` method of the `DatabaseProcessor` class. It first checks if the `item` is a dictionary before attempting to insert it into the database. If the `item` is a dictionary, it generates an insert query based on the keys and values of the dictionary, and then executes the insert query.

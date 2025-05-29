@@ -1,0 +1,25 @@
+Here's the infilled code:
+
+```python
+from typing import List, Tuple
+
+def interleave_and_concatenate(strings: List[str], integers: List[int]) -> Tuple[str, int]:
+    interleaved = []
+    len_strings = len(strings)
+    len_integers = len(integers)
+    max_len = max(len_strings, len_integers)
+    for i in range(max_len):
+        if i < len_strings:
+            interleaved.append(strings[i])
+        if i < len_integers:
+            if i < len_strings:
+                interleaved.append(integers[i])
+    concatenated_string = ' '.join([str(i) for i in interleaved if isinstance(i, str)])
+    sum_integers = sum([i for i in interleaved if isinstance(i, int)])
+    return (concatenated_string, sum_integers)
+```
+
+Explanation:
+1. Inside the `if` condition for `i < len_integers`, I added another condition `if i < len_strings` to ensure that we also append elements from the `strings` list when the index is within its bounds.
+2. After the first `if` condition, I added `interleaved.append(integers[i])` to insert the integer element at the current index `i`.
+3. Now, the loop will correctly interleave elements from both lists until the end of the longer one.

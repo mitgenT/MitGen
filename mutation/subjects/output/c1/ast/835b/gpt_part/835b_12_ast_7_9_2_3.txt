@@ -1,0 +1,7 @@
+n = int(input())
+a = 0
+for i in range(n):
+    a = int(input())
+    s = input()
+    missing_code_needed = set(s)
+    print(len(missing_code_needed))

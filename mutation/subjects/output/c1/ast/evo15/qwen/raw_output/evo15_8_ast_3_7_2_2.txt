@@ -1,0 +1,22 @@
+Based on the provided docstring, we need to create a sequence where every `m`-th number is replaced with "Fizz". Since we start from 0 and use 1-based indexing, we should increment by `m` and check if the current index is a multiple of `m`. If it is, we append "Fizz", otherwise, we append the index value. Here's how to fill in `<MASK>`:
+
+```python
+    for i in range(0, n + 1):
+        if i % m == 0:  # Check if i is a multiple of m (1-based indexing)
+            result.append("Fizz")
+        else:
+            result.append(str(i))
+```
+
+The complete code would be:
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(0, n + 1):
+        if i % m == 0:  # Check if i is a multiple of m (1-based indexing)
+            result.append("Fizz")
+        else:
+            result.append(str(i))
+    return ' '.join(result)
+```

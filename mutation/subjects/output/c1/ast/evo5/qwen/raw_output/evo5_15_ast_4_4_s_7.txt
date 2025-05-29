@@ -1,0 +1,20 @@
+Based on the provided docstring, we should check if `delimeter` is a float, and if so, convert all subsequent elements to floats as well. Let's fill in the `<MASK>` sections accordingly:
+
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = False
+    if isinstance(delimeter, float):  # Check if delimeter is a float
+        set_float = True
+        numbers = [float(num) for num in numbers]  # Convert numbers to floats if delimeter is float
+    result = []
+    limit = min(limit, len(numbers) - 1) 
+    for i in range(len(numbers) - 1):
+        if set_float:
+            result.append(float(numbers[i]))
+        else:
+            result.append(numbers[i])
+        if i < limit:
+            result.append(delimeter)
+    return result
+```

@@ -1,0 +1,13 @@
+```python
+def select_female_under_age(self, age):
+    condition = f"age < {age} AND gender = 'female'"
+    sql = self.select(condition=condition)
+    return sql
+
+def select_by_age_range(self, min_age, max_age):
+    condition = f"age BETWEEN {min_age} AND {max_age}"
+    sql = self.select(condition=condition)
+    return sql
+```
+
+In the solution, I filled the <MASK> by calling the'select' method of the SQLGenerator class with the appropriate condition for the'select_female_under_age' and'select_by_age_range' methods.

@@ -1,0 +1,23 @@
+In the given code, <MASK> is missing in the `get_gpa` method. The corrected code should be:
+
+```python
+class AssessmentSystem:
+    def __init__(self):
+        self.students = {}
+
+    def add_student(self, name, grade, major):
+        self.students[name] = {'name': name, 'grade': grade,'major': major, 'courses': {}}
+
+    def add_course_score(self, name, course, score):
+        self.students[name]['courses'][course] = score
+
+    def get_gpa(self, name):
+        if name in self.students and self.students[name]['courses']:
+            return sum(self.students[name]['courses'].values()) / len(self.students[name]['courses'])
+        else:
+            return None
+
+    # Rest of the methods remain unchanged...
+```
+
+This correction checks if the name exists in `self.students` and if the student has any courses (`self.students[name]['courses']`). If both conditions are true, it calculates and returns the GPA; otherwise, it returns `None`.

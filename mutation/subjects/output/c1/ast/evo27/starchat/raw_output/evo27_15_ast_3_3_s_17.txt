@@ -1,0 +1,6 @@
+result = ''
+
+if string[special_index].isupper():
+    result += string[special_index].lower()
+else:
+    result += string[special_index]

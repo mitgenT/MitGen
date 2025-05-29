@@ -1,0 +1,4 @@
+if fields:
+    fields = ", ".join(fields)
+if condition:
+    sql += f" WHERE {condition}"

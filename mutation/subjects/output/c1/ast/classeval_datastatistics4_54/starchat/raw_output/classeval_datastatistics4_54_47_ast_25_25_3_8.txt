@@ -1,0 +1,19 @@
+In the given code, infill `<MASK>` in the skewness function as shown below.
+
+```python
+@staticmethod
+def skewness(data):
+    n = len(data)
+    mean = sum(data) / n
+    variance = sum((x - mean) ** 2 for x in data) / n
+    std_deviation = math.sqrt(variance)
+
+    skewness = sum((x - mean) ** 3 for x in data) * n / ((n - 1) * (n - 2) * std_deviation ** 3) if std_deviation!= 0 else 0
+
+    if n > 3 and std_deviation > 0:  # For valid calculation of skewness
+        return skewness
+    else:
+        return float('nan')
+```
+
+This change will make the skewness function return `NaN` (Not a Number) when the condition of having a standard deviation greater than zero and more than three data points isn't met. This aligns with the provided docstring example.

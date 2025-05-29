@@ -1,0 +1,12 @@
+for _ in range(t):
+    n = int(input())
+    a_list = list(map(int, input().split()))
+    b_list = list(map(int, input().split()))
+    a_sum = sum(a_list)
+    b_sum = sum(b_list)
+    min_remaining = float("inf")
+    for i in range(n):
+        remaining = a_sum - a_list[i] + b_sum - b_list[i]
+        if remaining < min_remaining:
+            min_remaining = remaining
+    print(a_sum - min_remaining)

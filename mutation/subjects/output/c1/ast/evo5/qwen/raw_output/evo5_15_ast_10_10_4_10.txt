@@ -1,0 +1,3 @@
+```python
+        result.append(numbers[i] if not set_float else float(numbers[i]))
+```

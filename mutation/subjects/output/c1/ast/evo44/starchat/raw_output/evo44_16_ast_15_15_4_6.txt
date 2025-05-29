@@ -1,0 +1,21 @@
+new_base_num = chr(remainder + 55) + new_base_num
+```python
+def change_base(x: str, base: int, new_base: int):
+    try:
+        base_10 = int(x, base)
+    except ValueError:
+        return "invalid base"
+    new_base_num = ""
+    if base_10 == 0:
+        return '0'
+    while base_10 > 0:
+        remainder = base_10 % new_base
+        base_10 -= new_base
+        if 0 <= remainder <= 9:
+            new_base_num = str(remainder) + new_base_num
+        else:
+            if remainder < 10:
+                new_base_num = chr(remainder + 55) + new_base_num
+    return new_base_num
+```
+Here, I inserted the code line `new_base_num = chr(remainder + 55) + new_base_num` inside the `else` condition where the remainder is greater than 9 (i.e., base greater than 10). The ASCII value of characters 'A'-'Z' ranges from 65-90, so I add 55 to the remainder (since 10 comes after '9' in ASCII) to get the correct ASCII value of the character. This converts the number to a character, which represents digits from 10 to 35 (as per base 36 standards).

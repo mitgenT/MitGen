@@ -1,0 +1,4 @@
+common_set = set(l1).intersection(l2)
+sorted_set = sorted(common_set, key=lambda x: (len(x), l1.index(x)))
+common_list = sorted_set[:n]
+return common_list

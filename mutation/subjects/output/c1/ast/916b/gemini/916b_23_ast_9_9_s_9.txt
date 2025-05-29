@@ -1,0 +1,6 @@
+        <missing code>
+        elif k==n-1:
+            for i in range(n,0,-1):
+                s = s + ' '+ str(i)
+            print(s.strip())
+        <missing code>

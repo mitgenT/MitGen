@@ -1,0 +1,11 @@
+```python
+    def get_all_students_with_fail_course(self):
+        students = []
+        for name, student in self.students.items():
+            for course, score in student['courses'].items():
+                if score < 60:
+                    students.append(name)
+        return list(set(students))  # convert to set to remove duplicates and then back to list
+```
+
+After infilling the <MASK>, we have the complete program based on the given docstring and provided code snippet. The get_all_students_with_fail_course method correctly collects the student names who have any course score less than 60. Duplicates are removed by converting the list to a set before converting it back to a list.

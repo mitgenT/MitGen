@@ -1,0 +1,20 @@
+## Output
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    # check if any substring is an empty string
+    for sub in substrings:
+        if sub == '':
+            return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+```
+This is the complete program according to the docstring and the given code with the missing code infilled. It meets the criteria set in the docstring and checks for empty substrings.

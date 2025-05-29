@@ -1,0 +1,13 @@
+## Output
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        else:
+            result.append(str(i+1))
+    return''.join(result)
+
+```
+I filled in the `<MASK>` with `result.append(str(i+1))`, which converts the number `i+1` to a string and appends it to the `result` list. This will ensure that the code correctly creates the sequence of numbers starting from 1 up to `n`, replacing every `m`-th number with "Fizz".

@@ -1,0 +1,28 @@
+from typing import List, Tuple
+
+def separate_paren_groups(paren_string: str, remove_unbalanced: bool = False) -> Tuple[List[str], int]:
+    stack = []
+    groups = []
+    removed = 0
+    group = ''
+    for char in paren_string:
+        if char == '(':
+            stack.append(char)
+            group += char
+        elif char == ')':
+            groups.append(group)
+            stack.pop()
+            group += char
+            groups.append(group)
+            group = ''
+    if remove_unbalanced and stack:
+        removed += len(stack)
+        groups = groups[:len(groups) - len(stack)]
+    if not remove_unbalanced:
+        removed = 0
+    return groups, removed
+    if remove_unbalanced and stack:
+        removed += len(stack)
+    if not remove_unbalanced:
+        removed = 0
+    return groups, removed

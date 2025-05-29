@@ -1,0 +1,4 @@
+```python
+if len(data) <= 3:
+    raise ValueError('For kurtosis, data must have more than 3 entries.')
+```

@@ -1,0 +1,20 @@
+The given code snippet is incomplete. It needs to handle cases where the given string is empty. However, it does not check if any substring is an empty string as per the problem statement. Here is how you can infill <MASK> to complete the function:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(not sub for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+```
+
+This code first checks if any substring is empty. If it is, it immediately returns a message indicating that substring cannot be empty. Then it proceeds to count the occurrence of each substring in the given string. If a substring is found in the string, the count in the dictionary is increased by 1. It checks all positions in the string where the substring can be found by moving the starting position of the search one position at a time. If no further occurrence of a substring can be found, it breaks the loop for this substring. At the end, it returns the dictionary containing the counts for each substring.

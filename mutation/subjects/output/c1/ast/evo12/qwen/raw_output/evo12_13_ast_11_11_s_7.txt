@@ -1,0 +1,28 @@
+Here's the infilled code:
+
+```python
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+    vowels = 'aeiouAEIOU'
+    longest_substring = None
+    longest_substring_index = None
+    for i, string in enumerate(strings):
+        substrings = [string[j:] for j in range(len(string)) if string[j] in vowels]
+        if substrings:
+            max_substring = max(substrings, key=len)
+            if longest_substring is None or len(max_substring) == len(longest_substring):
+                if max_substring:
+                    longest_substring = max_substring
+                else:
+                    longest_substring = ""
+                longest_substring_index = i
+    return longest_substring, longest_substring_index
+```
+
+Explanation:
+
+1. The `max_substring` variable is already set to the longest substring found so far.
+2. Inside the `if max_substring:` condition, we update `longest_substring` with the current `max_substring` because it's longer or equal to the existing longest substring.
+3. If `max_substring` is falsy (empty), which means no substrings starting with a vowel were found, we set `longest_substring` to an empty string, as per the requirement.
+
+The `else` block is not necessary, since if `max_substring` is truthy, we don't need to check for an empty value; we can directly assign `longest_substring`. But since the question asked to fill in the `<MASK>` parts, I included it for clarity even though it's redundant.

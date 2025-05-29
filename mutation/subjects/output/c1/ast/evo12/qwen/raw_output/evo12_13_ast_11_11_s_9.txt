@@ -1,0 +1,22 @@
+Here's the code with the `<MASK>` parts filled in:
+
+```python
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+    vowels = 'aeiouAEIOU'
+    longest_substring = None
+    longest_substring_index = None
+    for i, string in enumerate(strings):
+        substrings = [string[j:] for j in range(len(string)) if string[j] in vowels]
+        if substrings:
+            max_substring = max(substrings, key=len)
+            if longest_substring is None or len(max_substring) == len(longest_substring):
+                if max_substring:
+                    longest_substring = max_substring
+                else:
+                    longest_substring = None
+                longest_substring_index = i
+    return longest_substring, longest_substring_index
+```
+
+The logic for updating `longest_substring` is to assign `max_substring` when it's not `None` or its length equals the current longest substring length. Since we only want to update `longest_substring` if there's a valid `max_substring`, the conditionals check for `max_substring` being truthy (`if max_substring:`) before assigning it. If `max_substring` is empty, we set `longest_substring` back to `None`.

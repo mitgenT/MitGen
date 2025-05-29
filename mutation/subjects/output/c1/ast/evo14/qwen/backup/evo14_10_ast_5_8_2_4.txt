@@ -1,0 +1,17 @@
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    
+    # Iterate over possible starting positions for prefixes
+    for i in range(n - min_length + 1):
+        # Find the ending position of the corresponding suffix
+        end = i + min_length - 1
+        
+        # Add the prefix-suffix pair to the list
+        pairs.append((string[i:end], string[end:]))
+        
+    # Sort the pairs as described in the docstring
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+
+    return pairs

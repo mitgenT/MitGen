@@ -1,0 +1,8 @@
+```python
+conn.execute(select_query, (name,))
+
+conn.close()
+result = cursor.fetchall()
+
+return result
+```

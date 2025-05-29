@@ -1,0 +1,25 @@
+In the given code, fill in <MASK> as follows:
+
+```python
+@staticmethod
+def kurtosis(data):
+
+    n = len(data)
+    mean = sum(data) / n
+    std_dev = math.sqrt(sum((x - mean) ** 2 for x in data) / n)
+
+    if std_dev == 0:
+        if n > 2:
+            std_dev = 1e-10
+
+    centered_data = [(x - mean) for x in data]
+    fourth_moment = sum(x ** 4 for x in centered_data) / n
+
+    kurtosis_value = (fourth_moment / std_dev ** 4) * 3
+
+    return kurtosis_value
+```
+
+Explanation:
+
+The example provided had an incomplete condition to handle the case when the standard deviation is zero. To address this, I added a check for `n > 2` and set `std_dev` to a small value (`1e-10`) if it is zero to avoid division by zero. This change ensures the code does not fail when the input data has duplicate values, making the standard deviation zero.

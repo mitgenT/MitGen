@@ -1,0 +1,5 @@
+N=int(input())
+alpha='ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+alpha_list = list(alpha)
+result = alpha_list[:N]
+print(result)

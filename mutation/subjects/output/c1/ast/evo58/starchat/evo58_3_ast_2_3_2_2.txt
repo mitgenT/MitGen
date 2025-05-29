@@ -1,0 +1,6 @@
+def common(l1: list, l2: list, n: int):
+    set1 = set(l1)
+    set2 = set(l2)
+    common_lengths = [(s, len(s)) for s in set1 & set2]
+    common_lengths.sort(key=lambda x: (x[1], x[0]))
+    return [s[0] for s in common_lengths[:n]]

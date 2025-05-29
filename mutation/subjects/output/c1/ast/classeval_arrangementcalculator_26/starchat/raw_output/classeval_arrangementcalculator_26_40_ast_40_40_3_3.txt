@@ -1,0 +1,10 @@
+```python
+    @staticmethod
+    def factorial(n):
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
+```
+
+The corrected `factorial` method should return `result`, as it is the final computed factorial. Here, `result` is not being returned which is why an error might occur when this static method is called. The bug location in the `count_all` method was where the calculation inside the for loop was missing the `return` statement. The corrected version is provided above.

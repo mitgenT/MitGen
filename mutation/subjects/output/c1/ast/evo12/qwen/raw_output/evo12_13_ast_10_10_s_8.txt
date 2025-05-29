@@ -1,0 +1,19 @@
+Here's the infilled code based on the given docstring:
+
+```python
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+    vowels = 'aeiouAEIOU'
+    longest_substring = None
+    longest_substring_index = None
+    for i, string in enumerate(strings):
+        substrings = [string[j:] for j in range(len(string)) if string[j] in vowels]
+        if substrings:
+            max_substring = max(substrings, key=len)
+            if not longest_substring or len(max_substring) > len(longest_substring):
+                longest_substring = max_substring
+                longest_substring_index = i
+    return longest_substring, longest_substring_index
+```
+
+In this code, we compare the current `longest_substring` with the new `max_substring`. If the `longest_substring` is `None` or the new `max_substring` is longer, we update both `longest_substring` and `longest_substring_index`. The `if not` condition is used here because `max_substring` will always be non-empty after the `if substrings:` check.

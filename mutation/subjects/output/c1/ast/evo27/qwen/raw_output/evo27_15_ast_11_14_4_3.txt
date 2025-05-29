@@ -1,0 +1,41 @@
+Based on the given docstring, we need to check the case of the character and flip it accordingly, except when it's at the 'special_index'. Here's how the `if` condition should be added to the code:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+        else:
+            if char.isalpha():  # Check if the character is alphabetic
+                if char.islower():
+                    result += char.upper()
+                else:
+                    result += char.lower()
+    return result
+```
+
+The completed code with `<MASK>` filled is:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+        else:
+            if char.isalpha():  # Check if the character is alphabetic
+                if char.islower():
+                    result += char.upper()
+                else:
+                    result += char.lower()
+    return result
+```

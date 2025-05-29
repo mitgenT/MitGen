@@ -1,0 +1,2 @@
+if cursor.rowcount > 0:
+    print("Data inserted successfully")

@@ -1,0 +1,5 @@
+```python
+    for num in numbers[1:]:
+        if gcd > 1:
+            gcd = math.gcd(gcd, num)
+```

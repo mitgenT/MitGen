@@ -1,0 +1,7 @@
+
+        b += str(s[i])
+
+        if int(a) < int(b):
+            print(a,b)
+        else:
+            print(-1)

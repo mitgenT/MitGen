@@ -1,0 +1,5 @@
+```python
+            if remainder > 9:  
+                remainder = chr(remainder + 55)  
+```
+The `<MASK>` needs to be replaced with this line of code to ensure the correct character (uppercase letter) is converted for digits greater than 9.

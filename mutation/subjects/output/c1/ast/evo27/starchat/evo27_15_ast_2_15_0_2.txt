@@ -1,0 +1,17 @@
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index = special_index % len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index and char.isalpha():
+            if char.islower():
+                result += char.upper()
+            else:
+                result += char
+        elif char.islower():
+            result += char.upper()
+        else:
+            result += char.lower()
+    return result
+    print(flip_case_special('Hello', 0))
+    print(flip_case_special('Hello', 5))
+    print(flip_case_special('hello', 0))

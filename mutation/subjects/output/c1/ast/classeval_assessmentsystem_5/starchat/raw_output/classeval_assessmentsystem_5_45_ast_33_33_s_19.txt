@@ -1,0 +1,3 @@
+self.course_scores[course] = self.course_scores.get(course, 0) + score
+            count += 1
+return total / count if count > 0 else None

@@ -1,0 +1,20 @@
+import sys
+
+def solve():
+    n = int(sys.stdin.readline())
+    a = list(map(int, sys.stdin.readline().split()))
+    b = list(map(int, sys.stdin.readline().split()))
+
+    max_score = 0  # the maximum score Alice can achieve
+
+    for j in range(n):
+        if a[j] < b[j]:
+            max_score += a[j]
+        else:
+            max_score -= b[j]
+    print(max_score)
+
+t = int(sys.stdin.readline())
+
+for _ in range(t):
+    solve()

@@ -1,0 +1,20 @@
+```python
+def make_palindrome(string: str) -> str:
+    palindrome_suffix = ''
+    string = string.lower()  # Convert string to lower case for case insensitivity
+
+    # Find the longest postfix of supplied string that is a palindrome
+    for i in range(len(string)):
+        if is_palindrome(string[-i - 1:]):
+            palindrome_suffix = string[-i - 1:]
+            break
+
+    if palindrome_suffix == '':  # Handle special case: If the string is already a palindrome
+        return string
+
+    # Append to the end of the string, in the reverse order, the string prefix that comes before the palindromic suffix
+    palindrome = string + string[:-len(palindrome_suffix)][::-1]
+    return palindrome
+```
+
+This code will create the shortest possible case insensitive palindrome that begins with the input string. It first checks if the input string itself is a palindrome. If it is, it returns the string as is. Otherwise, it finds the longest postfix of the string that is a palindrome, reverses the prefix before that palindrome suffix, and appends it to the end of the string to form the palindrome.

@@ -1,0 +1,24 @@
+def how_many_times(string: str, substrings: list) -> dict:
+    if not string or not substrings:
+        return {substring: 0 for substring in substrings if substring}
+
+    result = {}
+    for substring in substrings:
+        if not substring:
+            return "Substrings cannot be empty"
+
+    for i in range(len(string)):
+        for substring in substrings:
+            # Check for overlapping occurrences
+            start = i
+            while start + len(substring) <= len(string):
+                if string[start:start+len(substring)] == substring:
+                    if substring in result:
+                        result[substring] += 1
+                    else:
+                        result[substring] = 1
+                    start += 1
+                else:
+                    break
+
+    return result

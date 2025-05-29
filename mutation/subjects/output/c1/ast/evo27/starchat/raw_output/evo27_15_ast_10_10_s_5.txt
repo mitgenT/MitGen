@@ -1,0 +1,5 @@
+if i!= special_index:
+    if char.isupper():
+        result += char.lower()
+    else:
+        result += char.upper()

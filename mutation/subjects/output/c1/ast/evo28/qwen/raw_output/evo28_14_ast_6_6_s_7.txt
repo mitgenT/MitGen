@@ -1,0 +1,35 @@
+Based on the given docstring, we need to interleave the elements from both lists until one of them is exhausted, and then append the remaining elements from the other list. Here's the modified code:
+
+```python
+from typing import List, Tuple
+
+def interleave_and_concatenate(strings: List[str], integers: List[int]) -> Tuple[str, int]:
+    interleaved = []
+    len_strings = len(strings)
+    len_integers = len(integers)
+    
+    # Determine the maximum length of the two lists
+    max_len = max(len_strings, len_integers)
+
+    # If one list is shorter, iterate through the longer one
+    if len_strings <= len_integers:
+        for i in range(max_len):
+            if i < len_strings:
+                interleaved.append(strings[i])
+            if i < len_integers:
+                interleaved.append(integers[i])
+    else:
+        for i in range(max_len):
+            if i < len_integers:
+                interleaved.append(integers[i])
+            if i < len_strings:
+                interleaved.append(strings[i])
+
+    # Concatenate string elements and sum integer elements
+    concatenated_string = ' '.join([str(i) for i in interleaved if isinstance(i, str)]) 
+    sum_integers = sum([i for i in interleaved if isinstance(i, int)])
+
+    return (concatenated_string, sum_integers)
+```
+
+Now, the `<MASK>` parts have been replaced with the logic that handles the iteration through the longer list.

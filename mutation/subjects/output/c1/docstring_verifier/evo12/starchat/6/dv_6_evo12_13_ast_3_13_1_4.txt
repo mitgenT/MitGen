@@ -1,0 +1,19 @@
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+   longest = None
+   longest_index = None
+   for index, string in enumerate(strings):
+       if string and string[0].lower() in 'aeiou':
+           substring = string
+           if longest and len(substring) < len(longest):
+               continue
+           elif not longest:
+               longest = substring
+               longest_index = index
+           else:
+               longest = substring
+               longest_index = index
+   return longest, longest_index
+   print(longest_substring([]))
+   print(longest_substring(['apple', 'banana', 'cherry']))
+   print(longest_substring(['grape', 'blueberry','strawberry']))

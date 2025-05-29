@@ -1,0 +1,124 @@
+from wrapt_timeout_decorator import *
+
+<generated_code_here>
+
+import numpy as np
+from numpy import nan, inf # for some outputs.
+import sys
+
+sys.set_int_max_str_digits(0)
+
+from enum import IntEnum, auto
+
+def is_floats(x) -> bool:
+    # check if it is float; List[float]; Tuple[float]
+    # TODO: search for any close floats? (other data structures)
+    if isinstance(x, float):
+        return True
+    if isinstance(x, (list, tuple)):
+        return all(isinstance(i, float) for i in x)
+    if isinstance(x, np.ndarray):
+        return x.dtype == np.float64 or x.dtype == np.float32
+    return False
+
+
+class DataType(IntEnum):
+    Float = auto()
+    Bool = auto()
+    Int = auto()
+    Str = auto()
+    Null = auto()
+    Tuple = auto()
+    List = auto()
+    Dict = auto()
+    Set = auto()
+    Type = auto()
+    Unknown = auto()
+
+
+def get_type(x):
+    if x is None:
+        return DataType.Null
+    elif isinstance(x, bool):
+        return DataType.Bool
+    elif isinstance(x, int):
+        return DataType.Int
+    elif isinstance(x, str):
+        return DataType.Str
+    elif is_floats(x):
+        return DataType.Float
+    elif isinstance(x, tuple):
+        return DataType.Tuple
+    elif isinstance(x, list):
+        return DataType.List
+    elif isinstance(x, dict):
+        return DataType.Dict
+    elif isinstance(x, set):
+        return DataType.Set
+    elif isinstance(x, type):
+        return DataType.Type
+    else:
+        return DataType.Unknown
+
+
+def is_equal(x, y) -> tuple[bool, str]:
+    x_type, y_type = get_type(x), get_type(y)
+    if x_type != y_type:
+        return False, "Type mismatch: {} vs {}".format(str(x_type), str(y_type))
+
+    if x_type in [DataType.Int, DataType.Bool, DataType.Null, DataType.Str, DataType.Set, DataType.Type]:
+        if x == y:
+            return True, None
+        try:
+            error_msg = "INT/BOOL/NULL/ Value mismatch: {} vs {}".format(repr(x)[:300], repr(y)[:300])
+        except:
+            error_msg = "Value mismatch: too large for display"
+        return False, error_msg
+    elif x_type == DataType.Float:
+        if np.allclose(x, y, equal_nan=True, atol=1e-6): # guard against nan
+            return True, None
+        else:
+            return False, "FLOAT Value mismatch: {} vs {}".format(x, y)
+    elif x_type in [DataType.List, DataType.Tuple]:
+        if len(x) != len(y):
+            return False, "Length mismatch: {} vs {}".format(len(x), len(y))
+        for i in range(len(x)):
+            equal, msg = is_equal(x[i], y[i])
+            if not equal:
+                return False, msg
+        return True, None
+    elif x_type == DataType.Dict:
+        if len(x) != len(y):
+            return False, "Length mismatch: {} vs {}".format(len(x), len(y))
+        for k, v in x.items():
+            if k not in y:
+                return False, "DICT Value mismatch: key {} in {} but not in {}".format(k, x, y)
+            equal, msg = is_equal(v, y[k])
+            if not equal:
+                return False, msg
+        return True, None
+    else:
+        try:
+            if x == y:  # e.g., object comparison
+                return True, None
+            else:
+                return False, "ELSE Value mismatch: {} vs {}".format(x, y)
+        except:
+            return False, "Unsupported type: {} <-- {}".format(x_type, type(x))
+
+def check(candidate):
+    inputs = [eval(f"[{i}]") for i in ["45, 2, 'M'", "45, 'two', 'L'", "12, 3, 'R'", "120, 2, 'L'", "120, 1, 'R'", "45, 2, 'm'", "45, 2, 'r'", "45, 2, 'l'", "45, 0, 'R'", "45, 0, 'L'", "45, -2, 'R'", "45, -2, 'L'", "45, 2, 'R'", "45, 2, 'L'", "45, 3, 'R'", "45, 3, 'L'", "5, 2, 'R'", "5, 2, 'L'", "555, 2, 'R'", "555, 2, 'L'", "100, 2, 'R'", "100, 2, 'L'", "0, 2, 'R'", "0, 2, 'L'", '"", 2, \'R\'', '"", 2, \'L\'', "0, 1, 'R'", "0, 0, 'L'", "123456789, 9, 'R'", "123456789, 10, 'L'", "123456789, 11, 'R'", "123456789, 0, 'L'", "123456789, -1, 'R'", '"123456", 2, \'R\'', "123456, 2.5, 'L'", "123456, 2, 'B'", "123456, 2, ''", "1000, 3, 'R'", "1000, 6, 'L'", "1, 1, 'R'", "1, 1, 'L'", "1, 2, 'R'", "1, 0, 'L'", "10003, 2, 'R'", "50050, 3, 'L'", "1111, 4, 'R'", "987654321, 5, 'L'", "123456789, 9, 'R'", "0, 1, 'R'", "7631, 0, 'L'", "7890, 10, 'R'", "1234567890, 10, 'L'", "-123, 2, 'R'", "456, -2, 'L'", "1234, 2, 'C'", "5678, 2.5, 'R'", "0, 1, 'R'", "0, 0, 'L'", "10000000000, 5, 'R'", "1234567890, 10, 'L'", "1234567890, 20, 'L'", "1234567890, 11, 'R'", "1234567890, -1, 'R'", "1234567890, 10, 'M'", '1234567890, "ten", \'R\'', "12345678901234567890, 15, 'L'", "12345678901234567890, 25, 'R'", "0, 2, 'R'", "1200, 0, 'L'", "123456789, 9, 'R'", "10, 2, 'R'", "1, 1, 'L'", "1234567890, 11, 'L'", "-123, 1, 'R'", "123, -1, 'R'", "123, 1, 'B'", "'', 1, 'L'", "123, '', 'R'", "'abc', 1, 'L'", '12345, 1, 1']]
+    outputs = ['Invalid Input', 'Invalid Input', '21', '012', '012', 'Invalid Input', 'Invalid Input', 'Invalid Input', '45', '45', 'Invalid Input', 'Invalid Input', '45', '45', '54', '54', '5', '5', '555', '555', '001', '010', '0', '0', '', '', '0', '0', '123456789', '987654321', '987654321', '123456789', 'Invalid Input', '561234', 'Invalid Input', 'Invalid Input', 'Invalid Input', '0001', '0001', '1', '1', '1', '1', '03100', '50500', '1111', '432198765', '123456789', '0', '7631', '0987', '1234567890', '23-1', 'Invalid Input', 'Invalid Input', 'Invalid Input', '0', '0', '00000100000', '1234567890', '0987654321', '0987654321', 'Invalid Input', 'Invalid Input', 'Invalid Input', '67890123456789012345', '09876543210987654321', '0', '1200', '123456789', '10', '1', '0987654321', '3-12', 'Invalid Input', 'Invalid Input', '', 'Invalid Input', 'bca', 'Invalid Input']
+    to_output = []
+    for i, (inp, exp) in enumerate(zip(inputs, outputs)):
+        try:
+            to_output.append((i,compute_output(candidate,inp)))
+        except:
+            to_output.append((i,"Exception"))
+    print(f"Final output of subject for prioritization is:::::{to_output}")
+
+@timeout(5)
+def compute_output(candidate,inp):
+    return candidate(*inp)
+    
+check(circular_shift)

@@ -1,0 +1,5 @@
+```python
+                longest_substring = max_substring
+                if longest_substring_index is None:
+                    longest_substring_index = i
+```

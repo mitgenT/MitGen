@@ -1,0 +1,37 @@
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos!= -1:
+                if string[pos:pos + len(sub)] == sub:
+                    result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+```
+
+Infilling the <MASK>:
+For each substring, start searching from the current position (start) to avoid counting overlapping occurrences. If the substring is found, increment its count in the result dictionary and move the start position to just after the found substring. This approach takes care of counting all overlapping occurrences.
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos!= -1:
+                if string[pos:pos + len(sub)] == sub:
+                    result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+```

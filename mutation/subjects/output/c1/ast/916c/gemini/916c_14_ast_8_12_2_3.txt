@@ -1,0 +1,24 @@
+for _ in range(int(input())):
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    result = 0
+    maxB = 0
+    sum = 0
+    for i in range(k):
+        mx = -1
+        idx = -1
+        for j in range(n):
+            if not b[j]: continue
+            if b[j] > mx and (j == 0 or a[j] <= sum):
+                mx = b[j]
+                idx = j
+        if idx == -1: break
+        result += mx
+        b[idx] = 0
+        sum += a[idx]
+        maxB = max(maxB, mx)
+    sum -= a[idx]
+    result += maxB * (k - i - 1)
+    print(result)
+

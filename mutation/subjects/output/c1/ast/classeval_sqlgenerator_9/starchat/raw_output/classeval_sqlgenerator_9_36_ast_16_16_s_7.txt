@@ -1,0 +1,3 @@
+fields = ", ".join(fields)
+
+values = ", ".join([f"'{value}'" for value in data.values()])

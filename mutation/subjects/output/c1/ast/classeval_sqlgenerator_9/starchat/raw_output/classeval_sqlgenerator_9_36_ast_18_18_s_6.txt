@@ -1,0 +1,13 @@
+```Python
+if fields is not None:
+    fields = ", ".join(fields)
+```
+
+```Python
+values = ", ".join([f"'{value}'" for value in data.values()])
+```
+
+```Python
+sql = f"INSERT INTO {self.table_name} ({fields}) VALUES ({values})"
+```
+                        ```

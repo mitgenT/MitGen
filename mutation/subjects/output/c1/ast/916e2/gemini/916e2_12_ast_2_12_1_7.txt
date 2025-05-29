@@ -1,0 +1,16 @@
+t=int(input())
+for _ in range(t):
+    n=int(input())
+    a=[int(x) for x in input().split()]
+    b=[int(x) for x in input().split()]
+    assert len(a)==n
+    assert len(b)==n
+    s=0
+    for i in range(n):
+        if a[i]<b[i]:
+            s-=min(a[i],b[i])
+            b[i]-=min(a[i],b[i])
+        else:
+            s+=min(a[i],b[i])
+            a[i]-=min(a[i],b[i])
+    print(s)

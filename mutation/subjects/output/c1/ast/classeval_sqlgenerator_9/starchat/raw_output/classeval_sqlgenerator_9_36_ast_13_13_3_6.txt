@@ -1,0 +1,17 @@
+if fields == "*":
+    fields = fields
+else:
+    fields = ", ".join(fields)
+sql = f"SELECT {fields} FROM {self.table_name}"
+if condition is not None:
+    sql += f" WHERE {condition}"
+
+if fields == "*":
+    sql += ";"
+elif fields == "":
+    sql += ";"
+else:
+    sql += ";"
+    sql += "ORDER BY <add_your_order_by_field>;" # add_your_order_by_field needs to replace to actual field name according to your requirement. Replace this line with desired order by field.
+# You can also add a limit if needed. Replace 10 with the desired number of records.
+sql += " LIMIT 10;"

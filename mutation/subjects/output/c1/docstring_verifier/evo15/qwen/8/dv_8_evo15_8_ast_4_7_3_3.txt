@@ -1,0 +1,11 @@
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        """
+        Generate a string with numbers from 0 to n (inclusive) separated by spaces, replacing every m-th number with the word "Fizz", considering m as 1-indexed.
+        Example outputs:
+        - For n=0 and m=3: '0'
+        - For n=5 and m=3: '0 1 Fizz 3 4 Fizz'
+        - For n=15 and m=3: '0 1 Fizz 3 4 Fizz 6 7 Fizz 9 10 Fizz 12 13 Fizz 15'
+        """
+    return ' '.join(result)

@@ -1,0 +1,7 @@
+```python
+    pairs = []
+    if n >= min_length * 2:
+        for i in range(min_length, n - min_length):
+            pairs.append((string[:i], string[i+min_length:]))
+    # ...
+```

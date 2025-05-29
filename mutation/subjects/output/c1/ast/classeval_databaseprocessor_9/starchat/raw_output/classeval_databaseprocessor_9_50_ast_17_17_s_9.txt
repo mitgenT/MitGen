@@ -1,0 +1,5 @@
+if cursor.rowcount > 0:
+    print(f"{cursor.rowcount} rows inserted into {table_name}.")
+
+# or
+# cursor.rowcount could be directly returned from the function.

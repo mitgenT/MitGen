@@ -1,0 +1,15 @@
+for _ in range(int(input())):
+    a,b,c = input().split()
+    a = int(a)
+    b = int(b)
+    c = int(c)
+
+    if ((a<b and b<c) or (c<b and b<a)):
+        print(b)
+        continue
+
+    if ((a<c and c<b) or (b<c and c<a)):
+        print(c)
+        continue
+
+    print(a)

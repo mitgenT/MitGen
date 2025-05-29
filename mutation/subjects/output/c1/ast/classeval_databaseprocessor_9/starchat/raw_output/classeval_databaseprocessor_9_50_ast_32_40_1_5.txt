@@ -1,0 +1,14 @@
+```python
+    def search_database(self, table_name, name):
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+
+        search_query = f"SELECT * FROM {table_name} WHERE name =?"
+        cursor.execute(search_query, (name,))
+
+        result = cursor.fetchall()
+
+        conn.close()
+        return result
+```
+In the `search_database` function, we create a SQL query to select all rows from the specified table where the 'name' column matches the provided name. The results are then fetched using `fetchall()` and returned from the function. The connection to the database is closed after the operation is complete.

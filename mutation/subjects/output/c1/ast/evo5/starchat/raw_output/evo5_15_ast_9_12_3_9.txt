@@ -1,0 +1,21 @@
+In the given code, the <MASK> needs to be replaced with the condition that checks if the current index 'i' is less than 'len(numbers) - 1', and if it is, then append the number from 'numbers' list to'result'.
+
+Here is the filled-in code:
+
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = False
+    if type(delimeter) == float:
+        set_float = True
+    result = []
+    limit = min(limit, len(numbers) - 1) 
+    for i in range(len(numbers) - 1):
+        if i < len(numbers) - 1:
+            result.append(numbers[i])
+        if i < limit:
+            result.append(delimeter)
+    return result
+```
+
+The modified code checks if the current index 'i' is less than 'len(numbers) - 1', and if it is, then it appends the number from the 'numbers' list to the'result'. Afterwards, it checks if 'i' is less than the 'limit', and if it is, it appends the 'delimeter' to the'result'. This ensures that the 'delimeter' is inserted between every two consecutive elements of the 'numbers' list, up to the 'limit' times. The'set_float' variable is not required in this case.

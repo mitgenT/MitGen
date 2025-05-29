@@ -1,0 +1,25 @@
+Based on the provided docstring, the function `how_many_times` appears to be counting occurrences of substrings in the `string`. To do this, it checks for empty substrings and initializes a dictionary with counts. Then, it iterates through the substrings, searching for each one using a while loop and updating the start index if a match is found.
+
+Here's how the code with `<MASK>` filled in would look like:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            if string[start:start+len(sub)] == sub:  # Check if the substring matches
+                pos = string.find(sub, start)  # Find the next occurrence
+                if pos != -1:
+                    result[sub] += 1
+                    start = pos + 1
+                else:
+                    break
+            else:
+                start += 1  # Increment start if no match, continue the search
+    return result
+```
+
+Now, the `if string[start:start+len(sub)] == sub:` line checks for a match, and `pos = string.find(sub, start)` finds the next position of the substring if a match is found. The `start += 1` line increments the start index if there's no match.

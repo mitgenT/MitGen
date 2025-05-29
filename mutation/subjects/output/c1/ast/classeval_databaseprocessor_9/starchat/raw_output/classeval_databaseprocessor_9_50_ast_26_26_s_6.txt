@@ -1,0 +1,3 @@
+for row in item.items():
+            cursor.execute(insert_query, row)
+```

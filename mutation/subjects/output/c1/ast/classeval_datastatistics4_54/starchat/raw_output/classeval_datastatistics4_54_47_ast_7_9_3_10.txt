@@ -1,0 +1,13 @@
+For the correlation coefficient method:
+
+```python
+mean1 = sum(data1) / len(data1)
+mean2 = sum(data2) / len(data2)
+n = len(data1)
+```
+
+For the PDF method:
+
+```python
+std_dev = math.sqrt(sum((x - mu) ** 2 for x in data) / len(data))
+```

@@ -1,0 +1,10 @@
+In the given code, replace <MASK> in the `get_top_student` method with the following code:
+
+```python
+for name, student in self.students.items():
+    gpa = self.get_gpa(name)
+    if gpa is not None and (top_student is None or gpa > top_gpa):
+        top_gpa = gpa
+        top_student = name
+```
+This code initializes `top_student` as `None` in the beginning, and then iterates through all students to find the one with the highest GPA. Inside the loop, it calculates the GPA for each student using the `get_gpa` method. If a student has a higher GPA than the current highest GPA (`top_gpa`), it updates `top_gpa` and `top_student`. At the end of the loop, it returns `top_student` as the student with the highest GPA.

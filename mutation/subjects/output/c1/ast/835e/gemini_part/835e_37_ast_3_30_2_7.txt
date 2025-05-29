@@ -1,0 +1,35 @@
+from sys import stdin, stdout
+class Solution:
+    def BinaryInversions(self, n: int, bits: list) -> int:
+            prefix = [0] * n
+            if bits[0] == 1:
+                prefix[0] = 1
+            for i in range(1, n):
+                prefix[i] = prefix[i - 1]
+                if bits[i] == 1:
+                    prefix[i] += 1
+            suffix = [0] * n
+            if bits[n - 1] == 0:
+                suffix[n - 1] = 1
+            for i in range(n - 2, -1, -1):
+                suffix[i] = suffix[i + 1]
+                if bits[i] == 0:
+                    suffix[i] += 1
+            max_inversions = 0
+            for i in range(n):
+                invert = 0
+                if bits[i] == 0:
+                    invert = 1
+                if i != 0:
+                    invert += prefix[i - 1]
+                if i != n - 1:
+                    invert += suffix[i + 1]
+                max_inversions = max(max_inversions, n - 1 - 2 * invert)
+            return max_inversions
+
+sol = Solution()
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    bits = list(map(int, input().split()))
+    print(sol.BinaryInversions(n, bits))

@@ -1,0 +1,27 @@
+
+import sys
+input = sys.stdin.readline
+
+def solve(n: int, c: int, d: int, a: list[int]) -> int:
+    a.sort()
+    max_a = a[-1]
+    cnt = (c + max_a - 1) // max_a
+    if cnt >= d:
+        return cnt
+
+    cnt += 1
+    if len(a) == 1:
+        return cnt if cnt >= d else -1
+    sum = 0
+    for i in range(len(a) - 2, -1, -1):
+        sum += a[i]
+        if sum >= c - a[-1] * cnt:
+            return cnt
+    return -1
+for _ in range(int(input())):
+    n, c, d = map(int, input().split())
+    a = list(map(int, input().split()))
+    ans = solve(n, c, d, a)
+    print("Impossible" if ans == -1 else ans)
+
+        

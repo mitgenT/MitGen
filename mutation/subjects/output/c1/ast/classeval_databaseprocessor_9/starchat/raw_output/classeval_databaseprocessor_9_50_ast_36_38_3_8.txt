@@ -1,0 +1,6 @@
+```python
+if cursor.execute(f"SELECT * FROM {table_name} WHERE name =?", (name,)):
+    result = cursor.fetchall()
+else:
+    result = None
+```

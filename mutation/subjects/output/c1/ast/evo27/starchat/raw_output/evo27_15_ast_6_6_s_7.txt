@@ -1,0 +1,4 @@
+```python
+            if char.isupper():
+                temp = char.lower()
+```

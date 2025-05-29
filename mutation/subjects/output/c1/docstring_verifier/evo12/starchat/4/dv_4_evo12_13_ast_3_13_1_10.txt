@@ -1,0 +1,23 @@
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+   if not strings:
+       return None, None
+   vowels = 'aeiouAEIOU'
+   max_sub_length = 0
+   max_sub_string = None
+   max_string_index = None
+   for i, string in enumerate(strings):
+       substring = ''
+       for c in string:
+           if c in vowels:
+               substring += c
+               if len(substring) > max_sub_length:
+                   max_sub_length = len(substring)
+                   max_sub_string = substring
+                   max_string_index = i
+           else:
+               substring = ''
+   return max_sub_string, max_string_index
+   print(longest_substring([]))
+   print(longest_substring(['apple', 'banana', 'cherry']))
+   print(longest_substring(['grape', 'blueberry','strawberry']))

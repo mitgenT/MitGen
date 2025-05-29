@@ -1,0 +1,11 @@
+N=int(input())
+alpha='ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+for i in range(0,N):
+    a=int(input())
+    b=str(input())
+    ans=0
+    for letter in b:
+           ans+=1
+           if(letter!=alpha[ans-1]):
+              break
+    print(ans)

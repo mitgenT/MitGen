@@ -1,0 +1,5 @@
+delete_query = f"DELETE FROM {table_name} WHERE name =?"
+if cursor.execute(delete_query, (name,)).rowcount > 0:
+    pass
+else:
+    print(f'No rows matching {name} in the table {table_name}')

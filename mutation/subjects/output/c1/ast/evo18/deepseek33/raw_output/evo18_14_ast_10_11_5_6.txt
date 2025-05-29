@@ -1,0 +1,23 @@
+The <MASK> in this case needs to be the line of code that increments the count of each found substring in the result dictionary. The updated line of code will be:
+
+```python
+result[sub] += string.count(sub)
+```
+
+So, the updated code will be:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += string.count(sub)
+            else:
+                break
+    return result
+```

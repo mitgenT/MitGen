@@ -1,0 +1,6 @@
+pdf_values
+
+if all(isinstance(i, (int, float)) for i in pdf_values):
+    return pdf_values
+else:
+    raise ValueError("The input data contains non-numeric values.")

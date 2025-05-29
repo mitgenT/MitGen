@@ -1,0 +1,8 @@
+```python
+def make_palindrome(string: str) -> str:
+    l_string = string.lower()
+    for i in range(len(l_string)):
+        if l_string[:len(l_string) - i] == l_string[len(l_string) - i:][::-1]:
+            return string + string[len(string) - i:][::-1]
+```
+In the solution, the loop checks for the longest postfix of supplied string that is a palindrome while considering case insensitivity. It achieves this by using the lower() function to compare each prefix and its reverse suffix. Once the palindrome condition is met, the algorithm appends the reverse of the string prefix (excluding the palindromic suffix) to the end of the original string and returns it. If the given string is already a palindrome, it returns the string as is.

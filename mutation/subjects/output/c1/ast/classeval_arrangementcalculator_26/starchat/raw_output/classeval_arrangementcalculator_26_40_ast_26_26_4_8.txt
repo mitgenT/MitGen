@@ -1,0 +1,19 @@
+total += ArrangementCalculator.factorial(n, i) / ArrangementCalculator.factorial(i) # bug location
+                                                                             ^
+                                                                             |
+                                                                             |
+                                                                             |
+```python
+                                                                            # Corrected code line:
+                                                                            total += ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - i)
+```
+In the `select` method, you need to convert the permutation into a list before appending it to the `result` if the list is not in `result`.
+
+```python
+if <MASK>:
+    <MASK>
+
+# Corrected code:
+if permutation not in result:
+    result.append(list(permutation))
+```

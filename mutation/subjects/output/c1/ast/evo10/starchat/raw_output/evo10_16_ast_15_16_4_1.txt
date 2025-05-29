@@ -1,0 +1,13 @@
+```python
+def make_palindrome(string: str) -> str:
+    l_string = string.lower()
+    if is_palindrome(l_string):
+        return string
+    else:
+        for i in range(len(string)):
+            if not is_palindrome(l_string[-i-1:]):
+                continue
+            return string + string[:len(string)-i-1][::-1]
+```
+
+In this solution, I've modified the'make_palindrome' function so that it first checks if the given string is a palindrome or not. If it is, the function returns the original string. If it isn't, the function iterates over the length of the string in reverse order, checking whether the last substring is a palindrome or not. Once it finds the first palindromic suffix, it appends to the end of the string, in reverse order, the string prefix that comes before the palindromic suffix, and returns the new palindrome string. In this case, the 'MASK' part represents the condition within the 'for' loop to find the palindromic suffix.

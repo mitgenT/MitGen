@@ -1,0 +1,16 @@
+Based on the given docstring, we need to find the greatest common divisor (GCD) of all the numbers in the list. We can use the `math.gcd` function iteratively to compute the GCD. If the GCD of all elements is 1, we should return -1. Let's fill in the `<MASK>` parts accordingly:
+
+```python
+from typing import List
+import math
+
+def multiple_greatest_common_divisors(numbers: List[int]) -> int:
+    gcd = numbers[0]
+    for num in numbers[1:]:
+        gcd = math.gcd(gcd, num)
+    if gcd == 1:
+        gcd = -1
+    return gcd
+```
+
+Now, the function correctly calculates the GCD of the input list and handles the case where the GCD is 1 by returning -1.

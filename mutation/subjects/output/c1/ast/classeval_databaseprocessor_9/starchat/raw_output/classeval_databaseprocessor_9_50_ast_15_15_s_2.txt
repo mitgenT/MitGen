@@ -1,0 +1,17 @@
+In your given code, `create_table` method needs to execute the SQL query created by `create_table_query`. Python uses the `cursor.execute()` method for this purpose. So, <MASK> should be replaced with `cursor.execute(create_table_query)`.
+
+Here is the updated `create_table` method:
+
+```python
+def create_table(self, table_name, key1, key2):
+    conn = sqlite3.connect(self.database_name)
+    cursor = conn.cursor()
+
+    create_table_query = f"CREATE TABLE IF NOT EXISTS {table_name} (id INTEGER PRIMARY KEY, {key1} TEXT, {key2} INTEGER)"
+    cursor.execute(create_table_query)
+
+    conn.commit()
+    conn.close()
+```
+
+Remember, if `id` column is already created as PRIMARY KEY in database, then remove `id INTEGER PRIMARY KEY` from your `CREATE TABLE` query. If `id` column is not required, then remove this line as well.

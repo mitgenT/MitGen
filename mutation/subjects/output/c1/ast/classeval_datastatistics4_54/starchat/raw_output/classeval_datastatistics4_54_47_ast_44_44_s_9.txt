@@ -1,0 +1,6 @@
+```python
+__eq__ = lambda self, other: (isinstance(other, DataStatistics4) and
+                              self.correlation_coefficient == other.correlation_coefficient and
+                              self.skewness == other.skewness and
+                              self.kurtosis == other.kurtosis)
+```

@@ -1,0 +1,27 @@
+The code that needs to be filled in the place of <MASK> is as follows:
+
+```python
+if not all(substrings):
+    return "Substrings cannot be empty"
+```
+
+So the entire program with the infilled code will look like this:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if not all(substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+```
+
+In the given code, I have infilled the condition in the if statement which checks if all the substrings in the list are empty or not. If not, it will return "Substrings cannot be empty" string. If all substrings are non-empty, then it will initialize the result dictionary with all keys as the substrings and values as 0. After that, it will iterate over the substrings list and for each substring, it will find the occurrence of that substring in the string and will increase the count of that substring in the result dictionary. This process will continue till it found all the occurrences of the substring in the string. At the end, it will return the result dictionary.

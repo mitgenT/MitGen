@@ -1,0 +1,26 @@
+Based on the given docstring, we need to calculate the sum of all the integer elements and return it along with the concatenated string. Here's the updated code:
+
+```python
+from typing import List, Tuple
+
+def interleave_and_concatenate(strings: List[str], integers: List[int]) -> Tuple[str, int]:
+    interleaved = []
+    len_strings = len(strings)
+    len_integers = len(integers)
+    max_len = max(len_strings, len_integers)
+    for i in range(max_len):
+        if i < len_strings:
+            interleaved.append(strings[i])
+        if i < len_integers:
+            interleaved.append(int(integers[i]))
+
+    # Calculate the sum of integers
+    sum_integers = sum(integer for integer in interleaved if isinstance(integer, int))
+
+    concatenated_string = ' '.join([str(i) for i in interleaved if isinstance(i, str)])
+
+    return (concatenated_string, sum_integers)
+
+```
+
+Now the function correctly handles both the interleave and sum operations as described in the docstring.

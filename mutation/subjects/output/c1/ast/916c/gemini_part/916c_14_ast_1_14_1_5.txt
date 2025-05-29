@@ -1,0 +1,14 @@
+import sys
+input = sys.stdin.readline
+
+t = int(input())
+for _ in range(t):
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    dp = [0] * (k + 1)
+    dp[1] = a[0]
+    for i in range(2, n + 1):
+        for j in range(min(i, k), 0, -1):
+            dp[j] = max(dp[j], dp[j - 1] + a[i - 1] if j == i else dp[j - 1] + b[i - 1])
+    print(dp[k])

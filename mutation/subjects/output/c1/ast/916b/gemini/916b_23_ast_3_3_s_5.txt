@@ -1,0 +1,23 @@
+t = int(input())
+for nt in range(t):
+    n,k = map(int, input().split())
+    s=''
+    if k==0:
+        for i in range(n):
+            s = s +' '+str(n-i)
+        print(s.strip())
+        continue
+    if k==1:
+        for i in range(1,n+1):
+            s = s +' '+str(i)
+        print(s.strip())
+        continue
+    i=1
+    for j in range(k+1):
+        s = s +' '+ str(i)
+        i = i+1
+    s = s.strip()
+    while i<=n:
+        s = str(i)+' '+s
+        i = i+1
+    print(s.strip())

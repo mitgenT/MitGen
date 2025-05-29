@@ -1,0 +1,4 @@
+```python
+if m is not None:
+    return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)
+```

@@ -1,0 +1,20 @@
+```python
+if fields is not None:
+    fields = ", ".join(fields)
+```
+
+```python
+values = ", ".join([f"'{value}'" for value in data.values()])
+```
+
+```python
+set_clause = ", ".join([f"{field} = '{value}'" for field, value in data.items()])
+```
+
+```python
+condition = f"age < {age} AND gender = 'female'"
+```
+
+```python
+condition = f"age BETWEEN {min_age} AND {max_age}"
+```

@@ -1,0 +1,18 @@
+## Output
+```python
+def change_base(x: str, base: int, new_base: int):
+    try:
+        base_10 = int(x, base)
+    except ValueError:
+        return "invalid base"
+    new_base_num = ""
+    if base_10 == 0:
+        return '0'
+    while base_10 > 0:
+        remainder = base_10 % new_base
+        base_10 -= new_base
+        new_base_num = str(chr(remainder + (65 if remainder > 9 else 48))) + new_base_num  # Convert remainder to uppercase letter if needed
+    return new_base_num
+```
+
+In the given output code, I used `str(chr(remainder + (65 if remainder > 9 else 48)))` to convert the remainder to uppercase letter if needed for the digits above 9, before adding it to `new_base_num`.

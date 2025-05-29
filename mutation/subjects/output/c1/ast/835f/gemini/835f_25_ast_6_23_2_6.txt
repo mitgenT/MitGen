@@ -1,0 +1,12 @@
+ans=0
+sum=0
+for i in range(n):
+    k=min(d,(i+1)*2)
+    if c<=sum+(k//2)*A[i]:
+        ans=k
+        break
+    sum+=k//2*A[i]
+
+if ans==0: print("Impossible")
+elif ans==d*2: print("Infinity")
+else: print(ans)

@@ -1,0 +1,37 @@
+def smallest_change(arr, k):
+    n = len(arr)
+    changes = 0
+    sum_arr = sum(arr)
+    diff_arr = []
+    l = 0
+    r = n - 1
+    while l <= r:
+        if changes != arr[r]:
+            changes += 1
+            sum_arr -= min(arr[l], arr[r])
+            sum_arr += max(arr[l], arr[r])
+            diff_arr.append(2 * (min(arr[l], arr[r]) - max(arr[l], arr[r])))
+        l += 1
+        r -= 1
+    def sum_to_neg_value(nums, value, modk):
+        from itertools import combinations
+        for n in range(1, len(nums) + 1):
+            for combo in combinations(nums, n):
+                if (sum(combo) + value) % modk == 0:
+                    return True
+            return False
+    if sum_arr % k == 0:
+        return changes
+    if sum_arr < k:
+        return -1
+    prefix_sums = [0] * n
+    prefix_sums[0] = arr[0]
+    for i in range(1, n):
+        prefix_sums[i] = prefix_sums[i-1] + arr[i]
+    min_changes = float('inf')
+    for i in range(n):
+        for j in range(i+1, n):
+            if prefix_sums[j] % k == 0:
+                min_changes = min(min_changes, j-i-1)
+    return min_changes + changes
+    return changes

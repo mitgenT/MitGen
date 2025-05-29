@@ -1,0 +1,5 @@
+if len(string) == 0:
+    return string
+else:
+    if special_index >= len(string):
+        special_index = special_index % len(string)

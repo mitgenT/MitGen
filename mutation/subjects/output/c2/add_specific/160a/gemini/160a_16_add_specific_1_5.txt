@@ -1,0 +1,408 @@
+if <missing code>:
+    pass
+else:
+    ab = input()
+if <missing code>:
+    pass
+else:
+    a, b = ab
+if <missing code>:
+    pass
+else:
+    a, b = b, a
+if <missing code>:
+    pass
+else:
+    a = int(a)
+if <missing code>:
+    pass
+else:
+    b = int(b)
+sif <missing code>:
+    pass
+else:
+    print(a, b)
+    exit(0)
+ if <missing code>:
+    pass
+else:
+    c = a
+lif <missing code>:
+    pass
+else:
+    print(-1)
+    exit(0)
+iif <missing code>:
+    pass
+else:
+    a = 10 * a + c
+sif <missing code>:
+    pass
+else:
+    c = b
+tif <missing code>:
+    pass
+else:
+    b = 10 * b + c
+(if <missing code>:
+    pass
+else:
+    if a < b:
+        pass
+    else:
+        a, b = b, a
+)if <missing code>:
+    pass
+else:
+    print(a, b)
+    exit(0)
+)if <missing code>:
+    pass
+else:
+    print(-1)
+    exit(0)
+
+if <missing code>:
+    pass
+else:
+    ab = input()
+if <missing code>:
+    pass
+else:
+    a, b = ab
+if <missing code>:
+    pass
+else:
+    a, b = b, a
+if <missing code>:
+    pass
+else:
+    a = int(a)
+if <missing code>:
+    pass
+else:
+    b = int(b)
+nif <missing code>:
+    pass
+else:
+    print(a, b)
+    exit(0)
+ if <missing code>:
+    pass
+else:
+    a, b = b, a
+lif <missing code>:
+    pass
+else:
+    print(-1)
+    exit(0)
+iif <missing code>:
+    pass
+else:
+    a = 10 * a + b
+sif <missing code>:
+    pass
+else:
+    b = 10 * b + a
+(if <missing code>:
+    pass
+else:
+    if a < b:
+        pass
+    else:
+        a, b = b, a
+)if <missing code>:
+    pass
+else:
+    print(a, b)
+    exit(0)
+
+if <missing code>:
+    pass
+else:
+    ab = input()
+if <missing code>:
+    pass
+else:
+    a, b = ab
+if <missing code>:
+    pass
+else:
+    a, b = b, a
+if <missing code>:
+    pass
+else:
+    a = int(a)
+if <missing code>:
+    pass
+else:
+    b = int(b)
+pif <missing code>:
+    pass
+else:
+    print(a, b)
+    exit(0)
+ if <missing code>:
+    pass
+else:
+    if a < b:
+        pass
+    else:
+        a, b = b, a
+iif <missing code>:
+    pass
+else:
+    a = 10 * a + b
+nif <missing code>:
+    pass
+else:
+    b = 10 * b + a
+(if <missing code>:
+    pass
+else:
+    if a < b:
+        pass
+    else:
+        a, b = b, a
+)if <missing code>:
+    pass
+else:
+    print(a, b)
+    exit(0)
+:if <missing code>:
+    pass
+else:
+    print(-1)
+    exit(0)
+
+if <missing code>:
+    pass
+else:
+    ab = input()
+if <missing code>:
+    pass
+else:
+    a, b = ab
+if <missing code>:
+    pass
+else:
+    a, b = b, a
+if <missing code>:
+    pass
+else:
+    a = int(a)
+if <missing code>:
+    pass
+else:
+    b = int(b)
+rif <missing code>:
+    pass
+else:
+    print(a, b)
+    exit(0)
+ if <missing code>:
+    pass
+else:
+    if a < b:
+        pass
+    else:
+        a, b = b, a
+iif <missing code>:
+    pass
+else:
+    a = 10 * a + b
+nif <missing code>:
+    pass
+else:
+    b = 10 * b + a
+(if <missing code>:
+    pass
+else:
+    if a < b:
+        pass
+    else:
+        a, b = b, a
+)if <missing code>:
+    pass
+else:
+    print(a, b)
+    exit(0)
+)if <missing code>:
+    pass
+else:
+    print(-1)
+    exit(0)
+:if <missing code>:
+    pass
+else:
+    print(-1)
+    exit(0)
+
+if <missing code>:
+    pass
+else:
+    ab = input()
+if <missing code>:
+    pass
+else:
+    a, b = ab
+if <missing code>:
+    pass
+else:
+    a, b = b, a
+if <missing code>:
+    pass
+else:
+    a = int(a)
+if <missing code>:
+    pass
+else:
+    b = int(b)
+iif <missing code>:
+    pass
+else:
+    print(a, b)
+    exit(0)
+fif <missing code>:
+    pass
+else:
+    if a < b:
+        pass
+    else:
+        a, b = b, a
+ if <missing code>:
+    pass
+else:
+    i = 1
+sif <missing code>:
+    pass
+else:
+    [if <missing code>:
+        pass
+else:
+            i = i + 1
+        ]if <missing code>:
+            pass
+else:
+    a = a * 10 + i
+]if <missing code>:
+    pass
+else:
+    i = 1
+ if <missing code>:
+    pass
+else:
+    [if <missing code>:
+        pass
+else:
+            i = i + 1
+        ]if <missing code>:
+            pass
+else:
+    b = b * 10 + i
+ if <missing code>:
+    pass
+else:
+    if a < b:
+        pass
+    else:
+        a, b = b, a
+=if <missing code>:
+    pass
+else:
+    print(a, b)
+    exit(0)
+:if <missing code>:
+    pass
+else:
+    print(-1)
+    exit(0)
+
+if <missing code>:
+    pass
+else:
+    ab = input()
+if <missing code>:
+    pass
+else:
+    a, b = ab
+if <missing code>:
+    pass
+else:
+    a, b = b, a
+if <missing code>:
+    pass
+else:
+    a = int(a)
+if <missing code>:
+    pass
+else:
+    b = int(b)
+ if <missing code>:
+    pass
+else:
+    if a < b:
+        pass
+    else:
+        a, b = b, a
+ if <missing code>:
+    pass
+else:
+    if a < b:
+        pass
+    else:
+        a, b = b, a
+ if <missing code>:
+    pass
+else:
+    if a < b:
+        pass
+    else:
+        a, b = b, a
+ if <missing code>:
+    pass
+else:
+    if a < b:
+        pass
+    else:
+        a, b = b, a
+nif <missing code>:
+    pass
+else:
+    if a < b:
+        pass
+    else:
+        a, b = b, a
+ if <missing code>:
+    pass
+else:
+    if a < b:
+        pass
+    else:
+        a, b = b, a
+=if <missing code>:
+    pass
+else:
+    print(a, b)
+    exit(0)
+ if <missing code>:
+    pass
+else:
+    if a < b:
+        pass
+    else:
+        a, b = b, a
+lif <missing code>:
+    pass
+else:
+    if a < b:
+        pass
+    else:
+        a, b = b, a
+aif <missing code>:
+    pass
+else:
+    if a < b:
+        pass
+    else:
+        

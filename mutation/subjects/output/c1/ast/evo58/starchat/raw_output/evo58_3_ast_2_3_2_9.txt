@@ -1,0 +1,9 @@
+def common(l1: list, l2: list, n: int):
+    common_elements = list(set(l1) & set(l2))
+    sorted_common_elements = sorted(common_elements, key=lambda x: (len(x), l1.index(x)))
+    return sorted_common_elements[:n]
+
+# Test the function
+print(common(["apple", "banana", "cherry", "date", "elderberry"], ["banana", "date", "fig", "grape", "elderberry"], 3))
+print(common(["cat", "dog", "elephant", "fox", "goat"], ["dog", "fox", "cat", "horse", "iguana", "goat"], 3))
+print(common(["hello", "goodbye", "yes", "no", "maybe", "absolutely", "never"], ["no", "maybe", "absolutely", "always", "sometimes"], 1))

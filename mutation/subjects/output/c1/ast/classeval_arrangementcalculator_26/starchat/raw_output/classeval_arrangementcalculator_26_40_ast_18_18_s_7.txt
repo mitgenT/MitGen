@@ -1,0 +1,4 @@
+```python
+        if m <= n:
+            ArrangementCalculator.factorial(n, i) # bug correction
+```

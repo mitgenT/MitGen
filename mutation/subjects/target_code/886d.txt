@@ -1,0 +1,17 @@
+n = int(input())
+for i in range(n):
+    a,b = map(int, input().split())
+    lists = [int(j) for j in input().split()]
+    lists.sort(reverse=True)
+    p, count = 0, 0
+    for j in range(len(lists)-1):
+        if lists[j]-lists[j+1] <= b:
+            count +=1
+        else:
+            p = max(p, count)
+            count = 0
+    p = max(p, count)
+    if p > 0:
+        print(a-p-1)
+    else:
+        print(p)

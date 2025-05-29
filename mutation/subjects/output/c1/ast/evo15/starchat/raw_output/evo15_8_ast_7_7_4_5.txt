@@ -1,0 +1,14 @@
+## Output
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        else:
+            if i+1!= m:
+                result.append(str(i+1))
+    return''.join(result)
+```
+
+In the given code, we used an if condition to check if the current number `(i+1)` is not equal to `m` before appending it to the result list. If it is not equal, we convert the current number to a string using `str(i+1)` and append it to the `result` list. If it is equal to `m`, we append the string "Fizz" instead.

@@ -1,0 +1,8 @@
+Based on the provided docstring, the missing part of the code should compare the current `longest_substring` with the `max_substring` found in each iteration and update it if necessary. Here's how the `<MASK>` part should be filled:
+
+```python
+        if longest_substring is None or len(max_substring) > len(longest_substring):
+            longest_substring = max_substring
+            longest_substring_index = i
+    return longest_substring, longest_substring_index
+```

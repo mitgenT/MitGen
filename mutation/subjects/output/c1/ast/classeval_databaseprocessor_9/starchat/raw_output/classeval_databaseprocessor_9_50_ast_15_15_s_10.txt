@@ -1,0 +1,4 @@
+```python
+if cursor.execute(f"SELECT name FROM sqlite_master WHERE type='table' AND name=?", (table_name,)).fetchone() is None:
+    cursor.execute(create_table_query)
+```

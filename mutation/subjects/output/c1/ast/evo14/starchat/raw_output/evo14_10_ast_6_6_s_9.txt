@@ -1,0 +1,15 @@
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n - 1):
+        for j in range(i + 1, n):
+            if len(string[:i]) + len(string[j:]) == i + n - j:
+                if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                    pairs.append((string[:i], string[j:]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```
+
+Here, `i` is used as the length of the prefix and `j` is used as the start position for the suffix. To find the suffix, `j` is initialized as `i+1`, and it ends at `n` (not `n-1`). A condition was added to check that the sum of prefix and suffix lengths is equal to the total length of the string `n`. If this condition is satisfied, we verify that the prefix and suffix do not share any characters (by checking for an empty intersection of their character sets), and if so, the pair is appended to `pairs`. Finally, the list of pairs is sorted first by the total length of the prefix and suffix in increasing order, and then lexicographically.

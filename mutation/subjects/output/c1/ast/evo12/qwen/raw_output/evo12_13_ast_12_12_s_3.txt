@@ -1,0 +1,20 @@
+Here's how you can infill the `<MASK>` parts in the given code:
+
+```python
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+    vowels = 'aeiouAEIOU'
+    longest_substring = None
+    longest_substring_index = None
+    for i, string in enumerate(strings):
+        substrings = [string[j:] for j in range(len(string)) if string[j] in vowels]
+        if substrings:
+            max_substring = max(substrings, key=len)
+            if longest_substring is None or len(max_substring) == len(longest_substring):
+                longest_substring = max_substring
+                if i == 0 or max_substring[:1] != longest_substring[:1]:
+                    longest_substring_index = i
+    return longest_substring, longest_substring_index
+```
+
+In this code, the `if i == 0 or max_substring[:1] != longest_substring[:1]:` condition checks if the current substring starts with a vowel (since we're considering the first character of each substring), and if it does, it updates the `longest_substring_index`. If the current index is the first one or the current substring's first character doesn't match the first character of the longest found substring, we update the index.

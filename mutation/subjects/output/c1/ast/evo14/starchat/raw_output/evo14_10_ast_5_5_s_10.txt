@@ -1,0 +1,13 @@
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n + 1):
+        for j in range(i, n + 1 - min_length):
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                pairs.append((string[:i], string[j:]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```
+The <MASK> is replaced with two nested loops which start from'min_length' to 'n', and then within these loops, the function checks if there are any overlapping characters between the prefix and suffix. If there are not overlapping characters and their lengths are at least'min_length', it adds the pair to the list. After gathering all pairs, it sorts them in increasing order based on the sum of their lengths and lexicographically in case of equal lengths.

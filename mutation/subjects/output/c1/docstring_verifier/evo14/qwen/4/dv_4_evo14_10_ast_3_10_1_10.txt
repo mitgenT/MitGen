@@ -1,0 +1,14 @@
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+   def is_common(s: str, t: str):
+       return s == t
+   result = []
+   length = len(string)
+   for i in range(length):
+       for j in range(i + min_length, length + 1):
+           prefix = string[:i]
+           suffix = string[j - 1::-1]
+           if prefix == suffix and len(prefix) >= min_length:
+               result.append((prefix, suffix))
+   result.sort(key=lambda x: (len(x[0]), x[0], x[1]))
+   return result

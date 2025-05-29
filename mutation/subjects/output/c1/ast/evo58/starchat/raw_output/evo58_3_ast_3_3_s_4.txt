@@ -1,0 +1,9 @@
+## Output
+```python
+def common(l1: list, l2: list, n: int):
+    common_list = [val for val in l1 if val in l2]
+    common_list.sort(key=lambda x: (-len(x), l1.index(x)))
+    return common_list[:n]
+```
+
+In this solution, the first line filters out the common elements between the two input lists. Then, it sorts the result list by first applying negative length, then by using `l1.index(x)` which gives priority to the element that appears first in list1. Finally, it returns the `n` longest strings as required.

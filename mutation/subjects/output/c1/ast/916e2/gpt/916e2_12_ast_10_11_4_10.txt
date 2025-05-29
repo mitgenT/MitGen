@@ -1,0 +1,17 @@
+t=int(input())
+for i in range(t):
+    n=int(input())
+    a=[int(ele) for ele in input().split()]
+    b=[int(ele) for ele in input().split()]
+    d=[[a[i]+b[i],i] for i in range(n)]
+    d.sort(key=lambda x:-x[0])
+    res=0
+    for i in range(n):
+            alice_marbles = a[d[i][1]]
+            bob_marbles = b[d[i][1]]
+            remaining_marbles = min(alice_marbles, bob_marbles)
+            res += remaining_marbles
+            alice_marbles -= remaining_marbles
+            bob_marbles -= remaining_marbles
+            res += max(alice_marbles, bob_marbles)
+    print(res)

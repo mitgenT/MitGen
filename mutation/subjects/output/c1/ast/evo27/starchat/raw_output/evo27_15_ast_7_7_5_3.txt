@@ -1,0 +1,8 @@
+```python
+            if char.isupper():
+                if char.lower() == char:
+                    result += char
+                else:
+                    result += char.upper()
+```
+This code checks if the character at the special index is already in lowercase. If it is, the character remains the same, otherwise, it flips the case.

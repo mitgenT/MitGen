@@ -1,0 +1,19 @@
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+        else:
+            def program(list1):
+                for i in range(0,len(list1)-1):
+                    for j in range(len(list1)-1):
+                        if(list1[j]>list1[j+1]):
+                            temp = list1[j]
+                            list1[j] = list1[j+1]
+                            list1[j+1] = temp
+                return list1
+    return result

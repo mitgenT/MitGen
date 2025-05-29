@@ -1,0 +1,7 @@
+```python
+        result.append(numbers[i])
+
+    if i < limit:
+        result.append(delimeter)
+
+```

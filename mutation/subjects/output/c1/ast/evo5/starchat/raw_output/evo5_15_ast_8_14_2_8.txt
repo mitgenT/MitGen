@@ -1,0 +1,20 @@
+## Output
+
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = False
+    if type(delimeter) == float:
+        set_float = True
+    result = []
+    limit = min(limit, len(numbers) - 1) 
+    for i in range(len(numbers)):
+        if i <= limit:
+            result.append(numbers[i])
+            if i!= limit:
+                result.append(delimeter if not set_float else float(delimeter))
+        else:
+            result.append(numbers[i])
+    return result
+```
+This code loops over each number in the input list `numbers`. For the first `limit` indexes, it appends the number and the delimeter to the result list. For indexes beyond `limit`, it just appends the number. If the delimeter is a float, it also converts the delimeter to float before appending to the result list.

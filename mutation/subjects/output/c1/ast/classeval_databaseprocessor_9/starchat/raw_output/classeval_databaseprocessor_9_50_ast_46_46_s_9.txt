@@ -1,0 +1,5 @@
+delete_query = f"DELETE FROM {table_name} WHERE name =?"
+if result:
+    cursor.execute(delete_query, (name,))
+else:
+    print(f"No record found with name: {name}")

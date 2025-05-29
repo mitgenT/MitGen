@@ -1,0 +1,4 @@
+```python
+if not all(char.isdigit() or (char.upper() >= 'A' and char.upper() <= chr(base - 1 + ord('A'))) for char in x):
+    return "invalid base"
+```

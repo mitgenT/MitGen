@@ -1,0 +1,20 @@
+## Output
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    counts = {sub: 0 for sub in substrings}
+    
+    if any(not sub for sub in substrings):
+        return "Substrings cannot be empty"
+    
+    for sub in substrings:
+        count = start = 0
+        while True:
+            start = string.find(sub, start) + 1
+            if start > 0:
+                count += 1
+            else:
+                break
+        counts[sub] = count
+    return counts
+```
+In this solution, a dictionary comprehension is used to initialize a dictionary `counts` with keys as the substrings and values as zero counts. It checks if any substring is an empty string and returns a specific message if so. Then, it uses a while loop within a for loop to find and count each substring's occurrences in the input string. The found counts are then stored in the `counts` dictionary.

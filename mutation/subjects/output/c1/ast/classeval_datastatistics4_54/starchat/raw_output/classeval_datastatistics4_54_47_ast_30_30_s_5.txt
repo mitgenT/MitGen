@@ -1,0 +1,4 @@
+```python
+if n <= 3:
+    kurtosis_value = 'Insufficient data for kurtosis calculation'
+```

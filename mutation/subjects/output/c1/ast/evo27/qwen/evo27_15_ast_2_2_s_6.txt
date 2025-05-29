@@ -1,0 +1,17 @@
+def flip_case_special(string: str, special_index: int) -> str:
+    # Calculate the effective index if special_index is out of range
+    effective_index = special_index % len(string)
+
+    result = ''
+    for i, char in enumerate(string):
+        if i == effective_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+        else:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+    return result

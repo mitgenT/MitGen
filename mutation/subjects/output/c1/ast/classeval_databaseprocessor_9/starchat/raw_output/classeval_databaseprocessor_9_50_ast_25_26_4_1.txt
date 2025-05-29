@@ -1,0 +1,5 @@
+```python
+if isinstance(item, dict) and 'name' in item and 'age' in item:
+    insert_data_query = f"INSERT INTO {table_name} (name, age) VALUES (?,?)"
+    cursor.execute(insert_data_query, (item['name'], item['age']))
+```

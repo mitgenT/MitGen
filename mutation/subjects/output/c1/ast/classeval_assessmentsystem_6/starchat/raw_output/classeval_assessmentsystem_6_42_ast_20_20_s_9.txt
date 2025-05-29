@@ -1,0 +1,62 @@
+In the given code snippet, the `get_all_students_with_fail_course` function adds a student's name to the `students` list multiple times if they have any course with a score below 60. To fix this, you can modify the function as follows:
+
+```python
+def get_all_students_with_fail_course(self):
+    students = []
+    for name, student in self.students.items():
+        for course, score in student['courses'].items():
+            if score < 60 and name not in students:
+                students.append(name)
+    return students
+```
+
+In the above modification, `name not in students` is added to ensure that the same student's name is not added more than once to the `students` list if they have multiple failed courses. This change ensures that the function returns a list of distinct student names with at least one failed course.
+
+The rest of the given code for the `AssessmentSystem` class is already correct and does not require any modifications.
+
+Here is the entire revised code:
+
+```python
+class AssessmentSystem:
+    def __init__(self):
+        self.students = {}
+
+    def add_student(self, name, grade, major):
+        self.students[name] = {'name': name, 'grade': grade,'major': major, 'courses': {}}
+
+    def add_course_score(self, name, course, score):
+        if name in self.students:
+            self.students[name]['courses'][course] = score
+
+    def get_gpa(self, name):
+        return sum(self.students[name]['courses'].values()) / len(self.students[name]['courses'])
+
+    def get_all_students_with_fail_course(self):
+        students = []
+        for name, student in self.students.items():
+            for course, score in student['courses'].items():
+                if score < 60 and name not in students:
+                    students.append(name)
+        return students
+
+    def get_course_average(self, course):
+        total = 0
+        count = 0
+        for student in self.students.values():
+            if course in student['courses']:
+                score = student['courses'][course]
+                if score is not None:
+                    total += score
+                    count += 1
+        return total / count if count > 0 else None
+
+    def get_top_student(self):
+        top_student = None
+        top_gpa = 0
+        for name, student in self.students.items():
+            gpa = self.get_gpa(name)
+            if gpa is not None and gpa > top_gpa:
+                top_gpa = gpa
+                top_student = name
+        return top_student
+```

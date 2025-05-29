@@ -1,0 +1,71 @@
+class AssessmentSystem:
+    def __init__(self):
+        """
+        Initialize the students dict in assessment system.
+        """
+        self.students = {}
+    def add_student(self, name, grade, major):
+        """
+        Add a new student into self.students dict
+        :param name: str, student name
+        :param grade: int, student grade
+        :param major: str, student major
+        """
+        self.students[name] = {
+            "name": name,
+            "grade": grade,
+            "major": major,
+            "courses": {}
+        }
+    def add_course_score(self, name, course, score):
+        """
+        Add score of specific course for student in self.students
+        :param name: str, student name
+        :param course: str, cource name
+        :param score: int, cource score
+        """
+        if name in self.students:
+            self.students[name]["courses"][course] = score
+    def get_gpa(self, name):
+        """
+        Get average grade of one student.
+        :param name: str, student name
+        :return: if name is in students and this students have courses grade, return average grade(float)
+                    or None otherwise
+        """
+        if name in self.students:
+            course_scores = self.students[name]["courses"].values()
+            if course_scores:
+                return sum(course_scores) / len(course_scores)
+    def get_all_students_with_fail_course(self):
+        """
+        Get all students who have any score blow 60
+        :return: list of str,student name
+        """
+        students_with_fail_course = []
+        for student, info in self.students.items():
+            if any(score < 60 for score in info["courses"].values()):
+                students_with_fail_course.append(student)
+        return students_with_fail_course
+    def get_course_average(self, course):
+        """
+        Get the average score of a specific course.
+        :param course: str, course name
+        :return: float, average scores of this course if anyone have score of this course, or None if nobody have records.
+        """
+        course_scores = [info["courses"].get(course) for info in self.students.values() if course in info["courses"]]
+        if course_scores:
+            return sum(course_scores) / len(course_scores)
+    def get_top_student(self):
+        """
+        Calculate every student's gpa with get_gpa method, and find the student with highest gpa
+        :return: str, name of student whose gpa is highest
+        """
+        top_student = None
+        highest_gpa = None
+        for student, info in self.students.items():
+            gpa = self.get_gpa(student)
+            if gpa is not None and (highest_gpa is None or gpa > highest_gpa):
+                highest_gpa = gpa
+                top_student = student
+        return top_student

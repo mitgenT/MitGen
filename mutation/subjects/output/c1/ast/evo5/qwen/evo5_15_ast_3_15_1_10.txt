@@ -1,0 +1,15 @@
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+   from typing import List, Union
+   def intersperse(numbers: List[Union[int, float]], delimiter: Union[int, float], limit: int) -> List[Union[int, float]]:
+       result = []
+       if limit >= len(numbers) - 1:
+           for i in range(0, len(numbers), 1):
+               result.append(numbers[i])
+               if i < len(numbers) - 1 and i + 1 <= limit:
+                   result.append(delimiter)
+       else:
+           for i in range(0, limit, 1):
+               result.append(numbers[i])
+               result.append(delimiter)
+       return result

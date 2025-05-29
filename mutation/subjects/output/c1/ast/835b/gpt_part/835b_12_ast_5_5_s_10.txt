@@ -1,0 +1,9 @@
+t=int(input())
+for i in range(t):
+    n=int(input())
+    s=input()
+    a=0
+    for i in range(len(s)):
+        if ord(s[i])>a:
+            a=ord(s[i])
+    print(a-96)

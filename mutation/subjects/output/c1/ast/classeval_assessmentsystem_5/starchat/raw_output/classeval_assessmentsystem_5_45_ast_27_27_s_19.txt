@@ -1,0 +1,9 @@
+def get_course_average(self, course):
+    total = 0
+    for student in self.students.values():
+        if course in student['courses']:
+            score = student['courses'][course]
+            if score is not None:
+                total += score
+    count = sum(1 for student in self.students.values() if course in student['courses'] and student['courses'][course] is not None)
+    return total / count if count > 0 else None

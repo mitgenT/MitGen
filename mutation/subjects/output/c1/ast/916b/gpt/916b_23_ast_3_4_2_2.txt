@@ -1,0 +1,14 @@
+t = int(input())
+for nt in range(t):
+    # Read input
+    n, k = map(int, input().split())
+    
+    # Solve the problems in the desired order
+    order = []
+    for i in range(1, k + 2):
+        order.append(i)
+    for i in range(k + 2, n + 1):
+        order.insert(0, i)
+    
+    # Print the order
+    print(" ".join(map(str, order)))

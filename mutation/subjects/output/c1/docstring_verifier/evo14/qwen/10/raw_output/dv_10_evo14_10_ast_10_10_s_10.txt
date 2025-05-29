@@ -1,0 +1,5 @@
+Here's how you can fill in the `<MASK>` part:
+
+```python
+    return pairs
+```

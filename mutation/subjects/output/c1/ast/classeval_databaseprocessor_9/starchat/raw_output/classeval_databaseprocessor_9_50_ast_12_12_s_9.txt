@@ -1,0 +1,15 @@
+conn = sqlite3.connect(self.database_name)
+if not conn:
+    conn = sqlite3.connect(self.database_name)
+cursor = conn.cursor()
+
+# Example of using the function with actual arguments
+db = DatabaseProcessor('my_database.db')
+db.create_table('user', 'name', 'age')
+db.insert_into_database('user', [
+    {'name': 'John', 'age': 25},
+    {'name': 'Alice', 'age': 30}
+])
+result = db.search_database('user', 'John')
+print(result) # [(1, 'John', 25)]
+db.delete_from_database('user', 'John')

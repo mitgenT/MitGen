@@ -1,0 +1,20 @@
+Based on the provided docstring, the `<MASK>` part of the code should check the character case and apply the flipping logic accordingly. Here's the filled-in code:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+        elif char.islower():
+            result += char.upper()
+        else:
+            result += char
+    return result
+```
+
+The `if` condition checks if the current index matches the special index. If it does, it checks the character case and flips accordingly. If not, it simply flips the case of the lowercase character. If the special index is out of range, the `%` operator ensures it wraps around to a valid index within the string.

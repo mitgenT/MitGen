@@ -1,0 +1,4 @@
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    <MASK>
+    return ' '.join(result)

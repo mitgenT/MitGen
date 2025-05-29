@@ -1,0 +1,6 @@
+```Python
+if new_base == 0:
+    return ""
+```
+
+This condition infills the `<MASK>` in the given Python function to handle cases where the new_base is zero. When the new_base is zero, the function returns an empty string, as no valid new_base of zero exists (as base is always greater than 0).

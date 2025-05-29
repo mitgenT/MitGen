@@ -1,0 +1,51 @@
+To fill in the `<MASK>` in the given code, we need to modify the `get_all_students_with_fail_course` method to correctly collect the students who have at least one course score below 60.
+
+Here's the modified code:
+
+```python
+class AssessmentSystem:
+    def __init__(self):
+        self.students = {}
+
+    def add_student(self, name, grade, major):
+        self.students[name] = {'name': name, 'grade': grade,'major': major, 'courses': {}}
+
+    def add_course_score(self, name, course, score):
+        if name in self.students:
+            self.students[name]['courses'][course] = score
+
+    def get_gpa(self, name):
+        return sum(self.students[name]['courses'].values()) / len(self.students[name]['courses'])
+
+    def get_all_students_with_fail_course(self):
+        students = []
+        for name, student in self.students.items():
+            for course, score in student['courses'].items():
+                if score < 60:
+                    students.append(name)
+                    break  # Break the inner loop once a student with a failing course is found
+        return list(set(students))  # Convert the list to a set to remove duplicates and then convert it back to a list
+
+    def get_course_average(self, course):
+        total = 0
+        count = 0
+        for student in self.students.values():
+            if course in student['courses']:
+                score = student['courses'][course]
+                if score is not None:
+                    total += score
+                    count += 1
+        return total / count if count > 0 else None
+
+    def get_top_student(self):
+        top_student = None
+        top_gpa = 0
+        for name, student in self.students.items():
+            gpa = self.get_gpa(name)
+            if gpa is not None and gpa > top_gpa:
+                top_gpa = gpa
+                top_student = name
+        return top_student
+```
+
+In the modified code, we added a `set` to store the names of students with failing courses and then converted it back to a `list` at the end to ensure that duplicate names are not included in the result. By adding `break` after appending a student's name to the `students` list, we ensure that we only consider the first failing course for each student.

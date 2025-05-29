@@ -1,0 +1,6 @@
+if a[i] < b[i]:
+    sum += a[i]
+    result = max(result, sum)
+else:
+    sum += b[i]
+    result = max(result, sum)

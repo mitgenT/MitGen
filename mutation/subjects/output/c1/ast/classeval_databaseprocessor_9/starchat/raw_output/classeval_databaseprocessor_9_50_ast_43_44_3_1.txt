@@ -1,0 +1,4 @@
+```python
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+```

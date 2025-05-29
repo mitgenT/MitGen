@@ -1,0 +1,22 @@
+Based on the given docstring, we need to check if the current string's character at `i` position starts with a vowel, and then we should create a substring using that character. If there are multiple substrings, we keep track of the longest one found so far. Here's how the code should look after infilling `<MASK>`:
+
+```python
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+    vowels = 'aeiouAEIOU'
+    longest_substring = None
+    longest_substring_index = None
+    for i, string in enumerate(strings):
+        substrings = [string[j:j+1].lower() for j in range(len(string)) if string[j].lower() in vowels]
+        if substrings:
+            max_substring = max(substrings, key=len)
+            if longest_substring is None or len(max_substring) == len(longest_substring):
+                longest_substring = max_substring
+                longest_substring_index = i
+    return longest_substring, longest_substring_index
+```
+
+Explanation:
+1. We create a list `substrings` containing all substrings of `string` that start with a vowel by iterating through the string and checking if the character is a vowel (ignoring case).
+2. Then, we check if any substrings were found (`if substrings:`).
+3. If there are substrings, we find the longest one and update `longest_substring` and `longest_substring_index` accordingly.

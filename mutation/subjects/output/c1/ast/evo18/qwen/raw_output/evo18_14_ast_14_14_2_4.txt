@@ -1,0 +1,5 @@
+```python
+    for sub in result.keys():
+        result[sub] = result[sub] * (string.count(sub) // len(substrings))  # Adjust count if substring appears multiple times in the string
+    return result
+```

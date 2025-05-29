@@ -1,0 +1,22 @@
+Based on the provided docstring, the code should handle the character at `special_index` differently depending on its current case. If it's uppercase, it should be made lowercase only if it's not already lowercase (which seems to be the behavior described). Let's fill in `<MASK>` accordingly:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                if char != char.lower():  # Check if the character is not already lowercase
+                    char = char.lower()
+            else:
+                result += char
+        else:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+    return result
+```
+
+Now, the function will correctly flip lowercase characters to uppercase and uppercase characters to lowercase at the specified `special_index`, unless it's already lowercase, in which case it will remain unchanged.

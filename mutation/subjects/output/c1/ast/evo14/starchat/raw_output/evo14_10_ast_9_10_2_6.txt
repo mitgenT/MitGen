@@ -1,0 +1,16 @@
+## Output
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                pairs.append((string[:i], string[j:]))
+    pairs.sort(key=lambda x: (len(x[0]), len(x[1]), x))
+    return pairs
+
+```
+
+In this program, we iterate over all possible pairs of prefix and suffixes that meet the minimum length requirement. We use a set intersection operation to check if the prefix and suffix have any common characters. If they don't, we append the pair to the `pairs` list. Finally, we sort the list based on the conditions specified in the docstring.

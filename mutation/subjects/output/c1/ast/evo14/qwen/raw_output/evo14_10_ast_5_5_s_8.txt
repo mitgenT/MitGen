@@ -1,0 +1,16 @@
+Here's how you can fill in the `<MASK>` in the given code:
+
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    if n >= min_length * 2:  # Check if there's enough characters to find pairs
+        for i in range(min_length, n - min_length):  # Start from min_length to avoid overlapping
+            if len(set(string[:i]).intersection(set(string[i+min_length:]))) == 0:
+                pairs.append((string[:i], string[i+min_length:]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```
+
+Now, the function `all_prefix_suffix_pairs` checks if the input string has enough characters, then finds non-overlapping prefix-suffix pairs with the specified minimum length, and sorts them as required.

@@ -1,0 +1,5 @@
+```python
+def add_course_score(self, name, course, score):
+    self.students[name]['courses'][course] = score
+```
+In the given context, the `add_course_score` method should add a new course and its score to the specific student's courses dict in the `self.students` dict. The `name` argument indicates the student's name, the `course` argument indicates the course name, and the `score` argument indicates the course score. Thus, the solution is to simply assign the `score` value to the `course` key in the `courses` dict for the corresponding student in the `students` dict.

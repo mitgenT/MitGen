@@ -1,0 +1,9 @@
+def calculate_score(t, test_cases):
+    for _ in range(t):
+        n = int(input())
+        a = list(map(int, input().split()))
+        b = list(map(int, input().split()))
+        max_score = 0
+        for i in range(n):
+            max_score += min(a[i], b[i])
+        print(max_score)

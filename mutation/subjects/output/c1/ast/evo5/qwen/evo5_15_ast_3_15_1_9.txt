@@ -1,0 +1,21 @@
+from typing import List, Union
+
+def intersperse(numbers: List[Union[int, float]], delimiter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    result = []
+    for i in range(min(limit, len(numbers) - 1)):
+        result.append(numbers[i])
+        result.append(delimiter)
+    if limit < len(numbers) - 1:
+        result.append(numbers[-1])
+
+    # If the delimiter is a float, we don't need to convert the result since it's already a list of floats
+    # If the delimiter is an integer, ensure that the entire list is in float format
+    if isinstance(delimiter, float):
+        return result
+    else:
+        return [float(x) for x in result]
+
+# Test cases
+print(intersperse([], 4, 2))  # Output: []
+print(intersperse([1, 2, 3], 4, 2))  # Output: [1, 4, 2, 4, 3]
+print(intersperse([1, 2, 3, 4], 0.5, 2))  # Output: [1.0, 0.5, 2.0, 0.5, 3.0, 4.0]

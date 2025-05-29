@@ -1,0 +1,6 @@
+```python
+    for sub in substrings:
+        count = string.count(sub)
+        result[sub] = count
+    return result
+```

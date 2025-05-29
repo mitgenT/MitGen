@@ -1,0 +1,29 @@
+docstring:
+"""
+Winter holidays are coming up. They are going to last for 𝑛 days. 
+
+During the holidays, Monocarp wants to try all of these activities exactly once with his friends: go skiing, watch a movie in a cinema, play board games. 
+
+Monocarp knows that, on the 𝑖-th day, exactly 𝑎𝑖 friends will join him for skiing, 𝑏𝑖 friends will join him for a movie and 𝑐𝑖 friends will join him for board games. 
+
+Monocarp also knows that he can't try more than one activity in a single day. 
+
+Thus, he asks you to help him choose three distinct days 𝑥,𝑦,𝑧 in such a way that the total number of friends to join him for the activities (𝑎𝑥+𝑏𝑦+𝑐𝑧) is maximized.
+
+Input
+
+The first line contains a single integer 𝑡 (1≤𝑡≤10^4) — the number of testcases. 
+
+The first line of each testcase contains a single integer 𝑛 (3≤𝑛≤10^5) — the duration of the winter holidays in days. 
+
+The second line contains 𝑛 integers 𝑎1,𝑎2,…,𝑎𝑛 (1≤𝑎𝑖≤10^8) — the number of friends that will join Monocarp for skiing on the 𝑖-th day. 
+
+The third line contains 𝑛 integers 𝑏1,𝑏2,…,𝑏𝑛 (1≤𝑏𝑖≤10^8) — the number of friends that will join Monocarp for a movie on the 𝑖-th day. 
+
+The fourth line contains 𝑛 integers 𝑐1,𝑐2,…,𝑐𝑛 (1≤𝑐𝑖≤10^8) — the number of friends that will join Monocarp for board games on the 𝑖-th day. 
+
+The sum of 𝑛 over all testcases doesn't exceed 10^5.
+
+Output
+For each testcase, print a single integer — the maximum total number of friends that can join Monocarp for the activities on three distinct days.
+"""

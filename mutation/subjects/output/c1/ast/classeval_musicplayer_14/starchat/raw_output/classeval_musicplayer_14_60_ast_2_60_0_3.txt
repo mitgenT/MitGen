@@ -1,0 +1,78 @@
+```python
+class MusicPlayer:
+    def __init__(self):
+        self.playlist = []
+        self.current_song = None
+        self.volume = 50
+
+    def add_song(self, song):
+        self.playlist.append(song)
+
+    def remove_song(self, song):
+        if song in self.playlist:
+            self.playlist.remove(song)
+
+    def play(self):
+        if self.current_song:
+            print(self.current_song)
+            return self.current_song
+        else:
+            print('No current song')
+            return False
+
+    def stop(self):
+        if self.current_song:
+            print(f'Stopping {self.current_song}')
+            self.current_song = None
+            return True
+        else:
+            print('No song to stop')
+            return False
+
+    def switch_song(self):
+        if self.playlist:
+            if self.current_song:
+                current_song_index = self.playlist.index(self.current_song)
+                next_song_index = (current_song_index + 1) % len(self.playlist)
+                self.current_song = self.playlist[next_song_index]
+            else:
+                self.current_song = self.playlist[0]
+            print(f'Playing {self.current_song}')
+            return True
+        else:
+            print('No songs in the playlist')
+            return False
+
+    def previous_song(self):
+        if self.playlist:
+            if self.current_song:
+                current_song_index = self.playlist.index(self.current_song)
+                previous_song_index = (current_song_index - 1) % len(self.playlist)
+                self.current_song = self.playlist[previous_song_index]
+            else:
+                self.current_song = self.playlist[-1]
+            print(f'Playing {self.current_song}')
+            return True
+        else:
+            print('No songs in the playlist')
+            return False
+
+    def set_volume(self, volume):
+        if 0 <= volume <= 100:
+            self.volume = volume
+            print(f'Volume set to {volume}')
+            return True
+        else:
+            print('Invalid volume')
+            return False
+
+    def shuffle(self):
+        if self.playlist:
+            import random
+            random.shuffle(self.playlist)
+            print('Playlist shuffled')
+            return True
+        else:
+            print('No songs in the playlist')
+            return False
+```

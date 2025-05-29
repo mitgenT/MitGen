@@ -1,0 +1,18 @@
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, c in enumerate(string):
+        if i == special_index:
+            if c.isupper():
+                result += c.lower()
+            else:
+                result += c
+        elif c.isupper():
+            result += c.lower()
+        else:
+            result += c.upper()
+    return result
+```
+
+In the solution, `special_index` is processed using the modulo operator to deal with circular cases. The loop then goes over each character in the string and flips lowercase to uppercase or vice versa, while preserving the case for the character at the `special_index`. The processed characters are appended to the `result` string.

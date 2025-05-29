@@ -1,0 +1,11 @@
+```python
+    result = []
+    for i in range(min_length, len(string)):
+        prefix = string[:i]
+        suffix = string[i:]
+        if len(prefix) + len(suffix) == len(string):
+            result.append((prefix, suffix))
+    # Sort the result based on length and lexicographically
+    result.sort(key=lambda x: (len(x[0]), x[0]))
+    return result
+```

@@ -1,0 +1,26 @@
+Based on the provided docstring, we need to find the longest substring starting with a vowel in each iteration of the loop. Here's how the code should be filled:
+
+```python
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+    vowels = 'aeiouAEIOU'
+    longest_substring = None
+    longest_substring_index = None
+    for i, string in enumerate(strings):
+        substrings = [string[j:] for j in range(len(string)) if string[j] in vowels]
+        
+        # Find the longest substring
+        if substrings:
+            max_substring = ''
+            for sub in substrings:
+                if len(sub) > len(max_substring):
+                    max_substring = sub
+                    
+            # Update longest_substring and index if applicable
+            if longest_substring is None or len(max_substring) > len(longest_substring):
+                longest_substring = max_substring
+                longest_substring_index = i
+    return longest_substring, longest_substring_index
+```
+
+In this code, `max_substring` is initially an empty string, and it is updated whenever a longer substring starting with a vowel is found. The check for `longest_substring is None` ensures that the first occurrence of a suitable substring is chosen when there are multiple of the same length.

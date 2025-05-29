@@ -1,0 +1,23 @@
+## Output
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    if n < min_length * 2:
+        return []
+    pairs = []
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                pairs.append((string[:i], string[j:]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```
+
+In the given code, I filled in the <MASK> parts with the following:
+
+1. `n < min_length * 2` (since a prefix and suffix pair should not overlap and each should be at least `min_length` characters long)
+2. Empty `return []` to handle the case when the string length is less than `min_length * 2`
+3. Initialized an empty `pairs` list
+4. Appended `((string[:i], string[j:]))` to the `pairs` list when there are no overlapping characters in the prefix and suffix
+5. Sorted the `pairs` list using the `sort` method and a lambda function that sorts by the sum of the lengths of the pair and then lexicographically.

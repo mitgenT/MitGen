@@ -1,0 +1,21 @@
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i in range(len(string)):
+        if i == special_index:
+            # Check if the character is uppercase or lowercase
+            char = string[i]
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char  # Keep it as is if lowercase
+        else:
+            # Flip the case for all other characters
+            if string[i].islower():
+                result += string[i].upper()
+            else:
+                result += string[i].lower()
+    return result
+
+```

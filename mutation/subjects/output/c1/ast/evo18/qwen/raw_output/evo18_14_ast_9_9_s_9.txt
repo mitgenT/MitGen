@@ -1,0 +1,22 @@
+Based on the given docstring, we need to implement the logic to find overlapping occurrences of substrings and update the count in the `result` dictionary. Here's how to fill in the `<MASK>` sections:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - len(sub) + 1:  # Adjust the condition to avoid out-of-bounds check
+            pos = string.find(sub, start)
+            if pos != -1:  # Check if substring is found
+                result[sub] += 1
+                start = pos + 1  # Move the start position to the next character after the match
+            else:
+                break
+    return result
+```
+
+The changes made are:
+1. Adjusted the loop condition to prevent checking past the end of the string.
+2. Replaced `<MASK>` with the appropriate conditions to find the substring, increment the count, and move the start position.

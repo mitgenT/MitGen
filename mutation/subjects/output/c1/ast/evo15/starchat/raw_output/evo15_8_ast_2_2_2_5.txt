@@ -1,0 +1,13 @@
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    if n <= 0:
+        return ''
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        else:
+            result.append(str(i))
+    return''.join(result)
+```
+In this solution, I've added a condition at the start of the function to handle the case when `n` is less than or equal to 0. In the given code snippet, the <MASK> parts were missing, so I've added proper initialization and return statements to complete the function.

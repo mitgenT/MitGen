@@ -1,0 +1,2 @@
+if m is None or m <= n:
+    return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)

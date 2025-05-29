@@ -1,0 +1,5 @@
+```python
+        if name in self.students:
+            break
+    return students
+```

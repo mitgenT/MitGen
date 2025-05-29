@@ -1,0 +1,23 @@
+Based on the given docstring, we need to check if the input list `strings` is not empty and then iterate through the list to find a substring starting with a vowel. Here's how to fill in the `<MASK>` sections:
+
+```python
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+    vowels = 'aeiouAEIOU'
+    longest_substring = None
+    longest_substring_index = None
+    if strings:  # Check if the list is not empty
+        for i, string in enumerate(strings):  # Iterate through the list with indices
+            if string and string[0].lower() in vowels:  # Check if the first character is a vowel (case-insensitive)
+                substrings = [string[j:] for j in range(1) if string[j].lower() in vowels]  # Start checking from the second character
+                if substrings:
+                    max_substring = max(substrings, key=len)
+                    if longest_substring is None or len(max_substring) == len(longest_substring):
+                        longest_substring = max_substring
+                        longest_substring_index = i
+    else:
+        longest_substring, longest_substring_index = None, None  # Set to None if the list is empty
+    return longest_substring, longest_substring_index
+```
+
+Now the code is filled in with the required logic.

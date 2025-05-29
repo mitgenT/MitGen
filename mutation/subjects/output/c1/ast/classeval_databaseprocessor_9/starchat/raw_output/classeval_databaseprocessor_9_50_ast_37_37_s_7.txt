@@ -1,0 +1,7 @@
+```python
+        if not result:
+            print(f"No rows found with the name: {name}")
+        else:
+            print(f"Rows deleted with the name: {name}")
+```
+Infilling the `<MASK>` in the `search_database` method of the `DatabaseProcessor` class to print the appropriate message when no rows are found.

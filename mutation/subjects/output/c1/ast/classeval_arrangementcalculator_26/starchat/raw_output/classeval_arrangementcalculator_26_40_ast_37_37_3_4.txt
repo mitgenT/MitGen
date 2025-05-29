@@ -1,0 +1,5 @@
+```python
+        if n == 0:
+            return 1
+```
+Here, the mask has been filled in with a condition to handle the base case when n equals 0, as the factorial of 0 is defined as 1. The current factorial calculation in the code will result in an infinite loop for n = 0 without this condition.

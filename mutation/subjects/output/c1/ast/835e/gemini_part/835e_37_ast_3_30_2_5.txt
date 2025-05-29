@@ -1,0 +1,22 @@
+from sys import stdin, stdout
+class Solution:
+    def BinaryInversions(self, n: int, bits: list[int]) -> int:
+            ans = 0
+            ones, zeros = 0, 0
+            for i in range(n):
+                if bits[i] == 1:
+                    ones += 1
+                else:
+                    ans += ones
+                    zeros += 1
+            ans += zeros * (zeros - 1) // 2 + ones * (ones - 1) // 2
+            if zeros > 0 and ones > 0:
+                ans = max(ans, zeros + ones - 1)
+            return ans
+
+sol = Solution()
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    bits = list(map(int, input().split()))
+    print(sol.BinaryInversions(n, bits))

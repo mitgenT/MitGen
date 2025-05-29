@@ -1,0 +1,20 @@
+def detect_boredom(S, substrings):
+    import re
+    # Split the string into sentences
+    sentences = re.split('(?<=[.!?])\s', S)
+    
+    # Initialize the count of boredoms
+    boredoms = 0
+
+    # Iterate over each sentence
+    for sentence in sentences:
+        # Remove any sentence inside brackets or quotes
+        sentence = re.sub(r'\(.*?\)|\[.*?\]|{.*?}|".*?"', '', sentence)
+
+        # Check if the sentence starts with any substring from the list
+        for substring in substrings:
+            if sentence.startswith(' ' + substring):
+                boredoms += 1
+                break
+
+    return boredoms

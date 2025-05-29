@@ -1,0 +1,5 @@
+```python
+if n >= m:
+    total += ArrangementCalculator.count(n, i)
+```
+The fix is needed in the count_all method of the ArrangementCalculator class. Specifically, in the loop, the conditional statement should check if n is greater than or equal to m before adding to the total count of arrangements.

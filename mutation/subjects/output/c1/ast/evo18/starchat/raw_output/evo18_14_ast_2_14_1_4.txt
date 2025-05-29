@@ -1,0 +1,15 @@
+def how_many_times(string: str, substrings: list) -> dict:
+    from collections import defaultdict
+    if not string:
+        return {substr: 0 for substr in substrings}
+
+    if any(not substr for substr in substrings):
+        return 'Substrings cannot be empty'
+
+    counts = defaultdict(int)
+    for substr in substrings:
+        while substr in string:
+            counts[substr] += 1
+            string = string[string.index(substr) + len(substr):]
+
+    return dict(counts)

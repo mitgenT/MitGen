@@ -1,0 +1,3 @@
+if result:
+    cursor = conn.cursor()
+```

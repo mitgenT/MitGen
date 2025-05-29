@@ -1,0 +1,14 @@
+N=int(input())
+alpha='ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+for i in range(1,N+1):
+    n=int(input())
+    s=input()
+    c=0
+    summ=0
+    for x in s:
+        idx=alpha.find(x)
+        summ+=idx+1
+        if summ>=idx+1:
+            c+=1
+            summ-=idx+1
+    print(c)

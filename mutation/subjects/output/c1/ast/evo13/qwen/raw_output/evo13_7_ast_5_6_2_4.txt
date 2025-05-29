@@ -1,0 +1,18 @@
+Based on the provided docstring, we need to calculate the greatest common divisor (GCD) for all the elements in the list and update `gcd` accordingly. Since the first element is used as the initial guess, we'll iterate through the list starting from the second element and use the `math.gcd()` function to find the GCD with the current `gcd`. If the GCD is not 1, we update `gcd`. Here's how to fill in `<MASK>`:
+
+```python
+from typing import List
+import math
+
+def multiple_greatest_common_divisors(numbers: List[int]) -> int:
+    gcd = numbers[0]
+    if len(numbers) > 1:  # Check if there's more than one element
+        for num in numbers[1:]:
+            gcd = math.gcd(gcd, num)
+    if gcd == 1:
+        return -1
+    else:
+        return gcd
+```
+
+Now the code is complete.

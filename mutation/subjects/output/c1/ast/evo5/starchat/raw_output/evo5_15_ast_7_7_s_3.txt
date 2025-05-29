@@ -1,0 +1,18 @@
+## Output
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = False
+    if type(delimeter) == float:
+        set_float = True
+    result = []
+    for i in range(len(numbers)):
+        if set_float and i!= len(numbers) - 1:
+            result.append(float(numbers[i]))
+        else:
+            result.append(numbers[i])
+        if i < limit:
+            result.append(delimeter)
+    return result
+```
+In the provided solution, we insert the delimeter for the first 'limit' pairs of consecutive numbers and convert all elements to floats if the delimeter is a float. We append the elements to the'result' list within the loop, ensuring that the last element in the 'numbers' list is not appended after the last delimeter.

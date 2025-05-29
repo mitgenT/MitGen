@@ -1,0 +1,21 @@
+## Output
+```python
+def change_base(x: str, base: int, new_base: int):
+    try:
+        base_10 = int(x, base)
+    except ValueError:
+        return "invalid base"
+    new_base_num = ""
+    if not (2 <= base <= 36 and 2 <= new_base <= 36):  # check if the input base and new_base are within the valid range
+        return "invalid base"
+    while base_10 > 0:
+        remainder = base_10 % new_base
+        base_10 -= new_base
+        if 0 <= remainder <= 9:
+            new_base_num = str(remainder) + new_base_num
+        else:
+            new_base_num = chr(remainder + 55) + new_base_num 
+    return new_base_num
+```
+
+Here, I added a check in the `<MASK>` to verify that both `base` and `new_base` are in the valid range (2 <= base <= 36 and 2 <= new_base <= 36). This prevents any incorrect conversions and returns "invalid base" if either base is not within the valid range. The rest of the code remains the same.

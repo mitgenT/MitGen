@@ -1,0 +1,6 @@
+```python
+                if cursor.rowcount > 0:
+                    conn.close()
+```
+
+This line checks if any rows have been deleted by the `DELETE` statement, and if so, closes the database connection.

@@ -1,0 +1,13 @@
+```python
+    def get_all_students_with_fail_course(self):
+        students = []
+        for name, student in self.students.items():
+            for course, score in student['courses'].items():
+                if score < 60:
+                    students.append(name)
+                    break  # Add break to ensure only add student once when he fails a course
+        return students
+```
+In the code above, I added a 'break' statement right after students.append(name). This change ensures that a student's name is only added to the'students' list once, even if the student fails more than one course.
+This aligns with the task requirements, as the provided docstring asks to return a list of student names who have failed at least one course. With the current implementation, a student's name would be included multiple times if they have failed multiple courses.
+Please review the updated code to ensure the functionality aligns with your requirements.

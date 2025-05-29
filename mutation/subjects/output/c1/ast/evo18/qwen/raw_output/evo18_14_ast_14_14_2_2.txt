@@ -1,0 +1,6 @@
+```python
+    if not string:
+        return result
+
+    return result
+```

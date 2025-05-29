@@ -1,0 +1,10 @@
+delete_query = f"DELETE FROM {table_name} WHERE name =?"
+cursor.execute(delete_query, (name,))
+
+rows_affected = cursor.rowcount
+if rows_affected > 0:
+    conn.commit()
+else:
+    print(f"No rows deleted from {table_name} for name {name}")
+
+conn.close()

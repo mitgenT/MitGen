@@ -1,0 +1,15 @@
+t=int(input())
+for i in range(t):
+    n=int(input())
+    a=[int(ele) for ele in input().split()]
+    b=[int(ele) for ele in input().split()]
+    d=[[a[i]+b[i],i] for i in range(n)]
+    d.sort(key=lambda x:-x[0])
+    res=0
+    for j in range(n):
+        alice_marbles = a[d[j][1]]
+        bob_marbles = b[d[j][1]]
+        if alice_marbles > bob_marbles:
+            alice_remaining = alice_marbles - bob_marbles
+            res += alice_remaining
+    print(res)

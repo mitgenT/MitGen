@@ -1,0 +1,48 @@
+## Output
+```python
+class AssessmentSystem:
+    def __init__(self):
+        self.students = {}
+
+    def add_student(self, name, grade, major):
+        self.students[name] = {'name': name, 'grade': grade,'major': major, 'courses': {}}
+
+    def add_course_score(self, name, course, score):
+        if name in self.students:
+            self.students[name]['courses'][course] = score
+
+    def get_gpa(self, name):
+        return sum(self.students[name]['courses'].values()) / len(self.students[name]['courses']) if len(self.students[name]['courses']) > 0 else None
+
+    def get_all_students_with_fail_course(self):
+        students = []
+        for name, student in self.students.items():
+            for score in student['courses'].values():
+                if score < 60:
+                    students.append(name)
+                    break
+        return students
+
+    def get_course_average(self, course):
+        total = 0
+        count = 0
+        for student in self.students.values():
+            if course in student['courses']:
+                score = student['courses'][course]
+                if score is not None:
+                    total += score
+                    count += 1
+        return total / count if count > 0 else None
+
+    def get_top_student(self):
+        top_student = None
+        top_gpa = 0
+        for name, student in self.students.items():
+            gpa = self.get_gpa(name)
+            if gpa is not None and gpa > top_gpa:
+                top_gpa = gpa
+                top_student = name
+        return top_student
+```
+
+In the output code, I have completed all the <MASK> parts to make the given code functionally correct and complete the implementation of the `AssessmentSystem` class as described in the given docstring. The provided functions `add_student`, `add_course_score`, `get_gpa`, `get_all_students_with_fail_course`, `get_course_average`, and `get_top_student` operate as intended. The average GPA method is updated to return `None` if there are no courses for a student, and a check is added in the `get_all_students_with_fail_course` method to append a student to the `students` list only if the student has a score less than 60 in any course.

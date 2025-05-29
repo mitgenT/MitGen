@@ -1,0 +1,29 @@
+from sys import stdin, stdout
+class Solution:
+    def __init__(self):
+        pass
+    
+    def BinaryInversions(self, n: int, bits: list) -> int:
+        curr = 0
+        for i in range(n):
+            if bits[i] != i % 2:
+                curr += 1
+                if i % 2 == 0:
+                    curr -= 1
+        ans = curr
+        for i in range(n):
+            if bits[i] != i % 2:
+                if i % 2 == 0:
+                    curr += 2
+                else:
+                    curr -= 2
+            ans = max(ans, curr)
+    
+        return ans
+
+sol = Solution()
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    bits = list(map(int, input().split()))
+    print(sol.BinaryInversions(n, bits))

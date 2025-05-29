@@ -1,0 +1,27 @@
+Here's the filled-in code:
+
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = False
+    if isinstance(delimeter, float):
+        result = [float(num) for num in numbers]
+        set_float = True
+    else:
+        result = numbers.copy()
+    limit = min(limit, len(numbers) - 1) 
+    for i in range(len(numbers) - 1):
+        if set_float:
+            result.append(float(delimeter))
+        else:
+            result.append(delimeter)
+        if i < limit:
+            result.append(result[i+1])
+    return result
+```
+
+Explanation:
+1. We check if `delimeter` is a float. If it is, we create a new list `result` with all elements converted to floats using a list comprehension.
+2. If `delimeter` is not a float, we make a copy of `numbers` to maintain the original list and use `result` for the modified list.
+3. In the loop, we append the delimiter (either as a float or as the original value) after each number before the limit condition.
+4. Finally, we return the `result` list.

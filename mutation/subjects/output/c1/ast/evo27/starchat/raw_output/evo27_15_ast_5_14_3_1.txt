@@ -1,0 +1,12 @@
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            result += char.lower() if char.isupper() else char
+        else:
+            result += char.upper() if char.islower() else char
+    return result
+```
+In the solution, the '<MASK>' is replaced with conditional statements to determine if each character's index matches the'special_index'. The corresponding character is then flipped according to the given rules.

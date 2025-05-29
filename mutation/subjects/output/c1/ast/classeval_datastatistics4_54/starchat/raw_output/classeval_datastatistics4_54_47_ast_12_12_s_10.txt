@@ -1,0 +1,6 @@
+```python
+            if n == len(data2) and all(isinstance(i, (int, float)) for i in data1 + data2):  
+                denominator = math.sqrt(sum((data1[i] - mean1) ** 2 for i in range(n)) * sum((data2[i] - mean2) ** 2 for i in range(n)))
+```
+
+In the `correlation_coefficient()` method, I added an `if` statement to verify that the lengths of data1 and data2 are the same, and all the elements in data1 and data2 are numeric. If these conditions are true, then the denominator calculation will be performed.

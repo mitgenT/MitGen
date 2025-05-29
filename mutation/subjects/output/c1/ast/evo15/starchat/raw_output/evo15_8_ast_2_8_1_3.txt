@@ -1,0 +1,13 @@
+## Output
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    sequence = ''
+    for i in range(1, n + 1):
+        if i % m == 0:
+            sequence += 'Fizz '
+        else:
+            sequence += str(i - 1) +''
+    return sequence.rstrip()
+```
+
+This program initializes an empty string `sequence` to store the final sequence. Then, it iterates from 1 to n (inclusive) and checks if the current number `i` is divisible by `m` (i.e., `i % m == 0`). If it is divisible, 'Fizz'is concatenated to the `sequence`; otherwise, the previous number (`i - 1`) is concatenated as a string to the `sequence`. After processing all numbers, it removes the trailing space using `sequence.rstrip()` and returns the final sequence as a string.

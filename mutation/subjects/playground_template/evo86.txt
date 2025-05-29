@@ -1,0 +1,124 @@
+from wrapt_timeout_decorator import *
+
+<generated_code_here>
+
+import numpy as np
+from numpy import nan, inf # for some outputs.
+import sys
+
+sys.set_int_max_str_digits(0)
+
+from enum import IntEnum, auto
+
+def is_floats(x) -> bool:
+    # check if it is float; List[float]; Tuple[float]
+    # TODO: search for any close floats? (other data structures)
+    if isinstance(x, float):
+        return True
+    if isinstance(x, (list, tuple)):
+        return all(isinstance(i, float) for i in x)
+    if isinstance(x, np.ndarray):
+        return x.dtype == np.float64 or x.dtype == np.float32
+    return False
+
+
+class DataType(IntEnum):
+    Float = auto()
+    Bool = auto()
+    Int = auto()
+    Str = auto()
+    Null = auto()
+    Tuple = auto()
+    List = auto()
+    Dict = auto()
+    Set = auto()
+    Type = auto()
+    Unknown = auto()
+
+
+def get_type(x):
+    if x is None:
+        return DataType.Null
+    elif isinstance(x, bool):
+        return DataType.Bool
+    elif isinstance(x, int):
+        return DataType.Int
+    elif isinstance(x, str):
+        return DataType.Str
+    elif is_floats(x):
+        return DataType.Float
+    elif isinstance(x, tuple):
+        return DataType.Tuple
+    elif isinstance(x, list):
+        return DataType.List
+    elif isinstance(x, dict):
+        return DataType.Dict
+    elif isinstance(x, set):
+        return DataType.Set
+    elif isinstance(x, type):
+        return DataType.Type
+    else:
+        return DataType.Unknown
+
+
+def is_equal(x, y) -> tuple[bool, str]:
+    x_type, y_type = get_type(x), get_type(y)
+    if x_type != y_type:
+        return False, "Type mismatch: {} vs {}".format(str(x_type), str(y_type))
+
+    if x_type in [DataType.Int, DataType.Bool, DataType.Null, DataType.Str, DataType.Set, DataType.Type]:
+        if x == y:
+            return True, None
+        try:
+            error_msg = "INT/BOOL/NULL/ Value mismatch: {} vs {}".format(repr(x)[:300], repr(y)[:300])
+        except:
+            error_msg = "Value mismatch: too large for display"
+        return False, error_msg
+    elif x_type == DataType.Float:
+        if np.allclose(x, y, equal_nan=True, atol=1e-6): # guard against nan
+            return True, None
+        else:
+            return False, "FLOAT Value mismatch: {} vs {}".format(x, y)
+    elif x_type in [DataType.List, DataType.Tuple]:
+        if len(x) != len(y):
+            return False, "Length mismatch: {} vs {}".format(len(x), len(y))
+        for i in range(len(x)):
+            equal, msg = is_equal(x[i], y[i])
+            if not equal:
+                return False, msg
+        return True, None
+    elif x_type == DataType.Dict:
+        if len(x) != len(y):
+            return False, "Length mismatch: {} vs {}".format(len(x), len(y))
+        for k, v in x.items():
+            if k not in y:
+                return False, "DICT Value mismatch: key {} in {} but not in {}".format(k, x, y)
+            equal, msg = is_equal(v, y[k])
+            if not equal:
+                return False, msg
+        return True, None
+    else:
+        try:
+            if x == y:  # e.g., object comparison
+                return True, None
+            else:
+                return False, "ELSE Value mismatch: {} vs {}".format(x, y)
+        except:
+            return False, "Unsupported type: {} <-- {}".format(x_type, type(x))
+
+def check(candidate):
+    inputs = [eval(f"[{i}]") for i in ["'Hi', 1", "'hello', 2", "'Hello World!!!', 3", "'a', 1", "'ba', 2", "'abc def ghi', 3", "'A B C D E F', 4", "'Python! Java! C++!', 5", "'', 6", "' ', 7", "'A single verylongwordtoseehowitbehavesifitexceedstwentyfivecharacters', 25", "'Several words in a sentence to test the word order preservation', 10", "'Testing with several punctuations!!! ??? ###', 15", "'Testing with numbers 12345 and special characters @@##!!', 20", "'Testing with maximum shift value', 50", "'This is a test string!!!', 5", "'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 10", "'The quick brown fox jumps over the lazy dog.', 25", "'1234567890 abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ', 50", "'A journey of a thousand miles begins with a single step.', 15", "'He who laughs last, laughs best.', 7", "'Hello, World! This is a test string for testing the advanced anti shuffle function.', 20", "'Pack my box with five dozen liquor jugs.', 30", "'The five boxing wizards jump quickly.', 40", "'How vexingly quick daft zebras jump!', 45", "'Good Morning', 5", "'The quick brown fox jumps over the lazy dog.', 10", "'hello world! 123', 15", "'This is a test sentence.', 20", "'Wow!!! This is Amazing!!!', 25", "'Python programming language', 30", "'Artificial Intelligence', 35", "'Machine Learning', 40", "'Deep Learning', 45", "'Natural Language Processing', 50", "'A', 1", "'z', 50", "'za', 1", "'za ', 1", "'za bz', 1", "'za bz cz', 50", "'z a b c', 2", "'Hello World!!!', 0", "'Hello1 World!!!', 3", "'', 1", "' ', 1", "'  ', 1", "'   ', 1", "'A B C D E F G H I J K L M N O P Q R S T U V W X Y Z', 26", "'abcdefghijklmnopqrstuvwxyz', 26", "'Hello World!!!', 51", "'The quick brown fox jumps over the lazy dog', 25"]]
+    outputs = ['iH', 'loehl', 'lloHe lorWd!!!', 'a', 'ab', 'abc def ghi', 'A B C D E F', 'hnotyP! Jaav! C++!', '', ' ', 'A egilns oorrrrssssttttttvvvwwwxyyaaabcccddeeeeeeeeeeeffghhhiiiilnnoo', 'Saeelrv dorsw in a ceeennst ot estt eht dorw deorr einoprrstvae', 'Teginst hitw aeelrsv acinnopsttuu!!! ??? ###', 'Teginst hitw bemnrsu 12345 adn aceilps aaccehrrst @@##!!', 'Teginst hitw aimmmux fhist aeluv', 'This is a estt inrstg!!!', 'Lemor impsu dloor ist aemt, ceenorsttuc acdgiiinps eilt.', 'Teh cikqu bnorw fox jmpsu eorv eht alyz dgo.', '1234567890 abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'A ejnoruy fo a adhnostu eilms begins hitw a egilns epst.', 'He how aghlsu alst, aghlsu best.', 'Hello, Wdlor! This is a estt ginrst for eginstt eht aacddenv aint effhlsu cfinnotu.', 'Pack my box hitw efiv denoz iloqru gjsu.', 'Teh efiv bginox adirswz jmpu ciklquy.', 'How egilnvxy cikqu adft abersz jmpu!', 'Gdoo innorMg', 'Teh cikqu bnorw fox jmpsu eorv eht alyz dgo.', 'ehllo dlorw! 123', 'This is a estt ceeennst.', 'Wow!!! This is Aagimnz!!!', 'Phnoty aggimmnoprr aaegglnu', 'Aacfiiilrt Iceeegillnnt', 'Macehin Laeginnr', 'Deep Laeginnr', 'Naalrtu Laaeggnu Pceginorss', 'A', 'z', 'za', 'za ', 'za zb', 'az bz cz', 'z a b c', 'Hello Wdlor!!!', 'lloHe1 lorWd!!!', '', ' ', '  ', '   ', 'A B C D E F G H I J K L M N O P Q R S T U V W X Y Z', 'abcdefghijklmnopqrstuvwxyz', 'Hello Wdlor!!!', 'Teh cikqu bnorw fox jmpsu eorv eht alyz dgo']
+    to_output = []
+    for i, (inp, exp) in enumerate(zip(inputs, outputs)):
+        try:
+            to_output.append((i,compute_output(candidate,inp)))
+        except:
+            to_output.append((i,"Exception"))
+    print(f"Final output of subject for prioritization is:::::{to_output}")
+
+@timeout(5)
+def compute_output(candidate,inp):
+    return candidate(*inp)
+    
+check(advanced_anti_shuffle)

@@ -1,0 +1,15 @@
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    s = [int(x) for x in input().split()]
+    mx = [0,0]
+    mx = [s.index(max(s)),s.index(max(s))]
+    for i in range(n):
+        if i==mx[0]:
+            print(s[i]-s[mx[1]],end=" ")
+        else:
+            print(s[i]-s[mx[0]],end=" ")
+    print()
+
+    

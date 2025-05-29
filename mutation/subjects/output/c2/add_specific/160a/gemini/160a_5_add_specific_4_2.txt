@@ -1,0 +1,18 @@
+for i in range(int(input())):
+    s = list(map(int,list(input())))
+    n = len(s)
+    p = str(s[0])
+    for j in range(1, n):
+        if s[j] != 0:
+            r = ""
+            x = j
+            break
+        else:
+            p += str(s[j])
+    for i in range(x,n):
+        r += str(s[i])
+
+    if int(p) < int(r):
+        print(p,r)
+    else:
+        print(-1)

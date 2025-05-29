@@ -1,0 +1,4 @@
+```python
+        if not self.database_name.endswith('.db'):
+            self.database_name += '.db'
+```

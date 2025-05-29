@@ -1,0 +1,2 @@
+if i!= special_index:
+    result += char if char.islower() else char.lower()

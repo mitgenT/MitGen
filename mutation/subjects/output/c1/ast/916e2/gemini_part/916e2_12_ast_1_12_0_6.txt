@@ -1,0 +1,12 @@
+n = int(input())
+for _ in range(n):
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    score = 0
+    for i in range(n):
+        if a[i] > b[i]:
+            score += a[i] - b[i]
+        else:
+            score -= b[i] - a[i]
+    print(score)

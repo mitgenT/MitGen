@@ -1,0 +1,24 @@
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+   """
+   This function takes a list of strings as input and returns the longest substring that begins with a vowel from each string. It also provides the index of the original list where this longest substring was found. In case there are several substrings of equal length across different strings, it returns the first occurrence. If the input list is empty or contains no substrings starting with a vowel, it outputs (None, None). When there are multiple substrings of the same length within a single string, it considers the first one. The function operates without case sensitivity, treating 'A' and 'a' equally.
+   """
+   def starts_with_vowel(s):
+       return s[0].lower() in 'aeiou'
+   max_length = 0
+   max_index = -1
+   max_string = None
+   for index, string in enumerate(strings):
+       vowels = "aeiou"
+       for i in range(len(string)):
+           if string[i].lower() not in vowels:
+               continue
+           current_length = len(string) - i
+           if current_length > max_length:
+               max_length = current_length
+               max_index = index
+               max_string = string
+   if max_index == -1:
+       return (None, None)
+   else:
+       return (max_string, max_index)

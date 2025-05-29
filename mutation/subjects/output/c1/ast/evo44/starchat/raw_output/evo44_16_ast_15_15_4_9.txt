@@ -1,0 +1,4 @@
+new_base_num = string.ascii_uppercase[remainder - 10] + new_base_num
+
+# Python's `string` module has an uppercase string constant for alphabet letters
+# Hence, we can use `string.ascii_uppercase[remainder - 10]` to get the alphabetical equivalent of the digit when it is more than 9.

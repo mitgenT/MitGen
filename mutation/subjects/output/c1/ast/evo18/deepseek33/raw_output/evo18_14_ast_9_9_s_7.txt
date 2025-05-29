@@ -1,0 +1,20 @@
+The solution is that the `if <MASK>:` should check if the substring exists in the string, and the `if <MASK>:` should increase the count by 1 if it is found, and `else:` should set `start = pos + 1` to continue the search from the next position.
+
+Here is the modified code:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+```

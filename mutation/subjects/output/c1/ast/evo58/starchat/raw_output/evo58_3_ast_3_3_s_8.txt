@@ -1,0 +1,9 @@
+```Python
+    common_list = list(set(l1) & set(l2))
+    if len(common_list) < n:
+        return common_list
+    else:
+        return common_list[:n]
+```
+
+In the above solution, the `common_list` is initially created by finding the intersection of two input lists. Then, `common_list.sort(key=lambda x: (-len(x), l1.index(x)))` is used to sort the elements first by length in descending order and then by index position in `l1` in ascending order. If the length of the `common_list` is less than `n`, the original list is returned, otherwise, the first `n` elements are returned.

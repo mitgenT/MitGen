@@ -1,0 +1,2 @@
+if data:
+    set_clause = ", ".join([f"{field} = '{value}'" for field, value in data.items()])

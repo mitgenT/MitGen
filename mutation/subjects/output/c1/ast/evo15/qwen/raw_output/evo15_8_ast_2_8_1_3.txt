@@ -1,0 +1,10 @@
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    sequence = []
+    for i in range(n + 1):
+        if (i + 1) % m == 0:
+            sequence.append("Fizz")
+        else:
+            sequence.append(str(i + 1))
+    return " ".join(sequence)
+```

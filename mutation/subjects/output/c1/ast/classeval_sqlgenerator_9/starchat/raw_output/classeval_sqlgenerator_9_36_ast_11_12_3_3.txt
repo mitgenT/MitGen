@@ -1,0 +1,6 @@
+if fields:
+    fields = ", ".join(fields)
+else:
+    fields = "*"
+if condition:
+    sql += f" WHERE {condition}"

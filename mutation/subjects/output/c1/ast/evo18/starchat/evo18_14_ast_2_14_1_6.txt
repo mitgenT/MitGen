@@ -1,0 +1,8 @@
+def how_many_times(string: str, substrings: list) -> dict:
+   counter = {sub: 0 for sub in substrings}
+   if not all(sub for sub in substrings):
+       return "Substrings cannot be empty"
+   for sub in substrings:
+       count = string.count(sub)
+       counter[sub] += count
+   return counter

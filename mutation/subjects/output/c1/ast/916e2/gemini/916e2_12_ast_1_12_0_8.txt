@@ -1,0 +1,48 @@
+import sys
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    a.sort()
+    b.sort()
+
+    score = 0
+    i = 0
+    j = 0
+
+    while i<n and j<n:
+        if a[i]==b[j]:
+            if a[i]==0:
+                i+=1
+                j+=1
+                continue
+            score+=a[i]
+            a[i]-=1
+            b[j]=0
+            j+=1
+        elif a[i]<b[j]:
+            score-=a[i]
+            b[j]-=a[i]
+            a[i]=0
+            i+=1
+        else:
+            score+=b[j]
+            a[i]-=b[j]
+            b[j]=0
+            j+=1
+
+    while i<n:
+        score+=a[i]
+        i+=1
+
+    while j<n:
+        score-=b[j]
+        j+=1
+
+    return score
+
+t = int(input())
+for _ in range(t):
+    print(solve())

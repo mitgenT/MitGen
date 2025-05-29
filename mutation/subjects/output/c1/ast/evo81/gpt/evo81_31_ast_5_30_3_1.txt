@@ -1,0 +1,6 @@
+def numerical_letter_grade_with_weightage(grades):
+    letter_grades = []
+    for grade, weight in grades:
+        weighted_grade = min(grade * weight, 4.0)
+        letter_grades.append(weighted_grade)
+    return letter_grades

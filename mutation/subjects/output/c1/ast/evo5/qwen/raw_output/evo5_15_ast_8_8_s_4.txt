@@ -1,0 +1,3 @@
+```python
+    for i in range(0, len(numbers), 2 if set_float else 1):
+```

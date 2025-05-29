@@ -1,0 +1,124 @@
+from wrapt_timeout_decorator import *
+
+<generated_code_here>
+
+import numpy as np
+from numpy import nan, inf # for some outputs.
+import sys
+
+sys.set_int_max_str_digits(0)
+
+from enum import IntEnum, auto
+
+def is_floats(x) -> bool:
+    # check if it is float; List[float]; Tuple[float]
+    # TODO: search for any close floats? (other data structures)
+    if isinstance(x, float):
+        return True
+    if isinstance(x, (list, tuple)):
+        return all(isinstance(i, float) for i in x)
+    if isinstance(x, np.ndarray):
+        return x.dtype == np.float64 or x.dtype == np.float32
+    return False
+
+
+class DataType(IntEnum):
+    Float = auto()
+    Bool = auto()
+    Int = auto()
+    Str = auto()
+    Null = auto()
+    Tuple = auto()
+    List = auto()
+    Dict = auto()
+    Set = auto()
+    Type = auto()
+    Unknown = auto()
+
+
+def get_type(x):
+    if x is None:
+        return DataType.Null
+    elif isinstance(x, bool):
+        return DataType.Bool
+    elif isinstance(x, int):
+        return DataType.Int
+    elif isinstance(x, str):
+        return DataType.Str
+    elif is_floats(x):
+        return DataType.Float
+    elif isinstance(x, tuple):
+        return DataType.Tuple
+    elif isinstance(x, list):
+        return DataType.List
+    elif isinstance(x, dict):
+        return DataType.Dict
+    elif isinstance(x, set):
+        return DataType.Set
+    elif isinstance(x, type):
+        return DataType.Type
+    else:
+        return DataType.Unknown
+
+
+def is_equal(x, y) -> tuple[bool, str]:
+    x_type, y_type = get_type(x), get_type(y)
+    if x_type != y_type:
+        return False, "Type mismatch: {} vs {}".format(str(x_type), str(y_type))
+
+    if x_type in [DataType.Int, DataType.Bool, DataType.Null, DataType.Str, DataType.Set, DataType.Type]:
+        if x == y:
+            return True, None
+        try:
+            error_msg = "INT/BOOL/NULL/ Value mismatch: {} vs {}".format(repr(x)[:300], repr(y)[:300])
+        except:
+            error_msg = "Value mismatch: too large for display"
+        return False, error_msg
+    elif x_type == DataType.Float:
+        if np.allclose(x, y, equal_nan=True, atol=1e-6): # guard against nan
+            return True, None
+        else:
+            return False, "FLOAT Value mismatch: {} vs {}".format(x, y)
+    elif x_type in [DataType.List, DataType.Tuple]:
+        if len(x) != len(y):
+            return False, "Length mismatch: {} vs {}".format(len(x), len(y))
+        for i in range(len(x)):
+            equal, msg = is_equal(x[i], y[i])
+            if not equal:
+                return False, msg
+        return True, None
+    elif x_type == DataType.Dict:
+        if len(x) != len(y):
+            return False, "Length mismatch: {} vs {}".format(len(x), len(y))
+        for k, v in x.items():
+            if k not in y:
+                return False, "DICT Value mismatch: key {} in {} but not in {}".format(k, x, y)
+            equal, msg = is_equal(v, y[k])
+            if not equal:
+                return False, msg
+        return True, None
+    else:
+        try:
+            if x == y:  # e.g., object comparison
+                return True, None
+            else:
+                return False, "ELSE Value mismatch: {} vs {}".format(x, y)
+        except:
+            return False, "Unsupported type: {} <-- {}".format(x_type, type(x))
+
+def check(candidate):
+    inputs = [eval(f"[{i}]") for i in ['["apple", "banana", "cherry", "date", "elderberry"], ["banana", "date", "fig", "grape", "elderberry"], 3', '["cat", "dog", "elephant", "fox", "goat"], ["dog", "fox", "cat", "horse", "iguana", "goat"], 3', '["hello", "goodbye", "yes", "no", "maybe", "absolutely", "never"], ["no", "maybe", "absolutely", "always", "sometimes"], 1', '["apple", "banana", "cherry", "date", "elderberry"], [], 3', '[], ["banana", "date", "fig", "grape", "elderberry"], 3', '[], [], 3', '["apple"], ["apple"], 1', '["apple", "banana", "cherry", "date", "elderberry"], ["banana", "date", "fig", "grape", "elderberry"], 0', '["apple", "banana", "cherry", "date", "elderberry"], ["banana", "date", "fig", "grape", "elderberry"], 5', '["apple", "banana", "cherry", "date", "elderberry"], ["banana", "date", "fig", "grape", "elderberry"], 10', '["apple", "banana", "cherry", "date", "elderberry"], ["banana", "apple", "fig", "grape", "elderberry"], 2', '["banana", "banana", "cherry", "date", "elderberry"], ["banana", "date", "fig", "grape", "elderberry"], 1', '["apple", "banana", "cherry", "date", "elderberry"], ["banana", "date", "fig", "grape", "elderberry"], -1', '[], ["banana", "date", "fig", "grape", "elderberry"], 3', '["apple", "banana", "cherry", "date", "elderberry"], [], 3', '[], [], 3', '["apple", "banana", "cherry", "date", "elderberry"], ["banana", "date", "fig", "grape", "elderberry"], 0', '["apple", "banana", "cherry", "date", "elderberry"], ["banana", "date", "fig", "grape", "elderberry"], -1', '["apple", "banana", "cherry", "date", "elderberry"], ["banana", "date", "fig", "grape", "elderberry"], 10', '["apple", "banana", "cherry", "date", "elderberry", "banana"], ["banana", "date", "fig", "grape", "elderberry"], 3', '["apple", "banana", "cherry", "date", "elderberry"], ["banana", "date", "fig", "grape", "elderberry", "banana"], 3', '["apple", "banana", "cherry", "date", "elderberry", "date", "fig", "grape"], ["banana", "date", "fig", "grape", "elderberry", "banana", "date", "fig", "grape"], 5', '["a", "b", "c", "d", "e"], ["f", "g", "h", "i", "j"], 3', '[], ["banana", "date", "fig", "grape", "elderberry"], 3', '["apple", "banana", "cherry", "date", "elderberry"], [], 3', '[], [], 3', '["apple", "banana", "cherry", "date", "elderberry"], ["banana", "date", "fig", "grape", "elderberry"], 0', '["apple", "banana", "cherry", "date", "elderberry"], ["banana", "date", "fig", "grape", "elderberry"], -3', '["apple", "banana", "cherry", "date", "elderberry"], ["banana", "date", "fig", "grape", "elderberry"], 10', '["apple", "apple", "apple", "apple"], ["apple", "apple", "apple", "apple"], 3', '["apple", "banana", "cherry", "date"], ["banana", "banana", "banana", "banana"], 3', '[], ["banana", "date", "fig", "grape", "elderberry"], 3', '["apple", "banana", "cherry", "date", "elderberry"], [], 3', '[], [], 3', '["apple", "banana", "cherry", "date", "elderberry"], ["banana", "date", "fig", "grape", "elderberry"], 0', '["apple", "banana", "cherry", "date", "elderberry"], ["banana", "date", "fig", "grape", "elderberry"], 10', '["apple", "banana", "cherry", "date", "elderberry"], ["banana", "date", "fig", "grape", "elderberry"], -3', '["apple", "apple", "apple", "apple"], ["apple", "apple", "apple", "apple"], 3', '["apple", "banana", "cherry", "date", "elderberry"], ["elderberry", "date", "banana", "apple"], 3', '["a", "b", "c", "d", "e"], ["a", "b", "c", "d", "e"], 3', '["apple", "banana", "cherry", "date", "elderberry", "fig", "grape", "honeydew", "ice cream", "jackfruit"], ["banana", "date", "fig", "grape", "elderberry"], 5', '["cat", "dog", "elephant", "fox", "goat", "horse", "iguana", "jaguar", "kangaroo", "lion"], ["dog", "fox", "cat", "horse", "iguana", "goat", "jaguar", "kangaroo", "lion"], 8', '["hello", "goodbye", "yes", "no", "maybe", "absolutely", "never", "sometimes", "always", "definitely"], ["no", "maybe", "absolutely", "always", "sometimes", "definitely"], 6', '["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"], ["one", "three", "five", "seven", "nine", "eleven", "thirteen"], 5', '["red", "blue", "green", "yellow", "orange", "purple", "pink", "black", "white", "brown"], ["red", "green", "blue", "black", "white", "pink", "yellow", "orange"], 7']]
+    outputs = [['date', 'banana', 'elderberry'], ['cat', 'dog', 'goat'], ['absolutely'], [], [], [], ['apple'], [], ['date', 'banana', 'elderberry'], ['date', 'banana', 'elderberry'], ['banana', 'elderberry'], ['elderberry'], ['banana', 'elderberry'], [], [], [], [], ['banana', 'elderberry'], ['date', 'banana', 'elderberry'], ['date', 'banana', 'elderberry'], ['date', 'banana', 'elderberry'], ['fig', 'date', 'grape', 'banana', 'elderberry'], [], [], [], [], [], [], ['date', 'banana', 'elderberry'], ['apple'], ['banana'], [], [], [], [], ['date', 'banana', 'elderberry'], [], ['apple'], ['apple', 'banana', 'elderberry'], ['a', 'b', 'c'], ['fig', 'date', 'grape', 'banana', 'elderberry'], ['cat', 'dog', 'goat', 'lion', 'horse', 'iguana', 'jaguar', 'kangaroo'], ['no', 'maybe', 'always', 'sometimes', 'absolutely', 'definitely'], ['one', 'five', 'nine', 'three', 'seven'], ['blue', 'pink', 'green', 'black', 'white', 'yellow', 'orange']]
+    to_output = []
+    for i, (inp, exp) in enumerate(zip(inputs, outputs)):
+        try:
+            to_output.append((i,compute_output(candidate,inp)))
+        except:
+            to_output.append((i,"Exception"))
+    print(f"Final output of subject for prioritization is:::::{to_output}")
+
+@timeout(5)
+def compute_output(candidate,inp):
+    return candidate(*inp)
+    
+check(common)

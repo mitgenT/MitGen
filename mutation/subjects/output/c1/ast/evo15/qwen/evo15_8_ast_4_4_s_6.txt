@@ -1,0 +1,8 @@
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(1, n + 1):  # Use 1-based indexing
+        if (i - 1) % m == 0:  # Check if it's the m-th number
+            result.append("Fizz")
+        elif i % m != 0:  # If not divisible by m, add the number
+            result.append(str(i))
+    return ' '.join(result)

@@ -1,0 +1,16 @@
+## Output
+
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            if string[i - min_length:i] == string[n - (j - i):n]:
+                pairs.append((string[i - min_length:i], string[n - (j - i):n]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```
+
+Explanation: I added a condition inside the second loop to check if the current prefix and suffix match exactly. If they do, a tuple containing both the prefix and suffix is added to the list 'pairs'. After the nested loops finish, the 'pairs' list is sorted based on two keys: the sum of the lengths of prefix and suffix (for primary sorting), and a tuple with the prefix and suffix itself (for secondary lexicographic sorting).

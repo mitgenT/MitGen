@@ -1,0 +1,5 @@
+```Python
+                if not students or name not in students:
+                    students.append(name)
+                break
+```

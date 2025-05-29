@@ -1,0 +1,3 @@
+self.course_scores[course].append(score)
+
+total = sum(self.course_scores[course])

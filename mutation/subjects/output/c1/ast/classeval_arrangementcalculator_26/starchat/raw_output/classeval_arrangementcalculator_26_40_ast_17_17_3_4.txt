@@ -1,0 +1,8 @@
+if n < 1:
+            return 0
+
+```python
+    for i in range(1, n + 1):
+        total += ArrangementCalculator.count(n, i)
+    ```
+Replace `#bug location` in the given code with the above line of code. This will fix the bug in the 'count_all' method, as it will only calculate the arrangements when the number n is greater than or equal to 1.

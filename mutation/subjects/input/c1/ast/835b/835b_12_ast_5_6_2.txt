@@ -1,0 +1,11 @@
+
+n=int(input())
+a=0
+for i in range(n):
+            <missing code>
+            for i in range(len(s)):
+                        if ord(s[i])>a:
+                                    a=ord(s[i])
+            print(a-96)
+
+            

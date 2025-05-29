@@ -1,0 +1,23 @@
+Based on the given docstring, we need to implement the search for substrings in the `string` and increment their counts in the `result` dictionary. Since we need to consider overlapping cases, we should use a loop to check for each substring starting from the current position after each match.
+
+Here's how you can infill `<MASK>` in the given code:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    if string:
+        for sub in substrings:
+            start = 0
+            while start < len(string):
+                pos = string.find(sub, start)
+                if pos != -1:
+                    result[sub] += 1
+                    start = pos + 1
+                else:
+                    break
+    return result
+```
+
+Now, the code checks for non-empty substrings and iterates through the string to find occurrences while accounting for overlapping matches.

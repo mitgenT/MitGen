@@ -1,0 +1,8 @@
+```python
+        if cursor.rowcount > 0:
+            return result
+        else:
+            return None
+```
+
+This will complete the `search_database` method in the `DatabaseProcessor` class to handle the case where a search query returns no rows. In this implementation, if the number of rows affected by the SELECT statement is greater than 0, the method returns the fetched result; otherwise, it returns None.

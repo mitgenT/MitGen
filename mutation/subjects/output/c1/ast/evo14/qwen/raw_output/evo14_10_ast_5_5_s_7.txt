@@ -1,0 +1,16 @@
+Based on the given docstring, we want to find non-overlapping prefix-suffix pairs that are at least `min_length` characters long. We can achieve this by iterating over the string starting from the beginning and considering each character as the end of a prefix. For each character, we can check if the remaining part forms a valid suffix without overlapping characters. Here's how to fill in the `<MASK>` parts:
+
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n):  # Start iterating from min_length
+        if i + min_length <= n:  # Check if the suffix is within the string length
+            if len(set(string[:i]).intersection(set(string[i+min_length:]))) == 0:  # No overlapping characters
+                pairs.append((string[:i], string[i:i+min_length]))  # Add the prefix-suffix pair
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))  # Sort pairs
+    return pairs
+```
+
+Now, the function `all_prefix_suffix_pairs` correctly finds all the required prefix-suffix pairs according to the description provided in the docstring.

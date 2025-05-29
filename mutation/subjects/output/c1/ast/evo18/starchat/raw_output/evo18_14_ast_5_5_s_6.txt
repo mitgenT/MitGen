@@ -1,0 +1,19 @@
+## Output
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    if string:
+        for sub in substrings:
+            start = 0
+            while start < len(string) - 1:
+                pos = string.find(sub, start)
+                if pos!= -1:
+                    result[sub] += 1
+                    start = pos + 1
+                else:
+                    break
+    return result
+```
+In this solution, I added a conditional check to verify if the input string is not empty before entering the main loop. This prevents unnecessary iterations if the string is empty. Additionally, I directly handled the search for each substring in the main loop by updating the start position after finding a match, thereby considering overlapping cases.

@@ -1,0 +1,9 @@
+def max_total_experience(t, test_cases):
+    result = []
+    for i in range(t):
+        n, k = test_cases[i][0]
+        a = test_cases[i][1]
+        b = test_cases[i][2]
+        # implementation goes here
+        result.append(total_experience)
+    return result

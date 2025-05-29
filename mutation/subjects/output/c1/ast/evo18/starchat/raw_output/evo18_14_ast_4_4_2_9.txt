@@ -1,0 +1,13 @@
+## Output
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    if string == "":
+        result = {sub: 0 for sub in substrings}
+    else:
+        result = {sub: string.count(sub) for sub in substrings}
+    return result
+```
+
+In the example above, the code is filled with the <MASK> to achieve the desired behavior. The first <MASK> checks if the input string is empty and initializes the result dictionary accordingly. The second <MASK> uses the `string.count` method to count the occurrences of each substring in the original string.

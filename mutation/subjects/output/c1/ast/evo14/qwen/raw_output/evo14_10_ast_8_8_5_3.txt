@@ -1,0 +1,24 @@
+Here's how you can fill in the `<MASK>` parts of the given code:
+
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                prefix = string[:i]
+                suffix = string[j:]
+                if len(prefix) <= len(suffix):
+                    pairs.append((prefix, suffix))
+                else:
+                    pairs.append((suffix, prefix))  # Swap prefix and suffix if necessary due to lexicographic sort
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```
+
+Explanation:
+1. The code creates a tuple `(prefix, suffix)` for each valid prefix-suffix pair that does not overlap and has the required minimum length.
+2. Inside the inner loop, it checks the lengths and swaps `prefix` and `suffix` if needed to ensure that they are in lexicographically increasing order when having equal lengths.
+3. The swapped `prefix` and `suffix` are then appended to the `pairs` list.

@@ -1,0 +1,4 @@
+if m == 0:
+    return 1
+else:
+    return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)

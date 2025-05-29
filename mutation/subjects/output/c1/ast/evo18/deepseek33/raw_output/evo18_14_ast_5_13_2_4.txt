@@ -1,0 +1,14 @@
+You need to infill `<MASK>` with a for loop that iterates over the length of the string minus the length of each substring plus one. Inside the loop, it should slice the string at the current index to the current index plus the length of the substring and check if the sliced string is equal to the substring. If it is, it increments the corresponding key in the result dictionary.
+
+## Output
+```Python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for i in range(len(string)):
+        for sub in substrings:
+            if string[i:i+len(sub)] == sub:
+                result[sub] += 1
+    return result
+```

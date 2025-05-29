@@ -1,0 +1,3 @@
+new_base_num += chr(remainder + 55) 
+remainder = base_10 % new_base
+```

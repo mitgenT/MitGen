@@ -1,0 +1,24 @@
+## Output
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        if len(string) == 0:
+            return {sub: 0 for sub in substrings}
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos!= -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+```
+
+In this case, `<MASK>` is filled in two places:
+
+1. `if <MASK>:` is replaced with `if len(string) == 0:` to handle the scenario where the input string is empty. In this case, the function should return a dictionary with zero counts for each substring.
+
+2. `result = {sub: 0 for sub in substrings}` remains as-is, initializing the result dictionary with zero counts for each substring.

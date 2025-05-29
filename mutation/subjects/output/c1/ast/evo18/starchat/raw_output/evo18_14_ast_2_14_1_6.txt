@@ -1,0 +1,13 @@
+## Output
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    counter = {sub: 0 for sub in substrings}
+    if not all(sub for sub in substrings):
+        return "Substrings cannot be empty"
+    for sub in substrings:
+        count = string.count(sub)
+        counter[sub] += count
+    return counter
+```
+
+In the above example, the code uses Python's built-in dictionary comprehension and string `count()` function to solve the given problem. The `all()` function is used to check if all substrings are not empty. The count of each substring in the original string is then accumulated in the 'counter' dictionary and returned at the end.

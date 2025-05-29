@@ -1,0 +1,20 @@
+for _ in range(int(input())):
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    result = 0
+    for _ in range(int(input())):
+        n, k = map(int, input().split())
+        a = list(map(int, input().split()))
+        b = list(map(int, input().split()))
+        result = 0
+        ans = [a[i] * (k // n) + sum(sorted(b[:i+1],reverse=True)) * (k // n - 1) + max(b[:k % n]) if i == n - 1 else a[i] * (k // n + 1) + sum(sorted(b[:i+1],reverse=True)) * (k // n) for i in range(k + 1)]
+        print(max(ans))
+    sum = 0
+    for i in range(min([k, n])):
+        if i < n:
+            sum += a[i]
+        maxB = max(list(b[0:i + 1]))
+        result = max(result, sum + maxB * (k - i - 1))
+
+    print(result)

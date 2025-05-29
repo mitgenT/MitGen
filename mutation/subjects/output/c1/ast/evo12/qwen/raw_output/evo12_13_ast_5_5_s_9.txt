@@ -1,0 +1,4 @@
+```python
+    max_length = 0
+    longest_substring_start = None
+```

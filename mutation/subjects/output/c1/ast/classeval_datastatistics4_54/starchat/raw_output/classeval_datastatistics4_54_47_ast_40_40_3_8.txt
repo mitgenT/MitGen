@@ -1,0 +1,9 @@
+n = len(data)
+if n > 3:
+    variance = sum((x - mean) ** 2 for x in data) / n
+    kurtosis_value = (n * (n + 1) * (sum((x - mean) ** 4 for x in data) / n - 3 * (variance ** 2))) / ((n - 1) * (n - 2) * (n - 3))
+else:
+    kurtosis_value = math.nan
+
+# Result:
+# return kurtosis_value

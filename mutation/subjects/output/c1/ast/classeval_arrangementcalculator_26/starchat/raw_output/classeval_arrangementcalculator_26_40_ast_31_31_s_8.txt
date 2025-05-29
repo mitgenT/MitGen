@@ -1,0 +1,5 @@
+return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)  # bug location should be corrected like this
+```python
+if not m:
+    m = len(self.datas)
+```

@@ -1,0 +1,5 @@
+result = cursor.fetchall()
+if result:
+    return result
+else:
+    return None

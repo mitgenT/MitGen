@@ -1,0 +1,19 @@
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+    longest_vowel_sub: Optional[str] = None
+    longest_index: Optional[int] = None
+    vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}
+
+    for idx, string in enumerate(strings):
+        for i in range(len(string)):
+            if string[i].lower() in vowels:  # Check if current character is a vowel
+                substring = string[i:]
+                for j in range(i, len(substring)):
+                    if substring[j].lower() not in vowels:
+                        break  # End the substring at the first non-vowel character
+                else:
+                    if not longest_vowel_sub or len(substring) > len(longest_vowel_sub):
+                        longest_vowel_sub = substring
+                        longest_index = idx
+
+    return longest_vowel_sub, longest_index

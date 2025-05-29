@@ -1,0 +1,17 @@
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n+1):   # range should go from 0 to n inclusive
+        if (i+1) % m == 0:  # correcting the index (1-based to 0-based)
+            result.append("Fizz")
+        else:
+            result.append(str(i))
+    return''.join(result)
+
+# test the function
+print(string_sequence_modified(0, 3))
+print(string_sequence_modified(5, 3))
+print(string_sequence_modified(15, 3))
+```
+
+In the solution, I have corrected the range in the for loop to go from 0 to n inclusive, and adjusted the condition to check for Fizz when the (i+1)th number is a multiple of m (instead of checking i for Fizz) as per the docstring.

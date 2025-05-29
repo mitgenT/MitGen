@@ -1,0 +1,16 @@
+## Output
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        else:
+            result.append(str(i))
+    if result:
+        return''.join(result)
+    else:
+        return ""
+```
+
+The `<MASK>` in the original given code has been replaced with a conditional check to ensure that the `result` list is not empty. When it is not empty, the function will return a string containing the space-delimited numbers starting from 0 upto n inclusive with every m-th number replaced by "Fizz". If the `result` list is empty, it will return an empty string.

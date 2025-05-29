@@ -1,0 +1,10 @@
+```python
+if len(self.students[name]['courses']):
+            return sum(self.students[name]['courses'].values()) / len(self.students[name]['courses'])
+```
+
+For the get_course_average function, you can fill in the following code:
+
+```python
+if course in student['courses'] and student['courses'][course] is not None:
+```

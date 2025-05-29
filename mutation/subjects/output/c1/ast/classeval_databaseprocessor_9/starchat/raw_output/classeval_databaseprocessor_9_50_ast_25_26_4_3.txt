@@ -1,0 +1,16 @@
+In the `insert_into_database` function, `?` needs to be replaced with a placeholder for each item's values in the `data` list, and the placeholders should be used with a tuple in the `cursor.execute()` method. Here's how the function should be completed:
+
+```python
+def insert_into_database(self, table_name, data):
+    conn = sqlite3.connect(self.database_name)
+    cursor = conn.cursor()
+
+    for item in data:
+        insert_query = f"INSERT INTO {table_name} (name, age) VALUES (?,?)"
+        cursor.execute(insert_query, (item['name'], item['age']))
+
+    conn.commit()
+    conn.close()
+```
+
+This completes the given code with the missing `?` placeholders for inserting data into the database. The `insert_into_database` function will now correctly insert rows into the specified table based on the provided data list.

@@ -1,0 +1,21 @@
+## Output
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = False
+    if type(delimeter) == float:
+        if len(numbers) > 0 and type(numbers[0]) == float:
+            set_float = True
+    result = []
+    limit = min(limit, len(numbers) - 1) 
+    for i in range(len(numbers) - 1):
+        if set_float:
+            result.append(float(numbers[i]))
+        else:
+            result.append(numbers[i])
+        if i < limit:
+            result.append(delimeter)
+    return result
+```
+
+In the provided solution, I first check if the 'delimeter' is a float and whether the first element of the 'numbers' list is a float. If both conditions are met, I set the'set_float' variable to True. Then, I iterate through the input list and append each number to the'result' list. If the current index is less than the 'limit' and'set_float' is True, I append the 'delimeter' as a float to the'result' list. Otherwise, I append it as an integer or float as originally given in the 'numbers' list. This solution ensures that the types of numbers and delimiters in the output list match their corresponding input types.

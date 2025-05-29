@@ -1,0 +1,21 @@
+
+for _ in range (int(input())):
+    n,c,d=map(int,input().split())
+    A=list(map(int,input().split()))
+    A=sorted(A)[::-1]
+    cur = [a[0] for a in enumerate(A,0)]
+    cur.append(c+1)
+    
+    mn = -1000000000
+    for i in range(d,len(cur)):
+        mn = max(mn,cur[i]-cur[i-d])
+    ans = mn
+    
+    if mn>A[0]:
+        ans="Infinity"
+    elif ans==0:
+        ans="Impossible"
+    
+    print(ans)
+
+        

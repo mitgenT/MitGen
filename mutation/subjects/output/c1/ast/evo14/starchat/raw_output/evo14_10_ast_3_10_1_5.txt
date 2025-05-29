@@ -1,0 +1,14 @@
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    pairs = []
+    for i in range(len(string)):
+        for j in range(i+min_length, len(string)+1):
+            prefix = string[:j]
+            suffix = string[i:j]
+            if prefix!= suffix:
+                pairs.append((prefix, suffix))
+    pairs.sort(key=lambda pair: (len(pair[0]), pair[0]))
+    return pairs
+```
+In the solution, we are traversing the given string for all possible prefix-suffix pairs and checking if they are of minimum length and do not overlap with each other. The pairs are then sorted based on their length and lexicographically if lengths are equal before being returned.

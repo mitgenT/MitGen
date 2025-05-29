@@ -1,0 +1,36 @@
+def solve(n, k):
+    # Create a list of numbers from 1 to n
+    nums = list(range(1, n + 1))
+
+    # If k is 0, then Monocarp should solve the problems in increasing order
+    if k == 0:
+        return nums
+
+    # If k is n-1, then Monocarp should solve the problems in decreasing order
+    if k == n - 1:
+        return nums[::-1]
+
+    # Otherwise, Monocarp should solve the problems in the following order:
+    # 1. Start with the problem with difficulty level k + 1
+    # 2. Alternate between solving problems with difficulty levels k and k + 2
+    # 3. Solve the remaining problems in increasing order
+    result = [k + 1]
+    for i in range(k, n - 1):
+        if i % 2 == 0:
+            result.append(k)
+        else:
+            result.append(k + 2)
+    result.extend(nums[k + 2:])
+
+    return result
+
+# Read the input
+t = int(input())
+for _ in range(t):
+    n, k = map(int, input().split())
+
+    # Solve the problem
+    result = solve(n, k)
+
+    # Print the result
+    print(*result)

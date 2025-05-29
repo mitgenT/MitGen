@@ -1,0 +1,13 @@
+Based on the provided docstring, the code should check if `n` is greater than or equal to `m`, and then initialize an empty list `result`. Here's how to fill in `<MASK>` in the given code:
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    if n >= m:
+        result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        else:
+            result.append(str(i))
+    return ' '.join(result)
+```

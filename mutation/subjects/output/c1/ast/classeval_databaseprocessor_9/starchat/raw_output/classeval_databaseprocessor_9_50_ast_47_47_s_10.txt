@@ -1,0 +1,3 @@
+delete_query
+if result:
+    cursor.execute(delete_query, (name,))

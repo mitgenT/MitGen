@@ -1,0 +1,27 @@
+Based on the provided docstring, we need to handle the case where either the `strings` or `integers` list is empty. We can achieve this by using a conditional check for each list before proceeding with the loop. Here's the filled-in code:
+
+```python
+from typing import List, Tuple
+def interleave_and_concatenate(strings: List[str], integers: List[int]) -> Tuple[str, int]:
+    if not strings:
+        strings = []
+    if not integers:
+        integers = []
+    
+    len_strings = len(strings)
+    len_integers = len(integers)
+    max_len = max(len_strings, len_integers)
+    interleaved = []
+
+    for i in range(max_len):
+        if i < len_strings:
+            interleaved.append(strings[i])
+        if i < len_integers:
+            interleaved.append(integers[i])
+
+    concatenated_string = ' '.join([str(i) for i in interleaved if isinstance(i, str)]) 
+    sum_integers = sum([i for i in interleaved if isinstance(i, int)])
+    return (concatenated_string, sum_integers)
+```
+
+Now, the code checks for empty lists and handles them accordingly. If either `strings` or `integers` is empty, it assigns an empty list to that variable. The rest of the logic remains the same as the original code.

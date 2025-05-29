@@ -1,0 +1,17 @@
+## Output
+```python
+def change_base(x: str, base: int, new_base: int):
+    try:
+        base_10 = int(x, base)
+    except ValueError:
+        return "invalid base"
+    new_base_num = ""
+    if base_10 == 0:
+        return '0'
+    while base_10 > 0:
+        new_base_num = str(base_10 % new_base).upper() + new_base_num
+        base_10 //= new_base
+    return new_base_num
+```
+
+Infill <MASK> replaced the while loop in the given code with logic to convert the base 10 number to the new base number. Inside the while loop, the remainder of the base_10 number divided by the new base is calculated, converted to uppercase string and concatenated to the start of new_base_num string, then the integer division of base_10 by the new base is performed. This process repeats until base_10 becomes 0, which finishes conversion and the new base number string is returned as the final output.

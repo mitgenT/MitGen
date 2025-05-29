@@ -1,0 +1,5 @@
+def common(l1: list, l2: list, n: int):
+    str_length_pairs1 = [(s, len(s)) for s in l1 if s in l2]
+    str_length_pairs2 = [(s, len(s)) for s in l2 if s in l1]
+    sorted_pairs = sorted(str_length_pairs1 + str_length_pairs2, key=lambda x: (-x[1], l1.index(x[0])))
+    return [pair[0] for pair in sorted_pairs[:n]]

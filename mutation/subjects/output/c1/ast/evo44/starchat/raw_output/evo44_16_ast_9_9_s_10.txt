@@ -1,0 +1,24 @@
+## Output
+
+```python
+def change_base(x: str, base: int, new_base: int):
+    try:
+        base_10 = int(x, base)
+    except ValueError:
+        return "invalid base"
+    new_base_num = ""
+    if base_10 == 0:
+        return '0'
+    while base_10 >= new_base:
+        remainder = base_10 % new_base
+        base_10 -= new_base
+        if 0 <= remainder <= 9:
+            new_base_num = str(remainder) + new_base_num
+        else:
+            new_base_num = chr(remainder + 55) + new_base_num 
+    if base_10 > 0:
+        new_base_num = str(base_10) + new_base_num
+    return new_base_num
+```
+
+In this output code, the missing <MASK> in the original code has been replaced with the correct "while" loop which continually divides the base 10 number by the new base until it reaches zero. If there is still a remainder after the division, the corresponding digit (in the new base) is added to the string 'new_base_num'. At the end, if 'base_10' is still greater than 0, it means the initial number is not a multiple of the new base and needs to be added as the first digit. The resulting 'new_base_num' string is then returned as the converted number.

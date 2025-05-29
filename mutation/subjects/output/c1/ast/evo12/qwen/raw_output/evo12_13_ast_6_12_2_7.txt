@@ -1,0 +1,10 @@
+```python
+    for i, string in enumerate(strings):
+        for j, char in enumerate(string):
+            if char in vowels:
+                substring = string[j:]
+                if not longest_substring or len(substring) > len(longest_substring):
+                    longest_substring = substring
+                    longest_substring_index = i
+    return longest_substring, longest_substring_index
+```

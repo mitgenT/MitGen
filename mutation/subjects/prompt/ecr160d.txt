@@ -1,0 +1,20 @@
+docstring:
+"""
+You are given an array [𝑝1,𝑝2,…,𝑝𝑛], where all elements are distinct.
+
+You can perform several (possibly zero) operations with it. In one operation, you can choose a contiguous subsegment of 𝑝 and remove all elements from that subsegment, except for the minimum element on that subsegment. For example, if 𝑝=[3,1,4,7,5,2,6] and you choose the subsegment from the 3-rd element to the 6-th element, the resulting array is [3,1,2,6].
+
+An array 𝑎 is called reachable if it can be obtained from 𝑝 using several (maybe zero) aforementioned operations. Calculate the number of reachable arrays, and print it modulo 998244353.
+
+Input
+
+The first line of the input contains one integer 𝑡 (1≤𝑡≤10^4) — the number of test cases.
+
+Each test case consists of two lines. The first line contains one integer 𝑛 (1≤𝑛≤3⋅10^5). The second line contains 𝑛 distinct integers 𝑝1,𝑝2,…,𝑝𝑛 (1≤𝑝𝑖≤10^9).
+
+Additional constraint on the input: the sum of 𝑛 over all test cases does not exceed 3⋅10^5.
+
+Output
+
+For each test case, print one integer — the number of reachable arrays, taken modulo 998244353.
+"""

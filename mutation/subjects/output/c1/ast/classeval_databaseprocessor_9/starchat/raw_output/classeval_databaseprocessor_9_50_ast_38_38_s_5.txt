@@ -1,0 +1,16 @@
+```python
+    def search_database(self, table_name, name):
+
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+
+        select_query = f"SELECT * FROM {table_name} WHERE name =?"
+        cursor.execute(select_query, (name,))
+        result = cursor.fetchall()
+
+        conn.commit()
+        conn.close()
+
+        return result
+```
+I filled in the `<MASK>` in the `search_database` method. As instructed, I fetched all rows from the selected table that match the provided name using `cursor.fetchall()`. After executing the query, I committed the changes to the database and closed the connection. The fetched rows are then returned by the method.

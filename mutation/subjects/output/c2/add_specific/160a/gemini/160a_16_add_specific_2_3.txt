@@ -1,0 +1,331 @@
+if __name__ == "__main__":
+    <missing code>
+    for _ in <missing code>:
+        <missing code>
+
+        if <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        else:
+            <missing code>
+
+        if <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        else:
+            <missing code>
+
+        if <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        else:
+            <missing code>
+
+        if <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        else:
+            <missing code>
+
+        if <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        else:
+            <missing code>
+
+        if <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        else:
+            <missing code>
+
+        if <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        else:
+            <missing code>
+
+        if <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        else:
+            <missing code>
+
+        if <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        else:
+            <missing code>
+
+        if <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        else:
+            <missing code>
+
+        if <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        else:
+            <missing code>
+
+        if <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:
+            <missing code>
+        elif <missing code>:

@@ -1,0 +1,8 @@
+n = int(input())
+for _ in range(n):
+    t = int(input())
+    s = list(map(int, input().split()))
+    max_strength = max(s)
+    for i in range(t):
+        print(max_strength - s[i], end=" ")
+    print()

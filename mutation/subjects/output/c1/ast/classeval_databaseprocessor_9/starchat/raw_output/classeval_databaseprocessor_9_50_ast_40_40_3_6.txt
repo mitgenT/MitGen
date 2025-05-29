@@ -1,0 +1,6 @@
+```python
+if result:
+    conn.close()
+    return result
+```
+This code will fetch and return the results of the search query if there are any. Afterwards, it closes the database connection. If there are no results, it simply closes the connection without returning anything.

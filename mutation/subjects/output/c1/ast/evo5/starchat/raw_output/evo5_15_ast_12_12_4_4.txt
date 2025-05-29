@@ -1,0 +1,21 @@
+## Output
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = False
+    if type(delimeter) == float:
+        set_float = True
+    result = []
+    limit = min(limit, len(numbers) - 1) 
+    for i in range(len(numbers) - 1):
+        if set_float:
+            result.append(float(numbers[i]))
+        else:
+            if i!= len(numbers) - 2:
+                result.append(numbers[i])
+        if i < limit:
+            result.append(delimeter)
+    return result
+```
+
+In this solution, we first check if the delimiter is a float to decide whether the result should be a float list. Then we iterate through the numbers, add each number to the result, and if the iteration index is less than the limit, we add the delimiter as well. However, to prevent adding the delimiter after the last number, we only append the delimiter when the index `i` is less than the `limit`. Also, we correctly append the numbers in float if the delimiter is float. In the case when the delimiter is an integer, we append the numbers as is except the last one.

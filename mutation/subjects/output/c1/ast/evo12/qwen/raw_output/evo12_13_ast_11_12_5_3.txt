@@ -1,0 +1,22 @@
+Here's how you should fill in the `<MASK>` parts of the code:
+
+```python
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+    vowels = 'aeiouAEIOU'
+    longest_substring = None
+    longest_substring_index = None
+    for i, string in enumerate(strings):
+        substrings = [string[j:] for j in range(len(string)) if string[j] in vowels]
+        if substrings:
+            max_substring = max(substrings, key=len)
+            if longest_substring is None or len(max_substring) == len(longest_substring):
+                if max_substring.startswith(vowels):
+                    longest_substring = max_substring
+                    longest_substring_index = i
+    return longest_substring, longest_substring_index
+```
+
+Explanation:
+1. Since we're looking for a substring that starts with a vowel, we check `max_substring.startswith(vowels)` to see if it does. If it does, we update `longest_substring` and `longest_substring_index`.
+2. After finding the longest substring that starts with a vowel, we don't need to compare its length again because we've already checked for equality in the condition `len(max_substring) == len(longest_substring)`. So, we can remove that part from the `if` condition.

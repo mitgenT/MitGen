@@ -1,0 +1,16 @@
+## Output
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = False
+    if type(delimeter) == float:
+        set_float = True
+    result = []
+    for i in numbers:
+        result.append(i)
+        if len(result) - 1 < len(numbers) - 1 and len(result) // 2 <= limit:
+            result.append(delimeter)
+    return result
+```
+
+The added code infills the `<MASK>` correctly to iterate through the `numbers` list, adding each element to the `result` list, followed by the `delimeter` (if within the limit) before moving to the next number.

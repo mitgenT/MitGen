@@ -1,0 +1,15 @@
+def how_many_times(string: str, substrings: list) -> dict:
+    if not any(sub for sub in substrings):
+        return "Substrings cannot be empty"
+    else:
+        result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:  # Adjust the condition if we want to consider overlapping cases (change `1` to `len(sub)`)
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + len(sub)  # Increment by the length of the substring
+            else:
+                break
+    return result

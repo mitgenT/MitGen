@@ -1,0 +1,16 @@
+## Output
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    if n >= m:
+        for i in range(1, n+1):
+            if i % m == 0:
+                result.append('Fizz')
+            else:
+                result.append(str(i-1))
+    else:
+        result = list(map(str, range(n)))
+    
+    return''.join(result)
+```
+The infilled <MASK> parts have been replaced so that the code correctly implements the given docstring. It correctly generates the modified string sequence, where every m-th number is replaced by "Fizz". If n is less than m, it simply converts the range from 0 to n-1 into a string sequence.

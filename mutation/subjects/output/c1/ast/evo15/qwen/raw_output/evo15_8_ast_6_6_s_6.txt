@@ -1,0 +1,4 @@
+```python
+        elif (i+1) not in [j+1 for j in range(0, i+1, m)]:
+            result.append(str(i+1))
+```

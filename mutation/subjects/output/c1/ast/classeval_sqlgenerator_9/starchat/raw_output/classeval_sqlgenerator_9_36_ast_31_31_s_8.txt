@@ -1,0 +1,1 @@
+sql = f"gender = 'female' AND age < {age}"

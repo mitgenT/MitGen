@@ -1,0 +1,5 @@
+def update(self, data, condition):
+    if data:
+        set_clause = ", ".join([f"{key} = '{value}'" for key, value in data.items()])
+    sql = f"UPDATE {self.table_name} SET {set_clause} WHERE {condition}"
+    return sql + ";"

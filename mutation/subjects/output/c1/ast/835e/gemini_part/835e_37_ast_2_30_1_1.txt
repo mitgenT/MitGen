@@ -1,0 +1,14 @@
+from sys import stdin, stdout
+class Solution:
+    def BinaryInversions(self, n, bits):
+        count_zero = bits.count(0)
+        count_one = bits.count(1)
+        ans = count_zero * count_one + max(count_one - 1, count_zero)
+        return int(ans)
+
+sol = Solution()
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    bits = list(map(int, input().split()))
+    print(sol.BinaryInversions(n, bits))

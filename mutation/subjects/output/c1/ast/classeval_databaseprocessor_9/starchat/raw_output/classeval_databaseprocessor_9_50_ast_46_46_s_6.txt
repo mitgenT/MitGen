@@ -1,0 +1,7 @@
+delete_query = f"DELETE FROM {table_name} WHERE name =?"
+cursor.execute(delete_query, (name,))
+
+if cursor.rowcount > 0:
+    print(f"{cursor.rowcount} record(s) deleted.")
+else:
+    print("No record found to delete.")

@@ -1,0 +1,16 @@
+## Output
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index and char.isalpha():
+            if char.isupper():
+                result += char.lower()
+            elif char.islower():
+                result += char
+        else:
+            result += char.swapcase()
+    return result
+```
+In the given solution, the `swapcase()` function is used to switch the case of each character in the string. The exception for the character at'special_index' is handled inside the loop. If the loop reaches the'special_index' (after modulo operation) and the character is alphabetic, it checks whether it's uppercase and changes it to lowercase or keeps it as is (in case it's already lowercase). For all other characters, it simply switches their case.

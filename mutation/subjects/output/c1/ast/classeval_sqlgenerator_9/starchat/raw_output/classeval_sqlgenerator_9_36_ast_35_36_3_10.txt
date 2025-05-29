@@ -1,0 +1,2 @@
+condition = f"BETWEEN {min_age} AND {max_age}"
+return self.select(condition=condition)

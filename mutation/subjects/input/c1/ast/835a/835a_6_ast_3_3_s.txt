@@ -1,0 +1,6 @@
+t=int(input())
+while t>1:
+    <missing code>
+        a=sorted(list(map(int,input().split())))
+        print(a[1])
+        t-=1

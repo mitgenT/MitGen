@@ -1,0 +1,15 @@
+def solve(n: int, c: int, d: int, a: list[int]) -> str:
+    a.sort()  # Sort the rewards in increasing order.
+    sum = 0  # Initialize the total coins earned to 0.
+    k = 0  # Initialize the cooldown period to 0.
+    for ai in a:
+        if sum + ai >= c:  # If the total coins earned is greater than or equal to c, break the loop.
+            break
+        sum += ai  # Add the current reward to the total coins earned.
+        k += 1  # Increase the cooldown period by 1.
+    if sum < c:  # If the total coins earned is still less than c, return "Impossible".
+        return "Impossible"
+    elif k >= d:  # If the cooldown period is greater than or equal to d, return "Infinity".
+        return "Infinity"
+    else:  # Return the maximum possible cooldown period.
+        return str(k)

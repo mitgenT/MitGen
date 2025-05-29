@@ -1,0 +1,8 @@
+```python
+        if result:
+            return result
+        else:
+            return None
+```
+
+In this case, the `search_database` method returned `None` if there were no matching rows in the database, and it returned a list of tuples representing the matching rows if any were found. Therefore, an `if` statement checked if `result` was not empty and returned either the result or `None`.

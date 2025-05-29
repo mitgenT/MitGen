@@ -1,0 +1,12 @@
+def string_sequence_modified(n: int, m: int) -> str:
+    sequence = []
+    for i in range(0, n + 1):
+        if (i + 1) % m == 0:  # 1-based indexing
+            sequence.append("Fizz")
+        else:
+            sequence.append(str(i))
+    if sequence:
+        result = " ".join(sequence)
+    else:
+        result = "0"  # If n is 0 or m is such that no replacement happens
+    return result

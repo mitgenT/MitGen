@@ -1,0 +1,4 @@
+```python
+if remainder <= 9:
+    new_base_num = str(remainder) + new_base_num
+```

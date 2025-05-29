@@ -1,0 +1,11 @@
+```python
+delete_query = f"DELETE FROM {table_name} WHERE name =?"
+cursor.execute(delete_query, (name,))
+
+conn.commit()
+if cursor.rowcount == 0:
+    print(f"No row was deleted with name '{name}' in table '{table_name}'")
+else:
+    print(f"{cursor.rowcount} row(s) were deleted with name '{name}' in table '{table_name}'")
+```
+In this solution, I completed the 'delete_from_database' function by adding a conditional statement that prints an appropriate message based on the number of rows deleted from the database. The sqlite3 cursor's `rowcount` attribute is used to determine the number of rows affected by the delete operation.

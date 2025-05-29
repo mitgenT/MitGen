@@ -1,0 +1,3 @@
+def add_course_score(self, name, course, score):
+    if name in self.students and isinstance(score, int):
+        self.students[name]['courses'][course] = score

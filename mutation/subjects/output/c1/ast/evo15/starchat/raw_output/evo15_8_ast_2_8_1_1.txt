@@ -1,0 +1,14 @@
+## Output
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = ''
+    for i in range(1, n + 1):
+        if i % m == 0:
+            result += 'Fizz '
+        else:
+            result += str(i - 1) +''
+    return result.strip()
+```
+
+This solution iterates from 1 to n inclusive (1-based indexing), checks if each number is divisible by m, and adds "Fizz " to the result string when it is. For other numbers, it converts them to strings and appends them to the result. The `strip()` method is used to remove any trailing space before returning the final result string.

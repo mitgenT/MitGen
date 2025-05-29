@@ -1,0 +1,34 @@
+from wrapt_timeout_decorator import *
+
+<generated_code_here>
+
+import numpy as np
+from numpy import nan, inf # for some outputs.
+import sys
+
+sys.set_int_max_str_digits(0)
+
+from enum import IntEnum, auto
+
+def _check_insensitive_palindrome(check_palindrome, string, gt_palindrome):
+    assert len(check_palindrome) == len(gt_palindrome)
+    assert check_palindrome.startswith(string)
+    assert check_palindrome.lower() == check_palindrome[::-1].lower()
+
+
+def check(candidate):
+    inputs = [eval(f"[{i}]") for i in ["''", "'Cat'", "'cAta'", "'Racecar'", "'Malayalam'", "'Wasitacaroracatisaw'", "'AblewasiSawElba'", "'Neveroddoreven'", "'Redder'", "'Rotator'", "'Deed'", "'12321'", "'MadamInEdenImAdam'", "'Aibohphobia'", "'Dewed'", "'123454321'", "'Mom'", "'Dad'", "'Wow'", "'Repaper'", "'Deed'", "'112211'", "'AbleWasIEreISawElba'", "'ABBA'", "'12321'", "'MadamAroraTeachesMalayalam'", "'Aibohphobia'", "'WasItACarOrACatISaw'", "'NeverOddOrEven'", "'RiseToVoteSir'", "'AvidDiva'", "'ReviledDidILiveSaidIEvilDerEvil'", "'AbleWasIEreISawElba'", "'1234567890'", "'raceCAR'", "'rAceCAR'", "'A man a plan a canal Panama'", "'AbleBaker'", "'123Aba321'", "'@#$%^&*'", "'Ab123Ba'", "'Able was I ere I saw elba'", "'AbleWAS'", "'A_b_l_e_ _W_a_s'", "'LongestPalindromeEver'", "'PalindromePalindromePalindrome'", "'CatDog'", "'123456654321'", "'123AbC321'", "'AbleWasIEreISawElba123'", "'AbleWasI'", "'A'", "'ABC'", "'AaaA'", "'racecar'", "'12321'", "'12345'", "'abcdcba'", "'abcdeedcba'", "'1a2b2a1'", "'1a2b3b2a1'", "'A man, a plan, a canal: Panama'", "'No lemon, no melon'", "'Able was I ere I saw Elba'", "'Madam, in Eden, I’m Adam'", "'Never odd or even'", "'Don’t nod'", "'Sir, I demand, I am a maid named Iris'", "'Was it a car or a cat I saw?'", "'Yo, Banana Boy!'", "'Eva, can I see bees in a cave?'", "'Madam, in Eden, I’m Adam'", "'Never a foot too far, even'", "'Red roses run no risk, sir, on Nurse’s order'", "'Red roses'", "'run no risk'", "'sir, on Nurse’s order'", "'ABBA'", "'racecar'", "'A man a plan a canal Panama'", "'civic'", "'deed'", "'Dewed'", "'1a2'", "'12321'", "'1234321'", "'1a2a1'", "'Able was I ere I saw Elba'", "'Madam Arora teaches malayalam'", "'Able , was I saw Elba'", "'Madam, in Eden, I’m Adam'", "'Never a foot too far, even.'", "'Red roses run no risk, sir, on Nurse’s order.'", "'Was it a car or a cat I saw?'", "'Yo, Banana Boy!'", "'Eva, can I see bees in a cave?'", "'Madam, in Eden, I’m Adam.'", "'Never odd or even.'", "'Don’t nod.'", "'Sir, I demand, I am a maid named Iris.'", "'Was it a car or a cat I saw?'", "'Yo, Banana Boy!'", "'Eva, can I see bees in a cave?'", "'Madam, in Eden, I’m Adam'", "'Never odd or even'", "'Don’t nod'", "'Sir, I demand, I am a maid named Iris'", "'Was it a car or a cat I saw'", "'Yo, Banana Boy'", "'Eva, can I see bees in a cave'"]]
+    outputs = ['', 'CataC', 'cAtac', 'Racecar', 'Malayalam', 'Wasitacaroracatisaw', 'AblewasiSawElba', 'Neveroddoreven', 'Redder', 'Rotator', 'Deed', '12321', 'MadamInEdenImAdam', 'Aibohphobia', 'Dewed', '123454321', 'Mom', 'Dad', 'Wow', 'Repaper', 'Deed', '112211', 'AbleWasIEreISawElba', 'ABBA', '12321', 'MadamAroraTeachesMalayalamsehcaeTarorAmadaM', 'Aibohphobia', 'WasItACarOrACatISaw', 'NeverOddOrEven', 'RiseToVoteSir', 'AvidDiva', 'ReviledDidILiveSaidIEvilDerEvilivEreDlivEIdiaSeviLIdiDdeliveR', 'AbleWasIEreISawElba', '1234567890987654321', 'raceCAR', 'rAceCAR', 'A man a plan a canal PanamanaP lanac a nalp a nam A', 'AbleBakerekaBelbA', '123Aba321', '@#$%^&*&^%$#@', 'Ab123BaB321bA', 'Able was I ere I saw elba', 'AbleWASAWelbA', 'A_b_l_e_ _W_a_s_a_W_ _e_l_b_A', 'LongestPalindromeEverevEemordnilaPtsegnoL', 'PalindromePalindromePalindromemordnilaPemordnilaPemordnilaP', 'CatDogoDtaC', '123456654321', '123AbC32123CbA321', 'AbleWasIEreISawElba12321ablEwaSIerEIsaWelbA', 'AbleWasIsaWelbA', 'A', 'ABCBA', 'AaaA', 'racecar', '12321', '123454321', 'abcdcba', 'abcdeedcba', '1a2b2a1', '1a2b3b2a1', 'A man, a plan, a canal: PanamanaP :lanac a ,nalp a ,nam A', 'No lemon, no melonolem on ,nomel oN', 'Able was I ere I saw Elba', 'Madam, in Eden, I’m AdamadA m’I ,nedE ni ,madaM', 'Never odd or eveneve ro ddo reveN', 'Don’t nodon t’noD', 'Sir, I demand, I am a maid named IrisirI deman diam a ma I ,dnamed I ,riS', 'Was it a car or a cat I saw?was I tac a ro rac a ti saW', 'Yo, Banana Boy!yoB ananaB ,oY', 'Eva, can I see bees in a cave?evac a ni seeb ees I nac ,avE', 'Madam, in Eden, I’m AdamadA m’I ,nedE ni ,madaM', 'Never a foot too far, eveneve ,raf oot toof a reveN', 'Red roses run no risk, sir, on Nurse’s orderedro s’esruN no ,ris ,ksir on nur sesor deR', 'Red rosesor deR', 'run no risksir on nur', 'sir, on Nurse’s orderedro s’esruN no ,ris', 'ABBA', 'racecar', 'A man a plan a canal PanamanaP lanac a nalp a nam A', 'civic', 'deed', 'Dewed', '1a2a1', '12321', '1234321', '1a2a1', 'Able was I ere I saw Elba', 'Madam Arora teaches malayalam sehcaet arorA madaM', 'Able , was I saw ElbablE was I saw , elbA', 'Madam, in Eden, I’m AdamadA m’I ,nedE ni ,madaM', 'Never a foot too far, even.neve ,raf oot toof a reveN', 'Red roses run no risk, sir, on Nurse’s order.redro s’esruN no ,ris ,ksir on nur sesor deR', 'Was it a car or a cat I saw?was I tac a ro rac a ti saW', 'Yo, Banana Boy!yoB ananaB ,oY', 'Eva, can I see bees in a cave?evac a ni seeb ees I nac ,avE', 'Madam, in Eden, I’m Adam.madA m’I ,nedE ni ,madaM', 'Never odd or even.neve ro ddo reveN', 'Don’t nod.don t’noD', 'Sir, I demand, I am a maid named Iris.sirI deman diam a ma I ,dnamed I ,riS', 'Was it a car or a cat I saw?was I tac a ro rac a ti saW', 'Yo, Banana Boy!yoB ananaB ,oY', 'Eva, can I see bees in a cave?evac a ni seeb ees I nac ,avE', 'Madam, in Eden, I’m AdamadA m’I ,nedE ni ,madaM', 'Never odd or eveneve ro ddo reveN', 'Don’t nodon t’noD', 'Sir, I demand, I am a maid named IrisirI deman diam a ma I ,dnamed I ,riS', 'Was it a car or a cat I sawas I tac a ro rac a ti saW', 'Yo, Banana BoyoB ananaB ,oY', 'Eva, can I see bees in a cavevac a ni seeb ees I nac ,avE']
+    to_output = []
+    for i, (inp, exp) in enumerate(zip(inputs, outputs)):
+        try:
+            to_output.append((i,compute_output(candidate,inp)))
+        except:
+            to_output.append((i,"Exception"))
+    print(f"Final output of subject for prioritization is:::::{to_output}")
+
+@timeout(5)
+def compute_output(candidate,inp):
+    return candidate(*inp)
+
+check(make_palindrome)

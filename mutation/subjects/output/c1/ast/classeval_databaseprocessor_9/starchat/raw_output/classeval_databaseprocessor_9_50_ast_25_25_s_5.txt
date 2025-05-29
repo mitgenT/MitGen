@@ -1,0 +1,4 @@
+if 'name' in item:
+    insert_query = f"INSERT INTO {table_name} (name, age) VALUES (?,?)"
+else:
+    print('Error: Required key "name" not found in data item.')

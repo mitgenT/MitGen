@@ -1,0 +1,14 @@
+In the `get_all_students_with_fail_course()` method, instead of having an empty list `students`, we can simply append students who fail any course to this list. Here's how the code looks with the <MASK> filled in:
+
+```python
+def get_all_students_with_fail_course(self):
+    students = []
+    for name, student in self.students.items():
+        for course, score in student['courses'].items():
+            if score < 60:
+                students.append(name)  # <MASK> append student's name when a fail course is found
+                break
+    return students
+```
+
+You can now run the code and test the functionality of the `AssessmentSystem` class.

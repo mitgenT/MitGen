@@ -1,0 +1,15 @@
+Based on the provided docstring, we should replace every m-th number with "Fizz" and maintain the rest as strings. Here's how the `<MASK>` should be filled:
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            if i+1 != m:  # Don't replace the first occurrence of m with "Fizz"
+                result.append("Fizz")
+            else:
+                result.append("Fizz")
+        else:
+            result.append(str(i))
+    return ' '.join(result)
+```

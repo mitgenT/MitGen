@@ -1,0 +1,4 @@
+```python
+if n < 2 or len(data1)!= len(data2):
+    raise ValueError("data1 and data2 should have at least 2 elements and should be the same length.")
+```

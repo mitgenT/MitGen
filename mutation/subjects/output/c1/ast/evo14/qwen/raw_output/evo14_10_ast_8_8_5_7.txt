@@ -1,0 +1,21 @@
+Based on the given docstring, we want to find non-overlapping prefix-suffix pairs, sort them by length and lexicographically, and add them to the `pairs` list. Here's how to fill in the `<MASK>` sections:
+
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    pairs = []
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                # If current pair is not already in pairs, append it
+                if (string[:i], string[j:]) not in pairs:
+                    pairs.append((string[:i], string[j:]))
+                # If the current pair's length is greater than the last pair in pairs, update it
+                elif len(pairs[-1][0] + pairs[-1][1]) < len(string[:i] + string[j:]):
+                    pairs[-1] = (string[:i], string[j:])
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```
+
+Now the code has the correct logic to find and sort prefix-suffix pairs based on the requirements.

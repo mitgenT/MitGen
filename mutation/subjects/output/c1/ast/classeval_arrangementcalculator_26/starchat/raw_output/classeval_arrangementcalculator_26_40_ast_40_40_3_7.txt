@@ -1,0 +1,23 @@
+return result  
+
+The bug location is in the factorial method where it doesn't return anything when `n` equals `1`. To fix it, I need to add a condition that checks if `n` is equal to `1`, and if it is, return `1`.
+
+Here is the updated code:
+
+```python
+    @staticmethod
+    def factorial(n):
+        """
+        Calculates the factorial of a given number.
+        :param n: int, the number to calculate the factorial.
+        :return: int, the factorial of the given number.
+        >>> ArrangementCalculator.factorial(4)
+        24
+        """
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        if n == 1:
+            return 1
+        return result
+```

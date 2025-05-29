@@ -1,0 +1,3 @@
+std_deviation = math.sqrt(sum((x - mean) ** 2 for x in data) / n)
+
+variance = sum((x - mean) ** 2 for x in data) / n if n > 1 else 0

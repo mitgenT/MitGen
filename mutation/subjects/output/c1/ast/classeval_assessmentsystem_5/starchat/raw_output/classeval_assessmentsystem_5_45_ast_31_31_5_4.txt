@@ -1,0 +1,5 @@
+```Python
+                if score!= 0:
+                    score = None
+```
+In this case, in the 'get_course_average' method, we want to avoid the division by zero error when the course hasn't been taken by any students. So we add this check inside the if statement, which ensures that we only calculate the average when the score is not zero.

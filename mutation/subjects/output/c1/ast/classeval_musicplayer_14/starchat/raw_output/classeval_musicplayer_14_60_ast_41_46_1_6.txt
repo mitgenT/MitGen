@@ -1,0 +1,17 @@
+def previous_song(self):
+    if self.current_song:
+        current_index = self.playlist.index(self.current_song)
+        if current_index > 0:
+            self.current_song = self.playlist[current_index - 1]
+            return True
+        else:
+            return False
+    else:
+        return False
+
+# Test previous_song method
+musicPlayer = MusicPlayer()
+musicPlayer.playlist = ["song1", "song2"]
+musicPlayer.current_song = "song2"
+print(musicPlayer.previous_song())  # Output: True
+print(musicPlayer.current_song)    # Output: song1

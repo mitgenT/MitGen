@@ -1,0 +1,5 @@
+```python
+    n = len(string)
+    if n <= min_length:
+        return pairs
+```

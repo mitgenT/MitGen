@@ -1,0 +1,204 @@
+import unittest
+import inspect
+
+
+<generated_code_here>
+
+
+class ArgumentParserTestParseArguments(unittest.TestCase):
+
+    def setUp(self):
+        self.parser = ArgumentParser()
+
+    # key value arguments
+    def test_parse_arguments_1(self):
+        command_str = "script --name=John --age=25"
+        self.parser.add_argument("name")
+        self.parser.add_argument("age", arg_type=int)
+
+        result, missing_args = self.parser.parse_arguments(command_str)
+
+        return [result, missing_args, self.parser.get_argument("name"), self.parser.get_argument("age")]
+
+    # switches options
+    def test_parse_arguments_2(self):
+        command_str = "script --verbose -d"
+        self.parser.add_argument("verbose", arg_type=bool)
+        self.parser.add_argument("d", arg_type=bool)
+
+        result, missing_args = self.parser.parse_arguments(command_str)
+
+        return [result, missing_args, self.parser.get_argument("verbose"), self.parser.get_argument("d")]
+
+    # miss required
+    def test_parse_arguments_3(self):
+        command_str = "script --name=John"
+        self.parser.add_argument("name")
+        self.parser.add_argument("age", required=True, arg_type=int)
+
+        result, missing_args = self.parser.parse_arguments(command_str)
+
+        return [result, missing_args]
+
+    def test_parse_arguments_4(self):
+        command_str = "script --name=John"
+        self.parser.add_argument("name")
+        self.parser.add_argument("age", required=False, arg_type=int)
+
+        result, missing_args = self.parser.parse_arguments(command_str)
+
+        return [result, missing_args]
+
+    def test_parse_arguments_5(self):
+        command_str = "script --name=John"
+        self.parser.add_argument("name")
+        self.parser.add_argument("age", arg_type=int)
+
+        result, missing_args = self.parser.parse_arguments(command_str)
+
+        return [result, missing_args]
+
+class ArgumentParserTestGetArgument(unittest.TestCase):
+
+    def setUp(self):
+        self.parser = ArgumentParser()
+
+    # key exists
+    def test_get_argument_1(self):
+        self.parser.arguments = {"name": "John"}
+        result = self.parser.get_argument("name")
+        return result
+
+    # key not exists
+    def test_get_argument_2(self):
+        self.parser.arguments = {"name": "John", "age": 25}
+        result = self.parser.get_argument("age")
+        return result
+
+    def test_get_argument_3(self):
+        self.parser.arguments = {"name": "John", "age": "25", "verbose": True}
+        result = self.parser.get_argument("verbose")
+        return result
+
+    def test_get_argument_4(self):
+        self.parser.arguments = {"name": "Amy", "age": 25, "verbose": True, "d": True}
+        result = self.parser.get_argument("d")
+        return result
+
+    def test_get_argument_5(self):
+        self.parser.arguments = {"name": "John", "age": 25, "verbose": True, "d": True, "option": "value"}
+        result = self.parser.get_argument("option")
+        return result
+
+
+class ArgumentParserTestAddArgument(unittest.TestCase):
+
+    def setUp(self):
+        self.parser = ArgumentParser()
+
+    def test_add_argument(self):
+        self.parser.add_argument("name")
+        self.parser.add_argument("age", required=True, arg_type=int)
+
+        return [self.parser.required, self.parser.types]
+
+    def test_add_argument_2(self):
+        self.parser.add_argument("name")
+        self.parser.add_argument("age", required=False, arg_type=int)
+        self.parser.add_argument("verbose", arg_type=bool)
+
+        return [self.parser.required, self.parser.types]
+
+    def test_add_argument_3(self):
+        self.parser.add_argument("name")
+        self.parser.add_argument("age", required=False, arg_type=int)
+        self.parser.add_argument("verbose", arg_type=bool)
+        self.parser.add_argument("d")
+
+        return [self.parser.required, self.parser.types]
+
+    def test_add_argument_4(self):
+        self.parser.add_argument("name")
+        self.parser.add_argument("age", required=False, arg_type=int)
+        self.parser.add_argument("verbose", arg_type=bool)
+        self.parser.add_argument("d")
+        self.parser.add_argument("option")
+
+        return [self.parser.required, self.parser.types]
+
+    def test_add_argument_5(self):
+        self.parser.add_argument("name")
+        self.parser.add_argument("age", required=False, arg_type=int)
+        self.parser.add_argument("verbose", arg_type=bool)
+        self.parser.add_argument("d")
+        self.parser.add_argument("option")
+        self.parser.add_argument("option2", arg_type=bool)
+
+        return [self.parser.required, self.parser.types]
+
+
+class ArgumentParserTestConvertType(unittest.TestCase):
+
+    def setUp(self):
+        self.parser = ArgumentParser()
+
+    def test_convert_type_1(self):
+        self.parser.types = {"age": int}
+        result = self.parser._convert_type("age", "25")
+        return result
+
+    # fail
+    def test_convert_type_2(self):
+        self.parser.types = {"age": int}
+        result = self.parser._convert_type("age", "twenty-five")
+        return result
+
+    def test_convert_type_3(self):
+        self.parser.types = {"age": int}
+        result = self.parser._convert_type("age", "25")
+        return result
+
+    def test_convert_type_4(self):
+        self.parser.types = {"age": int, "verbose": bool}
+        result = self.parser._convert_type("verbose", "True")
+        return result
+    
+    def test_convert_type_5(self):
+        self.parser.types = {"age": int, "verbose": bool}
+        result = self.parser._convert_type("verbose", "False")
+        return result
+
+
+class ArgumentParserTestMain(unittest.TestCase):
+    def test_main(self):
+        parser = ArgumentParser()
+        command = "script --arg1=21 --option1 -arg2 value -option2"
+
+        parser.add_argument('arg1', required=True, arg_type=int)
+        parser.add_argument('arg2')
+
+        parser.parse_arguments(command)
+        arguments = {'arg1': 21, 'option1': True, 'arg2': 'value', 'option2': True}
+        return [parser.required, parser.types, parser.arguments]
+
+
+def obtain_output():
+    classes = ['ArgumentParserTestParseArguments',
+               'ArgumentParserTestGetArgument',
+               'ArgumentParserTestAddArgument',
+               'ArgumentParserTestConvertType',
+               'ArgumentParserTestMain']
+    output = []
+    output_idx = 0
+    for each_class in classes:
+        this_class = eval(f"{each_class}()")
+        test_functions = [name for name, obj in inspect.getmembers(eval(each_class))
+                  if inspect.isfunction(obj) and "test_" in name]
+        for each_func in test_functions:
+            function_output = eval(f"this_class.{each_func}()")
+            output.append((output_idx,function_output))
+            output_idx += 1
+
+
+if __name__ == '__main__':
+    obtain_output()

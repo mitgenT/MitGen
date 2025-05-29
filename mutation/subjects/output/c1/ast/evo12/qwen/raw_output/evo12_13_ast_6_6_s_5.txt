@@ -1,0 +1,28 @@
+Based on the provided docstring, we need to fill in the `<MASK>` parts to check if the input list is empty, iterate over the strings, and find the first substring starting with a vowel. Here's how the code should look:
+
+```python
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+    vowels = 'aeiouAEIOU'
+    longest_substring = None
+    longest_substring_index = None
+    if strings:  # Check if the input list is not empty
+        for i, string in enumerate(strings):  # Iterate over the strings and their indices
+            substrings = [string[j:] for j in range(len(string)) if string[j] in vowels]
+            if substrings:
+                max_substring = max(substrings, key=len)
+                if longest_substring is None or len(max_substring) == len(longest_substring):
+                    longest_substring = max_substring
+                    longest_substring_index = i
+    else:
+        longest_substring, longest_substring_index = None, None
+    return longest_substring, longest_substring_index
+```
+
+So, the `<MASK>` parts have been filled in as follows:
+
+1. `if strings:` checks if the list is not empty.
+2. `for i, string in enumerate(strings):` iterates through the list with the string and its index.
+3. Inside the loop, the `substrings` list is created based on the condition.
+4. If `substrings` are found, the `max_substring` is updated accordingly.
+5. Outside the loop, the `else` block sets `longest_substring` and `longest_substring_index` to `None` if the list was empty.

@@ -1,0 +1,8 @@
+```python
+        if char.isupper():
+            if char.lower() == char:
+                result += char.upper()
+            else:
+                result += char.lower()
+```
+In the given code, I have infilled the <MASK> section to properly handle the case of flipping lowercase to uppercase and uppercase to lowercase. For a character at'special_index', the code will treat it separately by checking if it's uppercase or lowercase and making the necessary change. The rest of the characters will be flipped as usual.

@@ -1,0 +1,6 @@
+```python
+    if string:
+        for key, value in result.items():
+            result[key] = value + result[key]
+    return result
+```

@@ -1,0 +1,15 @@
+## Output
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = ""
+    for i in range(1, n+1):
+        if i % m == 0:
+            result += "Fizz"
+        else:
+            result += str(i-1)
+        if i < n:
+            result += " "
+    return result
+```
+In this output, I have created a `for` loop that iterates from 1 to `n+1` (to make it inclusive), then check if the current number `i` is divisible by `m` (with `%` operator), if it is, we append 'Fizz' to the result, otherwise, we append `i-1` to the result. After each number, a space is added unless we are at the last number. This effectively achieves the desired output while maintaining the functionalities described in the docstring.

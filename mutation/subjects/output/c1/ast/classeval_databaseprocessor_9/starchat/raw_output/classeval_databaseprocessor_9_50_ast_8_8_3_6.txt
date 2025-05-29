@@ -1,0 +1,4 @@
+if not os.path.exists(self.database_name):
+            os.makedirs(self.database_name)
+
+conn = sqlite3.connect(os.path.join(self.database_name, "database.db"))

@@ -1,0 +1,6 @@
+```python
+        for j in range(i, n - i - 1):
+            prefix = string[:i+1]
+            suffix = string[j+1:]
+            pairs.append((prefix, suffix))
+```

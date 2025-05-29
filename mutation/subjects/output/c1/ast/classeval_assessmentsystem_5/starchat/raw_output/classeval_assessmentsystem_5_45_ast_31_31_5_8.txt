@@ -1,0 +1,5 @@
+self.students[name]['courses'][course] = None
+
+if score is not None:
+    total += score
+    count += 1

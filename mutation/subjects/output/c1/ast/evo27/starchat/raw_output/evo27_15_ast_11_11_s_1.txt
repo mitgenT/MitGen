@@ -1,0 +1,18 @@
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+        else:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char.upper()
+    return result
+```
+This corrected program fulfills the given docstring's requirements. It flips lowercase characters to uppercase, uppercase to lowercase, while making sure the character at the'special_index' is treated as specified. If'special_index' is out of range, it treats it as an index in a circular list.

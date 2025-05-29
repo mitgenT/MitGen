@@ -1,0 +1,9 @@
+t = int(input())
+for i in range(t):
+    length = int(input())
+    string = input()
+    unique_chars = []
+    for char in string:
+        if char not in unique_chars:
+            unique_chars.append(char)
+    print(len(unique_chars))

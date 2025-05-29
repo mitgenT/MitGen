@@ -1,0 +1,19 @@
+```python
+def change_base(x: str, base: int, new_base: int):
+    if not all(digit.isdigit() or (ord('A') <= ord(digit) <= ord('Z')) for digit in x.upper()):
+        return "invalid base"
+    
+    decimal_num = int(x, base)
+    if decimal_num == 0:
+        return "0"
+    result = ""
+    while decimal_num:
+        remainder = decimal_num % new_base
+        if remainder < 10:
+            result = str(remainder) + result
+        else:
+            result = chr(ord('A') + remainder - 10) + result
+        decimal_num //= new_base
+    return result
+```
+Here, we first check if x contains valid digits for its base. Then, we convert the number from the base to decimal and finally convert it to the new_base. If the decimal number is 0, we directly return "0". Otherwise, we repeatedly divide the decimal number by the new_base and append the remainder (either a digit or a letter) to the result until the decimal number becomes 0.

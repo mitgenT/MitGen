@@ -1,0 +1,6 @@
+```python
+    initial_gcd = numbers[0]
+    if initial_gcd == 1:
+        return -1
+    gcd = initial_gcd
+```

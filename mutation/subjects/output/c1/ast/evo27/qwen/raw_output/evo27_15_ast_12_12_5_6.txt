@@ -1,0 +1,23 @@
+Based on the provided docstring, we need to conditionally flip the case of characters, but not at the `special_index`. Since `char.isupper()`, it should be converted to lowercase only if the `special_index` check does not apply. Here's the completed code:
+
+```python
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    for i, char in enumerate(string):
+        if i == special_index:
+            if char.isupper():
+                result += char.lower()
+            else:
+                result += char
+        else:
+            if char.isupper():
+                # Flip to lowercase only if not at special_index
+                if special_index != i:
+                    result += char.lower()
+            else:
+                result += char
+    return result
+```
+
+Now, the function `flip_case_special` will work as described in the docstring.

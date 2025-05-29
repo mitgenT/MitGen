@@ -1,0 +1,5 @@
+def delete(self, condition):
+    sql = f"DELETE FROM {self.table_name} WHERE {condition}"
+    if not condition:
+        raise ValueError("Condition is required for delete statement")
+    return sql + ";"

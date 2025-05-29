@@ -1,0 +1,5 @@
+if min_age == max_age:
+    condition = f"age = {min_age}"
+else:
+    condition = f"age BETWEEN {min_age} AND {max_age}"
+return self.select(condition=condition)

@@ -1,0 +1,19 @@
+for _ in range(int(input())):
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    result = 0
+    maxB = 0
+    sum = 0
+    for i in range(n):
+      result += a[i]
+      sum += a[i]
+      k -= 1
+      if k == 0:
+        break
+      maxB = max(maxB, b[i])
+    sum -= maxB
+    result += (k - 1) * maxB
+    result += sum
+    print(result)
+

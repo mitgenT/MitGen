@@ -1,0 +1,5 @@
+```Python
+if condition:
+    sql = f"DELETE FROM {self.table_name} WHERE {condition}"
+```
+This will replace the <MASK> areas in your delete method of the SQLGenerator class.

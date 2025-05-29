@@ -1,0 +1,4 @@
+```python
+if len(data) < 3:
+    return 0
+```

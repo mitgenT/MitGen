@@ -1,0 +1,15 @@
+Infill <MASK> of the given code based on the given docstring:
+
+```python
+    def insert_into_database(self, table_name, data):
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+
+        for item in data:
+            insert_query = f"INSERT INTO {table_name} (name, age) VALUES (?,?)"
+            if 'name' in item and 'age' in item:
+                cursor.execute(insert_query, (item['name'], item['age']))
+
+        conn.commit()
+        conn.close()
+```

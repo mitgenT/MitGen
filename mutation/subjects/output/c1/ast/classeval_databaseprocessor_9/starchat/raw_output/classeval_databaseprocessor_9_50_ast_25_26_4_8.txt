@@ -1,0 +1,5 @@
+```python
+if item is not None:
+    insert_query = f"INSERT INTO {table_name} ({key1}, {key2}) VALUES (?,?)"
+    cursor.execute(insert_query, (item[key1], item[key2]))
+```

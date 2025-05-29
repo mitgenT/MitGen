@@ -1,0 +1,16 @@
+Here's the infilled code based on the given docstring:
+
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    if min_length <= 1 or n < min_length * 2:  # Check if min_length is valid
+        return []  # Return empty list if min_length is too short for any pair
+    pairs = []
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                pairs.append((string[:i], string[j:]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))  # Sort by length and lexicographically
+    return pairs
+```

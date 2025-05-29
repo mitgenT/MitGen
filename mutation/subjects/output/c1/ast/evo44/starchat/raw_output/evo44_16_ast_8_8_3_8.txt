@@ -1,0 +1,4 @@
+```python
+            if new_base == 16:
+                new_base_num = '0' + new_base_num
+```

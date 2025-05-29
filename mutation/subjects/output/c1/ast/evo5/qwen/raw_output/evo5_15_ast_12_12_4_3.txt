@@ -1,0 +1,23 @@
+Here's the filled-in code:
+
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = False
+    if type(delimeter) == float:
+        set_float = True
+    result = []
+    limit = min(limit, len(numbers) - 1) 
+    for i in range(len(numbers) - 1):
+        if set_float:
+            result.append(float(numbers[i]))
+        else:
+            if i < limit:
+                result.append(numbers[i])
+                result.append(delimeter)
+        if i < limit:
+            result.append(delimeter)
+    return result
+```
+
+In the given code, we need to insert the `delimeter` between every two consecutive elements of the `numbers` list, up to `limit` times. The `<MASK>` was replaced with the condition `if i < limit:` to check whether the delimiter should be inserted, followed by appending both the number and the delimiter to the result list.

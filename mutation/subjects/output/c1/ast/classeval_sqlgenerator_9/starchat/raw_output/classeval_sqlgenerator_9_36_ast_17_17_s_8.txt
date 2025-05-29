@@ -1,0 +1,4 @@
+```Python
+if values is None:
+    values = ", ".join(['%s'] * len(data))
+```

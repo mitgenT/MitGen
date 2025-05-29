@@ -1,0 +1,124 @@
+from wrapt_timeout_decorator import *
+
+<generated_code_here>
+
+import numpy as np
+from numpy import nan, inf # for some outputs.
+import sys
+
+sys.set_int_max_str_digits(0)
+
+from enum import IntEnum, auto
+
+def is_floats(x) -> bool:
+    # check if it is float; List[float]; Tuple[float]
+    # TODO: search for any close floats? (other data structures)
+    if isinstance(x, float):
+        return True
+    if isinstance(x, (list, tuple)):
+        return all(isinstance(i, float) for i in x)
+    if isinstance(x, np.ndarray):
+        return x.dtype == np.float64 or x.dtype == np.float32
+    return False
+
+
+class DataType(IntEnum):
+    Float = auto()
+    Bool = auto()
+    Int = auto()
+    Str = auto()
+    Null = auto()
+    Tuple = auto()
+    List = auto()
+    Dict = auto()
+    Set = auto()
+    Type = auto()
+    Unknown = auto()
+
+
+def get_type(x):
+    if x is None:
+        return DataType.Null
+    elif isinstance(x, bool):
+        return DataType.Bool
+    elif isinstance(x, int):
+        return DataType.Int
+    elif isinstance(x, str):
+        return DataType.Str
+    elif is_floats(x):
+        return DataType.Float
+    elif isinstance(x, tuple):
+        return DataType.Tuple
+    elif isinstance(x, list):
+        return DataType.List
+    elif isinstance(x, dict):
+        return DataType.Dict
+    elif isinstance(x, set):
+        return DataType.Set
+    elif isinstance(x, type):
+        return DataType.Type
+    else:
+        return DataType.Unknown
+
+
+def is_equal(x, y) -> tuple[bool, str]:
+    x_type, y_type = get_type(x), get_type(y)
+    if x_type != y_type:
+        return False, "Type mismatch: {} vs {}".format(str(x_type), str(y_type))
+
+    if x_type in [DataType.Int, DataType.Bool, DataType.Null, DataType.Str, DataType.Set, DataType.Type]:
+        if x == y:
+            return True, None
+        try:
+            error_msg = "INT/BOOL/NULL/ Value mismatch: {} vs {}".format(repr(x)[:300], repr(y)[:300])
+        except:
+            error_msg = "Value mismatch: too large for display"
+        return False, error_msg
+    elif x_type == DataType.Float:
+        if np.allclose(x, y, equal_nan=True, atol=1e-6): # guard against nan
+            return True, None
+        else:
+            return False, "FLOAT Value mismatch: {} vs {}".format(x, y)
+    elif x_type in [DataType.List, DataType.Tuple]:
+        if len(x) != len(y):
+            return False, "Length mismatch: {} vs {}".format(len(x), len(y))
+        for i in range(len(x)):
+            equal, msg = is_equal(x[i], y[i])
+            if not equal:
+                return False, msg
+        return True, None
+    elif x_type == DataType.Dict:
+        if len(x) != len(y):
+            return False, "Length mismatch: {} vs {}".format(len(x), len(y))
+        for k, v in x.items():
+            if k not in y:
+                return False, "DICT Value mismatch: key {} in {} but not in {}".format(k, x, y)
+            equal, msg = is_equal(v, y[k])
+            if not equal:
+                return False, msg
+        return True, None
+    else:
+        try:
+            if x == y:  # e.g., object comparison
+                return True, None
+            else:
+                return False, "ELSE Value mismatch: {} vs {}".format(x, y)
+        except:
+            return False, "Unsupported type: {} <-- {}".format(x_type, type(x))
+
+def check(candidate):
+    inputs = [eval(f"[{i}]") for i in ['"2020"', '"AB"', '"1077E"', '"ABED1A33"', '"123456789ABCDEF0"', '"BBBBBBBBBBBBBBBBBBBB"', '"DDDDDDDDDDDDDDDDDDDD"', '"77777777777777777777"', '"22222222222222222222"', '"33333333333333333333"', '"55555555555555555555"', '"B7D23"', '"2D3B578CF10E4A9"', '"FFFFFFFFFFFFFFFFFFFF"', '"11111111111111111111"', '"00000000000000000000"', '"EEEEEEEEEEEEEEEEEEEE"', '"CCCCCCCCCCCCCCCCCCCC"', '"AAAAAAAAAAAAAAAAAAAA"', '"876543210"', '""', '"0"', '"2D"', '"FFFF"', '"BBBBBBB"', '"DDDDDDD"', '"11111111"', '"33333333"', '"55555555"', '"77777777"', '"AAAAAAAA"', '"CCCCCCC"', '"EEEEEEE"', '"1A1B1D"', '"1234567890ABCDEF1234567890ABCDEF"', '"BB"', '"DD"', '"DDDDDDDDDDDD"', '"222222"', '"333333"', '"BBBBB"', '"DDDDD"', '"EEEEEEE"', '"FFFFFFFF"', '"BBBBB22222"', '""', '"0"', '"1"', '"9"', '"A"', '"C"', '"E"', '"F"', '"A2B3C4D5E6F"', '""', '"0"', '"1"', '"2"', '"F"', '"FFFFFFF"', '"BBBBBB"', '"11111111111111111111"', '"99999999999999999999"', '"DDDDDDDD"', '"AAAAAAAAAAAAAAAAAAAA"', '"CCCCCCCCCCCCCCCC"', '"111111111111111D"', '"22222222BBBBBBBB"', '"33333333AAAAAA"', '"FFFFFFFFFFFFFFF7"', '"BBBBBBBBBBBBBBBBBBBBBBBBB"', '"DDDDDDDDDDDDDDDDDDDDDDDDDD"', '"00000000000000000000000000"', '"FFFFFFFFFFFFFFFFFFFFFFFFF"', '"AAABBBCCCDDDEEEFFF"', '"273BD7E"', '"2D5B7"', '"233332222BBBBBBBBBDDDDDDD"', '"DDDDDDDDDDDDDDDDD2"']]
+    outputs = [(2, 'Dominant', 4), (1, 'Dominant', 11), (2, 'Non-dominant', 14), (4, 'Dominant', 30), (6, 'Non-dominant', 41), (20, 'Dominant', 220), (20, 'Dominant', 260), (20, 'Dominant', 140), (20, 'Dominant', 40), (20, 'Dominant', 60), (20, 'Dominant', 100), (5, 'Dominant', 36), (6, 'Non-dominant', 41), (0, 'Non-dominant', 0), (0, 'Non-dominant', 0), (0, 'Non-dominant', 0), (0, 'Non-dominant', 0), (0, 'Non-dominant', 0), (0, 'Non-dominant', 0), (4, 'Non-dominant', 17), (0, 'Dominant', 0), (0, 'Non-dominant', 0), (2, 'Dominant', 15), (0, 'Non-dominant', 0), (7, 'Dominant', 77), (7, 'Dominant', 91), (0, 'Non-dominant', 0), (8, 'Dominant', 24), (8, 'Dominant', 40), (8, 'Dominant', 56), (0, 'Non-dominant', 0), (0, 'Non-dominant', 0), (0, 'Non-dominant', 0), (2, 'Non-dominant', 24), (12, 'Non-dominant', 82), (2, 'Dominant', 22), (2, 'Dominant', 26), (12, 'Dominant', 156), (6, 'Dominant', 12), (6, 'Dominant', 18), (5, 'Dominant', 55), (5, 'Dominant', 65), (0, 'Non-dominant', 0), (0, 'Non-dominant', 0), (10, 'Dominant', 65), (0, 'Dominant', 0), (0, 'Non-dominant', 0), (0, 'Non-dominant', 0), (0, 'Non-dominant', 0), (0, 'Non-dominant', 0), (0, 'Non-dominant', 0), (0, 'Non-dominant', 0), (0, 'Non-dominant', 0), (5, 'Non-dominant', 34), (0, 'Dominant', 0), (0, 'Non-dominant', 0), (0, 'Non-dominant', 0), (1, 'Dominant', 2), (0, 'Non-dominant', 0), (0, 'Non-dominant', 0), (6, 'Dominant', 66), (0, 'Non-dominant', 0), (0, 'Non-dominant', 0), (8, 'Dominant', 104), (0, 'Non-dominant', 0), (0, 'Non-dominant', 0), (1, 'Non-dominant', 13), (16, 'Dominant', 104), (8, 'Dominant', 24), (1, 'Non-dominant', 7), (25, 'Dominant', 275), (26, 'Dominant', 338), (0, 'Non-dominant', 0), (0, 'Non-dominant', 0), (6, 'Non-dominant', 72), (6, 'Dominant', 43), (5, 'Dominant', 38), (25, 'Dominant', 212), (18, 'Dominant', 223)]
+    to_output = []
+    for i, (inp, exp) in enumerate(zip(inputs, outputs)):
+        try:
+            to_output.append((i,compute_output(candidate,inp)))
+        except:
+            to_output.append((i,"Exception"))
+    print(f"Final output of subject for prioritization is:::::{to_output}")
+
+@timeout(5)
+def compute_output(candidate,inp):
+    return candidate(*inp)
+    
+check(hex_key_primes)

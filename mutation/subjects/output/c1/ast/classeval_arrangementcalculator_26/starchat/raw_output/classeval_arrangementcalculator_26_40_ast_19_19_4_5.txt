@@ -1,0 +1,7 @@
+if m <= n:
+    return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)
+else:
+    return 0
+
+# This checks if the given number of items to be chosen'm' is less than or equal to the total number of items 'n' before computing the count. 
+# If'm' is greater than 'n', the count is assumed to be 0, as no valid arrangement can be formed.

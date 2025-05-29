@@ -1,0 +1,13 @@
+t=int(input())
+for i in range(t):
+    _n=int(input())
+    a=[int(i) for i in input().split(' ')]
+    b=[int(i) for i in input().split(' ')]
+    
+    ans=0
+    for j in range(0,_n):
+        if(a[j]<b[j]):
+            ans+=b[j]-a[j]
+        else:
+            ans+=a[j]-b[j]
+    print(ans)

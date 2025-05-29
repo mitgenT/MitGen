@@ -1,0 +1,15 @@
+
+n=int(input())
+a=0
+for i in range(0,n):
+    m=int(input())
+    s=input()
+    a=0
+    for x in range(0,m):
+        x=ord(s[x])- ord('a')
+        if a<x:
+            a=x
+    a+=1
+    print(a)
+
+            

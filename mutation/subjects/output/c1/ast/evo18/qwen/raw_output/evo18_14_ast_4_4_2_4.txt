@@ -1,0 +1,27 @@
+Based on the provided docstring, we need to check if the input string is empty, initialize a dictionary with zero counts, and then iterate over the substrings to find their occurrences. Here's how to fill in the `<MASK>` sections:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    
+    # Initialize an empty dictionary to store counts
+    result = {sub: 0 for sub in substrings}
+    
+    # Check if the input string is empty
+    if not string:
+        return result
+    
+    # Iterate over the string to find substrings and update the count
+    for sub in substrings:
+        start = 0
+        while start < len(string) - len(sub) + 1:  # Adjust the loop to avoid out-of-range errors
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    
+    return result
+```

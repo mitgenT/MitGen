@@ -1,0 +1,4 @@
+if n > 1:
+    pass
+else:
+    result = 1

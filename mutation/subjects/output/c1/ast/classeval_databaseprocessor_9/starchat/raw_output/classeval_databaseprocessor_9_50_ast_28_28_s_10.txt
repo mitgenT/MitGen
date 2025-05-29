@@ -1,0 +1,4 @@
+if cursor.rowcount > 0:
+    conn.commit()
+else:
+    conn.rollback()

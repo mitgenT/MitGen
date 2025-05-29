@@ -1,0 +1,4 @@
+```python
+if len(data1) == len(data2):
+    n = len(data1)
+```

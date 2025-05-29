@@ -1,0 +1,13 @@
+## Output
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(1, n+1):
+        if i % m == 0:
+            result.append('Fizz')
+        else:
+            result.append(str(i-1))
+    return''.join(result)
+```
+In this solution, we initialize an empty list'result' for storing the string representation of numbers from 0 to n. Then we iterate from 1 to n inclusive. If the current number 'i' is divisible by'm', we append 'Fizz' to the result list. Otherwise, we append the string representation of 'i-1' (to match 0-based indexing to 1-based indexing in problem statement) to the result list. Finally, we join the elements in the result list with a space and return the resulting string.

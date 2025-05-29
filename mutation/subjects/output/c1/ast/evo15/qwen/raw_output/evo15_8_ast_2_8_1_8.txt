@@ -1,0 +1,18 @@
+Based on the provided docstring, we need to create a sequence of numbers from 0 to n (inclusive) and replace every m-th number with "Fizz". We can achieve this by using a conditional statement inside a loop. Here's how to fill in the `<MASK>`:
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    sequence = []
+    for i in range(0, n + 1):
+        if (i + 1) % m == 0:  # 1-based indexing
+            sequence.append("Fizz")
+        else:
+            sequence.append(str(i))
+    if sequence:
+        result = " ".join(sequence)
+    else:
+        result = "0"  # If n is 0 or m is such that no replacement happens
+    return result
+```
+
+The `<MASK>` parts in the original code have been replaced with appropriate logic. The `sequence` list is created, and elements are added conditionally based on whether they should be replaced with "Fizz" or not. Finally, the sequence is joined into a string with spaces and returned.

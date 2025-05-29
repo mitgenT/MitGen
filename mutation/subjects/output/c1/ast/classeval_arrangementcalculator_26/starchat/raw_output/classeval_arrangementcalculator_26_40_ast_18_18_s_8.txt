@@ -1,0 +1,6 @@
+```python
+        if m is not None and n > m:
+```
+```python
+        total += ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - i)
+```

@@ -1,0 +1,34 @@
+Based on the provided docstring, we need to fill `<MASK>` such that we handle the case where one list is shorter than the other. We'll use `min_len` to store the length of the shortest list and compare it with `max_len`, which will be the maximum length of the two lists. Here's the filled-in code:
+
+```python
+from typing import List, Tuple
+
+def interleave_and_concatenate(strings: List[str], integers: List[int]) -> Tuple[str, int]:
+    interleaved = []
+    len_strings = len(strings)
+    len_integers = len(integers)
+    min_len = min(len_strings, len_integers)
+    max_len = max(len_strings, len_integers)
+
+    if min_len < max_len:
+        # If one list is shorter, iterate through the shorter list first
+        for i in range(min_len):
+            if i < len_strings:
+                interleaved.append(strings[i])
+            if i < len_integers:
+                interleaved.append(integers[i])
+
+        # Continue with the remaining elements of the longer list if necessary
+        if len_strings > len_integers:
+            for i in range(min_len, len_strings):
+                interleaved.append(strings[i])
+        elif len_integers > len_strings:
+            for i in range(min_len, len_integers):
+                interleaved.append(integers[i])
+
+    concatenated_string = ' '.join([str(i) for i in interleaved if isinstance(i, str)]) 
+    sum_integers = sum([i for i in interleaved if isinstance(i, int)])
+    return (concatenated_string, sum_integers)
+```
+
+Now the code handles the scenario described in the docstring by properly interleaving elements from both lists and handling the case where one list is shorter than the other.

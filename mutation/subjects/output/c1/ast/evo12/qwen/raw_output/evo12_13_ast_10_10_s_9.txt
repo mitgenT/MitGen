@@ -1,0 +1,19 @@
+Based on the provided docstring, we need to keep track of the longest substring found so far and its index. Here's how you can fill in the `<MASK>` parts:
+
+```python
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+    vowels = 'aeiouAEIOU'
+    longest_substring = None
+    longest_substring_index = None
+    for i, string in enumerate(strings):
+        substrings = [string[j:] for j in range(len(string)) if string[j] in vowels]
+        if substrings:
+            max_substring = max(substrings, key=len)
+            if longest_substring is None or len(max_substring) > len(longest_substring):
+                longest_substring = max_substring
+                longest_substring_index = i
+    return longest_substring, longest_substring_index
+```
+
+The first `if` condition checks if `longest_substring` is `None`, and if the length of `max_substring` is greater than the current longest, it updates the variables. The second `else` block updates `longest_substring` and `longest_substring_index` if a longer substring is found in the same iteration.

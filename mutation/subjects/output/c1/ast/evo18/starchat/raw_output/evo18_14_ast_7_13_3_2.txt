@@ -1,0 +1,18 @@
+## Output
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while True:
+            pos = string.find(sub, start)
+            if pos == -1:
+                break
+            result[sub] += 1
+            start = pos + len(sub)
+    return result
+```
+
+In this solution, we've iterated through all substrings. For each substring, we started searching from the beginning of the string and moved the start position until no more occurrences were found. For each occurrence, we incremented the corresponding count in the `result` dictionary.

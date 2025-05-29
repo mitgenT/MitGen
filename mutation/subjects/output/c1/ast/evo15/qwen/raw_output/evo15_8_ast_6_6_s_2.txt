@@ -1,0 +1,12 @@
+Based on the given docstring, we need to append the number `i` to the `result` list if it's not divisible by `m`, or append "Fizz" if it is. Since we have already checked for divisibility using `(i+1) % m == 0`, the condition for appending a non-"Fizz" number should be `not (i+1) % m == 0`. Here's the filled-in code:
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(n):
+        if (i+1) % m == 0:
+            result.append("Fizz")
+        elif not (i+1) % m == 0:
+            result.append(str(i))
+    return ' '.join(result)
+```

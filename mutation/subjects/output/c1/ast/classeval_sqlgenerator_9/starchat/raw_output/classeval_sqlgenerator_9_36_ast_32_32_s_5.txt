@@ -1,0 +1,11 @@
+```python
+    def select_female_under_age(self, age):
+        condition = f"age < {age} AND gender = 'female'"
+        sql = f"SELECT * FROM {self.table_name} WHERE {condition};"
+        return sql
+
+    def select_by_age_range(self, min_age, max_age):
+        condition = f"age BETWEEN {min_age} AND {max_age}"
+        sql = f"SELECT * FROM {self.table_name} WHERE {condition};"
+        return sql
+```

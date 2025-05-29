@@ -1,0 +1,26 @@
+def flip_case_special(string: str, special_index: int) -> str:
+    special_index %= len(string)
+    result = ''
+    
+    # Check if a special_index is provided
+    if special_index is not None:
+        # Check if the character at the special_index should be flipped or not
+        if string[special_index].isupper():
+            result += string[special_index].lower()
+        else:
+            result += string[special_index]
+    else:
+        # Iterate through the string and flip case
+        for i in range(len(string)):
+            if i == special_index:
+                if string[i].isupper():
+                    result += string[i].lower()
+                else:
+                    result += string[i]
+            else:
+                if string[i].isupper():
+                    result += string[i].lower()
+                else:
+                    result += string[i]
+
+    return result

@@ -1,0 +1,3 @@
+```python
+    return new_base_num if new_base_num else '0'
+```

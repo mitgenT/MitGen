@@ -1,0 +1,17 @@
+## Output
+```python
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+    n = len(string)
+    if n < min_length:
+        return []
+    pairs = []
+    for i in range(min_length, n - 1):
+        for j in range(i, n + 1 - min_length):
+            if len(set(string[:i]).intersection(set(string[j:]))) == 0:
+                pairs.append((string[:i], string[j:]))
+    pairs.sort(key=lambda x: (len(x[0]) + len(x[1]), x))
+    return pairs
+```
+
+In the output code, I added the condition `if n < min_length: return []` at the beginning to handle cases where the length of the input string is less than the specified `min_length`. I also ensured that the condition `len(set(string[:i]).intersection(set(string[j:]))) == 0` is added to check for non-overlapping prefix and suffix pairs. Finally, the list of pairs is sorted based on the desired criteria before being returned as the final output.

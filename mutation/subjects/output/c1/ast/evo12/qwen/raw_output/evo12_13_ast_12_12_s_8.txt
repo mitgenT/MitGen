@@ -1,0 +1,20 @@
+Here's the filled-in code:
+
+```python
+from typing import List, Optional, Tuple
+def longest_substring(strings: List[str]) -> Tuple[Optional[str], Optional[int]]:
+    vowels = 'aeiouAEIOU'
+    longest_substring = None
+    longest_substring_index = None
+    for i, string in enumerate(strings):
+        substrings = [string[j:] for j in range(len(string)) if string[j] in vowels]
+        if substrings:
+            max_substring = max(substrings, key=len)
+            if longest_substring is None or len(max_substring) == len(longest_substring):
+                longest_substring = max_substring
+                if i == 0 or string[:len(max_substring)] != longest_substring:  # Check if starts at the beginning or has a different substring
+                    longest_substring_index = i
+    return longest_substring, longest_substring_index
+```
+
+In this code, we are checking whether the current string starts with the longest substring we've found so far (`if i == 0` checks if it's the first string in the list, `string[:len(max_substring)] != longest_substring` checks if the substring starts differently). If that's the case, we update the `longest_substring_index`.

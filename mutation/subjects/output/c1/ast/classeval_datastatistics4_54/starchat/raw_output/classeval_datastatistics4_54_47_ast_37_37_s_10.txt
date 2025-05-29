@@ -1,0 +1,6 @@
+```python
+    if n > 3:
+        centered_data = [x - mean for x in data]
+    else:
+        raise ValueError("Dataset size must be greater than 3 for kurtosis calculation")
+```

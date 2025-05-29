@@ -1,0 +1,45 @@
+from math import log2
+
+
+def get(scount, v, sum):
+    if v > sum:
+        print('NO')
+        return
+    if v == sum:
+        print('YES')
+        return
+    z = log2(v)
+    if z % 1 == 0:
+        if scount[int(z)] > 0:
+            print('YES')
+            return
+
+    else:
+        bry = [int(a) for a in bin(v)[2:]]
+        l = len(bry)
+        for i in range(l):
+            f = scount[l - 1 - i]
+            if f < bry[i]:
+                if i == l - 1:
+                    print('NO')
+                    return
+                else:
+                    bry[i + 1] += 2 * (bry[i] - f)
+        print('YES')
+        return
+
+
+s = []
+sum = 0
+scount = [0 for i in range(50)]
+for _ in range(int(input())):
+    t, v = map(int, input().split())
+    if t == 1:
+
+        sum += 2 ** v
+        scount[v] += 1
+    else:
+        if v == 0:
+            print('YES')
+        else:
+            get(scount, v, sum)

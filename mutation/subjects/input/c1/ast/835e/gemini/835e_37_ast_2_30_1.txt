@@ -1,0 +1,9 @@
+from sys import stdin, stdout
+<missing code>
+
+sol = Solution()
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    bits = list(map(int, input().split()))
+    print(sol.BinaryInversions(n, bits))

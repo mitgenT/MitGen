@@ -1,0 +1,19 @@
+def is_palindrome(string: str) -> bool:
+    """ 
+    Test if given string is a palindrome.
+    """
+
+    return string == string[::-1]
+
+
+def make_palindrome(string: str) -> str:
+    l_string = string.lower()
+    if is_palindrome(l_string):
+        return string
+    else:
+        for i in range(len(l_string)):
+            if l_string[:len(l_string)-i] == l_string[:len(l_string)-i][::-1]:
+                return string + string[:len(string)-i][::-1]
+```
+
+Here, I replaced the `<MASK>` with a loop which checks for the longest postfix of the string that is a palindrome. When such a postfix is found, it appends to the end of the original string, the reverse of the prefix that comes before the palindromic suffix.

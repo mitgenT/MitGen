@@ -1,0 +1,2 @@
+if m == None:  
+    m = len(self.datas)

@@ -1,0 +1,97 @@
+import inspect
+
+
+<generated_code_here>
+
+
+class IPAddressTestIsValid():
+    def is_valid_1(self):
+        ipaddress = IPAddress("10.10.10.10")
+        return ipaddress.is_valid()
+
+    def is_valid_2(self):
+        ipaddress = IPAddress("-1.10.10.10")
+        return ipaddress.is_valid()
+
+    def is_valid_3(self):
+        ipaddress = IPAddress("10.10.10")
+        return ipaddress.is_valid()
+
+    def is_valid_4(self):
+        ipaddress = IPAddress("a.10.10.10")
+        return ipaddress.is_valid()
+
+    def is_valid_5(self):
+        ipaddress = IPAddress("300.10.10.10")
+        return ipaddress.is_valid()
+
+
+class IPAddressTestGetOctets():
+    def get_octets_1(self):
+        ipaddress = IPAddress("10.10.10.10")
+        return ipaddress.get_octets()
+
+    def get_octets_2(self):
+        ipaddress = IPAddress("a.10.10.10")
+        return ipaddress.get_octets()
+
+    def get_octets_3(self):
+        ipaddress = IPAddress("-1.10.10.10")
+        return ipaddress.get_octets()
+
+    def get_octets_4(self):
+        ipaddress = IPAddress("300.10.10.10")
+        return ipaddress.get_octets()
+
+    def get_octets_5(self):
+        ipaddress = IPAddress(".10.10.10")
+        return ipaddress.get_octets()
+
+
+class IPAddressTestGetBinary:
+    def get_binary_1(self):
+        ipaddress = IPAddress("10.10.10.10")
+        return ipaddress.get_binary()
+
+    def get_binary_2(self):
+        ipaddress = IPAddress("a.10.10.10")
+        return ipaddress.get_binary()
+
+    def get_binary_3(self):
+        ipaddress = IPAddress("-1.10.10.10")
+        return ipaddress.get_binary()
+
+    def get_binary_4(self):
+        ipaddress = IPAddress("300.10.10.10")
+        return ipaddress.get_binary()
+
+    def get_binary_5(self):
+        ipaddress = IPAddress(".10.10.10")
+        return ipaddress.get_binary()
+
+
+class IPAddressTest:
+    def IPAddress(self):
+        ipaddress = IPAddress("10.10.10.10")
+        return [ipaddress.is_valid(), ipaddress.get_octets(), ipaddress.get_binary()]
+
+
+def obtain_output():
+    classes = ['IPAddressTestIsValid',
+               'IPAddressTestGetOctets',
+               'IPAddressTestGetBinary',
+               'IPAddressTest']
+    output = []
+    output_idx = 0
+    for each_class in classes:
+        this_class = eval(f"{each_class}()")
+        test_functions = [name for name, obj in inspect.getmembers(eval(each_class))
+                  if inspect.isfunction(obj)]
+        for each_func in test_functions:
+            function_output = eval(f"this_class.{each_func}()")
+            output.append((output_idx,function_output))
+            output_idx += 1
+
+
+if __name__ == '__main__':
+    obtain_output()

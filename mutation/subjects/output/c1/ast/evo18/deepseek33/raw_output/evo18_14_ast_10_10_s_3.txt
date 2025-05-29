@@ -1,0 +1,22 @@
+To infill <MASK>, you would replace the first <MASK> with "result[sub] += 1", and the second <MASK> with "if pos == start:"
+
+Here's the corrected code:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                if pos == start:
+                    result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+```
+This code will return the count of each substring in the input string, including overlapping cases. If any substring is an empty string, it will return "Substrings cannot be empty". If the input string is empty, it will return a dictionary with zero counts for each substring. If a substring appears more than once in the list, its count will be increased accordingly.

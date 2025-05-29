@@ -1,0 +1,12 @@
+Based on the provided docstring, we want to calculate the greatest common divisor (GCD) of all the numbers in the list. We can use a loop to iterate through the list after finding the GCD of the first number with `gcd`. If there are more elements in the list, we should update `gcd` by calculating it with the current `gcd` and the next number (`num`). Here's how you should fill in the `<MASK>`:
+
+```python
+from typing import List
+def multiple_greatest_common_divisors(numbers: List[int]) -> int:
+    import math
+    gcd = numbers[0]
+    if len(numbers) > 1:  # Check if there's more than one element
+        for num in numbers[1:]:  # Iterate from the second element
+            gcd = math.gcd(gcd, num)
+    return gcd
+```

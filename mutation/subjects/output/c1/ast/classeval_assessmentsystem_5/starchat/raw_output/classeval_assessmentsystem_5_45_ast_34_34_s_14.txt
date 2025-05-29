@@ -1,0 +1,6 @@
+```Python
+if score > 0:
+    count += 1
+```
+
+Here, in the `get_course_average` method, the missing mask for counting the valid scores in the course has been infilled as `if score > 0`. This is added to ensure that the calculation of average does not include any None or 0 scores.

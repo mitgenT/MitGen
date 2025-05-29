@@ -1,0 +1,13 @@
+t=int(input())
+for i in range(t):
+    n=int(input())
+    a=list(map(int,input().split(' ')))
+    b=list(map(int,input().split(' ')))
+    sa=sum(a)
+    sb=sum(b)
+    ma=max(a)
+    mb=max(b)
+    if sa>sb:
+        print(sa-mb)
+    else:
+        print(sa-ma)

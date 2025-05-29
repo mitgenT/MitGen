@@ -1,0 +1,11 @@
+conn = sqlite3.connect(self.database_name)
+cursor = conn.cursor()
+
+if not cursor:
+    cursor = conn.cursor()
+
+create_table_query = f"CREATE TABLE IF NOT EXISTS {table_name} (id INTEGER PRIMARY KEY, {key1} TEXT, {key2} INTEGER)"
+cursor.execute(create_table_query)
+
+conn.commit()
+conn.close()

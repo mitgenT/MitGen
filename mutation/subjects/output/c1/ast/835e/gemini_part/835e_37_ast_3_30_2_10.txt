@@ -1,0 +1,19 @@
+from sys import stdin, stdout
+class Solution:
+        def BinaryInversions(self, n:int, bits:list):
+            from math import ceil 
+            bits.append(0)
+            max_count = 0
+            for i in range(n):
+                if bits[i]==bits[i+1]:
+                    max_count += 1
+    
+            max_count = ceil(max_count/2)
+            return n*(n-1)//2 - max_count
+
+sol = Solution()
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    bits = list(map(int, input().split()))
+    print(sol.BinaryInversions(n, bits))

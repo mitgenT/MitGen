@@ -1,0 +1,7 @@
+```python
+if n > 3:  # Checking if the number of data points is greater than 3 for calculating kurtosis
+    kurtosis_value = (fourth_moment / std_dev ** 4) * 3
+    return kurtosis_value
+else:
+    return math.nan
+```

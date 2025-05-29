@@ -1,0 +1,6 @@
+for _ in range(int(input())):
+    n,k = map(int,input().split())
+    ans = [i+1 for i in range(k)]
+    ans.append(n)
+    ans = ans + [n-i-1 for i in range(k-1,-1,-1)]
+    print(*ans)

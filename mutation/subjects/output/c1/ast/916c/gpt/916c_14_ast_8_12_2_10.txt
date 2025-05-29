@@ -1,0 +1,22 @@
+for _ in range(int(input())):
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    result = 0
+    maxB = 0
+    sum = 0
+    quests_completed = 0
+
+    while k > 0:
+        max_index = a.index(max(a))
+        if b[max_index] > maxB:
+            maxB = b[max_index]
+            a[max_index] = 0
+        else:
+            result += a[max_index]
+            a[max_index] = 0
+            k -= 1
+            quests_completed += 1
+        if quests_completed >= n:
+            break
+    print(result)

@@ -1,0 +1,3 @@
+```python
+        while start < len(string):
+```

@@ -1,0 +1,73 @@
+Infill <MASK> in the given code with the following:
+
+```python
+keys = ", ".join(data.keys())
+values = ", ".join([f"'{value}'" for value in data.values()])
+sql = f"INSERT INTO {self.table_name} ({keys}) VALUES ({values})"
+```
+
+The entire updated program is as follows:
+
+```python
+class SQLGenerator:
+    def __init__(self, table_name):
+        self.table_name = table_name
+
+    def select(self, fields=None, condition=None):
+        if fields is None:
+            fields = "*"
+        else:
+            fields = ", ".join(fields)
+        sql = f"SELECT {fields} FROM {self.table_name}"
+        if condition is not None:
+            sql += f" WHERE {condition}"
+        return sql + ";"
+
+    def insert(self, data):
+        keys = ", ".join(data.keys())
+        values = ", ".join([f"'{value}'" for value in data.values()])
+        sql = f"INSERT INTO {self.table_name} ({keys}) VALUES ({values})"
+        return sql + ";"
+
+    def update(self, data, condition):
+        set_clause = ", ".join([f"{field} = '{value}'" for field, value in data.items()])
+        sql = f"UPDATE {self.table_name} SET {set_clause} WHERE {condition}"
+        return sql + ";"
+
+    def delete(self, condition):
+        sql = f"DELETE FROM {self.table_name} WHERE {condition}"
+        return sql + ";"
+
+    def select_female_under_age(self, age):
+        condition = f"age < {age} AND gender = 'female'"
+        return self.select(condition=condition)
+
+    def select_by_age_range(self, min_age, max_age):
+        condition = f"age BETWEEN {min_age} AND {max_age}"
+        return self.select(condition=condition)
+
+```
+```python
+# Testing the SQLGenerator class
+sql = SQLGenerator('table1')
+
+# Testing insert method
+insert_sql = sql.insert({'key1': 'value1', 'key2': 'value2'})
+print(insert_sql)
+
+# Testing update method
+update_sql = sql.update({'field1': 'new_value1', 'field2': 'new_value2'}, "field3 = value1")
+print(update_sql)
+
+# Testing delete method
+delete_sql = sql.delete("field1 = value1")
+print(delete_sql)
+
+# Testing select_female_under_age method
+select_female_under_age_sql = sql.select_female_under_age(30)
+print(select_female_under_age_sql)
+
+# Testing select_by_age_range method
+select_by_age_range_sql = sql.select_by_age_range(20, 30)
+print(select_by_age_range_sql)
+```

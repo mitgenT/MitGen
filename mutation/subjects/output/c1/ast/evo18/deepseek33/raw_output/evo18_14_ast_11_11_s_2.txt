@@ -1,0 +1,19 @@
+In this given code, the <MASK> would replace the "pos += 1" statement that increments the start variable. The code currently finds the first occurrence of the substring in the string from the start variable and then moves to the next position. However, since we want to find overlapping cases, we don't need to increment by one, but by the length of the substring that was found.
+
+## Output:
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + len(sub)
+            else:
+                break
+    return result
+```

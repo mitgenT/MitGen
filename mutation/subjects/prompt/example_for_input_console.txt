@@ -1,0 +1,31 @@
+Your task is to generate inputs for the target code. You only need to output the input itself.
+
+# Example
+
+## Target code:
+```Python
+t=int(input())
+for r in range(t):
+    a=[int(i) for i in input().split()]
+    o=1
+    conf=0
+    for i in a:
+        if conf==1:
+            break
+        for j in a[o:]:
+            if i+j>=10:
+                print("YES")
+                conf=1
+                break
+            o+=1
+    if conf==0:
+        print("NO")
+```
+
+## Output you need to generate(exclude this line):
+5
+8 1 2
+4 4 5
+9 9 9
+0 0 0
+8 5 3

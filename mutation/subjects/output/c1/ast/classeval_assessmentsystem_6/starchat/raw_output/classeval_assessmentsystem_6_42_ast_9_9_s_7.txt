@@ -1,0 +1,59 @@
+The given code lacks error handling and conditional checks, which are needed for robustness. Here's the corrected code:
+
+```python
+class AssessmentSystem:
+    def __init__(self):
+        self.students = {}
+
+    def add_student(self, name, grade, major):
+        if name not in self.students:
+            self.students[name] = {'name': name, 'grade': grade,'major': major, 'courses': {}}
+
+    def add_course_score(self, name, course, score):
+        if name in self.students and 0 <= score <= 100:
+            self.students[name]['courses'][course] = score
+
+    def get_gpa(self, name):
+        if name in self.students and self.students[name]['courses']:
+            return sum(self.students[name]['courses'].values()) / len(self.students[name]['courses'])
+        return None
+
+    def get_all_students_with_fail_course(self):
+        students = []
+        for name, student in self.students.items():
+            for course, score in student['courses'].items():
+                if score < 60:
+                    students.append(name)
+                    break
+        return students
+
+    def get_course_average(self, course):
+        total = 0
+        count = 0
+        for student in self.students.values():
+            if course in student['courses']:
+                score = student['courses'][course]
+                if score is not None:
+                    total += score
+                    count += 1
+        return total / count if count > 0 else None
+
+    def get_top_student(self):
+        top_student = None
+        top_gpa = 0
+        for name, student in self.students.items():
+            gpa = self.get_gpa(name)
+            if gpa is not None and gpa > top_gpa:
+                top_gpa = gpa
+                top_student = name
+        return top_student
+```
+
+In this corrected version, I've added error handling:
+
+1. In the `add_student` method, I've added a condition to check if the student already exists in the system before adding a new student.
+2. In the `add_course_score` method, I've added a condition to check if the student exists and the score is between 0 and 100.
+3. In the `get_gpa` method, I've added a condition to check if the student exists and has at least one course score before calculating the GPA.
+4. In the `get_course_average` method, I've added a condition to check if the course has at least one valid score before calculating the average score.
+
+These checks will prevent the program from throwing runtime errors and make it more robust.

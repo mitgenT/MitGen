@@ -1,0 +1,4 @@
+if name in item:
+    select_query = f"SELECT * FROM {table_name} WHERE name =?"
+    cursor.execute(select_query, (name,))
+    result = cursor.fetchall()

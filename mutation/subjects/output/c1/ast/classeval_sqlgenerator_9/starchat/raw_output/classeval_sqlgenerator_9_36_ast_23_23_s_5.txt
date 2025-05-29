@@ -1,0 +1,13 @@
+In the `update` method, you need to add an "if" condition and the set_clause to the SQL statement:
+
+```Python
+def update(self, data, condition):
+    set_clause = ", ".join([f"{field} = '{value}'" for field, value in data.items()])
+    if condition:
+        sql = f"UPDATE {self.table_name} SET {set_clause} WHERE {condition}"
+    else:
+        raise ValueError("Condition must be provided for update operation.")
+    return sql + ";"
+```
+
+Here, we first join the key-value pairs of the `data` dictionary into a comma-separated string of SET clauses. Then, if the `condition` parameter is provided, we form the complete UPDATE SQL statement by appending it after the SET clause. If the `condition` is not provided, we raise a ValueError as it's required for the UPDATE operation.

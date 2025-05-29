@@ -1,0 +1,17 @@
+```python
+import sqlite3
+import pandas as pd
+
+
+class DatabaseProcessor:
+
+    def __init__(self, database_name):
+        """
+        Initialize database name of database processor
+        """
+        self.database_name = database_name
+
+# rest of the code follows...
+```
+
+The provided docstring indicates the purpose and the general structure of the `DatabaseProcessor` class. In the given code, I have added the missing docstring for the `__init__` method, as requested. The rest of the methods and their implementations are identical to the provided code snippet.

@@ -1,0 +1,4 @@
+```Python
+if self.students[name]['courses']:
+    total, count = 0, 0
+```

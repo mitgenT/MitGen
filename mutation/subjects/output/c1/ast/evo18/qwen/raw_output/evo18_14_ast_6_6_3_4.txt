@@ -1,0 +1,24 @@
+Based on the given docstring, the function `how_many_times` is looking for occurrences of substrings in the `string`. It should iterate over the string, find the next occurrence of each substring starting from the current position `start`, and increment the count in the result dictionary. Here's how to fill in the `<MASK>` parts:
+
+```python
+def how_many_times(string: str, substrings: list) -> dict:
+    if any(sub == '' for sub in substrings):
+        return "Substrings cannot be empty"
+    result = {sub: 0 for sub in substrings}
+    for sub in substrings:
+        start = 0
+        if start < len(string) and string[start:].startswith(sub):  # Check if there's a match at the beginning
+            result[sub] += 1
+            start += len(sub)  # Move start by the length of the matched substring
+
+        while start < len(string) - 1:
+            pos = string.find(sub, start)
+            if pos != -1:
+                result[sub] += 1
+                start = pos + 1
+            else:
+                break
+    return result
+```
+
+This code initializes `start` to check for the first occurrence of the substring at the beginning of the remaining string. Then, it finds subsequent occurrences using `string.find()` and increments the count in the `result` dictionary accordingly.

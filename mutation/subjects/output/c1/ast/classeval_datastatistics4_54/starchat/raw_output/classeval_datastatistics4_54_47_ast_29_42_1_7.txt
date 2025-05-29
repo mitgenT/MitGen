@@ -1,0 +1,14 @@
+```python
+@staticmethod
+def kurtosis(data):
+    n = len(data)
+    mean = sum(data) / n
+    variance = sum((x - mean) ** 2 for x in data) / n
+    std_deviation = math.sqrt(variance)
+
+    kurtosis = sum((x - mean) ** 4 for x in data) * n / ((n - 1) * (n - 2) * (n - 3) * (std_deviation ** 4)) if std_deviation!= 0 else 0
+
+    return kurtosis - 3  # Subtract 3 to get the excess kurtosis
+```
+
+The provided code now includes the implementation for all the methods specified in the docstring. Note that the kurtosis calculation now returns the excess kurtosis value (after subtracting 3).

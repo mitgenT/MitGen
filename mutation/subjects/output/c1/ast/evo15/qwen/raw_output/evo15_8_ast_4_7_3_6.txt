@@ -1,0 +1,14 @@
+Based on the provided docstring, we want to create a string sequence where every `m`-th number is replaced with "Fizz". Here's how to fill in the `<MASK>` parts of the code:
+
+```python
+def string_sequence_modified(n: int, m: int) -> str:
+    result = []
+    for i in range(1, n + 1):  # Start from 1 (1-based indexing)
+        if i % m == 0:  # Check if it's the m-th number
+            result.append("Fizz")
+        else:
+            result.append(str(i))  # If not, append the number as a string
+    return ' '.join(result)
+```
+
+Now, the `string_sequence_modified` function correctly implements the described behavior.

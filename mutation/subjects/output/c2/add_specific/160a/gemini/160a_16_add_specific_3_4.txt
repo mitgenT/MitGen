@@ -1,0 +1,35 @@
+import sys
+input = sys.stdin.readline
+
+def is_valid_number(s):
+    if len(s) > 8:
+        return False
+    for c in s:
+        if not c.isdigit():
+            return False
+    return True
+
+for _ in range(int(input())):
+    s = input()
+    n = len(s)
+
+    if not is_valid_number(s):
+        print(-1)
+        continue
+
+    a = []
+    b = []
+
+    for i in range(n):
+        for j in range(i + 1, n):
+            x = int(s[:i+1])
+            y = int(s[i+1:j+1])
+            z = int(s[j+1:])
+            if x != y and y != z and x * y == z:
+                a.append(x)
+                b.append(y)
+
+    if a:
+        print(*a[0], *b[0])
+    else:
+        print(-1)

@@ -1,0 +1,3 @@
+```python
+if 10 <= remainder <= 35:
+```

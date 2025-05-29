@@ -1,0 +1,4 @@
+if fields:
+    fields = ", ".join(fields)
+else:
+    fields = "*"

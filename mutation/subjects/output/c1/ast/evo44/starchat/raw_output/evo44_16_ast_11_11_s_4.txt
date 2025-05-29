@@ -1,0 +1,1 @@
+new_base_num = chr(remainder + 87) + new_base_num

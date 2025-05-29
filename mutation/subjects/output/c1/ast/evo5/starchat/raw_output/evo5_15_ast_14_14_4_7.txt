@@ -1,0 +1,27 @@
+## Output
+```python
+from typing import List, Union
+def intersperse(numbers: List[Union[int, float]], delimeter: Union[int, float], limit: int) -> List[Union[int, float]]:
+    set_float = False
+    if type(delimeter) == float:
+        set_float = True
+    result = []
+    limit = min(limit, len(numbers) - 1) 
+    for i in range(len(numbers) - 1):
+        if set_float:
+            result.append(float(numbers[i]))
+        else:
+            result.append(numbers[i])
+        if i < limit:
+            if i % 2 == 0:
+                if set_float:
+                    result.append(float(delimeter))
+                else:
+                    result.append(delimeter)
+    if set_float:
+        result.append(float(numbers[-1]))
+    else:
+        result.append(numbers[-1])
+    return result
+```
+In this code, the intersperse function is implemented so that a delimiter is inserted between every two consecutive numbers up to the limit times. If the delimiter is a float, the output list will also be in float. It checks if the current index is less than the limit and whether it's an even index to determine whether or not to append the delimiter. Finally, it appends the last number to the result list regardless of the limit.

@@ -1,0 +1,12 @@
+```python
+        conn = sqlite3.connect(self.database_name)
+        cursor = conn.cursor()
+
+        select_query = f"SELECT * FROM {table_name} WHERE name =?"
+        cursor.execute(select_query, (name,))
+        result = cursor.fetchall()
+
+        conn.close()
+        return result
+```
+This code adds the missing `conn.close()` statement in the `search_database` function, ensuring that the database connection is properly closed after the search operation is completed. This is important to maintain good database practices.

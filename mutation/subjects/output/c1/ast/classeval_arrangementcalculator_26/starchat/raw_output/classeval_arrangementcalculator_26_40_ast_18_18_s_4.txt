@@ -1,0 +1,10 @@
+```python
+        if m is None or n == m:
+            return ArrangementCalculator.factorial(n)
+        else:
+            return ArrangementCalculator.factorial(n) // ArrangementCalculator.factorial(n - m)
+
+        for i in range(1, n + 1):
+            total += ArrangementCalculator.count(n, i)
+```
+The mask's first instance fills in the count_all method's if condition, and the second instance fills in the for loop in count_all method. This ensures the correct calculation of total arrangements regardless of m's value in the count_all method.

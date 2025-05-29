@@ -1,0 +1,5 @@
+```python
+        if longest_substring:
+            return longest_substring, longest_substring_index
+    return longest_substring, longest_substring_index
+```

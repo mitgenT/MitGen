@@ -1,0 +1,4 @@
+```python
+if special_index >= len(string):
+    special_index %= len(string)
+```

@@ -1,0 +1,7 @@
+```python
+result = cursor.fetchall()
+conn.close()
+return result
+```
+
+When you implement the `search_database` method in `DatabaseProcessor` class, you need to fetch all the rows that satisfy the condition and close the database connection before returning the result. Infill the required SQL commands using the `<MASK>` placeholder in the given code.

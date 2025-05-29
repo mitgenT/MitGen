@@ -1,0 +1,5 @@
+```Python
+if course in student['courses'].values():
+    total += score
+    count += 1
+```

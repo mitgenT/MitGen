@@ -1,0 +1,2 @@
+if string:
+    special_index = special_index % len(string) # Circular list treatment for special_index

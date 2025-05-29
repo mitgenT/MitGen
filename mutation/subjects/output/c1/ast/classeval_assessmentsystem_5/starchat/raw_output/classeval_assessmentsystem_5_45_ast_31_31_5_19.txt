@@ -1,0 +1,5 @@
+```Python
+            if score >= 0:
+                score += score
+```
+This piece of code will be inserted in the `get_course_average` function to make sure that only scores that are not None are included in the average calculation. The current code will raise an error if a student has a non-None score but the score itself is None. This change addresses that situation by checking whether the score is non-negative before including it in the calculation.

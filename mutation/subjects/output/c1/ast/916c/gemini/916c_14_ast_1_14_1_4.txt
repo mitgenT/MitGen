@@ -1,0 +1,23 @@
+def solve_test_case():
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    dp = [[-1] * (k + 1) for _ in range(n + 1)]  # dp[i][j]: maximum experience after completing first i quests while currently at state j
+
+    def get_dp(i, j):
+        if i == n:
+            return 0
+        if dp[i][j] != -1:
+            return dp[i][j]
+
+        # Try to complete the i-th quest or not complete
+        dp[i][j] = max(get_dp(i + 1, j), (j == 0 ? a[i - 1] : b[i - 1]) + get_dp(i, j + 1))
+        return dp[i][j]
+
+    return get_dp(1, 0)
+
+
+if __name__ == "__main__":
+    t = int(input())
+    for _ in range(t):
+        print(solve_test_case())

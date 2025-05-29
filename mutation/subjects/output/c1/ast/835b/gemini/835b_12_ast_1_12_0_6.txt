@@ -1,0 +1,5 @@
+def solve(n, s):
+    unique = set()
+    for i in s:
+        unique.add(i)
+    return len(unique)

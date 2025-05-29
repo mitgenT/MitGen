@@ -1,0 +1,17 @@
+from typing import List, Tuple
+def all_prefix_suffix_pairs(string: str, min_length: int) -> List[Tuple[str, str]]:
+   def check_overlap(prefix: str, suffix: str) -> bool:
+       return len(prefix + suffix) != len(prefix) + len(suffix)
+   def is_valid_length(segment: str) -> bool:
+       return len(segment) >= min_length
+   def get_segments(string: str, min_length: int) -> List[Tuple[str, str]]:
+       segments = []
+       for start in range(len(string)):
+           for end in range(start + min_length, len(string) + 1):
+               prefix = string[start:end]
+               suffix = string[-(end - start):]
+               if not check_overlap(prefix, suffix) and is_valid_length(prefix) and is_valid_length(suffix):
+                   segments.append((prefix, suffix))
+       return segments
+   sorted_segments = sorted(get_segments(string, min_length), key=lambda x: (len(x[0]) + len(x[1]), x[0]))
+   return [sorted(segment) for segment in sorted_segments]

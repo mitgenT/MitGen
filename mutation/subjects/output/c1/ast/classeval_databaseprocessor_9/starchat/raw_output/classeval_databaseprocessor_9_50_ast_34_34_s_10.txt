@@ -1,0 +1,6 @@
+```python
+            if result:
+                conn.close()
+                return result
+```
+I filled in the missing parts in the given code based on the provided docstring.

@@ -1,0 +1,15 @@
+def program(n:int, c:int, d:int, a:list)->str:
+    mx = max(a)
+    mn = min(a)
+    if c<=mn*d:
+        return "Infinity"
+    if c>mx*d:
+        return "Impossible"
+    for k in range (d,1000000):
+        coin = 0
+        for i in range(d):
+            coin+=a[i%(k+1)]
+        if coin>=c:
+            return k
+    return "Impossible"
+   

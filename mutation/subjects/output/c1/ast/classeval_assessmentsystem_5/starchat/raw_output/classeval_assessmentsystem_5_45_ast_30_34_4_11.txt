@@ -1,0 +1,4 @@
+self.students[name]['courses'].get(course) is not None
+
+total += score
+count += 1
